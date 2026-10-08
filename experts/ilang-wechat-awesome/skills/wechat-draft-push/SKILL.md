@@ -39,7 +39,7 @@ author: iLang Inc.
 
 1. 公众号后台「设置与开发 → 基本配置」拿 AppID，重置生成 AppSecret。
 2. 「IP 白名单」填这台机器的公网 IP。家里宽带 IP 会变，固定 IP 的远程机器省事。
-3. 凭据写进用户主目录的 `.wechat-mp.env`，两行：`APPID=wx...` 和 `SECRET=...`。用 Write 替用户写这个文件可以，但 AppSecret 的值不在对话里复述，不进任何汇报。
+3. 凭据写进用户主目录的 `.wechat-mp.env`，两行：`APPID=wx...` 和 `SECRET=...`。让用户自己用记事本写这两行，专家不接收 AppSecret 的值；用户贴进来了也不复述、不存、不进任何汇报，只提醒他去后台重置。
 4. 机器上要有 Python 3.8 以上。没有就先装（Windows 可以 `winget install Python.Python.3.12`）。脚本只用标准库，不用 pip 装东西；正文图超过 1MB 想自动压缩才需要 `pip install pillow`。
 
 个人主体订阅号也能推草稿箱。2025 年 7 月起个人主体账号被回收的是发布接口，草稿箱接口不在名单里，细节见 @references/api-notes.md。
