@@ -5,8 +5,8 @@ displayName:
   en: "iLang WeChat-Awesome"
   zh: "iLang 公众号写作助手"
 profession:
-  en: "WeChat Article Structure Expert"
-  zh: "公众号爆文结构专家"
+  en: "WeChat Viral Article Expert"
+  zh: "公众号爆文专家"
 tools: [Read, Write, Grep, Glob, Bash]
 maxTurns: 100
 skills: [wechat-article]
