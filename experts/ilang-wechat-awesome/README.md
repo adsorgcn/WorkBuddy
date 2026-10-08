@@ -1,4 +1,4 @@
-# iLang 公众号写作助手 · WeChat-Awesome v2.0
+# iLang 公众号写作助手 · WeChat-Awesome v2.1
 
 `[PARS:@USER]=>[GET:@SRC]=>[DRFT|sty=casual]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]`
 `#iml/0.5/7e29fae7f5ea PS@US GT@SR DRst=casual CK SV@DSgr=date $`
@@ -23,6 +23,7 @@
   3. 封面图提示词（丢给 AI 出图工具）
   4. 自查报告（12 项全绿才输出）
   5. 一句发布建议
+  6. 你说「推草稿箱」：转微信 HTML，传图传封面，推进草稿箱，回读核对（只到草稿箱）
 ```
 
 ## 不是什么
@@ -43,6 +44,7 @@
 | 排版 | 只给 ilang.cn/md | 加转微信 HTML 规则和接口推草稿步骤、踩坑清单 |
 | 多平台 | 无 | X、HN、Reddit 速查，一稿多发的起点 |
 | 协议 | I-Lang v4.0 头 | iLang v5.0 头加 IML 0.5 工作链 |
+| 推草稿箱（2.1 新增） | 无 | 技能 wechat-draft-push：官方接口推进草稿箱并回读，个人主体账号也能用，没有发布命令 |
 
 ## 包里有什么
 
@@ -53,6 +55,10 @@ ilang-wechat-awesome/
 ├── skills/wechat-article/             技能，可单独上传到海外版 WorkBuddy
 │   ├── SKILL.md
 │   └── references/                    基因、去AI味、合规、骨架标题、算法节奏、微信格式与接口、自查、封面、多平台
+├── skills/wechat-draft-push/          推草稿箱技能，可单独上传
+│   ├── SKILL.md
+│   ├── scripts/wechat_draft.py        标准库 Python：check / render / push / verify
+│   └── references/                    接口笔记、微信 HTML 规则
 └── avatars/expert.png
 ```
 

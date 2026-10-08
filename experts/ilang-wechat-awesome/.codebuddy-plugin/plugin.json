@@ -1,7 +1,7 @@
 {
   "name": "ilang-wechat-awesome",
-  "version": "2.0.0",
-  "description": "WeChat official account writing assistant. Feeds on your source material, restructures it with writing genes distilled from 200+ field-tested articles, runs a 12-point self-check with built-in de-AI editing, outputs publish-ready Markdown plus titles and a cover image prompt. Chinese-first. By iLang.",
+  "version": "2.1.0",
+  "description": "WeChat official account writing assistant. Feeds on your source material, restructures it with writing genes distilled from 200+ field-tested articles, runs a 12-point self-check with built-in de-AI editing, outputs publish-ready Markdown plus titles and a cover image prompt, and can push the approved draft into the WeChat draft box through the official API (draft box only, never publishes). Chinese-first. By iLang.",
   "author": {
     "name": "iLang Inc.",
     "email": "info@ilang.app"
@@ -18,13 +18,16 @@
     "writing",
     "content",
     "viral",
-    "deai"
+    "deai",
+    "draft",
+    "草稿箱"
   ],
   "agents": [
     "./agents/ilang-wechat-awesome.md"
   ],
   "skills": [
-    "./skills/wechat-article"
+    "./skills/wechat-article",
+    "./skills/wechat-draft-push"
   ],
   "expertType": "agent",
   "agentName": "ilang-wechat-awesome",
@@ -37,8 +40,8 @@
     "zh": "公众号爆文专家"
   },
   "displayDescription": {
-    "en": "Feed it your source material and it restructures the piece with writing genes distilled from 200+ field-tested WeChat articles, runs a 12-point self-check with built-in de-AI editing, then outputs publish-ready Markdown, three titles and a cover image prompt while following WeChat content rules. By iLang.",
-    "zh": "投喂素材出公众号文章：爆文结构重组，12项自查，内置去AI味和合规红线，出正文、标题和封面提示词。"
+    "en": "Feed it your source material and it restructures the piece with writing genes distilled from 200+ field-tested WeChat articles, runs a 12-point self-check with built-in de-AI editing, then outputs publish-ready Markdown, three titles and a cover image prompt while following WeChat content rules. One sentence pushes the approved draft into your WeChat draft box (never publishes). By iLang.",
+    "zh": "投喂素材出公众号文章：爆文结构重组，12项自查，内置去AI味，出正文、标题、封面提示词，可推草稿箱。"
   },
   "avatar": "avatars/expert.png",
   "categoryId": "06-ContentCreative",
@@ -53,12 +56,12 @@
       "zh": "公众号"
     },
     {
-      "en": "Article Structure",
-      "zh": "爆文结构"
-    },
-    {
       "en": "De-AI",
       "zh": "去AI味"
+    },
+    {
+      "en": "Draft Push",
+      "zh": "推草稿箱"
     }
   ],
   "quickPrompts": [
@@ -67,12 +70,12 @@
       "zh": "我有素材，帮我按爆文结构写成公众号文章"
     },
     {
-      "en": "Give me 3 titles and a cover image prompt for this article",
-      "zh": "帮这篇公众号文章出3个标题和封面图提示词"
-    },
-    {
       "en": "Remove the AI flavor from this draft and check WeChat compliance",
       "zh": "把这篇初稿去AI味，顺便查公众号合规"
+    },
+    {
+      "en": "Push this final draft into my WeChat draft box",
+      "zh": "把这篇定稿推进公众号草稿箱"
     }
   ]
 }

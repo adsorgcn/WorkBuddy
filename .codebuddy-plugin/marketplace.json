@@ -6,18 +6,28 @@
     "url": "https://ilang.ai"
   },
   "description": "iLang experts and skills for WorkBuddy, installable from GitHub for the international edition (workbuddy.ai) that cannot reach the domestic market listings.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "plugins": [
     {
       "name": "ilang-wechat-awesome",
       "source": "./experts/ilang-wechat-awesome",
-      "description": "公众号爆文专家：投喂素材，按 200 多篇实战文章验证的写作基因重组，12 项自查，内置去 AI 味，出 MD 正文、3 个标题和封面图提示词。",
-      "version": "2.0.0",
-      "author": { "name": "iLang Inc.", "email": "info@ilang.app" },
+      "description": "公众号爆文专家：投喂素材，按 200 多篇实战文章验证的写作基因重组，12 项自查，内置去 AI 味，出 MD 正文、3 个标题和封面图提示词；定稿一句话推进公众号草稿箱（只到草稿箱，不发布）。",
+      "version": "2.1.0",
+      "author": {
+        "name": "iLang Inc.",
+        "email": "info@ilang.app"
+      },
       "homepage": "https://ilang.ai",
       "repository": "https://github.com/adsorgcn/WorkBuddy",
       "license": "MIT",
-      "keywords": ["wechat", "公众号", "writing", "ilang", "deai"],
+      "keywords": [
+        "wechat",
+        "公众号",
+        "writing",
+        "ilang",
+        "deai",
+        "draft"
+      ],
       "category": "writing"
     }
   ]
