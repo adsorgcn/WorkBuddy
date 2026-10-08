@@ -1,7 +1,7 @@
 {
   "name": "ilang-wechat-awesome",
-  "version": "2.2.0",
-  "description": "WeChat official account writing assistant. Feeds on your source material, restructures it with writing genes distilled from 200+ field-tested articles, runs a 12-point self-check with built-in de-AI editing, outputs publish-ready Markdown plus titles and a cover image prompt, and can push the approved draft into the WeChat draft box through the official API (draft box by default; a verified enterprise account can publish only after a human reviewed the draft and said so). Chinese-first. By iLang.",
+  "version": "2.3.0",
+  "description": "WeChat official account writing assistant with data-driven topic hunting (wxrank, user's own key). Feeds on your source material, restructures it with writing genes distilled from 200+ field-tested articles, runs a 12-point self-check with built-in de-AI editing, outputs publish-ready Markdown plus titles and a cover image prompt, and can push the approved draft into the WeChat draft box through the official API (draft box by default; a verified enterprise account can publish only after a human reviewed the draft and said so). Chinese-first. By iLang.",
   "author": {
     "name": "iLang Inc.",
     "email": "info@ilang.app"
@@ -10,24 +10,28 @@
   "repository": "https://github.com/adsorgcn/WorkBuddy",
   "license": "MIT",
   "keywords": [
-    "ilang",
-    "i-lang",
-    "iml",
-    "wechat",
-    "公众号",
-    "writing",
     "content",
-    "viral",
     "deai",
     "draft",
-    "草稿箱"
+    "i-lang",
+    "ilang",
+    "iml",
+    "topic",
+    "viral",
+    "wechat",
+    "writing",
+    "wxrank",
+    "公众号",
+    "草稿箱",
+    "选题"
   ],
   "agents": [
     "./agents/ilang-wechat-awesome.md"
   ],
   "skills": [
     "./skills/wechat-article",
-    "./skills/wechat-draft-push"
+    "./skills/wechat-draft-push",
+    "./skills/wechat-topic-hunter"
   ],
   "expertType": "agent",
   "agentName": "ilang-wechat-awesome",
@@ -40,8 +44,8 @@
     "zh": "公众号爆文专家"
   },
   "displayDescription": {
-    "en": "Feed it your source material and it restructures the piece with writing genes distilled from 200+ field-tested WeChat articles, runs a 12-point self-check with built-in de-AI editing, then outputs publish-ready Markdown, three titles and a cover image prompt while following WeChat content rules. One sentence pushes the approved draft into your WeChat draft box (never publishes). By iLang.",
-    "zh": "投喂素材出公众号文章：爆文结构重组，12项自查，内置去AI味，出正文、标题、封面提示词，可推草稿箱。"
+    "en": "Hunt topics with real read and share data first, then feed it your source material and it restructures the piece with writing genes distilled from 200+ field-tested WeChat articles, runs a 12-point self-check with built-in de-AI editing, then outputs publish-ready Markdown, three titles and a cover image prompt while following WeChat content rules. One sentence pushes the approved draft into your WeChat draft box (never publishes). By iLang.",
+    "zh": "投喂素材出公众号文章：先看榜选题，爆文结构重组，12项自查，去AI味，出正文标题封面词，可推草稿箱。"
   },
   "avatar": "avatars/expert.png",
   "categoryId": "06-ContentCreative",
@@ -60,8 +64,8 @@
       "zh": "去AI味"
     },
     {
-      "en": "Draft Push",
-      "zh": "推草稿箱"
+      "en": "Topic Hunting",
+      "zh": "选题对标"
     }
   ],
   "quickPrompts": [
@@ -74,8 +78,8 @@
       "zh": "把这篇初稿去AI味，顺便查公众号合规"
     },
     {
-      "en": "Push this final draft into my WeChat draft box",
-      "zh": "把这篇定稿推进公众号草稿箱"
+      "en": "Check the top articles for my niche and find 3 benchmark accounts",
+      "zh": "帮我看榜选题，找 3 个对标号"
     }
   ]
 }

@@ -8,8 +8,9 @@
 
 | 名称 | 是什么 | 版本 |
 |---|---|---|
-| [iLang 公众号写作助手](experts/ilang-wechat-awesome/) | 公众号爆文专家：投喂素材，按 200 多篇实战文章验证的写作基因重组，12 项自查，内置去 AI 味，出 MD 正文、3 个标题和封面图提示词；定稿一句话推进草稿箱；认证号人审后可接口发布 | 2.2.0 |
-| [公众号推草稿箱（技能）](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | 定稿 Markdown 转微信 HTML，传图传封面，官方接口推进草稿箱并回读核对。默认只到草稿箱，个人主体账号也能用；微信认证号在人看过草稿说「发」后才跑 publish。没有删草稿命令。可单独上传 | 2.2.0 |
+| [iLang 公众号写作助手](experts/ilang-wechat-awesome/) | 公众号爆文专家：投喂素材，按 200 多篇实战文章验证的写作基因重组，12 项自查，内置去 AI 味，出 MD 正文、3 个标题和封面图提示词；定稿一句话推进草稿箱；认证号人审后可接口发布；先用自己的 wxrank key 看榜选题找对标 | 2.3.0 |
+| [公众号推草稿箱（技能）](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | 定稿 Markdown 转微信 HTML，传图传封面，官方接口推进草稿箱并回读核对。默认只到草稿箱，个人主体账号也能用；微信认证号在人看过草稿说「发」后才跑 publish。没有删草稿命令。可单独上传 | 2.3.0 |
+| [公众号选题对标（技能）](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/) | 用你自己的 wxrank key 看榜、找对标号、算阅读中位和爆款倍率、查单篇数据，出选题清单。每次花积分前先报价。只拿标题角度数据，不搬运。可单独上传 | 2.3.0 |
 
 ## 怎么装（三条路，选一条）
 
@@ -36,7 +37,7 @@
 
 任何能读 SKILL.md 的 Agent（Claude Code、Codex、Cursor、Hermes 等）都可以直接把 `skills/wechat-article/` 拷进自己的 skills 目录用。
 
-安装非官方技能前，先看一遍源码、权限和脚本。本仓库只有一个脚本：推草稿技能的 `scripts/wechat_draft.py`，纯 Python 标准库，只调微信官方接口，发布命令只在人说「发」之后对认证号可用，没有删草稿命令，凭据从本机配置文件读。
+安装非官方技能前，先看一遍源码、权限和脚本。本仓库有两个脚本，都是纯 Python 标准库、凭据从本机配置文件读：推草稿技能的 `scripts/wechat_draft.py`（只调微信官方接口，发布命令只在人说「发」之后对认证号可用，没有删草稿命令）和选题技能的 `scripts/wxrank_topics.py`（只读调用 wxrank 数据接口，用用户自己的 key，花积分前报价）。
 
 ## 怎么用
 
@@ -78,6 +79,8 @@
 | 机器层 IML | github.com/ilang-ai/iml-protocol |
 
 ## 更新记录
+
+- 2.3.0（2026-10-09）：新增选题对标技能 wechat-topic-hunter。用用户自己的 wxrank key：看榜（1 积分，返回阅读在看分享字数和链接，按爆款分排）、搜文章、找号、推文列表、单号对标（阅读中位、爆款倍率、爆款分）、单篇数据；每次花积分前报价，对标要用户点头；日上限 300 积分。专家在用户没素材时先走它出选题清单。
 
 - 2.2.0（2026-10-09）：推草稿箱技能加 publish 命令。只在人已在后台看过草稿并说「发」后、且账号是微信认证企业号时才调 freepublish/submit，先回读标题确认是哪篇，再轮询 freepublish/get 报状态和链接；个人号报没权限并引导去后台点。仍无删草稿命令。
 

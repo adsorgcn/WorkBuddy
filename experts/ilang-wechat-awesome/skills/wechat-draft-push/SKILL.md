@@ -6,7 +6,7 @@ description: "Push a finished Markdown article into a WeChat official account (�
 description_zh: "把定稿 Markdown 转成微信 HTML，传图传封面，推进公众号草稿箱并回读核对。个人主体账号也能推草稿箱。有 publish 命令，但只在人在后台看过草稿、说了「发」之后才跑，且只有微信认证企业号能用；没有删草稿命令。"
 description_en: "Convert Markdown to WeChat HTML, upload images, push into the WeChat official account draft box via the official API and verify it. Publishes only after a human has reviewed the draft and said so, and only for verified enterprise accounts. Never deletes drafts."
 category: writing
-version: 2.2.0
+version: 2.3.0
 author: iLang Inc.
 ---
 
