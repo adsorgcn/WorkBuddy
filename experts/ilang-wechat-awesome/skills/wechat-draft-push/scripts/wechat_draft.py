@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""公众号推草稿箱（只到草稿箱，没有发布命令，没有删草稿命令）。
+"""公众号推草稿箱，外加一个只在人说「发」之后才跑的发布命令（没有删草稿命令）。
 
 用法：
   python wechat_draft.py check                                  读配置、拿 access_token、打印 ok，不推任何东西
@@ -8,6 +8,9 @@
   python wechat_draft.py push --md 文章.md --title "标题" --cover 封面.jpg [--digest "摘要"] [--author "作者"] [--dry-run]
                                                                 传图、传封面、推草稿箱、回读核对、落盘结果
   python wechat_draft.py verify --media-id XXXX                 回读一篇草稿，核对中文、图片数、字数
+  python wechat_draft.py publish --media-id XXXX --reviewed     人在后台看过草稿、说了「发」之后才跑：
+                                                                回读确认草稿存在并打印标题，提交发布，轮询状态，落盘结果
+                                                                没有 --reviewed 直接拒绝。只有微信认证企业号能用发布接口。
 
 凭据（二选一，永远不要贴进对话）：
   环境变量 WECHAT_MP_APPID / WECHAT_MP_SECRET
@@ -25,6 +28,7 @@ import mimetypes
 import os
 import re
 import sys
+import time
 import urllib.parse
 import urllib.request
 import uuid
@@ -37,11 +41,28 @@ except Exception:
     pass
 
 BASE = "https://api.weixin.qq.com"
-UA = "wechat-draft-push/1.0"
+UA = "wechat-draft-push/2.2"
 BODY_IMG_LIMIT = 1024 * 1024          # uploadimg：jpg/png，1MB 以内
 COVER_LIMIT = 10 * 1024 * 1024        # add_material type=image：10MB 以内
 TITLE_MAX, AUTHOR_MAX, DIGEST_MAX = 32, 16, 120
 CONTENT_MAX_CHARS, CONTENT_MAX_BYTES = 20000, 1024 * 1024
+
+# 发布状态（freepublish/get 的 publish_status）
+PUBLISH_POLL_TIMES = 6                # 最多查 6 次
+PUBLISH_POLL_INTERVAL = 5             # 每次隔 5 秒
+PUBLISH_STATUS = {
+    0: "发布成功",
+    1: "发布中",
+    2: "原创失败",
+    3: "常规失败",
+    4: "平台审核不通过",
+    5: "成功后用户删除",
+    6: "成功后系统封禁",
+}
+PUBLISH_PERMISSION_NOTE = ("只有微信认证企业号能用发布接口，个人主体账号 2025 年 7 月起被回收。"
+                           "草稿还在草稿箱里没动，去公众号后台点发布。")
+NO_PERMISSION_CODES = {48001}
+NO_PERMISSION_RE = re.compile(r"unauthorized|not authorized|no permission", re.I)
 
 # 排版常量（内联样式，微信只认这个）
 FONT = "font-size:15px;color:#333;line-height:1.8;letter-spacing:0.5px;"
@@ -101,7 +122,8 @@ def load_credentials():
 
 
 # ---------- HTTP（标准库） ----------
-def http_json(method, url, data=None, headers=None, timeout=60):
+def http_json(method, url, data=None, headers=None, timeout=60, fatal=True):
+    """fatal=True 时网络错误或非 JSON 直接退出；fatal=False 时返回 {"errcode": -1, "errmsg": ...} 交给调用方处理。"""
     req = urllib.request.Request(url, data=data, method=method)
     req.add_header("User-Agent", UA)
     for k, v in (headers or {}).items():
@@ -112,11 +134,22 @@ def http_json(method, url, data=None, headers=None, timeout=60):
     except urllib.error.HTTPError as e:
         raw = e.read()
     except Exception as e:
+        if not fatal:
+            return {"errcode": -1, "errmsg": "网络请求失败：%s" % e}
         die("网络请求失败：%s（%s）" % (e, url.split("?")[0]))
     try:
         return json.loads(raw.decode("utf-8"))   # 微信返回 text/plain 不带 charset，必须自己按 UTF-8 解
     except Exception:
+        if not fatal:
+            return {"errcode": -1, "errmsg": "返回的不是 JSON：%r" % raw[:200]}
         die("微信返回的不是 JSON：%r" % raw[:200])
+
+
+def post_json(token, path, payload, timeout=60, fatal=True):
+    """带 access_token 的 JSON POST，请求体按 UTF-8 直传不转义中文。"""
+    body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    return http_json("POST", BASE + path + "?access_token=" + token, body,
+                     {"Content-Type": "application/json; charset=utf-8"}, timeout=timeout, fatal=fatal)
 
 
 def multipart(fields, file_field, filename, file_bytes, content_type):
@@ -138,12 +171,22 @@ def explain(j):
         40013: "AppID 不对。",
         40125: "AppSecret 不对，或者被重置过。",
         40001: "access_token 失效，重跑一次。",
-        40007: "media_id 不合法，多半是封面没传成永久素材。",
+        40002: "参数不合法，多半是 media_id 或 publish_id 写错了。",
+        40007: "media_id 不合法。推草稿时：先看封面是不是传成了永久素材（结果文件里有 thumb_media_id），不是就重传封面再推，是的话就是 media_id 抄错了；发布时：草稿 media_id 抄错了，从最近一份 draft-result 文件重新复制。",
         45110: "author 太长，16 字以内。",
         45009: "接口调用次数到上限，明天再推。",
         48001: "这个账号没有这个接口的权限。",
+        53503: "这篇草稿没过发布检查，去后台看草稿内容。",
+        53504: "这篇草稿要去公众平台官网里用，接口发不了。",
+        53505: "要先在公众平台官网手动保存成功，再发布。",
     }
     return "errcode=%s errmsg=%s%s" % (code, j.get("errmsg"), ("。" + tips[code]) if code in tips else "")
+
+
+def is_no_permission(j):
+    code = j.get("errcode")
+    msg = str(j.get("errmsg") or "")
+    return code in NO_PERMISSION_CODES or bool(NO_PERMISSION_RE.search(msg))
 
 
 def get_token(appid, secret):
@@ -467,10 +510,13 @@ def cmd_push(args):
     print("接下来是人的活：去公众号后台草稿箱点进这篇，看图和排版，勾「声明原创」，开「赞赏」，没问题再点发布。")
 
 
+def draft_get(token, media_id):
+    """draft/get 原样返回 JSON（响应是 text/plain 不带 charset，http_json 已按 UTF-8 解）。"""
+    return post_json(token, "/cgi-bin/draft/get", {"media_id": media_id}, timeout=60)
+
+
 def readback(token, media_id, title=None, n_images=None):
-    body = json.dumps({"media_id": media_id}).encode("utf-8")
-    j = http_json("POST", BASE + "/cgi-bin/draft/get?access_token=" + token, body,
-                  {"Content-Type": "application/json; charset=utf-8"}, timeout=60)
+    j = draft_get(token, media_id)
     if "news_item" not in j:
         return False, "draft/get 失败：" + explain(j)
     a = j["news_item"][0]
@@ -494,8 +540,120 @@ def cmd_verify(args):
     print(("ok：" if ok else "注意：") + msg)
 
 
+# ---------- 发布（只在人说「发」之后、只对微信认证企业号） ----------
+def publish_status_text(status):
+    return PUBLISH_STATUS.get(status, "未知状态")
+
+
+def cmd_publish(args):
+    if not args.reviewed:
+        print("拒绝：人要先在后台看过草稿 说一句发 才能跑。看过了、说了发，再加 --reviewed 跑一次。什么都没发。")
+        sys.exit(2)
+    media_id = (args.media_id or "").strip()
+    if not media_id:
+        die("--media-id 不能为空，从 *.draft-result-<时间>.json 里复制")
+    out_dir = os.path.abspath(args.out_dir or os.getcwd())
+    if not os.path.isdir(out_dir):
+        die("--out-dir 不存在，什么都没发：" + out_dir)
+    appid, secret = load_credentials()
+    token = get_token(appid, secret)
+    print("ok：access_token 拿到")
+
+    # 1. 回读：确认草稿还在，打印标题
+    j = draft_get(token, media_id)
+    if "news_item" not in j:
+        die("draft/get 失败，草稿不存在、media_id 不对或这个号的草稿箱接口没开通，什么都没发：" + explain(j))
+    items = j["news_item"]
+    titles = [a.get("title") or "" for a in items]
+    print("回读：草稿存在，%d 篇，标题《%s》" % (len(items), "》《".join(titles)))
+    print("提交发布后接口收不回来，发之前确认人已经在后台看过这篇草稿。")
+
+    # 2. 提交发布
+    j = post_json(token, "/cgi-bin/freepublish/submit", {"media_id": media_id}, timeout=60)
+    if j.get("errcode", 0) != 0 or "publish_id" not in j:
+        if is_no_permission(j):
+            die("freepublish/submit 没权限：%s %s" % (explain(j), PUBLISH_PERMISSION_NOTE))
+        die("freepublish/submit 失败：" + explain(j))
+    publish_id = j["publish_id"]
+    msg_data_id = j.get("msg_data_id")
+    print("ok：发布任务已提交，publish_id=%s" % publish_id)
+
+    # 提交成功就先落一次盘：publish_id 一定进文件，后面查状态出什么错都不丢
+    now = _dt.datetime.now()
+    safe_id = re.sub(r"[^A-Za-z0-9_\-]", "_", media_id)
+    out = os.path.join(out_dir, "%s.publish-result-%s.json" % (safe_id, now.strftime("%Y%m%d-%H%M%S")))
+
+    def write_result(status, last, polls):
+        detail = last.get("article_detail") or {}
+        urls = [it.get("article_url") for it in (detail.get("item") or []) if it.get("article_url")]
+        fail_idx = last.get("fail_idx") or []
+        result = {
+            "media_id": media_id,
+            "titles": titles,
+            "publish_id": publish_id,
+            "msg_data_id": msg_data_id,
+            "publish_status": status,
+            "publish_status_text": publish_status_text(status) if status is not None else "没查到状态",
+            "article_id": last.get("article_id"),
+            "article_urls": urls,
+            "fail_idx": fail_idx,
+            "polls": polls,
+            "submitted_at": now.isoformat(timespec="seconds"),
+        }
+        io.open(out, "w", encoding="utf-8", newline="\n").write(json.dumps(result, ensure_ascii=False, indent=1))
+        return urls, fail_idx
+
+    write_result(None, {}, [])
+    print("结果已落盘（publish_id 已记进去，查状态之后会覆盖写）：" + out)
+
+    # 3. 轮询状态：最多 6 次，每次隔 5 秒。查状态的网络错误不致命，记进 polls 继续查
+    status, last, polls = None, {}, []
+    for attempt in range(1, PUBLISH_POLL_TIMES + 1):
+        last = post_json(token, "/cgi-bin/freepublish/get", {"publish_id": publish_id}, timeout=60, fatal=False)
+        if "publish_status" not in last:
+            print("  第 %d 次查状态失败：%s" % (attempt, explain(last)))
+            polls.append({"attempt": attempt, "error": explain(last)})
+        else:
+            status = last.get("publish_status")
+            polls.append({"attempt": attempt, "publish_status": status})
+            print("  第 %d 次查状态：%s（publish_status=%s）" % (attempt, publish_status_text(status), status))
+            if status != 1:
+                break
+        if attempt < PUBLISH_POLL_TIMES:
+            time.sleep(PUBLISH_POLL_INTERVAL)
+
+    # 4. 落盘：同一个文件名覆盖写
+    urls, fail_idx = write_result(status, last, polls)
+    print("结果已落盘：" + out)
+
+    # 5. 按状态报中文
+    if status == 0:
+        print("ok：发布成功，《%s》已发布。" % "》《".join(titles))
+        for u in urls:
+            print("  article_url=" + u)
+        if not urls:
+            print("  接口没回 article_url，去后台「已发表」里拿链接。")
+        print("接下来是人的活：把文章链接交回群。原创和赞赏要在后台草稿里勾好再说发，评论置顶去后台做。")
+        return
+    if status == 1:
+        print("注意：查了 %d 次还在发布中，不再等了。publish_id=%s 已记在结果文件里，几分钟后去后台「已发表」看结果。"
+              % (PUBLISH_POLL_TIMES, publish_id))
+        return
+    if status is None:
+        die("提交成功但 %d 次都没查到状态。publish_id=%s 已记在结果文件里，去后台「已发表」看结果。"
+            % (PUBLISH_POLL_TIMES, publish_id))
+    hint = {
+        2: "原创声明没过，去后台看这篇的原创状态，改完重新推草稿再发。",
+        3: "常规失败，去后台看这篇草稿，fail_idx=%s。" % fail_idx,
+        4: "平台审核不通过，去后台看通知里的原因，改完重新推草稿再发。",
+        5: "发出去过，之后被用户在后台删了。",
+        6: "发出去过，之后被系统封了，去后台看通知。",
+    }.get(status, "publish_status=%s 不在已知表里，去后台看。" % status)
+    die("发布没成：%s。%s" % (publish_status_text(status), hint))
+
+
 def main():
-    ap = argparse.ArgumentParser(description="公众号推草稿箱（没有发布命令）")
+    ap = argparse.ArgumentParser(description="公众号推草稿箱；publish 只在人说「发」之后跑，只有微信认证企业号能用；没有删草稿命令")
     sub = ap.add_subparsers(dest="cmd")
     sub.add_parser("check", help="拿 token 验证凭据和白名单，不推")
     r = sub.add_parser("render", help="Markdown 转微信 HTML 并校验，不联网")
@@ -511,6 +669,10 @@ def main():
     p.add_argument("--dry-run", action="store_true", help="不联网，把请求体写到文件看")
     v = sub.add_parser("verify", help="回读一篇草稿")
     v.add_argument("--media-id", required=True)
+    pb = sub.add_parser("publish", help="人在后台看过草稿、说了「发」之后才跑：回读、提交发布、轮询状态；只有微信认证企业号能用")
+    pb.add_argument("--media-id", required=True, help="草稿的 media_id，从 *.draft-result-<时间>.json 里复制")
+    pb.add_argument("--reviewed", action="store_true", help="人已经在后台看过这篇草稿并说了发。没有这个参数直接拒绝")
+    pb.add_argument("--out-dir", help="结果文件 *.publish-result-<时间>.json 放哪个目录，默认当前目录")
     args = ap.parse_args()
     if args.cmd == "check":
         cmd_check(args)
@@ -520,6 +682,8 @@ def main():
         cmd_push(args)
     elif args.cmd == "verify":
         cmd_verify(args)
+    elif args.cmd == "publish":
+        cmd_publish(args)
     else:
         ap.print_help()
 

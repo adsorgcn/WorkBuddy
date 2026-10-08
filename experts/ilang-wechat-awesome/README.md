@@ -1,4 +1,4 @@
-# iLang 公众号写作助手 · WeChat-Awesome v2.1
+# iLang 公众号写作助手 · WeChat-Awesome v2.2
 
 `[PARS:@USER]=>[GET:@SRC]=>[DRFT|sty=casual]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]`
 `#iml/0.5/7e29fae7f5ea PS@US GT@SR DRst=casual CK SV@DSgr=date $`
@@ -23,7 +23,7 @@
   3. 封面图提示词（丢给 AI 出图工具）
   4. 自查报告（12 项全绿才输出）
   5. 一句发布建议
-  6. 你说「推草稿箱」：转微信 HTML，传图传封面，推进草稿箱，回读核对（只到草稿箱）
+  6. 你说「推草稿箱」：转微信 HTML，传图传封面，推进草稿箱，回读核对；认证号你看完说「发」才由它提交发布
 ```
 
 ## 不是什么
@@ -44,7 +44,8 @@
 | 排版 | 只给 ilang.cn/md | 加转微信 HTML 规则和接口推草稿步骤、踩坑清单 |
 | 多平台 | 无 | X、HN、Reddit 速查，一稿多发的起点 |
 | 协议 | I-Lang v4.0 头 | iLang v5.0 头加 IML 0.5 工作链 |
-| 推草稿箱（2.1 新增） | 无 | 技能 wechat-draft-push：官方接口推进草稿箱并回读，个人主体账号也能用，没有发布命令 |
+| 推草稿箱（2.1 新增） | 无 | 技能 wechat-draft-push：官方接口推进草稿箱并回读，个人主体账号也能用 |
+| 人审后接口发布（2.2 新增） | 无 | publish 命令：只在人看过草稿说「发」后、且是微信认证企业号时才调发布接口；没有删草稿命令 |
 
 ## 包里有什么
 
@@ -57,7 +58,7 @@ ilang-wechat-awesome/
 │   └── references/                    基因、去AI味、合规、骨架标题、算法节奏、微信格式与接口、自查、封面、多平台
 ├── skills/wechat-draft-push/          推草稿箱技能，可单独上传
 │   ├── SKILL.md
-│   ├── scripts/wechat_draft.py        标准库 Python：check / render / push / verify
+│   ├── scripts/wechat_draft.py        标准库 Python：check / render / push / verify / publish
 │   └── references/                    接口笔记、微信 HTML 规则
 └── avatars/expert.png
 ```

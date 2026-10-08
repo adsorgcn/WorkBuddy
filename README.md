@@ -8,8 +8,8 @@
 
 | 名称 | 是什么 | 版本 |
 |---|---|---|
-| [iLang 公众号写作助手](experts/ilang-wechat-awesome/) | 公众号爆文专家：投喂素材，按 200 多篇实战文章验证的写作基因重组，12 项自查，内置去 AI 味，出 MD 正文、3 个标题和封面图提示词；定稿一句话推进草稿箱 | 2.1.0 |
-| [公众号推草稿箱（技能）](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | 定稿 Markdown 转微信 HTML，传图传封面，官方接口推进草稿箱并回读核对。只到草稿箱，没有发布命令，个人主体账号也能用。可单独上传 | 2.1.0 |
+| [iLang 公众号写作助手](experts/ilang-wechat-awesome/) | 公众号爆文专家：投喂素材，按 200 多篇实战文章验证的写作基因重组，12 项自查，内置去 AI 味，出 MD 正文、3 个标题和封面图提示词；定稿一句话推进草稿箱；认证号人审后可接口发布 | 2.2.0 |
+| [公众号推草稿箱（技能）](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | 定稿 Markdown 转微信 HTML，传图传封面，官方接口推进草稿箱并回读核对。默认只到草稿箱，个人主体账号也能用；微信认证号在人看过草稿说「发」后才跑 publish。没有删草稿命令。可单独上传 | 2.2.0 |
 
 ## 怎么装（三条路，选一条）
 
@@ -36,7 +36,7 @@
 
 任何能读 SKILL.md 的 Agent（Claude Code、Codex、Cursor、Hermes 等）都可以直接把 `skills/wechat-article/` 拷进自己的 skills 目录用。
 
-安装非官方技能前，先看一遍源码、权限和脚本。本仓库只有一个脚本：推草稿技能的 `scripts/wechat_draft.py`，纯 Python 标准库，只调微信官方接口，没有发布和删草稿命令，凭据从本机配置文件读。
+安装非官方技能前，先看一遍源码、权限和脚本。本仓库只有一个脚本：推草稿技能的 `scripts/wechat_draft.py`，纯 Python 标准库，只调微信官方接口，发布命令只在人说「发」之后对认证号可用，没有删草稿命令，凭据从本机配置文件读。
 
 ## 怎么用
 
@@ -78,6 +78,8 @@
 | 机器层 IML | github.com/ilang-ai/iml-protocol |
 
 ## 更新记录
+
+- 2.2.0（2026-10-09）：推草稿箱技能加 publish 命令。只在人已在后台看过草稿并说「发」后、且账号是微信认证企业号时才调 freepublish/submit，先回读标题确认是哪篇，再轮询 freepublish/get 报状态和链接；个人号报没权限并引导去后台点。仍无删草稿命令。
 
 - 2.1.0（2026-10-08）：新增推草稿箱技能。定稿 Markdown 转微信 HTML（表格转信息卡、链接去网址、长破折号换逗号），正文图上传换图床、封面做永久素材，官方接口 draft/add 进草稿箱，draft/get 回读核对，报 media_id。只到草稿箱，没有发布命令。
 

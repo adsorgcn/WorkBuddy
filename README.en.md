@@ -8,7 +8,7 @@ iLang experts and skills for WorkBuddy, installable straight from GitHub. The in
 
 | Name | What it does | Version |
 |---|---|---|
-| [iLang WeChat-Awesome](experts/ilang-wechat-awesome/) | WeChat official account viral-article expert: feed it your source material, it restructures the piece with writing genes distilled from 200+ field-tested articles, runs a 12-point self-check with built-in de-AI editing, and outputs Markdown, three titles and a cover image prompt ; one sentence pushes the approved draft into the WeChat draft box (never publishes) | 2.1.0 |
+| [iLang WeChat-Awesome](experts/ilang-wechat-awesome/) | WeChat official account viral-article expert: feed it your source material, it restructures the piece with writing genes distilled from 200+ field-tested articles, runs a 12-point self-check with built-in de-AI editing, and outputs Markdown, three titles and a cover image prompt ; one sentence pushes the approved draft into the WeChat draft box (never publishes) ; a verified enterprise account can publish only after a human reviewed the draft and said so | 2.2.0 |
 
 ## Install
 
