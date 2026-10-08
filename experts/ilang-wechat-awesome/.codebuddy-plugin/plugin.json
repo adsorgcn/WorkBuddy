@@ -1,0 +1,78 @@
+{
+  "name": "ilang-wechat-awesome",
+  "version": "2.0.0",
+  "description": "WeChat official account writing assistant. Feeds on your source material, restructures it with writing genes distilled from 200+ field-tested articles, runs a 12-point self-check with built-in de-AI editing, outputs publish-ready Markdown plus titles and a cover image prompt. Chinese-first. By iLang.",
+  "author": {
+    "name": "iLang Inc.",
+    "email": "info@ilang.app"
+  },
+  "homepage": "https://ilang.ai",
+  "repository": "https://github.com/adsorgcn/WorkBuddy",
+  "license": "MIT",
+  "keywords": [
+    "ilang",
+    "i-lang",
+    "iml",
+    "wechat",
+    "公众号",
+    "writing",
+    "content",
+    "viral",
+    "deai"
+  ],
+  "agents": [
+    "./agents/ilang-wechat-awesome.md"
+  ],
+  "skills": [
+    "./skills/wechat-article"
+  ],
+  "expertType": "agent",
+  "agentName": "ilang-wechat-awesome",
+  "displayName": {
+    "en": "iLang WeChat-Awesome",
+    "zh": "iLang 公众号写作助手"
+  },
+  "profession": {
+    "en": "WeChat Article Structure Expert",
+    "zh": "公众号爆文结构专家"
+  },
+  "displayDescription": {
+    "en": "Feed it your source material and it restructures the piece with writing genes distilled from 200+ field-tested WeChat articles, runs a 12-point self-check with built-in de-AI editing, then outputs publish-ready Markdown, three titles and a cover image prompt while following WeChat content rules. By iLang.",
+    "zh": "投喂素材出公众号文章：爆文结构重组，12项自查，内置去AI味和合规红线，出正文、标题和封面提示词。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "06-ContentCreative",
+  "defaultInitPrompt": {
+    "zh": "我有素材，帮我按爆文结构写成公众号文章",
+    "en": "I have source material, turn it into a WeChat article"
+  },
+  "plugin": "ilang-wechat-awesome",
+  "tags": [
+    {
+      "en": "WeChat Blog",
+      "zh": "公众号"
+    },
+    {
+      "en": "Article Structure",
+      "zh": "爆文结构"
+    },
+    {
+      "en": "De-AI",
+      "zh": "去AI味"
+    }
+  ],
+  "quickPrompts": [
+    {
+      "en": "I have source material, turn it into a WeChat article",
+      "zh": "我有素材，帮我按爆文结构写成公众号文章"
+    },
+    {
+      "en": "Give me 3 titles and a cover image prompt for this article",
+      "zh": "帮这篇公众号文章出3个标题和封面图提示词"
+    },
+    {
+      "en": "Remove the AI flavor from this draft and check WeChat compliance",
+      "zh": "把这篇初稿去AI味，顺便查公众号合规"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "ilang-workbuddy",
+  "owner": {
+    "name": "静水流深 / iLang Inc.",
+    "email": "info@ilang.app",
+    "url": "https://ilang.ai"
+  },
+  "description": "iLang experts and skills for WorkBuddy, installable from GitHub for the international edition (workbuddy.ai) that cannot reach the domestic market listings.",
+  "version": "2.0.0",
+  "plugins": [
+    {
+      "name": "ilang-wechat-awesome",
+      "source": "./experts/ilang-wechat-awesome",
+      "description": "公众号爆文结构专家：投喂素材，按 200 多篇实战文章验证的写作基因重组，12 项自查，内置去 AI 味，出 MD 正文、3 个标题和封面图提示词。",
+      "version": "2.0.0",
+      "author": { "name": "iLang Inc.", "email": "info@ilang.app" },
+      "homepage": "https://ilang.ai",
+      "repository": "https://github.com/adsorgcn/WorkBuddy",
+      "license": "MIT",
+      "keywords": ["wechat", "公众号", "writing", "ilang", "deai"],
+      "category": "writing"
+    }
+  ]
+}
