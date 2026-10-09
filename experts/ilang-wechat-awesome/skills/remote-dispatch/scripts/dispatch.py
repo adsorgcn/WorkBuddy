@@ -33,6 +33,7 @@ except Exception:
 
 CFG = os.path.expanduser("~/.dispatch.json")
 LOGDIR = os.path.expanduser("~/dispatch-logs")
+VIA_NOTE = "::NOTE{via:remote-dispatch 这段是本机派活技能一次性发来的 没人会回答你的追问 要人决定的按命令里的默认值走 做到能做的最后一步 结果和回执一次给全}"
 
 
 def die(msg, code=1):
@@ -211,6 +212,8 @@ def cmd_send(args):
         die("要 --file 或 --text")
     if not text.strip():
         die("要发的内容是空的")
+    if not getattr(args, "raw", False):
+        text = VIA_NOTE + "\n\n" + text
     client_id = "dispatch-" + uuid.uuid4().hex[:12]
     body = {
         "id": client_id, "type": "message", "version": "1.0",
@@ -274,7 +277,7 @@ def main():
     sub = ap.add_subparsers(dest="cmd")
     sub.add_parser("list")
     p = sub.add_parser("send"); p.add_argument("--to"); p.add_argument("--file"); p.add_argument("--text")
-    p.add_argument("--timeout", default=900, help="远程单次执行超时 秒"); p.add_argument("--max-wait", default=3600, help="本地最多等多久 秒")
+    p.add_argument("--timeout", default=900, help="远程单次执行超时 秒"); p.add_argument("--max-wait", default=3600, help="本地最多等多久 秒"); p.add_argument("--raw", action="store_true", help="不在正文前加 ::NOTE{via:remote-dispatch …} 那一行")
     p = sub.add_parser("sessions"); p.add_argument("--to"); p.add_argument("--n", default=5)
     p = sub.add_parser("history"); p.add_argument("--to"); p.add_argument("--session", required=True); p.add_argument("--n", default=1)
     p = sub.add_parser("cancel"); p.add_argument("--to"); p.add_argument("--run", required=True)

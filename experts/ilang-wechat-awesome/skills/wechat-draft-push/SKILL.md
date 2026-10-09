@@ -6,12 +6,12 @@ description: "Push a finished Markdown article into a WeChat official account (�
 description_zh: "把定稿 Markdown 转成微信 HTML，传图传封面，推进公众号草稿箱并回读核对。个人主体账号也能推草稿箱。有 publish 命令，但只在人在后台看过草稿、说了「发」之后才跑，且只有微信认证企业号能用；没有删草稿命令。"
 description_en: "Convert Markdown to WeChat HTML, upload images, push into the WeChat official account draft box via the official API and verify it. Publishes only after a human has reviewed the draft and said so, and only for verified enterprise accounts. Never deletes drafts."
 category: writing
-version: 2.3.4
+version: 2.3.5
 author: iLang Inc.
 ---
 
 ::ILANG::v5.0
-[TYPE:skill][PROJECT:wechat_awesome][VERSION:2.3.4][DATE:2026-10-09][LANG:zh]
+[TYPE:skill][PROJECT:wechat_awesome][VERSION:2.3.5][DATE:2026-10-09][LANG:zh]
 ::STATE{@ROLE, function:把定稿Markdown转成微信HTML并推进公众号草稿箱，回读核对后报media_id；人在后台看过草稿说「发」之后，认证号由publish提交发布并报结果}
 ::STATE{@SCOPE, now:转HTML+传图+传封面+推草稿箱+回读+人说发后发布（只对微信认证企业号）, next:一稿多发时同一脚本换目标平台}
 ::STATE{@PROMISE, can:默认只到草稿箱+凭据只在本机+推前校验+回读核对+人说发才发布+发布前回读标题跟人确认, cannot:没人说发就发布|删草稿|改草稿|删除已发布|把AppSecret写进对话|跳过人工审稿}

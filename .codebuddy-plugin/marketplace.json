@@ -6,13 +6,13 @@
     "url": "https://ilang.ai"
   },
   "description": "iLang experts and skills for WorkBuddy, installable from GitHub for the international edition (workbuddy.ai) that cannot reach the domestic market listings.",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "plugins": [
     {
       "name": "ilang-wechat-awesome",
       "source": "./experts/ilang-wechat-awesome",
       "description": "公众号爆文专家：投喂素材，按 200 多篇实战文章验证的写作基因重组，12 项自查，内置去 AI 味，出 MD 正文、3 个标题和封面图提示词；定稿一句话推进公众号草稿箱（默认只到草稿箱；微信认证号在人看过草稿说「发」后可由接口发布）；先用自己的 wxrank key 看榜选题、找对标号。",
-      "version": "2.3.4",
+      "version": "2.3.5",
       "author": {
         "name": "iLang Inc.",
         "email": "info@ilang.app"
