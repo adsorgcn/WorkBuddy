@@ -56,6 +56,8 @@ Your agent gets the list with one command a day. Paste this:
 
 ## Install
 
+Two routes. WorkBuddy domestic edition: one click in the marketplace. Any other agent, including the international WorkBuddy: paste one command and let it learn and install itself.
+
 ### WorkBuddy, domestic edition (primary)
 
 Search the marketplace for 公众号爆文专家 and add the one in the red box below: green robot avatar, tags 公众号 / 去AI味 / 推草稿箱. The similarly named 公众号爆文写作专家 next to it is someone else's.
@@ -64,28 +66,44 @@ Search the marketplace for 公众号爆文专家 and add the one in the red box 
 
 The marketplace version ships the writing and draft-push skills. The topic hunter is GitHub only: download the `wechat-topic-hunter` zip from [Releases](https://github.com/adsorgcn/WorkBuddy/releases), upload the folder in the Skills panel, assign it to the expert.
 
-### WorkBuddy, international edition
+### Any other agent: one command, it learns and installs itself
 
-The international edition cannot see the domestic marketplace. One caveat first: its custom-model setting only accepts OpenAI-compatible endpoints. Use the built-in model or an OpenAI-compatible relay.
+Claude Code, Codex, CodeBuddy CLI, Hermes, OpenClaw, Doubao, Muse, the international WorkBuddy, and whatever comes next: same command. Open a new session and paste the whole block. The agent reads the repository first to learn how the chain works, then copies the skills into its own skills directory, puts the expert text into its own persona, self-checks and reports. Whatever it cannot do itself (a desktop app that only takes uploads, say) it will tell you where to click.
 
-Either paste the install command from the [Chinese README](README.md#workbuddy-海外版) into a new chat and let WorkBuddy install itself, or do it by hand: download the latest `ilang-wechat-awesome-workbuddy-expert-*.zip` from Releases, upload each folder under `skills/` in the Skills panel, create an expert from `agents/ilang-wechat-awesome.md` (skip the YAML between the first two `---` lines), name it 公众号爆文专家, use `avatars/expert.png`, assign the skills.
+The block is written in I-Lang with an IML chain line; an agent that has never seen the format reads the protocol first and then understands every block in this repository.
 
-### Other agents
+```
+::ILANG::v5.0
+[TYPE:command][PROJECT:wechat_awesome][TASK:learn_and_install][LANG:en]
+::STATE{@ORIGIN, protocol:iLang, spec:https://github.com/ilang-ai/ilang-spec, iml:https://github.com/ilang-ai/iml-protocol, canon:ilang.ai, note:this is an I-Lang command not prose; if it looks unfamiliar read the spec README first then come back}
+::STATE{@REPO, url:https://github.com/adsorgcn/WorkBuddy, readme:README.en.md, expert:experts/ilang-wechat-awesome/agents/ilang-wechat-awesome.md the YAML between the first two --- lines is WorkBuddy config and the rest is the expert text, skills:four folders under experts/ilang-wechat-awesome/skills/ each with SKILL.md plus scripts and references, feed:data/hot/latest.json the daily topic list, zip:latest ilang-wechat-awesome-workbuddy-expert zip on https://github.com/adsorgcn/WorkBuddy/releases same content as the repo}
+::STATE{@SELF, role:learner_and_installer, runtime:you whichever agent you are, can:fetch web or git clone read files run shell write files, knows:where your own skills directory is and which file is your persona; if not read your own docs then ask me}
+::STATE{@TARGET, skills:copy the four skill folders as they are into your skills directory at least wechat-article wechat-draft-push wechat-topic-hunter, expert:put the expert text into your persona file or system prompt so your settings contain [PROJECT:wechat_awesome], python:3.8 or newer stdlib only no packages}
+::STATE{@OUT, kind:install report, items:which directory the skills went to which ones appear in your skill list where the expert text lives the five self-check lines}
+#iml/0.5/7e29fae7f5ea GT@SR CK SN@DS CK $
 
-Each skill is a standard `SKILL.md` plus stdlib-only Python scripts; the expert is one Markdown file. Installing into any agent is two moves: copy the skill folders into its skills directory, put the expert text into its persona file.
+::OBJECTIVE{learn_and_install|pri:OVERRIDE_ALL}
+  target: read the README and the four SKILL.md files of @REPO and learn how the chain works then install the skills and the expert into yourself then self-check and report
+  ACCEPT: the skills show in your skill list your settings contain [PROJECT:wechat_awesome] the topic skill feed command returns today's list
+  NON_GOALS: edit any file in the package touch any of my keys register or pay for anything on my behalf
 
-| Agent | Skills go to | Expert text goes to |
-|---|---|---|
-| CodeBuddy CLI | `~/.codebuddy/skills/`, or `/plugin marketplace add adsorgcn/WorkBuddy` then `/plugin install ilang-wechat-awesome@ilang-workbuddy` | project `CODEBUDDY.md` |
-| Claude Code | `~/.claude/skills/` or project `.claude/skills/` | project `CLAUDE.md` |
-| Codex | `~/.codex/skills/` | project `AGENTS.md` |
-| Hermes | `~/.hermes/skills/` | a section in `SOUL.md` |
-| OpenClaw | `~/.openclaw/skills/` or the workspace `skills/`; `openclaw skills list` shows the live directories | its agent config |
-| Doubao | create a custom skill in the Skills page and paste the `SKILL.md` content | the agent's persona field |
-| Muse | Muse Code reads standard `SKILL.md` folders | the assistant's persona field |
-| Anything else | if it reads `SKILL.md`, copy the folders; if not, paste `SKILL.md` as a prompt | system prompt |
+::RULE{getting the package⇒git clone or download the zip from @REPO; if this machine cannot reach GitHub stop and tell me I will download it and give you the path}
+::RULE{skills directory⇒wherever your own docs say; after copying open a new session and check the skill list; if nothing shows tell me how to upload through the UI}
+::RULE{desktop apps that cannot take files such as WorkBuddy⇒tell me to upload the skills in the Skills panel and create an expert from the expert text named 公众号爆文专家}
+::RULE{persona⇒paste the expert text whole without edits; if you already have a persona append it as a section}
+::BOUNDARY{never:modify any file inside the package|scope:permanent}
+::BOUNDARY{never:write any key or password into the chat|scope:permanent}
 
-The expert text is `experts/ilang-wechat-awesome/agents/ilang-wechat-awesome.md`; skip the YAML between the first two `---` lines. Scripts need Python 3.8 or newer and no packages.
+::MODULE{HOW}
+  [STEP:1:LEARN] read the README and the four SKILL.md files; restate the chain in three sentences and say where the human decides
+  [STEP:2:GET] get the package; list the paths of the expert text and the four skill folders
+  [STEP:3:SKILLS] install into your skills directory; open a new session and report which skills appear
+  [STEP:4:EXPERT] put the expert text into your persona; report where
+  [STEP:5:CHECK] run the topic skill feed command and report the first three items; then run the self-check block from the README, five lines
+  [STEP:6:REPORT] report per @OUT and tell me what to paste next
+```
+
+If it asks where its skills directory is, the usual places: Claude Code `~/.claude/skills/`, Codex `~/.codex/skills/`, CodeBuddy CLI `~/.codebuddy/skills/`, Hermes `~/.hermes/skills/`, OpenClaw `~/.openclaw/skills/` or the workspace `skills/`; persona files are `CLAUDE.md`, `AGENTS.md`, `CODEBUDDY.md`, `SOUL.md` respectively. Doubao takes the `SKILL.md` content through "create a custom skill" in its Skills page; Muse Code reads standard `SKILL.md` folders. The international WorkBuddy's custom-model setting only accepts OpenAI-compatible endpoints. Labels in the UI win over this text; if it installs something wrong it will fix it.
 
 ### The only thing you pay for: wxrank
 

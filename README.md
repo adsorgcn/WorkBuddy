@@ -56,6 +56,8 @@
 
 ## 装法
 
+两条路。WorkBuddy 国内版去市场点一下；其他任何 Agent，包括 WorkBuddy 海外版，贴一条命令让它自己学、自己装。
+
 ### WorkBuddy 国内版（主路线）
 
 市场里搜「公众号爆文专家」，点下图红框那个。绿色小机器人头像，标签「公众号 去AI味 推草稿箱」。旁边那个「公众号爆文写作专家」不是。
@@ -64,57 +66,44 @@
 
 市场版自带写稿和推草稿两个技能。选题技能市场里没有，从 [发布页](https://github.com/adsorgcn/WorkBuddy/releases) 下 `wechat-topic-hunter` 开头的 zip，解压后在 Skills 面板「上传技能」选那个文件夹，再分配给专家。
 
-### WorkBuddy 海外版
+### 其他任何 Agent：一条命令，它自己学、自己装
 
-海外版看不到国内市场。先说一个坑：海外版的自定义模型只认 OpenAI 兼容接口，Claude 协议的接口填不进去。用自带模型，或者接一个 OpenAI 兼容的中转站。
+Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、WorkBuddy 海外版，还有以后出的，都是这一条。新开一个会话，整段贴进去。它会先读仓库学会这套东西怎么用，再把技能拷进它自己的技能目录、把专家正文放进它自己的人设，装完自检报告。它自己装不了的那一步（比如桌面版要在界面上传）会告诉你点哪里。
 
-**装法一：贴一条命令，让 WorkBuddy 自己装。** 新开一个对话，整段复制贴进去。它会去发布页下包、把技能装进自己的技能目录、按专家正文建专家、挂上技能。它自己装不了的那一步会告诉你在界面上点哪里。
+这段本身就是 I-Lang 写的，带一行 IML 工作链，Agent 看不懂会先去读协议再回来；读完它就会读本仓库里所有的块。
 
 ```
-::ILANG
-[TYPE:command][PROJECT:wechat_awesome][TASK:install][LANG:zh]
+::ILANG::v5.0
+[TYPE:command][PROJECT:wechat_awesome][TASK:learn_and_install][LANG:zh]
+::STATE{@ORIGIN, protocol:iLang, spec:https://github.com/ilang-ai/ilang-spec, iml:https://github.com/ilang-ai/iml-protocol, canon:ilang.ai, note:这段是 I-Lang 命令 不是自然语言 看不懂先读 spec 的 README 再回来}
+::STATE{@REPO, url:https://github.com/adsorgcn/WorkBuddy, readme:README.md, expert:experts/ilang-wechat-awesome/agents/ilang-wechat-awesome.md 开头两行 --- 之间是 WorkBuddy 的设置 其余是专家正文, skills:experts/ilang-wechat-awesome/skills/ 下四个文件夹 每个一份 SKILL.md 加 scripts 和 references, feed:data/hot/latest.json 每天自动更新的内容清单, zip:https://github.com/adsorgcn/WorkBuddy/releases 最新版 ilang-wechat-awesome-workbuddy-expert 开头的 zip 跟仓库同内容}
+::STATE{@SELF, role:learner_and_installer, runtime:你自己 不管你是哪个 Agent, can:读网页或 git clone 读文件 跑 shell 写文件, knows:你自己的技能目录在哪 你自己的人设文件是哪个 不知道就读你自己的文档 再不知道问我}
+::STATE{@TARGET, skills:四个技能文件夹原样拷进你自己的技能目录 装不下的至少装 wechat-article wechat-draft-push wechat-topic-hunter, expert:专家正文放进你自己的人设文件或系统提示 设定里要能看到 [PROJECT:wechat_awesome], python:3.8 以上 脚本只用标准库 不装包}
+::STATE{@OUT, kind:装完报告, items:技能装到了哪个目录 哪几个在技能列表里 专家正文放在哪 自检五项}
+#iml/0.5/7e29fae7f5ea GT@SR CK SN@DS CK $
 
-::STATE{@USER, role:owner, has:WorkBuddy 桌面端}
-::STATE{@SELF, role:installer, runtime:WorkBuddy 桌面端 任意对话, can:Bash Read Write WebFetch}
-::STATE{@PACKAGE, url:https://github.com/adsorgcn/WorkBuddy/releases 最新版里文件名以 ilang-wechat-awesome-workbuddy-expert 开头的 zip, has:解压后一个 ilang-wechat-awesome 文件夹 里面 agents 一份专家正文 skills 四个技能文件夹 avatars 一张头像}
-::STATE{@TARGET, skills:你自己的技能目录 四个文件夹各放一份, expert:用 agents 里那份 md 去掉开头两行 --- 之间的设置 建一个专家 名字 公众号爆文专家 头像 avatars 里那张 挂上技能}
-::STATE{@OUT, kind:装完报告, items:技能在不在技能列表 专家建没建 怎么切进专家对话}
+::OBJECTIVE{learn_and_install|pri:OVERRIDE_ALL}
+  target: 先读 @REPO 的 README 和四份 SKILL.md 学会这套东西怎么用 再把技能和专家装进你自己 装完自检 报告
+  ACCEPT: 技能列表里能看到装进去的技能 设定里有 [PROJECT:wechat_awesome] 跑选题技能的 feed 命令能读到今天的清单
+  NON_GOALS: 改包里任何文件 碰我的任何密钥 替我注册或付费
 
-::OBJECTIVE{install|pri:OVERRIDE_ALL}
-  target: 把包下下来 装进你自己 装不了的那一步告诉我在界面上点哪里 装完报告
-  ACCEPT: 技能在技能列表里 专家建好且设定里有 [PROJECT:wechat_awesome]
-  NON_GOALS: 改专家正文 改技能内容 碰我的任何密钥
-
-::RULE{下载⇒用 WebFetch 或 curl 从 @PACKAGE 的地址下 本机打不开 GitHub 就停下告诉我 我自己下好把路径给你}
-::RULE{技能目录装不进⇒告诉我去 Skills 面板 Add skill 然后 Upload skill 选解压后 skills 下的文件夹 一个一个传}
-::RULE{专家建不了⇒告诉我去专家页 创建专家 把 agents 正文整段粘进去 名字 公众号爆文专家 挂上技能}
+::RULE{拿包⇒git clone 或下 @REPO 的 zip 都行 本机上不去 GitHub 就停下告诉我 我下好给你路径}
+::RULE{技能目录⇒你自己的文档说在哪就放哪 放完新开一个会话看技能列表 看不到就告诉我在界面上怎么传}
+::RULE{桌面版 WorkBuddy 这类装不进文件的⇒告诉我去 Skills 面板上传技能 去专家页创建专家 把正文粘进去 名字 公众号爆文专家}
+::RULE{人设文件⇒专家正文整段放进去 不删不改 已经有别的人设就追加一段}
 ::BOUNDARY{never:改动包里任何文件的内容|scope:permanent}
+::BOUNDARY{never:把任何 key 或口令写进对话|scope:permanent}
 
 ::MODULE{HOW}
-  [STEP:1] 下包 解压 列出 agents 文件和技能文件夹的路径
-  [STEP:2] 装技能 装完看技能列表 报哪几个在
-  [STEP:3] 建专家 建完告诉我怎么切进它的对话
-  [STEP:4] 报告 然后让我在专家对话里贴下面「装完自检」那条
+  [STEP:1:LEARN] 读 README 和四份 SKILL.md 用三句话复述这条链怎么走 谁在什么时候拍板
+  [STEP:2:GET] 拿包 列出专家正文和四个技能文件夹的路径
+  [STEP:3:SKILLS] 装进你自己的技能目录 新会话看列表 报哪几个在
+  [STEP:4:EXPERT] 把专家正文放进你的人设 报放在哪
+  [STEP:5:CHECK] 跑选题技能 feed 读今天的清单 报前 3 条 再跑 README 里「装完自检」那段 五项各一行
+  [STEP:6:REPORT] 按 @OUT 报告 最后告诉我下一步贴什么
 ```
 
-**装法二：手动三步。** 发布页下最新的 `ilang-wechat-awesome-workbuddy-expert-*.zip` 解压；Skills 面板 Add skill → Upload skill，依次选 `skills/` 下的文件夹；专家页「我的专家」→「创建专家」，把 `agents/ilang-wechat-awesome.md` 开头两行 `---` 之间那段跳过、其余整段粘进专家提示词，名字填「公众号爆文专家」，头像用 `avatars/expert.png`，分配技能。界面上的字以你看到的为准。
-
-### 其他 Agent
-
-技能是标准 `SKILL.md` 加纯标准库的 Python 脚本，专家正文是一份 Markdown。装进任何 Agent 都是两件事：技能文件夹拷进它的技能目录，专家正文放进它的人设文件。
-
-| Agent | 技能文件夹放哪 | 专家正文放哪 |
-|---|---|---|
-| CodeBuddy 命令行 | `~/.codebuddy/skills/`，或 `/plugin marketplace add adsorgcn/WorkBuddy` 再 `/plugin install ilang-wechat-awesome@ilang-workbuddy` | 项目的 `CODEBUDDY.md` |
-| Claude Code | `~/.claude/skills/`，或项目的 `.claude/skills/` | 项目的 `CLAUDE.md` |
-| Codex | `~/.codex/skills/` | 项目的 `AGENTS.md` |
-| Hermes | `~/.hermes/skills/` | `SOUL.md` 里加一段 |
-| OpenClaw | `~/.openclaw/skills/` 或工作区的 `skills/`，`openclaw skills list` 能看到实际目录 | 它的 agent 设定 |
-| 豆包 | 技能页「自定义新建技能」，把 `SKILL.md` 的内容贴进去 | 智能体设定里贴正文 |
-| Muse | Muse Code 认标准 `SKILL.md` 目录 | 助理设定里贴正文 |
-| 其他 | 能读 `SKILL.md` 的，拷进它的技能目录；不能的，把 `SKILL.md` 全文当提示词贴 | 系统提示里贴正文 |
-
-专家正文在 `experts/ilang-wechat-awesome/agents/ilang-wechat-awesome.md`，开头两行 `---` 之间是 WorkBuddy 的设置，别的 Agent 跳过那段。脚本要机器上有 Python 3.8 以上，不用装任何包。路径写得不对，Agent 自己会找，第一次跑给它一句「技能在哪个目录」就行。
+它要是问技能目录在哪，常见位置：Claude Code `~/.claude/skills/`，Codex `~/.codex/skills/`，CodeBuddy 命令行 `~/.codebuddy/skills/`，Hermes `~/.hermes/skills/`，OpenClaw `~/.openclaw/skills/` 或工作区 `skills/`；人设文件对应 `CLAUDE.md`、`AGENTS.md`、`CODEBUDDY.md`、`SOUL.md`。豆包在技能页「自定义新建技能」把 `SKILL.md` 内容贴进去，Muse Code 认标准 `SKILL.md` 目录。海外版 WorkBuddy 的自定义模型只认 OpenAI 兼容接口。界面上的字以你看到的为准，装错了它自己会纠。
 
 ### 唯一要花钱的：wxrank
 
@@ -216,7 +205,7 @@
 
 每日清单的增减在 [UPDATES.md](UPDATES.md)，每个版本改了什么在 [发布页](https://github.com/adsorgcn/WorkBuddy/releases)。大版本：
 
-- 2.3.6（2026-10-10）：改成任何 Agent 都能装的公众号全链路。新增每日内容清单（`data/hot/latest.json`、`HOT-LIST.md`，Actions 每天自动拉四十多个源、跨平台聚类、自动加源和下线）和更新即发版；选题技能加 `feed`（免费读清单）、`direction`（方向比较）、`calendar`（内容清单）三个命令，热点源脚本并入选题技能；README 按 Agent 分别写装法，写明唯一要花钱的是 wxrank 额度、接口哪台机器都能连。
+- 2.3.6（2026-10-10）：改成任何 Agent 都能装的公众号全链路。新增每日内容清单（`data/hot/latest.json`、`HOT-LIST.md`，Actions 每天自动拉四十多个源、跨平台聚类、自动加源和下线）和更新即发版；选题技能加 `feed`（免费读清单）、`direction`（方向比较）、`calendar`（内容清单）三个命令，热点源脚本并入选题技能；任何 Agent 一条 I-Lang 命令自己学自己装（内置 IML 工作链），写明唯一要花钱的是 wxrank 额度、接口哪台机器都能连。
 - 2.3.5（2026-10-09）：远程派活补齐远程机那一半：`setup-gateway.sh`（Linux）和 `setup-gateway.ps1`（Windows）一键起 CodeBuddy 网关；派出正文前加 `::NOTE{via:remote-dispatch …}`；允许本机按用户指明填 [FILL] 行。
 - 2.3.4（2026-10-09）：推草稿箱：外链收进文末「参考链接」（`--no-cite` 关）；`--comment`、`--source-url`；`tunnel` 子命令借远程机 IP 过白名单；错误码表补全。写稿自查加「AI 味五个信号」。
 - 2.3.3（2026-10-09）：新增远程派活技能 remote-dispatch。
