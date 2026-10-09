@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: hot-list
+  group: release
   cancel-in-progress: false
 
 jobs:
