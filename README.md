@@ -178,11 +178,14 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 - 不自动发布：发布永远人点，或人说「发」之后认证号由接口点最后那一下
 - 不用于规避各平台对 AI 辅助内容的披露要求
 
-## 这个仓库怎么自己动
+## 仓库每天自动更新信息源
 
-- 每天北京时间 06:30，Actions 跑 `scripts/update_hot_list.py`：拉源、聚类、写清单、管源，提交到主分支。
-- 主分支一有提交，Actions 跑 `scripts/release.py`：版本号升一个小号、把版本同步到所有文件、跑门禁 `scripts/build_packages.py`、打五个 zip、打 tag、建 release，发版说明自动写这次改了什么、今天的清单多少条。所以发布页天天有新版，装最新的就行。
-- 门禁检查：版本一致、frontmatter 齐、IML 工作链用官方编译器回环、无长破折号、无效果承诺、引用文件齐、脚本能编译。没过不发版。
+- 每天北京时间 06:30 自动跑一次：把四十多个信息源拉一遍，重写今日内容清单，[HOT-LIST.md](HOT-LIST.md) 给人看，`data/hot/latest.json` 给 Agent 读。
+- 信息源自己长：候选池里哪个源能拉到东西、而且这个平台还没有，就自动加进 `sources.json`；连续 7 天拉不到的自动下线，哪天通了自动恢复。每次增减写进 [UPDATES.md](UPDATES.md)。
+- 一有更新就发版：版本号升一个小号、过门禁、打五个 zip、建 release，发版说明自动写这次改了什么、今天的清单多少条。发布页天天有新版，装最新的就行。
+- 你的 Agent 不用自己爬任何东西，读 `latest.json` 这一个文件就够；上不去 GitHub 的机器，选题技能里带的 `hot_sources.py` 能自己拉同一批源。
+
+门禁：版本一致、frontmatter 齐、IML 工作链用官方编译器回环、无长破折号、无效果承诺、引用文件齐、脚本能编译。没过不发版。
 
 ## 协议
 

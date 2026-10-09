@@ -127,10 +127,12 @@ Optional second cost: an OpenAI-compatible image endpoint such as gpt-image-2 on
 
 No material, no article. No invented numbers, quotes or anecdotes. No like-and-share bait. No URLs or personal WeChat IDs in the body. No politics, gambling, adult content or circumvention topics. No account farms, bulk posting or rewriting other people's articles. No automatic publishing: a human always publishes, or says so before the API clicks the last button. Not for evading platform disclosure rules for AI-assisted content.
 
-## How the repository runs itself
+## The repository refreshes its own sources every day
 
-- 06:30 Beijing time daily, Actions runs `scripts/update_hot_list.py`: pull sources, cluster, write the list, manage sources, commit.
-- Every push to main runs `scripts/release.py`: bump the patch version everywhere, run the gate `scripts/build_packages.py`, build five zips, tag, create a release with notes generated from the commits and the day's list. Releases therefore appear daily; install the latest.
+- Every day at 06:30 Beijing time it pulls 40+ sources and rewrites today's topic list: [HOT-LIST.md](HOT-LIST.md) for people, `data/hot/latest.json` for agents.
+- Sources grow on their own: a candidate that returns content for a platform not yet covered is added to `sources.json`; a source that fails seven days in a row is retired and revived when it works again. Every change goes into [UPDATES.md](UPDATES.md).
+- Every update ships: patch version bump, gate, five zips, a GitHub release with notes generated from the commits and the day's list. New releases appear daily; install the latest.
+- Your agent never scrapes anything; reading `latest.json` is enough. On a machine that cannot reach GitHub, `hot_sources.py` inside the topic skill pulls the same sources locally.
 
 ## Protocol
 
