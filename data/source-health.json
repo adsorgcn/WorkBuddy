@@ -178,5 +178,25 @@
  "NewsNow 卫星通讯社": {
   "fails": 0,
   "last_ok": "2026-10-09"
+ },
+ "NewsNow 远景论坛 Win11": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow 雪球 热门股票": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow 格隆汇": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow 法布财经 快讯": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow Github Today": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
  }
 }

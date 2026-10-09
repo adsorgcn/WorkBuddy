@@ -327,6 +327,46 @@
    "group": "热榜",
    "platform": "sputniknewscn",
    "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 远景论坛 Win11",
+   "url": "https://newsnow.busiyi.world/api/s?id=pcbeta-windows11",
+   "type": "json",
+   "group": "科技",
+   "platform": "pcbeta",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 雪球 热门股票",
+   "url": "https://newsnow.busiyi.world/api/s?id=xueqiu-hotstock",
+   "type": "json",
+   "group": "财经",
+   "platform": "xueqiu",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 格隆汇",
+   "url": "https://newsnow.busiyi.world/api/s?id=gelonghui",
+   "type": "json",
+   "group": "财经",
+   "platform": "gelonghui",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 法布财经 快讯",
+   "url": "https://newsnow.busiyi.world/api/s?id=fastbull-express",
+   "type": "json",
+   "group": "财经",
+   "platform": "fastbull",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow Github Today",
+   "url": "https://newsnow.busiyi.world/api/s?id=github-trending-today",
+   "type": "json",
+   "group": "海外",
+   "platform": "github",
+   "added": "2026-10-09"
   }
  ]
 }
