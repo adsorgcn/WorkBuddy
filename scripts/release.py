@@ -101,8 +101,8 @@ def main():
         for f in changed:
             subprocess.run(["git", "checkout", "--", f], cwd=ROOT)
         print("dry-run：不提交不发版，版本号已还原"); return
-    sh("git", "add", "-A", "--", ".", ":!dist")
-    if sh("git", "status", "--porcelain", "--", ".", ":!dist"):
+    sh("git", "add", "-A")
+    if sh("git", "status", "--porcelain"):
         sh("git", "commit", "-q", "-m", "release: v%s [skip ci]" % new)
     sh("git", "tag", "-a", "v%s" % new, "-m", "v%s" % new)
     sh("git", "push", "-q", "origin", "HEAD", "--follow-tags")
