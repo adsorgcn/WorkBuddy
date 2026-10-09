@@ -1,0 +1,42 @@
+name: 更新即发版
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    # 自己发版的提交带 [skip ci] 不会进来；每日清单在它自己的流程里发版，这里只管人推上来的改动
+    if: ${{ github.event_name == 'workflow_dispatch' || !startsWith(github.event.head_commit.message, 'release:') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: 读取仓库
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: 装门禁依赖
+        run: |
+          python -m pip install -q pyyaml
+          git clone -q --depth 1 https://github.com/ilang-ai/iml-protocol "$RUNNER_TEMP/iml-protocol"
+      - name: 升版本 打包 打 tag 发 release
+        env:
+          PYTHONUTF8: '1'
+          GH_TOKEN: ${{ github.token }}
+          IML_REPO: ${{ runner.temp }}/iml-protocol
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python scripts/release.py

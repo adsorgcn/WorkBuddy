@@ -1,123 +1,130 @@
-# WorkBuddy · iLang experts and skills
+# WeChat Official Account, the whole chain · WorkBuddy first, any agent works
 
-The WeChat viral-article expert (公众号爆文专家) and its three skills for WorkBuddy. Works on both editions: the domestic edition (workbuddy.cn) has it in the market; the international edition (workbuddy.ai) cannot see that market, so this repository is its install source.
+[中文](README.md) · [Today's topic list](HOT-LIST.md) · [Releases](https://github.com/adsorgcn/WorkBuddy/releases) · [Updates](UPDATES.md)
 
-[中文](README.md)
+Most "AI writes your WeChat article" tools only write. This is a chain: a topic list that updates itself every day tells you what every platform is talking about, real read and share numbers from WeChat tell you which of those topics nobody has written well yet, then the AI writes, makes the cover prompt, pushes the draft into your WeChat draft box, you read it on your phone and publish, and the AI reads the numbers back and plans the next one. A human decides twice: which topic, and whether to publish.
 
-## What is here
+WorkBuddy is the primary host (add the expert from the domestic marketplace). Any agent that reads `SKILL.md` can install the same skills: Claude Code, Codex, CodeBuddy CLI, Hermes, OpenClaw, Doubao, Muse and others. The only thing you pay for is wxrank API credit, which you buy yourself: https://wxrank.com/api-services
 
-| Name | What it does | Version |
+## What is different
+
+| | Typical AI writer | Here |
 |---|---|---|
-| [公众号爆文专家 (expert)](experts/ilang-wechat-awesome/) | The expert prompt. Feed it your own source material, it restructures the piece with writing genes distilled from 200+ field-tested articles and outputs Markdown, three titles and a cover image prompt. No material, no article; no invented numbers or anecdotes. Ships with the three skills below | 2.3.5 |
-| [wechat-article (skill)](experts/ilang-wechat-awesome/skills/wechat-article/) | 23 writing genes, two skeletons, four title formulas, 12-point self-check, built-in de-AI editing, WeChat compliance tables, cover prompt template, quick notes for X, HN and Reddit | 2.3.5 |
-| [wechat-draft-push (skill)](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check credentials and IP allowlist, render Markdown to WeChat HTML, push images and cover and the draft into the WeChat draft box with read-back, verify, and publish only after a human reviewed the draft and said so, and only for verified enterprise accounts. External links become a numbered reference list at the end of the article, comment switch and read-more URL are settable, and a machine without a fixed IP can tunnel through a remote host. Personal accounts can use the draft box. No delete command | 2.3.5 |
-| [wechat-topic-hunter (skill)](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/) | On the user's own wxrank key: hot lists, article search, account lookup, post lists, per-account benchmark (median reads, viral multiple), single-article data. Quotes the cost before every paid call, 300 credits a day by default. Takes titles, angles and numbers only, never copies content | 2.3.5 |
-| [remote-dispatch (skill)](experts/ilang-wechat-awesome/skills/remote-dispatch/) | The local WorkBuddy stays in control: blocks tagged [RUN:VPS] are sent to a remote CodeBuddy Code gateway (the headless, Linux-capable WorkBuddy), results and receipts come back over SSE and are logged. The password lives only in a local config file; approvals on the remote are clicked by a human | 2.3.5 |
+| Covers | Writing | Direction, topics, content calendar, writing, images, draft push, read-back, cadence |
+| Where topics come from | Your guess | Demand side: a daily list pulled from 40+ public hot sources; supply side: real WeChat read and share numbers. A topic counts when both sides agree |
+| What the human does | Watches everything | Two decisions: topic and publish. Publishing is always a human act |
+| Switching tools | Start over | Skills are standard SKILL.md plus stdlib Python; move them to another agent as they are |
+| Cost | Subscriptions, models, tools | wxrank credit only: 100 credits = 1 CNY, one hot-list query = 1 credit |
+
+## The chain
+
+| Step | What | Who | Tool | Output |
+|---|---|---|---|---|
+| 1 | Pick a direction | AI compares, you decide | topic hunter `direction`: 2 to 8 candidate niches, one hot-list query each | Table: hits, max read, median read, posts over 100k |
+| 2 | Find topics | AI finds, you decide | `feed` reads today's list for free, `hot` checks WeChat read and share numbers | 5 candidates with demand and supply data |
+| 3 | Content calendar | AI | `calendar`: pick, check, schedule by cadence | A month of topics with dates |
+| 4 | Write | AI | writing skill: 23 writing genes, 12-point self-check, de-AI editing | Markdown body, 3 titles, cover prompt, self-check report |
+| 5 | Images | AI prompts, you render or connect an image API | cover prompt template | cover and body images |
+| 6 | Push draft | AI | draft-push skill: WeChat HTML, image upload, draft/add, read-back | The draft in your draft box, media_id |
+| 7 | Review and publish | You | WeChat Official Account Assistant on your phone | The published link |
+| 8 | Read back | AI | `article` for read, like, share | One data row per article |
+| 9 | Cadence | AI plans, you decide | 1 to 2 posts a week, stock 2 to 3 first | Weekly plan |
+
+Each step hands the next an I-Lang block. One machine, one agent, the whole chain; your phone remote-controls it.
+
+## Today's topic list, refreshed daily
+
+[HOT-LIST.md](HOT-LIST.md) is for people, `data/hot/latest.json` for agents. GitHub Actions rebuilds both every morning at 06:30 Beijing time: 40+ public sources (Zhihu, Weibo, Douyin, Baidu, Bilibili, Toutiao, The Paper, Tieba, Reference News, 36Kr, Jin10, CLS, IT Home, QbitAI, SSPAI, V2EX, Hacker News, Product Hunt and more), clustered across platforms so the same story on several platforms is marked, grouped into six directions with 15 items each.
+
+Sources manage themselves: candidates that return content for a platform not yet covered are added automatically; a source that fails seven days in a row is retired and revived when it works again. Every change is logged in [UPDATES.md](UPDATES.md).
+
+Your agent gets the list with one command a day. Paste this:
+
+```
+::ILANG
+[TYPE:command][PROJECT:wechat_awesome][TASK:daily_topics][LANG:zh]
+
+::STATE{@FEED, url:https://raw.githubusercontent.com/adsorgcn/WorkBuddy/main/data/hot/latest.json, what:today's topics by direction; platforms = how many platforms carry it}
+::STATE{@USER, niche:<your niche, one to three words>}
+::STATE{@SELF, skill:wechat-topic-hunter}
+
+::OBJECTIVE{daily_topics|pri:OVERRIDE_ALL}
+  target: read @FEED with feed, pick 5 items that fit my niche, check each on WeChat with hot, give me a topic list with both sides of the data
+  ACCEPT: 5 items, each with source, platform count, max WeChat read, post count, not-yet-viral marked, exclusive-angle column left for me
+  NON_GOALS: pick for me, copy sources, spend credits without quoting first
+```
 
 ## Install
 
-### Domestic edition (workbuddy.cn)
+### WorkBuddy, domestic edition (primary)
 
-Search the market for 公众号爆文专家 and pick the one in the red box below: green robot avatar, tags 公众号 / 去AI味 / 推草稿箱. The neighbouring 公众号爆文写作专家 is someone else's.
+Search the marketplace for 公众号爆文专家 and add the one in the red box below: green robot avatar, tags 公众号 / 去AI味 / 推草稿箱. The similarly named 公众号爆文写作专家 next to it is someone else's.
 
-![公众号爆文专家 in the market](docs/market-expert-2026-10-09.png)
+![the expert in the marketplace](docs/market-expert-2026-10-09.png)
 
-The market version bundles the writing and draft-push skills. The topic-hunter skill is not in the market: download the zip from the [Releases](https://github.com/adsorgcn/WorkBuddy/releases) page, unzip, and upload `skills/wechat-topic-hunter` from the Skills panel.
+The marketplace version ships the writing and draft-push skills. The topic hunter is GitHub only: download the `wechat-topic-hunter` zip from [Releases](https://github.com/adsorgcn/WorkBuddy/releases), upload the folder in the Skills panel, assign it to the expert.
 
-### International edition (workbuddy.ai)
+### WorkBuddy, international edition
 
-One thing first: custom models on the international edition accept OpenAI-compatible endpoints only. A Claude-protocol endpoint will not work. Use the built-in model or an OpenAI-compatible relay.
+The international edition cannot see the domestic marketplace. One caveat first: its custom-model setting only accepts OpenAI-compatible endpoints. Use the built-in model or an OpenAI-compatible relay.
 
-**Option A: paste one command and let WorkBuddy install itself**
+Either paste the install command from the [Chinese README](README.md#workbuddy-海外版) into a new chat and let WorkBuddy install itself, or do it by hand: download the latest `ilang-wechat-awesome-workbuddy-expert-*.zip` from Releases, upload each folder under `skills/` in the Skills panel, create an expert from `agents/ilang-wechat-awesome.md` (skip the YAML between the first two `---` lines), name it 公众号爆文专家, use `avatars/expert.png`, assign the skills.
 
-Open a new chat and paste the whole block. It downloads the release package, installs the three skills into its own skills directory, creates the expert from the prompt file and attaches the skills. Whatever it cannot do by itself, it tells you where to click. The block is written in Chinese, which is what the expert speaks.
+### Other agents
 
-```
-::ILANG
-[TYPE:command][PROJECT:wechat_awesome][TASK:install][LANG:zh]
+Each skill is a standard `SKILL.md` plus stdlib-only Python scripts; the expert is one Markdown file. Installing into any agent is two moves: copy the skill folders into its skills directory, put the expert text into its persona file.
 
-::STATE{@USER, role:owner, has:WorkBuddy 桌面端}
-::STATE{@SELF, role:installer, runtime:WorkBuddy 桌面端 任意对话, can:Bash Read Write WebFetch}
-::STATE{@PACKAGE, url:https://github.com/adsorgcn/WorkBuddy/releases 最新版里文件名以 ilang-wechat-awesome-workbuddy-expert 开头的 zip, has:解压后一个 ilang-wechat-awesome 文件夹 里面 agents 一份专家正文 skills 三个技能文件夹 avatars 一张头像}
-::STATE{@TARGET, skills:你自己的技能目录 三个文件夹各放一份, expert:用 agents 里那份 md 去掉开头两行 --- 之间的设置 建一个专家 名字 公众号爆文专家 头像 avatars 里那张 挂上三个技能}
-::STATE{@OUT, kind:装完报告, items:三个技能在不在技能列表 专家建没建 怎么切进专家对话}
+| Agent | Skills go to | Expert text goes to |
+|---|---|---|
+| CodeBuddy CLI | `~/.codebuddy/skills/`, or `/plugin marketplace add adsorgcn/WorkBuddy` then `/plugin install ilang-wechat-awesome@ilang-workbuddy` | project `CODEBUDDY.md` |
+| Claude Code | `~/.claude/skills/` or project `.claude/skills/` | project `CLAUDE.md` |
+| Codex | `~/.codex/skills/` | project `AGENTS.md` |
+| Hermes | `~/.hermes/skills/` | a section in `SOUL.md` |
+| OpenClaw | `~/.openclaw/skills/` or the workspace `skills/`; `openclaw skills list` shows the live directories | its agent config |
+| Doubao | create a custom skill in the Skills page and paste the `SKILL.md` content | the agent's persona field |
+| Muse | Muse Code reads standard `SKILL.md` folders | the assistant's persona field |
+| Anything else | if it reads `SKILL.md`, copy the folders; if not, paste `SKILL.md` as a prompt | system prompt |
 
-::OBJECTIVE{install|pri:OVERRIDE_ALL}
-  target: 把包下下来 装进你自己 装不了的那一步告诉我在界面上点哪里 装完报告
-  ACCEPT: 三个技能在技能列表里 专家建好且设定里有 [PROJECT:wechat_awesome]
-  NON_GOALS: 改专家正文 改技能内容 碰我的任何密钥
+The expert text is `experts/ilang-wechat-awesome/agents/ilang-wechat-awesome.md`; skip the YAML between the first two `---` lines. Scripts need Python 3.8 or newer and no packages.
 
-::RULE{下载⇒用 WebFetch 或 curl 从 @PACKAGE 的地址下 本机打不开 GitHub 就停下告诉我 我自己下好把路径给你}
-::RULE{技能目录装不进⇒告诉我去 Skills 面板 Add skill 然后 Upload skill 选解压后 skills 下那三个文件夹 一个一个传}
-::RULE{专家建不了⇒告诉我去专家页 创建专家 把 agents 正文整段粘进去 名字 公众号爆文专家 挂上三个技能}
-::BOUNDARY{never:改动包里任何文件的内容|scope:permanent}
+### The only thing you pay for: wxrank
 
-::MODULE{HOW}
-  [STEP:1] 下包 解压 列出 agents 文件和三个技能文件夹的路径
-  [STEP:2] 装技能 装完看技能列表 报哪几个在
-  [STEP:3] 建专家 建完告诉我怎么切进它的对话
-  [STEP:4] 报告 然后让我在专家对话里贴下面「装完自检」那条
-```
+Supply-side numbers come from the wxrank WeChat API on your own key. Buy credit at https://wxrank.com/api-services , register and top up at https://data.wxrank.com , 100 credits = 1 CNY, one hot-list query = 1 credit, default daily cap 300. Put the key in `.wxrank.env` in your home directory as one line `KEY=yourkey`; the script reads it, never paste it into a chat.
 
-**Option B: install by hand, three steps**
+The API is reachable from anywhere; we tested from fourteen machines in different regions. If it fails, it is that machine's own network.
 
-1. Skills. Download the latest `ilang-wechat-awesome-workbuddy-expert-*.zip` from [Releases](https://github.com/adsorgcn/WorkBuddy/releases) and unzip it. In WorkBuddy open the Skills panel, Add skill → Upload skill, and pick `skills/wechat-article`, `skills/wechat-draft-push` and `skills/wechat-topic-hunter` one after another. Review the permissions, confirm.
-2. Expert. Experts page → My experts → Create expert. Open `agents/ilang-wechat-awesome.md`, skip the frontmatter between the two `---` lines at the top, copy everything below it to the end of the file and paste it as the expert prompt. Name it 公众号爆文专家, use `avatars/expert.png`, attach the three skills.
-3. Model. Use the built-in model, or a custom model with an OpenAI-compatible endpoint.
+Optional second cost: an OpenAI-compatible image endpoint such as gpt-image-2 on apikey.fun if you want the AI to render covers. Without it the expert gives you the cover prompt and you render it yourself.
 
-Labels differ slightly between versions; go by what your app shows.
+## Skills
 
-### CodeBuddy or WorkBuddy CLI (plugin marketplace)
+| Name | What | Version |
+|---|---|---|
+| [Expert](experts/ilang-wechat-awesome/) | The expert prompt. Feed it your own material, it restructures the piece with writing genes distilled from 200+ field-tested articles; no material, no article; no invented numbers or anecdotes | 2.3.5 |
+| [wechat-topic-hunter](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/) | `feed` reads the daily list for free, `direction` compares niches, `calendar` builds a dated content list, `hot` ranks WeChat articles, plus account lookup, benchmarking and per-article data; quotes before every paid call. Ships `hot_sources.py` for pulling sources yourself when GitHub is unreachable | 2.3.5 |
+| [wechat-article](experts/ilang-wechat-awesome/skills/wechat-article/) | 23 writing genes, two skeletons, four title formulas, 12-point self-check, built-in de-AI editing, compliance rules, cover prompt template | 2.3.5 |
+| [wechat-draft-push](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check credentials and IP allowlist, render Markdown to WeChat HTML, push images and cover and the draft into the WeChat draft box with read-back, verify, and publish only after a human reviewed the draft and said so, and only for verified enterprise accounts. External links become a numbered reference list, comment switch and read-more URL are settable. No delete command | 2.3.5 |
+| [remote-dispatch](experts/ilang-wechat-awesome/skills/remote-dispatch/) | Optional, for people with two machines: the local agent dispatches [RUN:VPS] blocks to a remote CodeBuddy gateway and collects the result; gateway setup scripts for Linux and Windows included | 2.3.5 |
 
-```
-/plugin marketplace add adsorgcn/WorkBuddy
-/plugin install ilang-wechat-awesome@ilang-workbuddy
-```
+## What it will not do
 
-Any SKILL.md-compatible agent (Claude Code, Codex, Cursor, Hermes) can copy the folders under `skills/` into its own skills directory.
+No material, no article. No invented numbers, quotes or anecdotes. No like-and-share bait. No URLs or personal WeChat IDs in the body. No politics, gambling, adult content or circumvention topics. No account farms, bulk posting or rewriting other people's articles. No automatic publishing: a human always publishes, or says so before the API clicks the last button. Not for evading platform disclosure rules for AI-assisted content.
 
-### Self-check after install
+## How the repository runs itself
 
-Switch into the 公众号爆文专家 chat and paste the whole block. Five items present means the install is complete.
-
-```
-::ILANG
-[TYPE:command][PROJECT:wechat_awesome][TASK:env_check][LANG:zh]
-
-::STATE{@USER, role:owner}
-::STATE{@SELF, role:checker, runtime:WorkBuddy 桌面端 专家对话, can:Read Bash Glob}
-::STATE{@OUT, kind:自检报告, items:五项 专家 模型 技能文件 技能绑定 wxrank}
-
-::OBJECTIVE{env_check|pri:OVERRIDE_ALL}
-  target: 核五项 缺的告诉我怎么补 能跑的自己跑
-  ACCEPT: 五项各一行 有 或 缺 最后一行 全部就绪 或 还缺几项
-  NON_GOALS: 替我填任何密钥 猜没核过的状态
-
-::RULE{检查靠跑命令或读文件⇒不靠猜 跑不了的写 没核到}
-::RULE{密钥⇒只看文件在不在 不读内容 不复述}
-
-::MODULE{HOW}
-  [STEP:1] 看你自己的设定里有没有 [PROJECT:wechat_awesome] 有就报 VERSION 后面的版本号 没有写 缺
-  [STEP:2] 一句话证明模型在回话 说清用的是自带模型还是自定义模型
-  [STEP:3] Glob 找 **/wechat-article/SKILL.md **/wechat-draft-push/scripts/wechat_draft.py **/wechat-topic-hunter/SKILL.md 在下载目录或桌面的不算 那只是包
-  [STEP:4] 看本对话能用的技能列表里有没有这三个
-  [STEP:5] 用户主目录有没有 .wxrank.env 有就用 Python 标准库 GET http://data.wxrank.com/weixin/score 带 key 参数 报余额 没有写 缺 这项可选 不用选题技能可以不配
-  [STEP:6] 五项各一行 项目 有或缺 怎么补
-```
-
-Read the source, permissions and scripts before installing any unofficial skill. The two scripts here are plain Python standard library and read credentials from local config files only: `scripts/wechat_draft.py` (official WeChat API only, publish only after a human said so and only on verified accounts, no delete) and `scripts/wxrank_topics.py` (read-only wxrank calls on the user's own key, quotes before spending).
+- 06:30 Beijing time daily, Actions runs `scripts/update_hot_list.py`: pull sources, cluster, write the list, manage sources, commit.
+- Every push to main runs `scripts/release.py`: bump the patch version everywhere, run the gate `scripts/build_packages.py`, build five zips, tag, create a release with notes generated from the commits and the day's list. Releases therefore appear daily; install the latest.
 
 ## Protocol
 
-The expert and the skills are written in the iLang protocol. The first body line `#iml/0.5/...` is the IML 0.5 machine-layer chain, round-trip verified with the official compiler:
+The expert and skills are written in the iLang protocol; the `#iml/0.5/...` line is the IML 0.5 machine-layer chain, round-tripped through the official compiler:
 
 ```
 [PARS:@USER]=>[GET:@SRC]=>[DRFT|sty=casual]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]
 #iml/0.5/7e29fae7f5ea PS@US GT@SR DRst=casual CK SV@DSgr=date $
 ```
 
-ilang.ai · ilang.cn · github.com/ilang-ai/ilang-spec · github.com/ilang-ai/iml-protocol
+ilang.ai · ilang.cn · ilang.cn/md · github.com/ilang-ai/ilang-spec · github.com/ilang-ai/iml-protocol
 
 ## License
 
-MIT · © 2026 静水流深 (Long Quan Zhu)
+MIT · © 2026 静水流深

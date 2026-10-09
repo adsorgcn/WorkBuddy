@@ -11,6 +11,9 @@
   python wxrank_topics.py posts --wxid gh_xxx                       某个号最近一页推文（5 积分）
   python wxrank_topics.py benchmark --wxid gh_xxx [--n 10] [--yes]  对标一个号：最近 N 篇各拉一次阅读在看分享，算阅读中位、爆款倍率、爆款分（5 + 2N 积分，先报价，加 --yes 才扣）
   python wxrank_topics.py article --url "https://mp.weixin.qq.com/s?__biz=..."   一篇文章的阅读 点赞 在看 分享 收藏 赞赏（2 积分，短链多 1 积分）
+  python wxrank_topics.py feed [--group AI,热榜] [--keyword 副业,AI] [--n 15] [--hot-only]   读仓库每天自动更新的内容清单（免费 不花积分）
+  python wxrank_topics.py direction --keywords 出海,副业,AI写作 [--month 202610]   方向比较：每个词看一次榜 出一张表（每词 1 积分）
+  python wxrank_topics.py calendar --keyword 出海 [--n 10] [--per-week 2] [--start 2026-10-14] [--month 202610]   内容清单：清单里挑题 对照榜 排日期（1 积分）
 
 凭据：~/.wxrank.env 一行 KEY=你的key（或环境变量 WXRANK_KEY）。注册和充值 https://data.wxrank.com ，100 积分 = 1 元。
 纪律：只读；每天上限 WXRANK_DAILY_CAP 积分（默认 300）；用量记 ~/.wxrank-usage.log；输出不含 key；只用标准库。
@@ -24,6 +27,8 @@ except Exception:
     pass
 
 BASE = "https://data.wxrank.com/weixin/"
+FEED_URL = os.environ.get("WECHAT_FEED_URL", "https://raw.githubusercontent.com/adsorgcn/WorkBuddy/main/data/hot/latest.json")
+FEED_LOCAL = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))), "data", "hot", "latest.json")
 ENV = os.path.join(os.path.expanduser("~"), ".wxrank.env")
 LOG = os.path.join(os.path.expanduser("~"), ".wxrank-usage.log")
 DAILY_CAP = int(os.environ.get("WXRANK_DAILY_CAP", "300"))
@@ -296,6 +301,116 @@ def cmd_benchmark(a, key):
     tail(spent, bal)
 
 
+def load_feed():
+    """仓库每天自动更新的内容清单。先读本仓库里的 data/hot/latest.json（在仓库里跑时），没有就从 GitHub raw 拉。"""
+    if os.path.exists(FEED_LOCAL):
+        try:
+            return json.load(io.open(FEED_LOCAL, encoding="utf-8")), FEED_LOCAL
+        except Exception:
+            pass
+    req = urllib.request.Request(FEED_URL, headers={"User-Agent": "wechat-topic-hunter/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return json.loads(r.read().decode("utf-8", errors="replace")), FEED_URL
+    except Exception as e:
+        die("拉不到仓库清单（%s）。本机能上 GitHub 吗；上不了就直接跑 hot_sources.py 自己拉热点源" % type(e).__name__)
+
+
+def feed_rows(feed, groups=None, kws=None, hot_only=False, n=15):
+    rows = []
+    if hot_only:
+        for r in feed.get("hot_now", []):
+            rows.append(dict(r, group=r.get("group", "")))
+    else:
+        for g, lst in feed.get("groups", {}).items():
+            if groups and g not in groups:
+                continue
+            rows.extend(lst[:n])
+    if kws:
+        rows = [r for r in rows if any(k.lower() in r["title"].lower() for k in kws)]
+    return rows
+
+
+def cmd_feed(a, key=None):
+    feed, where = load_feed()
+    groups = [x.strip() for x in (a.group or "").split(",") if x.strip()] or None
+    kws = [x.strip() for x in (a.keyword or "").split(",") if x.strip()] or None
+    rows = feed_rows(feed, groups, kws, a.hot_only, a.n)
+    print("仓库内容清单 %s（%s）：%d 条%s" % (feed.get("date"), "本地" if where == FEED_LOCAL else "GitHub", len(rows), "，只看多平台同聊" if a.hot_only else ""))
+    cur = None
+    for r in rows:
+        if r.get("group") != cur and not a.hot_only:
+            cur = r.get("group"); print("## %s" % cur)
+        print("- [%d 个平台] %s | %s | %s | %s" % (r.get("platforms", 1), r["title"], r.get("source", ""), r.get("time") or "--", r.get("url") or "-"))
+    print("这是需求侧（今天各平台在聊什么）。供给侧用 hot 看公众号上这个题读了多少、爆没爆，两边对上才是题。免费，没花积分。")
+
+
+def cmd_direction(a, key):
+    words = [w.strip() for w in a.keywords.split(",") if w.strip()]
+    if not (2 <= len(words) <= 8):
+        die("--keywords 给 2 到 8 个词 逗号隔开")
+    gate(len(words))
+    table = []
+    bal = None
+    for w in words:
+        body = {"keyword": w, "content_type": "article"}
+        if a.month: body["month"] = a.month
+        data, bal = call("artlist", body, key)
+        lst = (data or {}).get("list") or []
+        reads = sorted((num(it.get("read_num")) for it in lst), reverse=True)
+        shares = [num(it.get("share_num")) for it in lst]
+        top = lst[0] if lst else {}
+        table.append({"keyword": w, "total": (data or {}).get("total"), "n": len(reads), "max_read": reads[0] if reads else 0,
+                      "median_read": int(statistics.median(reads)) if reads else 0, "over_10w": sum(1 for r in reads if r >= 100000),
+                      "max_share": max(shares) if shares else 0, "top_title": clean(top.get("title"), 40), "top_url": re.sub(r"\s+", "", str(top.get("art_url") or ""))})
+    logit("direction", ",".join(words), len(table), len(words))
+    print("方向比较（%s，每词取离线库阅读最高的一页）：" % (a.month or "当月"))
+    print("%-12s %7s %8s %8s %6s %7s  %s" % ("方向词", "命中篇", "最高阅读", "中位阅读", "10万+", "最高分享", "最高那篇"))
+    for r in sorted(table, key=lambda x: (x["over_10w"], x["median_read"]), reverse=True):
+        print("%-12s %7s %8d %8d %6d %7d  %s" % (r["keyword"], r["total"] if r["total"] is not None else "-", r["max_read"], r["median_read"], r["over_10w"], r["max_share"], r["top_title"]))
+    print("怎么看：命中篇多说明有人在写，10万+ 多说明读者在；中位高说明普通一篇也有人看。你的号能不能挤进去，看你有没有独家。数字只标注，方向你定。")
+    out = os.path.join(os.getcwd(), "direction-%s.json" % datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+    io.open(out, "w", encoding="utf-8", newline="\n").write(json.dumps(table, ensure_ascii=False, indent=1))
+    print("明细已存：" + out)
+    tail(len(words), bal)
+
+
+def cmd_calendar(a, key):
+    feed, where = load_feed()
+    kws = [x.strip() for x in a.keyword.split(",") if x.strip()]
+    rows = feed_rows(feed, None, kws, False, 50)
+    if len(rows) < a.n:
+        rows += [r for r in feed.get("hot_now", []) if r not in rows]
+    rows = rows[: max(a.n, 1)]
+    body = {"keyword": kws[0], "content_type": "article"}
+    if a.month: body["month"] = a.month
+    gate(1)
+    data, bal = call("artlist", body, key)
+    lst = (data or {}).get("list") or []
+    logit("calendar", kws[0], len(lst), 1)
+    supply = {"total": (data or {}).get("total"), "max_read": max([num(it.get("read_num")) for it in lst] or [0]),
+              "titles": [clean(it.get("title"), 40) for it in lst[:5]]}
+    start = datetime.date.fromisoformat(a.start) if a.start else datetime.date.today() + datetime.timedelta(days=1)
+    step = max(1, round(7 / max(1, a.per_week)))
+    plan = []
+    d = start
+    for i, r in enumerate(rows, 1):
+        plan.append({"no": i, "date": d.isoformat(), "title": r["title"], "platforms": r.get("platforms", 1), "source": r.get("source", ""), "url": r.get("url", ""), "group": r.get("group", "")})
+        d += datetime.timedelta(days=step)
+    print("内容清单「%s」%d 条，从 %s 起每周 %d 篇（需求侧来自仓库清单 %s；供给侧 公众号上「%s」%s 命中 %s 篇 最高阅读 %d）" % (
+        kws[0], len(plan), start.isoformat(), a.per_week, feed.get("date"), kws[0], a.month or "当月", supply["total"], supply["max_read"]))
+    print("| 序 | 计划日期 | 题 | 平台数 | 来源 | 链接 |")
+    print("|---|---|---|---|---|---|")
+    for p in plan:
+        print("| %d | %s | %s | %d | %s | %s |" % (p["no"], p["date"], p["title"].replace("|", "｜"), p["platforms"], p["source"], p["url"] or "-"))
+    print("公众号上读得最多的 5 篇（看角度，不抄）：" + "；".join(supply["titles"]))
+    print("每条写之前再用 hot --keyword 题里的核心词 看一次这个题爆没爆（1 积分）；独家栏自己填，没独家的题不建议写。")
+    out = os.path.join(os.getcwd(), "calendar-%s-%s.json" % (re.sub(r"[^0-9A-Za-z一-鿿_-]", "", kws[0])[:20], datetime.datetime.now().strftime("%Y%m%d-%H%M%S")))
+    io.open(out, "w", encoding="utf-8", newline="\n").write(json.dumps({"keyword": kws, "start": start.isoformat(), "per_week": a.per_week, "supply": supply, "plan": plan}, ensure_ascii=False, indent=1))
+    print("清单已存：" + out)
+    tail(1, bal)
+
+
 def main():
     ap = argparse.ArgumentParser(description="公众号选题对标（wxrank）")
     sub = ap.add_subparsers(dest="cmd")
@@ -306,17 +421,23 @@ def main():
     p = sub.add_parser("posts"); p.add_argument("--wxid", required=True)
     p = sub.add_parser("benchmark"); p.add_argument("--wxid", required=True); p.add_argument("--n", type=int, default=10); p.add_argument("--yes", action="store_true")
     p = sub.add_parser("article"); p.add_argument("--url", required=True)
+    p = sub.add_parser("feed"); p.add_argument("--group"); p.add_argument("--keyword"); p.add_argument("--n", type=int, default=15); p.add_argument("--hot-only", action="store_true")
+    p = sub.add_parser("direction"); p.add_argument("--keywords", required=True); p.add_argument("--month")
+    p = sub.add_parser("calendar"); p.add_argument("--keyword", required=True); p.add_argument("--n", type=int, default=10); p.add_argument("--per-week", type=int, default=2); p.add_argument("--start"); p.add_argument("--month")
     a = ap.parse_args()
     if not a.cmd:
         print(__doc__); return
     if a.cmd in ("hot",) and a.date and not re.match(r"^\d{8}$", a.date):
         die("--date 格式 yyyymmdd")
-    if a.cmd in ("hot",) and a.month and not re.match(r"^\d{6}$", a.month):
+    if a.cmd in ("hot", "direction", "calendar") and getattr(a, "month", None) and not re.match(r"^\d{6}$", a.month):
         die("--month 格式 yyyymm")
+    if a.cmd == "feed":
+        cmd_feed(a); return
     if a.cmd in ("posts", "benchmark") and not re.match(r"^[0-9A-Za-z_-]{1,64}$", a.wxid):
         die("--wxid 只认字母数字下划线减号（建议 gh_ 开头的原始ID）")
     key = load_key()
-    {"balance": cmd_balance, "hot": cmd_hot, "search": cmd_search, "accounts": cmd_accounts, "posts": cmd_posts, "benchmark": cmd_benchmark, "article": cmd_article}[a.cmd](a, key)
+    {"balance": cmd_balance, "hot": cmd_hot, "search": cmd_search, "accounts": cmd_accounts, "posts": cmd_posts, "benchmark": cmd_benchmark, "article": cmd_article,
+     "direction": cmd_direction, "calendar": cmd_calendar}[a.cmd](a, key)
 
 
 if __name__ == "__main__":

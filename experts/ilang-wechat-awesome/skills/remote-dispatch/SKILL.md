@@ -79,7 +79,7 @@ python <路径>/dispatch.py cancel --run <runId> [--to vps]        取消一个�
 
 ## 远程机怎么起网关
 
-脚本在本技能目录 `scripts/`，远程机上跑，跑之前用户先在远程机的用户主目录建 `.codebuddy.env`，一行：大写 CODEBUDDY_API_KEY 然后等号 然后他 WorkBuddy 国内版账号的 API key（ck 开头），等号两边不留空格。你不接收 key 的值。
+脚本在本技能目录 `scripts/`，远程机上跑，跑之前用户先在远程机的用户主目录建 `.codebuddy.env`，一行：大写 CODEBUDDY_API_KEY 然后等号 然后他 WorkBuddy 国内版账号的 API key（ck 开头，登录 https://www.workbuddy.cn/profile/keys 复制），等号两边不留空格。你不接收 key 的值。
 
 | 远程机 | 怎么跑 | 实测 |
 |---|---|---|

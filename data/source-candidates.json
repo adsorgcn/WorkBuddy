@@ -1,0 +1,565 @@
+{
+ "_note": "自动加源的候选池：每天探一遍，能拉到东西、而且这个平台还没有源的，自动加进 sources.json。id 是 NewsNow 的源 id，platform 是平台 id。",
+ "candidates": [
+  {
+   "id": "v2ex-share",
+   "name": "NewsNow V2EX 最新分享",
+   "group": "产品",
+   "url": "https://newsnow.busiyi.world/api/s?id=v2ex-share",
+   "type": "json",
+   "platform": "v2ex"
+  },
+  {
+   "id": "v2ex",
+   "name": "NewsNow V2EX",
+   "group": "产品",
+   "url": "https://newsnow.busiyi.world/api/s?id=v2ex",
+   "type": "json",
+   "platform": "v2ex"
+  },
+  {
+   "id": "zhihu",
+   "name": "NewsNow 知乎",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=zhihu",
+   "type": "json",
+   "platform": "zhihu"
+  },
+  {
+   "id": "weibo",
+   "name": "NewsNow 微博",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=weibo",
+   "type": "json",
+   "platform": "weibo"
+  },
+  {
+   "id": "zaobao",
+   "name": "NewsNow 联合早报",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=zaobao",
+   "type": "json",
+   "platform": "zaobao"
+  },
+  {
+   "id": "coolapk",
+   "name": "NewsNow 酷安",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=coolapk",
+   "type": "json",
+   "platform": "coolapk"
+  },
+  {
+   "id": "mktnews-flash",
+   "name": "NewsNow MKTNews 快讯",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=mktnews-flash",
+   "type": "json",
+   "platform": "mktnews"
+  },
+  {
+   "id": "mktnews",
+   "name": "NewsNow MKTNews",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=mktnews",
+   "type": "json",
+   "platform": "mktnews"
+  },
+  {
+   "id": "wallstreetcn-news",
+   "name": "NewsNow 华尔街见闻 最新",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=wallstreetcn-news",
+   "type": "json",
+   "platform": "wallstreetcn"
+  },
+  {
+   "id": "wallstreetcn-hot",
+   "name": "NewsNow 华尔街见闻 最热",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=wallstreetcn-hot",
+   "type": "json",
+   "platform": "wallstreetcn"
+  },
+  {
+   "id": "wallstreetcn",
+   "name": "NewsNow 华尔街见闻",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=wallstreetcn",
+   "type": "json",
+   "platform": "wallstreetcn"
+  },
+  {
+   "id": "36kr-quick",
+   "name": "NewsNow 36氪 快讯",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=36kr-quick",
+   "type": "json",
+   "platform": "36kr"
+  },
+  {
+   "id": "36kr",
+   "name": "NewsNow 36氪",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=36kr",
+   "type": "json",
+   "platform": "36kr"
+  },
+  {
+   "id": "douyin",
+   "name": "NewsNow 抖音",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=douyin",
+   "type": "json",
+   "platform": "douyin"
+  },
+  {
+   "id": "hupu",
+   "name": "NewsNow 虎扑",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=hupu",
+   "type": "json",
+   "platform": "hupu"
+  },
+  {
+   "id": "dongqiudi",
+   "name": "NewsNow 懂球帝",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=dongqiudi",
+   "type": "json",
+   "platform": "dongqiudi"
+  },
+  {
+   "id": "aihot",
+   "name": "NewsNow AIHOT",
+   "group": "AI",
+   "url": "https://newsnow.busiyi.world/api/s?id=aihot",
+   "type": "json",
+   "platform": "aihot"
+  },
+  {
+   "id": "tieba",
+   "name": "NewsNow 百度贴吧",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=tieba",
+   "type": "json",
+   "platform": "tieba"
+  },
+  {
+   "id": "toutiao",
+   "name": "NewsNow 今日头条",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=toutiao",
+   "type": "json",
+   "platform": "toutiao"
+  },
+  {
+   "id": "ithome",
+   "name": "NewsNow IT之家",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=ithome",
+   "type": "json",
+   "platform": "ithome"
+  },
+  {
+   "id": "thepaper",
+   "name": "NewsNow 澎湃新闻",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=thepaper",
+   "type": "json",
+   "platform": "thepaper"
+  },
+  {
+   "id": "sputniknewscn",
+   "name": "NewsNow 卫星通讯社",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=sputniknewscn",
+   "type": "json",
+   "platform": "sputniknewscn"
+  },
+  {
+   "id": "cankaoxiaoxi",
+   "name": "NewsNow 参考消息",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=cankaoxiaoxi",
+   "type": "json",
+   "platform": "cankaoxiaoxi"
+  },
+  {
+   "id": "pcbeta-windows11",
+   "name": "NewsNow 远景论坛 Win11",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=pcbeta-windows11",
+   "type": "json",
+   "platform": "pcbeta"
+  },
+  {
+   "id": "pcbeta-windows",
+   "name": "NewsNow 远景论坛 Windows 资源",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=pcbeta-windows",
+   "type": "json",
+   "platform": "pcbeta"
+  },
+  {
+   "id": "pcbeta",
+   "name": "NewsNow 远景论坛",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=pcbeta",
+   "type": "json",
+   "platform": "pcbeta"
+  },
+  {
+   "id": "cls-telegraph",
+   "name": "NewsNow 财联社 电报",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=cls-telegraph",
+   "type": "json",
+   "platform": "cls"
+  },
+  {
+   "id": "cls-depth",
+   "name": "NewsNow 财联社 深度",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=cls-depth",
+   "type": "json",
+   "platform": "cls"
+  },
+  {
+   "id": "cls-hot",
+   "name": "NewsNow 财联社 热门",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=cls-hot",
+   "type": "json",
+   "platform": "cls"
+  },
+  {
+   "id": "cls",
+   "name": "NewsNow 财联社",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=cls",
+   "type": "json",
+   "platform": "cls"
+  },
+  {
+   "id": "xueqiu-hotstock",
+   "name": "NewsNow 雪球 热门股票",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=xueqiu-hotstock",
+   "type": "json",
+   "platform": "xueqiu"
+  },
+  {
+   "id": "xueqiu",
+   "name": "NewsNow 雪球",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=xueqiu",
+   "type": "json",
+   "platform": "xueqiu"
+  },
+  {
+   "id": "gelonghui",
+   "name": "NewsNow 格隆汇",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=gelonghui",
+   "type": "json",
+   "platform": "gelonghui"
+  },
+  {
+   "id": "fastbull-express",
+   "name": "NewsNow 法布财经 快讯",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=fastbull-express",
+   "type": "json",
+   "platform": "fastbull"
+  },
+  {
+   "id": "fastbull-news",
+   "name": "NewsNow 法布财经 头条",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=fastbull-news",
+   "type": "json",
+   "platform": "fastbull"
+  },
+  {
+   "id": "fastbull",
+   "name": "NewsNow 法布财经",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=fastbull",
+   "type": "json",
+   "platform": "fastbull"
+  },
+  {
+   "id": "solidot",
+   "name": "NewsNow Solidot",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=solidot",
+   "type": "json",
+   "platform": "solidot"
+  },
+  {
+   "id": "hackernews",
+   "name": "NewsNow Hacker News",
+   "group": "海外",
+   "url": "https://newsnow.busiyi.world/api/s?id=hackernews",
+   "type": "json",
+   "platform": "hackernews"
+  },
+  {
+   "id": "producthunt",
+   "name": "NewsNow Product Hunt",
+   "group": "海外",
+   "url": "https://newsnow.busiyi.world/api/s?id=producthunt",
+   "type": "json",
+   "platform": "producthunt"
+  },
+  {
+   "id": "github-trending-today",
+   "name": "NewsNow Github Today",
+   "group": "海外",
+   "url": "https://newsnow.busiyi.world/api/s?id=github-trending-today",
+   "type": "json",
+   "platform": "github"
+  },
+  {
+   "id": "github",
+   "name": "NewsNow Github",
+   "group": "海外",
+   "url": "https://newsnow.busiyi.world/api/s?id=github",
+   "type": "json",
+   "platform": "github"
+  },
+  {
+   "id": "bilibili-hot-search",
+   "name": "NewsNow 哔哩哔哩 热搜",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=bilibili-hot-search",
+   "type": "json",
+   "platform": "bilibili"
+  },
+  {
+   "id": "bilibili-hot-video",
+   "name": "NewsNow 哔哩哔哩 热门视频",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=bilibili-hot-video",
+   "type": "json",
+   "platform": "bilibili"
+  },
+  {
+   "id": "bilibili-ranking",
+   "name": "NewsNow 哔哩哔哩 排行榜",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=bilibili-ranking",
+   "type": "json",
+   "platform": "bilibili"
+  },
+  {
+   "id": "bilibili",
+   "name": "NewsNow 哔哩哔哩",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=bilibili",
+   "type": "json",
+   "platform": "bilibili"
+  },
+  {
+   "id": "kuaishou",
+   "name": "NewsNow 快手",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=kuaishou",
+   "type": "json",
+   "platform": "kuaishou"
+  },
+  {
+   "id": "kaopu",
+   "name": "NewsNow 靠谱新闻",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=kaopu",
+   "type": "json",
+   "platform": "kaopu"
+  },
+  {
+   "id": "jin10",
+   "name": "NewsNow 金十数据",
+   "group": "财经",
+   "url": "https://newsnow.busiyi.world/api/s?id=jin10",
+   "type": "json",
+   "platform": "jin10"
+  },
+  {
+   "id": "baidu",
+   "name": "NewsNow 百度热搜",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=baidu",
+   "type": "json",
+   "platform": "baidu"
+  },
+  {
+   "id": "linuxdo-latest",
+   "name": "NewsNow LINUX DO 最新",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=linuxdo-latest",
+   "type": "json",
+   "platform": "linuxdo"
+  },
+  {
+   "id": "linuxdo-hot",
+   "name": "NewsNow LINUX DO 今日最热",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=linuxdo-hot",
+   "type": "json",
+   "platform": "linuxdo"
+  },
+  {
+   "id": "linuxdo",
+   "name": "NewsNow LINUX DO",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=linuxdo",
+   "type": "json",
+   "platform": "linuxdo"
+  },
+  {
+   "id": "ghxi",
+   "name": "NewsNow 果核剥壳",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=ghxi",
+   "type": "json",
+   "platform": "ghxi"
+  },
+  {
+   "id": "smzdm",
+   "name": "NewsNow 什么值得买",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=smzdm",
+   "type": "json",
+   "platform": "smzdm"
+  },
+  {
+   "id": "nowcoder",
+   "name": "NewsNow 牛客",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=nowcoder",
+   "type": "json",
+   "platform": "nowcoder"
+  },
+  {
+   "id": "sspai",
+   "name": "NewsNow 少数派",
+   "group": "产品",
+   "url": "https://newsnow.busiyi.world/api/s?id=sspai",
+   "type": "json",
+   "platform": "sspai"
+  },
+  {
+   "id": "juejin",
+   "name": "NewsNow 稀土掘金",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=juejin",
+   "type": "json",
+   "platform": "juejin"
+  },
+  {
+   "id": "ifeng",
+   "name": "NewsNow 凤凰网",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=ifeng",
+   "type": "json",
+   "platform": "ifeng"
+  },
+  {
+   "id": "chongbuluo-latest",
+   "name": "NewsNow 虫部落 最新",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=chongbuluo-latest",
+   "type": "json",
+   "platform": "chongbuluo"
+  },
+  {
+   "id": "chongbuluo-hot",
+   "name": "NewsNow 虫部落 最热",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=chongbuluo-hot",
+   "type": "json",
+   "platform": "chongbuluo"
+  },
+  {
+   "id": "chongbuluo",
+   "name": "NewsNow 虫部落",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=chongbuluo",
+   "type": "json",
+   "platform": "chongbuluo"
+  },
+  {
+   "id": "douban",
+   "name": "NewsNow 豆瓣",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=douban",
+   "type": "json",
+   "platform": "douban"
+  },
+  {
+   "id": "steam",
+   "name": "NewsNow Steam",
+   "group": "产品",
+   "url": "https://newsnow.busiyi.world/api/s?id=steam",
+   "type": "json",
+   "platform": "steam"
+  },
+  {
+   "id": "tencent-hot",
+   "name": "NewsNow 腾讯新闻 综合早报",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=tencent-hot",
+   "type": "json",
+   "platform": "tencent"
+  },
+  {
+   "id": "tencent",
+   "name": "NewsNow 腾讯新闻",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=tencent",
+   "type": "json",
+   "platform": "tencent"
+  },
+  {
+   "id": "freebuf",
+   "name": "NewsNow Freebuf",
+   "group": "科技",
+   "url": "https://newsnow.busiyi.world/api/s?id=freebuf",
+   "type": "json",
+   "platform": "freebuf"
+  },
+  {
+   "id": "qqvideo-tv-hotsearch",
+   "name": "NewsNow 腾讯视频 热搜榜",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=qqvideo-tv-hotsearch",
+   "type": "json",
+   "platform": "qqvideo"
+  },
+  {
+   "id": "qqvideo",
+   "name": "NewsNow 腾讯视频",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=qqvideo",
+   "type": "json",
+   "platform": "qqvideo"
+  },
+  {
+   "id": "iqiyi-hot-ranklist",
+   "name": "NewsNow 爱奇艺 热播榜",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=iqiyi-hot-ranklist",
+   "type": "json",
+   "platform": "iqiyi"
+  },
+  {
+   "id": "iqiyi",
+   "name": "NewsNow 爱奇艺",
+   "group": "热榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=iqiyi",
+   "type": "json",
+   "platform": "iqiyi"
+  }
+ ]
+}

@@ -1,0 +1,332 @@
+{
+ "_note": "公众号代写的热点源清单。全是公开的 RSS / JSON 接口 / 页面，国内直连优先。type: rss | json | js（去掉 var xx = 前缀再当 JSON）| sdata（页内 <!--s-data:...--> JSON）| html（配 pattern 正则，命名组 title 和 href）。 可选字段：url_tpl 用条目字段拼链接；cache_bust 加时间戳参数名；need_link 没链接的条目丢掉；fallback_for 主源拉到了就不用这个备用源。网页类复杂源不走脚本，用 WebFetch 读。 platform 是平台 id，同一平台多个源只算一个平台（算同爆、自动加源都按它去重）。",
+ "sources": [
+  {
+   "name": "AIHOT 热点Top10",
+   "url": "https://aihot.news/api/v1/hot-topics",
+   "type": "json",
+   "group": "AI",
+   "platform": "aihot"
+  },
+  {
+   "name": "AIHOT 精选流",
+   "url": "https://aihot.news/feed.xml",
+   "type": "rss",
+   "group": "AI",
+   "platform": "aihot"
+  },
+  {
+   "name": "量子位",
+   "url": "https://www.qbitai.com/feed",
+   "type": "rss",
+   "group": "AI",
+   "platform": "qbitai"
+  },
+  {
+   "name": "InfoQ 中文",
+   "url": "https://www.infoq.cn/feed",
+   "type": "rss",
+   "group": "AI",
+   "platform": "infoq"
+  },
+  {
+   "name": "橘鸦AI早报",
+   "url": "https://daily.juya.uk/rss.xml",
+   "type": "rss",
+   "group": "AI",
+   "platform": "juya"
+  },
+  {
+   "name": "Readhub",
+   "url": "https://api.readhub.cn/topic/list?page=1&size=20",
+   "type": "json",
+   "group": "科技",
+   "platform": "readhub"
+  },
+  {
+   "name": "阮一峰周刊",
+   "url": "https://www.ruanyifeng.com/blog/atom.xml",
+   "type": "rss",
+   "group": "科技",
+   "platform": "ruanyifeng"
+  },
+  {
+   "name": "知乎热榜",
+   "url": "https://api.zhihu.com/topstory/hot-lists/total?limit=20",
+   "type": "json",
+   "group": "热榜",
+   "platform": "zhihu"
+  },
+  {
+   "name": "百度热搜",
+   "url": "https://top.baidu.com/api/board?platform=wise&tab=realtime",
+   "type": "json",
+   "group": "热榜",
+   "platform": "baidu"
+  },
+  {
+   "name": "百度热搜直连",
+   "url": "https://top.baidu.com/board?tab=realtime",
+   "type": "sdata",
+   "group": "热榜",
+   "fallback_for": "百度热搜",
+   "platform": "baidu"
+  },
+  {
+   "name": "B站热门",
+   "url": "https://api.bilibili.com/x/web-interface/popular?ps=20&pn=1",
+   "type": "json",
+   "group": "热榜",
+   "platform": "bilibili"
+  },
+  {
+   "name": "头条热榜",
+   "url": "https://www.toutiao.com/hot-event/hot-board/?origin=toutiao_pc",
+   "type": "json",
+   "group": "热榜",
+   "platform": "toutiao"
+  },
+  {
+   "name": "澎湃热榜",
+   "url": "https://cache.thepaper.cn/contentapi/wwwIndex/rightSidebar",
+   "type": "json",
+   "group": "热榜",
+   "url_tpl": "https://www.thepaper.cn/newsDetail_forward_{contId}",
+   "need_link": true,
+   "platform": "thepaper"
+  },
+  {
+   "name": "贴吧热议",
+   "url": "https://tieba.baidu.com/hottopic/browse/topicList",
+   "type": "json",
+   "group": "热榜",
+   "platform": "tieba"
+  },
+  {
+   "name": "参考消息",
+   "url": "http://china.cankaoxiaoxi.com/json/channel/zhongguo/list.json",
+   "type": "json",
+   "group": "热榜",
+   "platform": "cankaoxiaoxi"
+  },
+  {
+   "name": "NewsNow 微博",
+   "url": "https://newsnow.busiyi.world/api/s?id=weibo",
+   "type": "json",
+   "group": "热榜",
+   "platform": "weibo"
+  },
+  {
+   "name": "NewsNow 抖音",
+   "url": "https://newsnow.busiyi.world/api/s?id=douyin",
+   "type": "json",
+   "group": "热榜",
+   "platform": "douyin"
+  },
+  {
+   "name": "NewsNow 掘金",
+   "url": "https://newsnow.busiyi.world/api/s?id=juejin",
+   "type": "json",
+   "group": "科技",
+   "platform": "juejin"
+  },
+  {
+   "name": "NewsNow 虎扑",
+   "url": "https://newsnow.busiyi.world/api/s?id=hupu",
+   "type": "json",
+   "group": "热榜",
+   "platform": "hupu"
+  },
+  {
+   "name": "NewsNow 财联社热门",
+   "url": "https://newsnow.busiyi.world/api/s?id=cls-hot",
+   "type": "json",
+   "group": "财经",
+   "platform": "cls"
+  },
+  {
+   "name": "金十快讯",
+   "url": "https://www.jin10.com/flash_newest.js",
+   "type": "js",
+   "group": "财经",
+   "cache_bust": "t",
+   "url_tpl": "https://flash.jin10.com/detail/{id}",
+   "platform": "jin10"
+  },
+  {
+   "name": "36氪快讯",
+   "url": "https://www.36kr.com/newsflashes",
+   "type": "html",
+   "group": "财经",
+   "pattern": "<a class=\"item-title\"[^>]*?href=\"(?P<href>[^\"]+)\"[^>]*>(?P<title>.*?)</a>",
+   "base": "https://www.36kr.com",
+   "platform": "36kr"
+  },
+  {
+   "name": "IT之家",
+   "url": "https://www.ithome.com/rss/",
+   "type": "rss",
+   "group": "科技",
+   "platform": "ithome"
+  },
+  {
+   "name": "钛媒体",
+   "url": "https://www.tmtpost.com/rss.xml",
+   "type": "rss",
+   "group": "财经",
+   "platform": "tmtpost"
+  },
+  {
+   "name": "华尔街见闻快讯",
+   "url": "https://api-one.wallstcn.com/apiv1/content/lives?channel=global-channel&limit=20",
+   "type": "json",
+   "group": "财经",
+   "platform": "wallstreetcn"
+  },
+  {
+   "name": "新浪科技",
+   "url": "https://feed.mix.sina.com.cn/api/roll/get?pageid=372&lid=2431&num=20",
+   "type": "json",
+   "group": "科技",
+   "platform": "sina"
+  },
+  {
+   "name": "爱范儿",
+   "url": "https://www.ifanr.com/feed",
+   "type": "rss",
+   "group": "科技",
+   "platform": "ifanr"
+  },
+  {
+   "name": "极客公园",
+   "url": "https://www.geekpark.net/rss",
+   "type": "rss",
+   "group": "科技",
+   "platform": "geekpark"
+  },
+  {
+   "name": "雷峰网",
+   "url": "https://www.leiphone.com/feed",
+   "type": "rss",
+   "group": "科技",
+   "platform": "leiphone"
+  },
+  {
+   "name": "cnBeta",
+   "url": "https://www.cnbeta.com.tw/backend.php",
+   "type": "rss",
+   "group": "科技",
+   "platform": "cnbeta"
+  },
+  {
+   "name": "Solidot",
+   "url": "https://www.solidot.org/index.rss",
+   "type": "rss",
+   "group": "科技",
+   "platform": "solidot"
+  },
+  {
+   "name": "开源中国",
+   "url": "https://www.oschina.net/news/rss",
+   "type": "rss",
+   "group": "科技",
+   "platform": "oschina"
+  },
+  {
+   "name": "少数派",
+   "url": "https://sspai.com/feed",
+   "type": "rss",
+   "group": "产品",
+   "platform": "sspai"
+  },
+  {
+   "name": "人人都是产品经理",
+   "url": "https://www.woshipm.com/feed",
+   "type": "rss",
+   "group": "产品",
+   "platform": "woshipm"
+  },
+  {
+   "name": "小众软件",
+   "url": "https://www.appinn.com/feed/",
+   "type": "rss",
+   "group": "产品",
+   "platform": "appinn"
+  },
+  {
+   "name": "V2EX 热门",
+   "url": "https://www.v2ex.com/api/topics/hot.json",
+   "type": "json",
+   "group": "产品",
+   "platform": "v2ex"
+  },
+  {
+   "name": "HelloGitHub",
+   "url": "https://hellogithub.com/rss",
+   "type": "rss",
+   "group": "产品",
+   "platform": "hellogithub"
+  },
+  {
+   "name": "HN 中文",
+   "url": "https://hn.buzzing.cc/feed.xml",
+   "type": "rss",
+   "group": "海外",
+   "platform": "hackernews"
+  },
+  {
+   "name": "Product Hunt 中文",
+   "url": "https://ph.buzzing.cc/feed.xml",
+   "type": "rss",
+   "group": "海外",
+   "platform": "producthunt"
+  },
+  {
+   "name": "BestBlogs",
+   "url": "https://www.bestblogs.dev/en/feeds/rss",
+   "type": "rss",
+   "group": "海外",
+   "platform": "bestblogs"
+  },
+  {
+   "name": "NewsNow 联合早报",
+   "url": "https://newsnow.busiyi.world/api/s?id=zaobao",
+   "type": "json",
+   "group": "热榜",
+   "platform": "zaobao",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 酷安",
+   "url": "https://newsnow.busiyi.world/api/s?id=coolapk",
+   "type": "json",
+   "group": "科技",
+   "platform": "coolapk",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow MKTNews 快讯",
+   "url": "https://newsnow.busiyi.world/api/s?id=mktnews-flash",
+   "type": "json",
+   "group": "财经",
+   "platform": "mktnews",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 懂球帝",
+   "url": "https://newsnow.busiyi.world/api/s?id=dongqiudi",
+   "type": "json",
+   "group": "热榜",
+   "platform": "dongqiudi",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 卫星通讯社",
+   "url": "https://newsnow.busiyi.world/api/s?id=sputniknewscn",
+   "type": "json",
+   "group": "热榜",
+   "platform": "sputniknewscn",
+   "added": "2026-10-09"
+  }
+ ]
+}
