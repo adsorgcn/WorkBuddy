@@ -8,6 +8,9 @@ on:
 permissions:
   contents: write
 
+env:
+  TZ: Asia/Shanghai
+
 concurrency:
   group: release
   cancel-in-progress: false
