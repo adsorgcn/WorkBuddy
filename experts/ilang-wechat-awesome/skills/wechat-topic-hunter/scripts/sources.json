@@ -1,68 +1,78 @@
 {
- "_note": "公众号代写的热点源清单。全是公开的 RSS / JSON 接口 / 页面，国内直连优先。type: rss | json | js（去掉 var xx = 前缀再当 JSON）| sdata（页内 <!--s-data:...--> JSON）| html（配 pattern 正则，命名组 title 和 href）。 可选字段：url_tpl 用条目字段拼链接；cache_bust 加时间戳参数名；need_link 没链接的条目丢掉；fallback_for 主源拉到了就不用这个备用源。网页类复杂源不走脚本，用 WebFetch 读。 platform 是平台 id，同一平台多个源只算一个平台（算同爆、自动加源都按它去重）。",
+ "_note": "公众号代写的热点源清单。全是公开的 RSS / JSON 接口 / 页面，国内直连优先。type: rss | json | js（去掉 var xx = 前缀再当 JSON）| sdata（页内 <!--s-data:...--> JSON）| html（配 pattern 正则，命名组 title 和 href）。 可选字段：url_tpl 用条目字段拼链接；cache_bust 加时间戳参数名；need_link 没链接的条目丢掉；fallback_for 主源拉到了就不用这个备用源。网页类复杂源不走脚本，用 WebFetch 读。 platform 是平台 id，同一平台多个源只算一个平台（算同爆、自动加源都按它去重）。 lang 是语言；explode_digest 把日报正文拆成单条；keep_date_titles 不过滤纯日期标题（热搜词类）。",
  "sources": [
   {
    "name": "AIHOT 热点Top10",
    "url": "https://aihot.news/api/v1/hot-topics",
    "type": "json",
    "group": "AI",
-   "platform": "aihot"
+   "platform": "aihot",
+   "lang": "zh"
   },
   {
    "name": "AIHOT 精选流",
    "url": "https://aihot.news/feed.xml",
    "type": "rss",
    "group": "AI",
-   "platform": "aihot"
+   "platform": "aihot",
+   "lang": "zh"
   },
   {
    "name": "量子位",
    "url": "https://www.qbitai.com/feed",
    "type": "rss",
    "group": "AI",
-   "platform": "qbitai"
+   "platform": "qbitai",
+   "lang": "zh"
   },
   {
    "name": "InfoQ 中文",
    "url": "https://www.infoq.cn/feed",
    "type": "rss",
    "group": "AI",
-   "platform": "infoq"
+   "platform": "infoq",
+   "lang": "zh"
   },
   {
    "name": "橘鸦AI早报",
    "url": "https://daily.juya.uk/rss.xml",
    "type": "rss",
    "group": "AI",
-   "platform": "juya"
+   "platform": "juya",
+   "explode_digest": 1,
+   "lang": "zh"
   },
   {
    "name": "Readhub",
    "url": "https://api.readhub.cn/topic/list?page=1&size=20",
    "type": "json",
    "group": "科技",
-   "platform": "readhub"
+   "platform": "readhub",
+   "lang": "zh"
   },
   {
    "name": "阮一峰周刊",
    "url": "https://www.ruanyifeng.com/blog/atom.xml",
    "type": "rss",
    "group": "科技",
-   "platform": "ruanyifeng"
+   "platform": "ruanyifeng",
+   "lang": "zh"
   },
   {
    "name": "知乎热榜",
    "url": "https://api.zhihu.com/topstory/hot-lists/total?limit=20",
    "type": "json",
    "group": "热榜",
-   "platform": "zhihu"
+   "platform": "zhihu",
+   "lang": "zh"
   },
   {
    "name": "百度热搜",
    "url": "https://top.baidu.com/api/board?platform=wise&tab=realtime",
    "type": "json",
    "group": "热榜",
-   "platform": "baidu"
+   "platform": "baidu",
+   "lang": "zh"
   },
   {
    "name": "百度热搜直连",
@@ -70,21 +80,24 @@
    "type": "sdata",
    "group": "热榜",
    "fallback_for": "百度热搜",
-   "platform": "baidu"
+   "platform": "baidu",
+   "lang": "zh"
   },
   {
    "name": "B站热门",
    "url": "https://api.bilibili.com/x/web-interface/popular?ps=20&pn=1",
    "type": "json",
    "group": "热榜",
-   "platform": "bilibili"
+   "platform": "bilibili",
+   "lang": "zh"
   },
   {
    "name": "头条热榜",
    "url": "https://www.toutiao.com/hot-event/hot-board/?origin=toutiao_pc",
    "type": "json",
    "group": "热榜",
-   "platform": "toutiao"
+   "platform": "toutiao",
+   "lang": "zh"
   },
   {
    "name": "澎湃热榜",
@@ -93,56 +106,64 @@
    "group": "热榜",
    "url_tpl": "https://www.thepaper.cn/newsDetail_forward_{contId}",
    "need_link": true,
-   "platform": "thepaper"
+   "platform": "thepaper",
+   "lang": "zh"
   },
   {
    "name": "贴吧热议",
    "url": "https://tieba.baidu.com/hottopic/browse/topicList",
    "type": "json",
    "group": "热榜",
-   "platform": "tieba"
+   "platform": "tieba",
+   "lang": "zh"
   },
   {
    "name": "参考消息",
    "url": "http://china.cankaoxiaoxi.com/json/channel/zhongguo/list.json",
    "type": "json",
    "group": "热榜",
-   "platform": "cankaoxiaoxi"
+   "platform": "cankaoxiaoxi",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 微博",
    "url": "https://newsnow.busiyi.world/api/s?id=weibo",
    "type": "json",
    "group": "热榜",
-   "platform": "weibo"
+   "platform": "weibo",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 抖音",
    "url": "https://newsnow.busiyi.world/api/s?id=douyin",
    "type": "json",
    "group": "热榜",
-   "platform": "douyin"
+   "platform": "douyin",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 掘金",
    "url": "https://newsnow.busiyi.world/api/s?id=juejin",
    "type": "json",
    "group": "科技",
-   "platform": "juejin"
+   "platform": "juejin",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 虎扑",
    "url": "https://newsnow.busiyi.world/api/s?id=hupu",
    "type": "json",
    "group": "热榜",
-   "platform": "hupu"
+   "platform": "hupu",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 财联社热门",
    "url": "https://newsnow.busiyi.world/api/s?id=cls-hot",
    "type": "json",
    "group": "财经",
-   "platform": "cls"
+   "platform": "cls",
+   "lang": "zh"
   },
   {
    "name": "金十快讯",
@@ -151,7 +172,8 @@
    "group": "财经",
    "cache_bust": "t",
    "url_tpl": "https://flash.jin10.com/detail/{id}",
-   "platform": "jin10"
+   "platform": "jin10",
+   "lang": "zh"
   },
   {
    "name": "36氪快讯",
@@ -160,133 +182,152 @@
    "group": "财经",
    "pattern": "<a class=\"item-title\"[^>]*?href=\"(?P<href>[^\"]+)\"[^>]*>(?P<title>.*?)</a>",
    "base": "https://www.36kr.com",
-   "platform": "36kr"
+   "platform": "36kr",
+   "lang": "zh"
   },
   {
    "name": "IT之家",
    "url": "https://www.ithome.com/rss/",
    "type": "rss",
    "group": "科技",
-   "platform": "ithome"
+   "platform": "ithome",
+   "lang": "zh"
   },
   {
    "name": "钛媒体",
    "url": "https://www.tmtpost.com/rss.xml",
    "type": "rss",
    "group": "财经",
-   "platform": "tmtpost"
+   "platform": "tmtpost",
+   "lang": "zh"
   },
   {
    "name": "华尔街见闻快讯",
    "url": "https://api-one.wallstcn.com/apiv1/content/lives?channel=global-channel&limit=20",
    "type": "json",
    "group": "财经",
-   "platform": "wallstreetcn"
+   "platform": "wallstreetcn",
+   "lang": "zh"
   },
   {
    "name": "新浪科技",
    "url": "https://feed.mix.sina.com.cn/api/roll/get?pageid=372&lid=2431&num=20",
    "type": "json",
    "group": "科技",
-   "platform": "sina"
+   "platform": "sina",
+   "lang": "zh"
   },
   {
    "name": "爱范儿",
    "url": "https://www.ifanr.com/feed",
    "type": "rss",
    "group": "科技",
-   "platform": "ifanr"
+   "platform": "ifanr",
+   "lang": "zh"
   },
   {
    "name": "极客公园",
    "url": "https://www.geekpark.net/rss",
    "type": "rss",
    "group": "科技",
-   "platform": "geekpark"
+   "platform": "geekpark",
+   "lang": "zh"
   },
   {
    "name": "雷峰网",
    "url": "https://www.leiphone.com/feed",
    "type": "rss",
    "group": "科技",
-   "platform": "leiphone"
+   "platform": "leiphone",
+   "lang": "zh"
   },
   {
    "name": "cnBeta",
    "url": "https://www.cnbeta.com.tw/backend.php",
    "type": "rss",
    "group": "科技",
-   "platform": "cnbeta"
+   "platform": "cnbeta",
+   "lang": "zh"
   },
   {
    "name": "Solidot",
    "url": "https://www.solidot.org/index.rss",
    "type": "rss",
    "group": "科技",
-   "platform": "solidot"
+   "platform": "solidot",
+   "lang": "zh"
   },
   {
    "name": "开源中国",
    "url": "https://www.oschina.net/news/rss",
    "type": "rss",
    "group": "科技",
-   "platform": "oschina"
+   "platform": "oschina",
+   "lang": "zh"
   },
   {
    "name": "少数派",
    "url": "https://sspai.com/feed",
    "type": "rss",
    "group": "产品",
-   "platform": "sspai"
+   "platform": "sspai",
+   "lang": "zh"
   },
   {
    "name": "人人都是产品经理",
    "url": "https://www.woshipm.com/feed",
    "type": "rss",
    "group": "产品",
-   "platform": "woshipm"
+   "platform": "woshipm",
+   "lang": "zh"
   },
   {
    "name": "小众软件",
    "url": "https://www.appinn.com/feed/",
    "type": "rss",
    "group": "产品",
-   "platform": "appinn"
+   "platform": "appinn",
+   "lang": "zh"
   },
   {
    "name": "V2EX 热门",
    "url": "https://www.v2ex.com/api/topics/hot.json",
    "type": "json",
    "group": "产品",
-   "platform": "v2ex"
+   "platform": "v2ex",
+   "lang": "zh"
   },
   {
    "name": "HelloGitHub",
    "url": "https://hellogithub.com/rss",
    "type": "rss",
    "group": "产品",
-   "platform": "hellogithub"
+   "platform": "hellogithub",
+   "lang": "zh"
   },
   {
    "name": "HN 中文",
    "url": "https://hn.buzzing.cc/feed.xml",
    "type": "rss",
    "group": "海外",
-   "platform": "hackernews"
+   "platform": "hackernews",
+   "lang": "zh"
   },
   {
    "name": "Product Hunt 中文",
    "url": "https://ph.buzzing.cc/feed.xml",
    "type": "rss",
    "group": "海外",
-   "platform": "producthunt"
+   "platform": "producthunt",
+   "lang": "zh"
   },
   {
    "name": "BestBlogs",
    "url": "https://www.bestblogs.dev/en/feeds/rss",
    "type": "rss",
    "group": "海外",
-   "platform": "bestblogs"
+   "platform": "bestblogs",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 联合早报",
@@ -294,7 +335,8 @@
    "type": "json",
    "group": "热榜",
    "platform": "zaobao",
-   "added": "2026-10-09"
+   "added": "2026-10-09",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 酷安",
@@ -302,7 +344,8 @@
    "type": "json",
    "group": "科技",
    "platform": "coolapk",
-   "added": "2026-10-09"
+   "added": "2026-10-09",
+   "lang": "zh"
   },
   {
    "name": "NewsNow MKTNews 快讯",
@@ -310,7 +353,8 @@
    "type": "json",
    "group": "财经",
    "platform": "mktnews",
-   "added": "2026-10-09"
+   "added": "2026-10-09",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 懂球帝",
@@ -318,7 +362,8 @@
    "type": "json",
    "group": "热榜",
    "platform": "dongqiudi",
-   "added": "2026-10-09"
+   "added": "2026-10-09",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 卫星通讯社",
@@ -326,7 +371,8 @@
    "type": "json",
    "group": "热榜",
    "platform": "sputniknewscn",
-   "added": "2026-10-09"
+   "added": "2026-10-09",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 远景论坛 Win11",
@@ -334,7 +380,8 @@
    "type": "json",
    "group": "科技",
    "platform": "pcbeta",
-   "added": "2026-10-09"
+   "added": "2026-10-09",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 雪球 热门股票",
@@ -342,7 +389,8 @@
    "type": "json",
    "group": "财经",
    "platform": "xueqiu",
-   "added": "2026-10-09"
+   "added": "2026-10-09",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 格隆汇",
@@ -350,7 +398,8 @@
    "type": "json",
    "group": "财经",
    "platform": "gelonghui",
-   "added": "2026-10-09"
+   "added": "2026-10-09",
+   "lang": "zh"
   },
   {
    "name": "NewsNow 法布财经 快讯",
@@ -358,7 +407,8 @@
    "type": "json",
    "group": "财经",
    "platform": "fastbull",
-   "added": "2026-10-09"
+   "added": "2026-10-09",
+   "lang": "zh"
   },
   {
    "name": "NewsNow Github Today",
@@ -366,6 +416,286 @@
    "type": "json",
    "group": "海外",
    "platform": "github",
+   "added": "2026-10-09",
+   "lang": "zh"
+  },
+  {
+   "name": "TechCrunch",
+   "url": "https://techcrunch.com/feed/",
+   "type": "rss",
+   "group": "海外",
+   "platform": "techcrunch",
+   "lang": "en"
+  },
+  {
+   "name": "The Verge",
+   "url": "https://www.theverge.com/rss/index.xml",
+   "type": "rss",
+   "group": "海外",
+   "platform": "theverge",
+   "lang": "en"
+  },
+  {
+   "name": "Ars Technica",
+   "url": "https://feeds.arstechnica.com/arstechnica/index",
+   "type": "rss",
+   "group": "海外",
+   "platform": "arstechnica",
+   "lang": "en"
+  },
+  {
+   "name": "MIT Technology Review",
+   "url": "https://www.technologyreview.com/feed/",
+   "type": "rss",
+   "group": "海外",
+   "platform": "mittr",
+   "lang": "en"
+  },
+  {
+   "name": "BBC Technology",
+   "url": "http://feeds.bbci.co.uk/news/technology/rss.xml",
+   "type": "rss",
+   "group": "海外",
+   "platform": "bbc",
+   "lang": "en"
+  },
+  {
+   "name": "Wired",
+   "url": "https://www.wired.com/feed/rss",
+   "type": "rss",
+   "group": "海外",
+   "platform": "wired",
+   "lang": "en"
+  },
+  {
+   "name": "The Information",
+   "url": "https://www.theinformation.com/feed",
+   "type": "rss",
+   "group": "海外",
+   "platform": "theinformation",
+   "lang": "en"
+  },
+  {
+   "name": "Lobsters",
+   "url": "https://lobste.rs/rss",
+   "type": "rss",
+   "group": "海外",
+   "platform": "lobsters",
+   "lang": "en"
+  },
+  {
+   "name": "Product Hunt",
+   "url": "https://www.producthunt.com/feed",
+   "type": "rss",
+   "group": "海外",
+   "platform": "producthunt",
+   "lang": "en"
+  },
+  {
+   "name": "Google News AI（英文）",
+   "url": "https://news.google.com/rss/search?q=AI&hl=en-US&gl=US&ceid=US:en",
+   "type": "rss",
+   "group": "AI",
+   "platform": "googlenews",
+   "lang": "en"
+  },
+  {
+   "name": "VentureBeat AI",
+   "url": "https://venturebeat.com/category/ai/feed/",
+   "type": "rss",
+   "group": "AI",
+   "platform": "venturebeat",
+   "lang": "en"
+  },
+  {
+   "name": "OpenAI News",
+   "url": "https://openai.com/news/rss.xml",
+   "type": "rss",
+   "group": "AI",
+   "platform": "openai",
+   "lang": "en"
+  },
+  {
+   "name": "Reddit r/artificial",
+   "url": "https://www.reddit.com/r/artificial/top/.rss?t=day",
+   "type": "rss",
+   "group": "AI",
+   "platform": "reddit",
+   "lang": "en"
+  },
+  {
+   "name": "arXiv cs.AI",
+   "url": "http://export.arxiv.org/rss/cs.AI",
+   "type": "rss",
+   "group": "AI",
+   "platform": "arxiv",
+   "lang": "en"
+  },
+  {
+   "name": "ITmedia AI+（日文）",
+   "url": "https://rss.itmedia.co.jp/rss/2.0/aiplus.xml",
+   "type": "rss",
+   "group": "AI",
+   "platform": "itmedia",
+   "lang": "ja"
+  },
+  {
+   "name": "Yahoo Japan 热门（日文）",
+   "url": "https://news.yahoo.co.jp/rss/topics/top-picks.xml",
+   "type": "rss",
+   "group": "海外",
+   "platform": "yahoojp",
+   "lang": "ja"
+  },
+  {
+   "name": "NHK 主要（日文）",
+   "url": "https://www3.nhk.or.jp/rss/news/cat0.xml",
+   "type": "rss",
+   "group": "海外",
+   "platform": "nhk",
+   "lang": "ja"
+  },
+  {
+   "name": "韩联社（英文）",
+   "url": "https://en.yna.co.kr/RSS/news.xml",
+   "type": "rss",
+   "group": "海外",
+   "platform": "yonhap",
+   "lang": "en"
+  },
+  {
+   "name": "Google Trends 美国",
+   "url": "https://trends.google.com/trending/rss?geo=US",
+   "type": "rss",
+   "group": "热搜词",
+   "platform": "gtrends-us",
+   "lang": "en",
+   "keep_date_titles": true
+  },
+  {
+   "name": "Google Trends 英国",
+   "url": "https://trends.google.com/trending/rss?geo=GB",
+   "type": "rss",
+   "group": "热搜词",
+   "platform": "gtrends-gb",
+   "lang": "en",
+   "keep_date_titles": true
+  },
+  {
+   "name": "Google Trends 新加坡",
+   "url": "https://trends.google.com/trending/rss?geo=SG",
+   "type": "rss",
+   "group": "热搜词",
+   "platform": "gtrends-sg",
+   "lang": "en",
+   "keep_date_titles": true
+  },
+  {
+   "name": "Google Trends 日本",
+   "url": "https://trends.google.com/trending/rss?geo=JP",
+   "type": "rss",
+   "group": "热搜词",
+   "platform": "gtrends-jp",
+   "lang": "ja",
+   "keep_date_titles": true
+  },
+  {
+   "name": "Google Trends 韩国",
+   "url": "https://trends.google.com/trending/rss?geo=KR",
+   "type": "rss",
+   "group": "热搜词",
+   "platform": "gtrends-kr",
+   "lang": "ko",
+   "keep_date_titles": true
+  },
+  {
+   "name": "Google Trends 台湾",
+   "url": "https://trends.google.com/trending/rss?geo=TW",
+   "type": "rss",
+   "group": "热搜词",
+   "platform": "gtrends-tw",
+   "lang": "zh-tw",
+   "keep_date_titles": true
+  },
+  {
+   "name": "Google Trends 香港",
+   "url": "https://trends.google.com/trending/rss?geo=HK",
+   "type": "rss",
+   "group": "热搜词",
+   "platform": "gtrends-hk",
+   "lang": "zh-hk",
+   "keep_date_titles": true
+  },
+  {
+   "name": "NewsNow 牛客",
+   "url": "https://newsnow.busiyi.world/api/s?id=nowcoder",
+   "type": "json",
+   "group": "科技",
+   "platform": "nowcoder",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 凤凰网",
+   "url": "https://newsnow.busiyi.world/api/s?id=ifeng",
+   "type": "json",
+   "group": "热榜",
+   "platform": "ifeng",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 虫部落 最新",
+   "url": "https://newsnow.busiyi.world/api/s?id=chongbuluo-latest",
+   "type": "json",
+   "group": "热榜",
+   "platform": "chongbuluo",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 豆瓣",
+   "url": "https://newsnow.busiyi.world/api/s?id=douban",
+   "type": "json",
+   "group": "热榜",
+   "platform": "douban",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow Steam",
+   "url": "https://newsnow.busiyi.world/api/s?id=steam",
+   "type": "json",
+   "group": "产品",
+   "platform": "steam",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 腾讯新闻 综合早报",
+   "url": "https://newsnow.busiyi.world/api/s?id=tencent-hot",
+   "type": "json",
+   "group": "热榜",
+   "platform": "tencent",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow Freebuf",
+   "url": "https://newsnow.busiyi.world/api/s?id=freebuf",
+   "type": "json",
+   "group": "科技",
+   "platform": "freebuf",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 腾讯视频 热搜榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=qqvideo-tv-hotsearch",
+   "type": "json",
+   "group": "热榜",
+   "platform": "qqvideo",
+   "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 爱奇艺 热播榜",
+   "url": "https://newsnow.busiyi.world/api/s?id=iqiyi-hot-ranklist",
+   "type": "json",
+   "group": "热榜",
+   "platform": "iqiyi",
    "added": "2026-10-09"
   }
  ]

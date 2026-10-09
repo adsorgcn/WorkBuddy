@@ -198,5 +198,141 @@
  "NewsNow Github Today": {
   "fails": 0,
   "last_ok": "2026-10-09"
+ },
+ "TechCrunch": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "The Verge": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Ars Technica": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "MIT Technology Review": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "BBC Technology": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Wired": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "The Information": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Lobsters": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Product Hunt": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Google News AI（英文）": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "VentureBeat AI": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "OpenAI News": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Reddit r/artificial": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "arXiv cs.AI": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "ITmedia AI+（日文）": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Yahoo Japan 热门（日文）": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NHK 主要（日文）": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "韩联社（英文）": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Google Trends 美国": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Google Trends 英国": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Google Trends 新加坡": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Google Trends 日本": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Google Trends 韩国": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Google Trends 台湾": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "Google Trends 香港": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow 牛客": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow 凤凰网": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow 虫部落 最新": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow 豆瓣": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow Steam": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow 腾讯新闻 综合早报": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow Freebuf": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow 腾讯视频 热搜榜": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
+ },
+ "NewsNow 爱奇艺 热播榜": {
+  "fails": 0,
+  "last_ok": "2026-10-09"
  }
 }

@@ -43,6 +43,45 @@ def strip_tags(s):
     return html.unescape(re.sub(r"<[^>]+>", "", s or "")).strip()
 
 
+DATE_TITLE = re.compile(r"^[\s\d\-/.:年月日号周星期一二三四五六日天期第]+$")
+
+
+def pure_date_title(s):
+    """标题只是日期或编号（早报入口、列表页），不是一个具体的题。"""
+    return bool(s) and bool(DATE_TITLE.match(s.strip()))
+
+
+def explode_digest(raw, keep=1):
+    """日报类 RSS：标题是日期，正文里才是一条条标题。把最近 keep 条日报的正文拆成单条，带上日报的链接和日期。"""
+    out = []
+    try:
+        root = ET.fromstring(raw)
+    except ET.ParseError:
+        return out
+    done = 0
+    for it in root.iter("item"):
+        title = strip_tags(it.findtext("title") or "")
+        if not pure_date_title(title):
+            continue
+        link = (it.findtext("link") or "").strip()
+        date = (it.findtext("pubDate") or "").strip()
+        desc = strip_tags(it.findtext("description") or it.findtext("{http://purl.org/rss/1.0/modules/content/}encoded") or "")
+        parts = re.split(r"↗\s*\d*|\n|(?<=[。！？])\s", desc)
+        for p in parts:
+            p = re.sub(r"^\s*(AI 早报.*?概览|概览|要闻|开发生态|产品应用|模型|行业|研究|观点|视频版.*?哔哩哔哩)\s*", "", p.strip())
+            p = re.sub(r"\s*\d+\s*$", "", p).strip(" ：:｜|")
+            if 8 <= len(p) <= 90 and not pure_date_title(p) and not JUNK.search(p):
+                out.append((p, link, date))
+        done += 1
+        if done >= keep:
+            break
+    seen, uniq = set(), []
+    for x in out:
+        if x[0] not in seen:
+            seen.add(x[0]); uniq.append(x)
+    return uniq
+
+
 def parse_rss(raw):
     items = []
     try:
@@ -200,6 +239,8 @@ def pull(src, n):
     typ = src.get("type", "rss")
     if typ == "rss":
         items = parse_rss(raw)
+        if src.get("explode_digest"):
+            items = explode_digest(raw, int(src.get("explode_digest") if str(src.get("explode_digest")).isdigit() else 1)) + items
     elif typ == "json":
         items = parse_json(raw, src.get("url_tpl"))
     elif typ == "js":
@@ -210,6 +251,8 @@ def pull(src, n):
         items = parse_html(raw, src)
     if src.get("need_link"):
         items = [it for it in items if it[1]]
+    if not src.get("keep_date_titles"):
+        items = [it for it in items if not pure_date_title(it[0])]
     return src, items[:n], "%.1fs" % (time.time() - t0)
 
 
@@ -236,19 +279,52 @@ def cosine(a, b):
     return len(a & b) / math.sqrt(len(a) * len(b))
 
 
+VERSION_RE = re.compile(r"(?<![\w.])v?\d+(?:\.\d+)+(?![\w.])|(?<=[A-Za-z])\s?\d+(?:\.\d+)?(?![\w.])", re.I)
+EN_STOP = set("the a an of to in on for and or with by at from is are was were be as it its this that these those new how why what when who vs".split())
+
+
+def is_ascii(t):
+    return bool(re.fullmatch(r"[\x00-\x7f]*", t))
+
+
+def words(t):
+    return set(w for w in re.findall(r"[a-z0-9][a-z0-9.+#-]*", t.lower()) if len(w) >= 3 and w not in EN_STOP)
+
+
+def versions(t):
+    return set(m.group(0).strip().lower() for m in VERSION_RE.finditer(t))
+
+
+def same_event(a, b, ga, gb, th):
+    """候选合并判定：字面相似。中文二字片段余弦，英文词集余弦；完全相同必合并；两边都带版本号且不同不合并。"""
+    va, vb = versions(a), versions(b)
+    if va and vb and va != vb:
+        return False
+    na, nb = norm_title(a), norm_title(b)
+    if na and na == nb:
+        return True
+    if is_ascii(a) or is_ascii(b):
+        if not (is_ascii(a) and is_ascii(b)):
+            return False
+        wa, wb = words(a), words(b)
+        return bool(wa and wb) and cosine(wa, wb) >= 0.5 and len(wa & wb) / min(len(wa), len(wb)) >= 0.6
+    if not (ga and gb):
+        return False
+    return cosine(ga, gb) >= th and len(ga & gb) / min(len(ga), len(gb)) >= 0.6
+
+
 def cluster(entries, th=0.42):
-    """entries: [(source, title, url, time)]。返回 [[entry,...], ...]，按不同源的个数降序。"""
+    """entries: [(source, title, url, time)]。返回 [[entry,...], ...]，按不同源的个数降序。
+    这是候选合并，不是已确认的同一事件：只看标题字面，成员标题要留给人核对。"""
     gs = [grams(e[1]) for e in entries]
     used = [False] * len(entries)
     clusters = []
     for i in range(len(entries)):
         if used[i]:
             continue
-        if re.fullmatch(r"[\x00-\x7f]*", entries[i][1]):
-            used[i] = True; clusters.append([entries[i]]); continue
         group = [entries[i]]; used[i] = True
         for j in range(i + 1, len(entries)):
-            if not used[j] and cosine(gs[i], gs[j]) >= th:
+            if not used[j] and same_event(entries[i][1], entries[j][1], gs[i], gs[j], th):
                 group.append(entries[j]); used[j] = True
         clusters.append(group)
     clusters.sort(key=lambda g: (-len(set(e[0] for e in g)), -len(g)))
