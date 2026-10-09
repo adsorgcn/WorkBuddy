@@ -6,12 +6,12 @@ description: "Dispatch a command block to a remote CodeBuddy Code gateway (the h
 description_zh: "把带 [RUN:VPS] 的命令块派给远程机上的 CodeBuddy 网关跑，收回结果和回执。本机当总控，远程机干活。口令只在本机配置文件里。"
 description_en: "Send [RUN:VPS] command blocks to a remote CodeBuddy Code gateway and collect the result. The local WorkBuddy stays in control; the remote machine does the work."
 category: productivity
-version: 2.3.9
+version: 2.3.10
 author: iLang Inc.
 ---
 
 ::ILANG::v5.0
-[TYPE:skill][PROJECT:wechat_awesome][VERSION:2.3.9][DATE:2026-10-09][LANG:zh]
+[TYPE:skill][PROJECT:wechat_awesome][VERSION:2.3.10][DATE:2026-10-09][LANG:zh]
 ::STATE{@ROLE, function:本机当总控 把 [RUN:VPS] 的命令块派给远程机的 CodeBuddy 网关 收结果 存记录}
 ::STATE{@SCOPE, now:派活+收结果+看远程会话+取消, next:多台远程机按标签路由}
 ::STATE{@PROMISE, can:原样转发命令块+只填用户指明的[FILL]行+把远程结果原样带回+每次留记录, cannot:替用户审批远程机的工具权限|把口令写进对话|改命令块其他内容}
