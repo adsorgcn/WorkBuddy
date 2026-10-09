@@ -16,6 +16,7 @@
 
 - 公众号后台「设置与开发 → 基本配置」：AppID、AppSecret（重置生成，只存配置文件）。
 - 「IP 白名单」：填调接口那台机器的公网 IP。报 40164 时 errmsg 里带着当前 IP，照抄进白名单。
+- 本机没有固定 IP：白名单填远程机的 IP，本机走 ssh 隧道出去，见下面「本机没有固定 IP」一节。
 - 凭据存 `~/.wechat-mp.env`（两行 APPID= 与 SECRET=）或环境变量，永远不贴进对话。
 
 ## 端点
@@ -39,7 +40,8 @@
 | digest | 120 字内，单图文有效；不填取正文前 54 字 |
 | content | HTML，2 万字符内、1MB 内；JS 被剥；图片必须是 uploadimg 返回的地址，外链图被过滤 |
 | thumb_media_id | news 类型必填，永久素材 |
-| need_open_comment / only_fans_can_comment | 0 或 1 |
+| need_open_comment / only_fans_can_comment | 0 或 1；脚本 --comment open（1/0，默认）、fans（1/1）、off（0/0） |
+| content_source_url | 「阅读原文」跳转地址，可空；脚本 --source-url，要 http(s) 开头 |
 
 ## 发布接口（微信认证企业号，2.2 起有 publish 命令）
 
@@ -110,9 +112,24 @@ publish_status 对照（脚本按这张表报中文）：
 | 40002 | 参数不合法 | media_id 或 publish_id 写错 |
 | 40007 | media_id 不合法 | 推草稿时：先看封面是不是走 material/add_material 传成的永久素材（结果文件里有 thumb_media_id），不是就重传封面再推，是的话就是 media_id 抄错了；发布时：草稿 media_id 抄错了，从最近一份 draft-result 文件重新复制 |
 | 45110 | author 太长 | 16 字内；中文如果被转成 \uXXXX 也会超，脚本已按 UTF-8 直传 |
+| 45003 | 标题太长 | 32 字内 |
+| 45004 | digest 太长 | 120 字内 |
+| 45166 | content 不合法 | 正文里有微信不认的标签或属性（script、iframe、外站图片地址、没转义的尖括号），或小绿书 newspic 的正文传了 HTML。先 render 看 HTML，去掉可疑标签再推 |
+| 53404 / 53405 | 内容涉嫌违规 / 含敏感内容 | 去后台看具体提示，改稿再推；脚本不改 |
 | 45009 | 接口次数到顶 | 明天 |
 | 48001 | 没权限 | 看上面「谁能用」；发布接口只有认证号能用 |
 | 53503 / 53504 / 53505 | 发布检查没过 / 要去官网用 / 要先手动保存 | 看上面「发布接口错误码」 |
+
+## 本机没有固定 IP（隧道借远程机的 IP）
+
+家里宽带、手机热点的 IP 会变，白名单填不住。办法：白名单只填一台固定 IP 的远程机，本机开一条 ssh 隧道，微信接口的流量从远程机出去，AppSecret 和稿子都不离开本机。
+
+1. 本机开隧道，开着别关：`ssh -N -L 127.0.0.1:8443:api.weixin.qq.com:443 root@远程机IP`
+2. `~/.wechat-mp.env` 加一行 `TUNNEL=127.0.0.1:8443`（或环境变量 WECHAT_MP_TUNNEL）
+3. 之后 check / push / publish 照常跑。脚本连的是本机 8443，TLS 的 SNI 和证书校验仍按 api.weixin.qq.com，证书对得上，不用关校验。
+4. `python wechat_draft.py tunnel --vps root@远程机IP` 打印这三步；配了 TUNNEL 会顺带发一个测试请求，微信回 40013（测试 appid 无效）就说明隧道通了。
+
+2026-10-09 用一台加拿大机实测：隧道开着时 tunnel 子命令回「ok：隧道通」，check 用假凭据回 40013，请求确实从远程机到了微信。走隧道时 40164 的 errmsg 里带的是远程机 IP，白名单填那个。
 
 ## 接口做不了的三件事（人去后台点）
 

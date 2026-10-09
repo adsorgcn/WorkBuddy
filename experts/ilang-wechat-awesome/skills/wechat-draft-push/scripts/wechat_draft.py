@@ -32,6 +32,9 @@ import time
 import urllib.parse
 import urllib.request
 import uuid
+import http.client
+import socket
+import ssl
 from html import escape
 
 try:
@@ -41,7 +44,10 @@ except Exception:
     pass
 
 BASE = "https://api.weixin.qq.com"
-UA = "wechat-draft-push/2.2"
+UA = "wechat-draft-push/2.3"
+CITATIONS = []            # 正文里的外链 → 文末「参考链接」[n]
+NO_CITE = False           # --no-cite：外链只留文字不留引用
+TUNNEL = None             # (host, port)，本机→远程机的 ssh -L 隧道口，走它去 api.weixin.qq.com
 BODY_IMG_LIMIT = 1024 * 1024          # uploadimg：jpg/png，1MB 以内
 COVER_LIMIT = 10 * 1024 * 1024        # add_material type=image：10MB 以内
 TITLE_MAX, AUTHOR_MAX, DIGEST_MAX = 32, 16, 120
@@ -101,6 +107,43 @@ def cjk_count(text):
 
 
 # ---------- 凭据 ----------
+def load_tunnel():
+    """TUNNEL=127.0.0.1:8443 写在环境变量 WECHAT_MP_TUNNEL 或 ~/.wechat-mp.env 里。有就把对 api.weixin.qq.com 的请求全走它。"""
+    global TUNNEL
+    v = os.environ.get("WECHAT_MP_TUNNEL", "").strip()
+    path = os.environ.get("WECHAT_MP_ENV") or os.path.join(os.path.expanduser("~"), ".wechat-mp.env")
+    if not v and os.path.exists(path):
+        for line in io.open(path, encoding="utf-8"):
+            line = line.strip()
+            if "=" in line and not line.startswith("#"):
+                k, val = line.split("=", 1)
+                if k.strip().upper() in ("TUNNEL", "WECHAT_MP_TUNNEL"):
+                    v = val.strip().strip('"').strip("'")
+    if v:
+        host, _, port = v.rpartition(":")
+        if host and port.isdigit():
+            TUNNEL = (host, int(port))
+    return TUNNEL
+
+
+def tunnel_request(method, url, data=None, headers=None, timeout=60):
+    """连隧道口（本机 ssh -L 开的端口），TLS 的 SNI 和证书校验仍按 api.weixin.qq.com，证书对得上。"""
+    u = urllib.parse.urlsplit(url)
+    path = u.path + ("?" + u.query if u.query else "")
+    ctx = ssl.create_default_context()
+    raw_sock = socket.create_connection(TUNNEL, timeout=timeout)
+    sock = ctx.wrap_socket(raw_sock, server_hostname=u.hostname)
+    conn = http.client.HTTPConnection(u.hostname, 443, timeout=timeout)
+    conn.sock = sock
+    hdrs = {"User-Agent": UA, "Host": u.hostname}
+    hdrs.update(headers or {})
+    conn.request(method, path, body=data, headers=hdrs)
+    resp = conn.getresponse()
+    body = resp.read()
+    conn.close()
+    return body
+
+
 def load_credentials():
     appid = os.environ.get("WECHAT_MP_APPID", "").strip()
     secret = os.environ.get("WECHAT_MP_SECRET", "").strip()
@@ -124,19 +167,27 @@ def load_credentials():
 # ---------- HTTP（标准库） ----------
 def http_json(method, url, data=None, headers=None, timeout=60, fatal=True):
     """fatal=True 时网络错误或非 JSON 直接退出；fatal=False 时返回 {"errcode": -1, "errmsg": ...} 交给调用方处理。"""
-    req = urllib.request.Request(url, data=data, method=method)
-    req.add_header("User-Agent", UA)
-    for k, v in (headers or {}).items():
-        req.add_header(k, v)
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            raw = resp.read()
-    except urllib.error.HTTPError as e:
-        raw = e.read()
-    except Exception as e:
-        if not fatal:
-            return {"errcode": -1, "errmsg": "网络请求失败：%s" % e}
-        die("网络请求失败：%s（%s）" % (e, url.split("?")[0]))
+    if TUNNEL and urllib.parse.urlsplit(url).hostname == "api.weixin.qq.com":
+        try:
+            raw = tunnel_request(method, url, data, headers, timeout)
+        except Exception as e:
+            if not fatal:
+                return {"errcode": -1, "errmsg": "隧道请求失败：%s" % e}
+            die("隧道请求失败：%s。隧道口 %s:%d 开着吗（本机先跑 ssh -N -L，见 tunnel 子命令）" % (e, TUNNEL[0], TUNNEL[1]))
+    else:
+        req = urllib.request.Request(url, data=data, method=method)
+        req.add_header("User-Agent", UA)
+        for k, v in (headers or {}).items():
+            req.add_header(k, v)
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                raw = resp.read()
+        except urllib.error.HTTPError as e:
+            raw = e.read()
+        except Exception as e:
+            if not fatal:
+                return {"errcode": -1, "errmsg": "网络请求失败：%s" % e}
+            die("网络请求失败：%s（%s）" % (e, url.split("?")[0]))
     try:
         return json.loads(raw.decode("utf-8"))   # 微信返回 text/plain 不带 charset，必须自己按 UTF-8 解
     except Exception:
@@ -174,6 +225,11 @@ def explain(j):
         40002: "参数不合法，多半是 media_id 或 publish_id 写错了。",
         40007: "media_id 不合法。推草稿时：先看封面是不是传成了永久素材（结果文件里有 thumb_media_id），不是就重传封面再推，是的话就是 media_id 抄错了；发布时：草稿 media_id 抄错了，从最近一份 draft-result 文件重新复制。",
         45110: "author 太长，16 字以内。",
+        45003: "标题太长，32 字以内。",
+        45004: "digest 太长，120 字以内。",
+        45166: "content 不合法：正文里有微信不认的标签或属性（script/iframe/外站图片地址/未转义的尖括号之类），或小绿书 newspic 的正文传了 HTML。先跑 render 看 HTML，去掉可疑标签再推。",
+        53404: "文章内容涉嫌违规，到公众号后台看具体提示，改正文后再推。",
+        53405: "文章含敏感内容，到公众号后台看具体提示，改正文后再推。",
         45009: "接口调用次数到上限，明天再推。",
         48001: "这个账号没有这个接口的权限。",
         53503: "这篇草稿没过发布检查，去后台看草稿内容。",
@@ -258,9 +314,12 @@ def inline(text, warnings):
         label, url = m.group(1), m.group(2).strip()
         if url.startswith("https://mp.weixin.qq.com/"):
             parts.append('<a href="%s">%s</a>' % (escape(url, quote=True), escape(label)))
-        else:
+        elif NO_CITE:
             warnings.append("正文链接已去掉网址只留文字：%s" % url[:60])
             parts.append(escape(label))
+        else:
+            CITATIONS.append((label, url))
+            parts.append(escape(label) + '<sup>[%d]</sup>' % len(CITATIONS))
         pos = m.end()
     parts.append(escape(text[pos:]))
     s = "".join(parts)
@@ -272,6 +331,7 @@ def inline(text, warnings):
 
 def md_to_html(md_text, drop_first_h1=True):
     """返回 (blocks, images, title_from_h1, warnings)。images = [(占位符, 路径, 说明)]。"""
+    del CITATIONS[:]
     text = md_text.replace("\r\n", "\n").replace("\r", "\n")
     if text.startswith("---\n"):
         end = text.find("\n---\n", 4)
@@ -373,7 +433,12 @@ def md_to_html(md_text, drop_first_h1=True):
 
 
 def assemble(blocks):
-    return ("\n" + BR + "\n").join(blocks)
+    body = ("\n" + BR + "\n").join(blocks)
+    if CITATIONS:
+        rows = "".join('<p style="font-size:13px;color:#888;line-height:1.7;margin:0 0 4px;word-break:break-all;">[%d] %s：%s</p>'
+                       % (i + 1, escape(label), escape(url)) for i, (label, url) in enumerate(CITATIONS))
+        body += "\n" + BR + '\n<section style="margin-top:24px;padding-top:12px;border-top:1px solid #eee;"><p style="font-size:13px;color:#888;margin:0 0 6px;">参考链接</p>%s</section>' % rows
+    return body
 
 
 def check_html(html, mode, images):
@@ -442,6 +507,37 @@ def cmd_render(args):
     sys.exit(1 if errors else 0)
 
 
+def article_opts(args):
+    """draft/add 的三个可选项：留言开关、仅粉丝留言、「阅读原文」地址。"""
+    comment = getattr(args, "comment", "open") or "open"
+    d = {"need_open_comment": 0 if comment == "off" else 1,
+         "only_fans_can_comment": 1 if comment == "fans" else 0}
+    src = (getattr(args, "source_url", None) or "").strip()
+    if src:
+        if not src.startswith(("http://", "https://")):
+            die("--source-url 要以 http:// 或 https:// 开头")
+        d["content_source_url"] = src
+    return d
+
+
+def cmd_tunnel(args):
+    vps = args.vps or "root@远程机IP"
+    print("本机没有固定 IP 时这么用：白名单只填远程机的 IP，本机开一条隧道，微信接口的流量从远程机出去，AppSecret 不离开本机。")
+    print("一 本机开着一条隧道（开着别关）：")
+    print("    ssh -N -L 127.0.0.1:8443:api.weixin.qq.com:443 %s" % vps)
+    print("二 ~/.wechat-mp.env 加一行：TUNNEL=127.0.0.1:8443")
+    print("三 之后 check / push / publish 照常跑，流量自动走隧道。")
+    if not TUNNEL:
+        print("现在没配 TUNNEL，先做第二步再回来测。")
+        return
+    q = urllib.parse.urlencode({"grant_type": "client_credential", "appid": "tunnel-test", "secret": "tunnel-test"})
+    j = http_json("GET", BASE + "/cgi-bin/token?" + q, timeout=20, fatal=False)
+    if j.get("errcode") in (40013, 40125, 41002, 40001):
+        print("ok：隧道通，微信那头收到了请求（回 errcode=%s 是因为用的测试 appid，正常）。" % j.get("errcode"))
+    else:
+        print("隧道不通或微信没回：%s" % explain(j))
+
+
 def cmd_push(args):
     html, images, title, errors, warnings, chars = build(args.md, args.title, "prepush")
     report_build(title, html, images, errors, warnings, chars)
@@ -470,8 +566,8 @@ def cmd_push(args):
     if args.dry_run:
         for ph, p, url in paths:
             html = html.replace(ph, url or escape(p, quote=True))
-        payload = {"articles": [{"title": title, "author": author, "digest": digest, "content": html,
-                                 "thumb_media_id": "<dry-run>", "need_open_comment": 1, "only_fans_can_comment": 0}]}
+        payload = {"articles": [dict({"title": title, "author": author, "digest": digest, "content": html,
+                                      "thumb_media_id": "<dry-run>"}, **article_opts(args))]}
         out = os.path.splitext(args.md)[0] + ".draft-dryrun.json"
         io.open(out, "w", encoding="utf-8", newline="\n").write(json.dumps(payload, ensure_ascii=False, indent=1))
         print("dry-run：没联网。请求体已写到 " + out)
@@ -491,8 +587,8 @@ def cmd_push(args):
     errors, _ = check_html(html, "final", images)
     if errors:
         die("推送前校验不过：" + "；".join(errors))
-    article = {"title": title, "author": author, "digest": digest, "content": html,
-               "thumb_media_id": thumb, "need_open_comment": 1, "only_fans_can_comment": 0}
+    article = dict({"title": title, "author": author, "digest": digest, "content": html,
+                    "thumb_media_id": thumb}, **article_opts(args))
     body = json.dumps({"articles": [article]}, ensure_ascii=False).encode("utf-8")
     j = http_json("POST", BASE + "/cgi-bin/draft/add?access_token=" + token, body,
                   {"Content-Type": "application/json; charset=utf-8"}, timeout=120)
@@ -660,7 +756,11 @@ def main():
     r.add_argument("--md", required=True)
     r.add_argument("--out")
     r.add_argument("--title")
+    r.add_argument("--no-cite", action="store_true", help="外链只留文字，不生成文末「参考链接」")
     p = sub.add_parser("push", help="传图、传封面、推草稿箱、回读")
+    p.add_argument("--no-cite", action="store_true", help="外链只留文字，不生成文末「参考链接」")
+    p.add_argument("--comment", choices=["open", "fans", "off"], default="open", help="留言：open 所有人可留言（默认）/ fans 仅粉丝 / off 关闭")
+    p.add_argument("--source-url", help="「阅读原文」指向的地址（content_source_url），不填就没有")
     p.add_argument("--md", required=True)
     p.add_argument("--title")
     p.add_argument("--cover")
@@ -673,7 +773,12 @@ def main():
     pb.add_argument("--media-id", required=True, help="草稿的 media_id，从 *.draft-result-<时间>.json 里复制")
     pb.add_argument("--reviewed", action="store_true", help="人已经在后台看过这篇草稿并说了发。没有这个参数直接拒绝")
     pb.add_argument("--out-dir", help="结果文件 *.publish-result-<时间>.json 放哪个目录，默认当前目录")
+    tn = sub.add_parser("tunnel", help="本机没有固定 IP：借远程机的 IP 过白名单。打印 ssh 命令，配了 TUNNEL 就顺带测一下通不通")
+    tn.add_argument("--vps", help="远程机 用户@IP，只用来打印 ssh 命令")
     args = ap.parse_args()
+    load_tunnel()
+    global NO_CITE
+    NO_CITE = bool(getattr(args, "no_cite", False))
     if args.cmd == "check":
         cmd_check(args)
     elif args.cmd == "render":
@@ -684,6 +789,8 @@ def main():
         cmd_verify(args)
     elif args.cmd == "publish":
         cmd_publish(args)
+    elif args.cmd == "tunnel":
+        cmd_tunnel(args)
     else:
         ap.print_help()
 

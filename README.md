@@ -8,11 +8,11 @@
 
 | 名称 | 是什么 | 版本 |
 |---|---|---|
-| [公众号爆文专家](experts/ilang-wechat-awesome/) | 专家正文。投喂素材，按 200 多篇实战文章验证的写作基因重组，出 MD 正文、3 个标题、封面图提示词；没素材不写，不编数字不编经历。带下面三个技能 | 2.3.3 |
-| [写稿 wechat-article](experts/ilang-wechat-awesome/skills/wechat-article/) | 23 条写作基因，六段式和八区块两种骨架，标题四个公式，12 项自查，去 AI 味三件套，脱敏表和敏感词红线，封面提示词模板，X、HN、Reddit 速查 | 2.3.3 |
-| [推草稿箱 wechat-draft-push](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check 验凭据和白名单，render 转微信 HTML，push 传图传封面推进草稿箱并回读，verify 回读，publish 只在人看完草稿说「发」后对微信认证号可用。个人主体账号也能推草稿箱。没有删草稿命令 | 2.3.3 |
-| [选题对标 wechat-topic-hunter](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/) | 用你自己的 wxrank key 看榜、搜文章、找号、推文列表、单号对标算阅读中位和爆款倍率、单篇数据。每次花积分前先报价，日上限 300 积分。只拿标题角度和数据，不搬运 | 2.3.3 |
-| [远程派活 remote-dispatch](experts/ilang-wechat-awesome/skills/remote-dispatch/) | 本机当总控：把头上写 [RUN:VPS] 的命令块派给远程机上的 CodeBuddy Code 网关跑，收回结果和回执，每次留记录。口令只在本机配置文件里，远程机的审批由人点 | 2.3.3 |
+| [公众号爆文专家](experts/ilang-wechat-awesome/) | 专家正文。投喂素材，按 200 多篇实战文章验证的写作基因重组，出 MD 正文、3 个标题、封面图提示词；没素材不写，不编数字不编经历。带下面三个技能 | 2.3.4 |
+| [写稿 wechat-article](experts/ilang-wechat-awesome/skills/wechat-article/) | 23 条写作基因，六段式和八区块两种骨架，标题四个公式，12 项自查，去 AI 味三件套和五个信号，脱敏表和敏感词红线，封面提示词模板，X、HN、Reddit 速查 | 2.3.4 |
+| [推草稿箱 wechat-draft-push](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check 验凭据和白名单，render 转微信 HTML，push 传图传封面推进草稿箱并回读，verify 回读，publish 只在人看完草稿说「发」后对微信认证号可用。外链自动收进文末「参考链接」，留言开关和「阅读原文」可设，本机没固定 IP 可走隧道借远程机的 IP。个人主体账号也能推草稿箱。没有删草稿命令 | 2.3.4 |
+| [选题对标 wechat-topic-hunter](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/) | 用你自己的 wxrank key 看榜、搜文章、找号、推文列表、单号对标算阅读中位和爆款倍率、单篇数据。每次花积分前先报价，日上限 300 积分。只拿标题角度和数据，不搬运 | 2.3.4 |
+| [远程派活 remote-dispatch](experts/ilang-wechat-awesome/skills/remote-dispatch/) | 本机当总控：把头上写 [RUN:VPS] 的命令块派给远程机上的 CodeBuddy Code 网关跑，收回结果和回执，每次留记录。口令只在本机配置文件里，远程机的审批由人点 | 2.3.4 |
 
 ## 怎么装
 
@@ -148,6 +148,7 @@
 
 ## 更新记录
 
+- 2.3.4（2026-10-09）：推草稿箱：正文外链不再直接删掉，改成正文留文字加 [n] 角标、网址收进文末「参考链接」（`--no-cite` 回到只留文字）；push 新增 `--comment open|fans|off`（留言开关）和 `--source-url`（阅读原文）；新增 `tunnel` 子命令，本机没有固定 IP 时白名单只填远程机 IP、本机开一条 ssh 隧道借它出去，AppSecret 不离开本机（加拿大机实测通）；错误码表补 45003、45004、45166、53404、53405。写稿：自查表加「AI 味五个信号」。
 - 2.3.3（2026-10-09）：新增远程派活技能 remote-dispatch。本机 WorkBuddy 当总控，把 [RUN:VPS] 的命令块发给远程机上的 CodeBuddy Code 网关（命令行版 WorkBuddy，Linux 也能跑）执行，SSE 收结果，跑完存记录；附网关调用实测笔记（三个必带请求头、UTF-8、结果要在跑的时候收）。
 - 2.3.2（2026-10-09）：只改安装说明。README 分国内版和海外版两条路，国内版放市场截图；海外版给「贴命令让 WorkBuddy 自己装」和手动三步，写明自定义模型只认 OpenAI 兼容接口；加「装完自检」命令。专家和技能内容不变。
 - 2.3.1（2026-10-09）：专家改名「公众号爆文专家」（去掉「结构」两个字，自我介绍和开场白同步改）；写稿技能显示名改「公众号爆文写作」；功能不变。
