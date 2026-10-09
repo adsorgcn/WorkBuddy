@@ -6,7 +6,7 @@ description: "Find WeChat official account (公众号) topics and benchmark acco
 description_zh: "用你自己的 wxrank key 看榜、找对标号、算一个号的阅读中位和爆款倍率、查单篇阅读在看分享，给写稿选题当素材。每次花积分前先报价。只拿标题和角度，不搬运。"
 description_en: "Topic discovery and benchmarking for WeChat official accounts with real read and share numbers from wxrank, on the user's own key. Quotes the cost before each paid call. Never copies content."
 category: writing
-version: 2.3.0
+version: 2.3.1
 author: iLang Inc.
 ---
 

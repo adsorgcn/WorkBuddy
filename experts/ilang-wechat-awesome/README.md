@@ -1,4 +1,4 @@
-# iLang 公众号写作助手 · WeChat-Awesome v2.3
+# 公众号爆文专家 · WeChat-Awesome v2.3.1
 
 `[PARS:@USER]=>[GET:@SRC]=>[DRFT|sty=casual]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]`
 `#iml/0.5/7e29fae7f5ea PS@US GT@SR DRst=casual CK SV@DSgr=date $`
@@ -16,7 +16,7 @@
 ```
 你的素材（文章 / 数据 / 笔记 / 本地文件）
          ↓
-   iLang 公众号写作助手
+   公众号爆文专家
          ↓
   1. 3 个标题（各标公式类型）
   2. MD 正文（带日期存成新文件）
