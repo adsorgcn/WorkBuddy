@@ -1,6 +1,6 @@
 {
   "name": "ilang-wechat-awesome",
-  "version": "2.3.8",
+  "version": "2.3.9",
   "description": "WeChat official account writing assistant with data-driven topic hunting (wxrank, user's own key). Feeds on your source material, restructures it with writing genes distilled from 200+ field-tested articles, runs a 12-point self-check with built-in de-AI editing, outputs publish-ready Markdown plus titles and a cover image prompt, and can push the approved draft into the WeChat draft box through the official API (draft box by default; a verified enterprise account can publish only after a human reviewed the draft and said so). Chinese-first. By iLang.",
   "author": {
     "name": "iLang Inc.",
