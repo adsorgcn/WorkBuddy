@@ -8,10 +8,11 @@
 
 | 名称 | 是什么 | 版本 |
 |---|---|---|
-| [公众号爆文专家](experts/ilang-wechat-awesome/) | 专家正文。投喂素材，按 200 多篇实战文章验证的写作基因重组，出 MD 正文、3 个标题、封面图提示词；没素材不写，不编数字不编经历。带下面三个技能 | 2.3.2 |
-| [写稿 wechat-article](experts/ilang-wechat-awesome/skills/wechat-article/) | 23 条写作基因，六段式和八区块两种骨架，标题四个公式，12 项自查，去 AI 味三件套，脱敏表和敏感词红线，封面提示词模板，X、HN、Reddit 速查 | 2.3.2 |
-| [推草稿箱 wechat-draft-push](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check 验凭据和白名单，render 转微信 HTML，push 传图传封面推进草稿箱并回读，verify 回读，publish 只在人看完草稿说「发」后对微信认证号可用。个人主体账号也能推草稿箱。没有删草稿命令 | 2.3.2 |
-| [选题对标 wechat-topic-hunter](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/) | 用你自己的 wxrank key 看榜、搜文章、找号、推文列表、单号对标算阅读中位和爆款倍率、单篇数据。每次花积分前先报价，日上限 300 积分。只拿标题角度和数据，不搬运 | 2.3.2 |
+| [公众号爆文专家](experts/ilang-wechat-awesome/) | 专家正文。投喂素材，按 200 多篇实战文章验证的写作基因重组，出 MD 正文、3 个标题、封面图提示词；没素材不写，不编数字不编经历。带下面三个技能 | 2.3.3 |
+| [写稿 wechat-article](experts/ilang-wechat-awesome/skills/wechat-article/) | 23 条写作基因，六段式和八区块两种骨架，标题四个公式，12 项自查，去 AI 味三件套，脱敏表和敏感词红线，封面提示词模板，X、HN、Reddit 速查 | 2.3.3 |
+| [推草稿箱 wechat-draft-push](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check 验凭据和白名单，render 转微信 HTML，push 传图传封面推进草稿箱并回读，verify 回读，publish 只在人看完草稿说「发」后对微信认证号可用。个人主体账号也能推草稿箱。没有删草稿命令 | 2.3.3 |
+| [选题对标 wechat-topic-hunter](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/) | 用你自己的 wxrank key 看榜、搜文章、找号、推文列表、单号对标算阅读中位和爆款倍率、单篇数据。每次花积分前先报价，日上限 300 积分。只拿标题角度和数据，不搬运 | 2.3.3 |
+| [远程派活 remote-dispatch](experts/ilang-wechat-awesome/skills/remote-dispatch/) | 本机当总控：把头上写 [RUN:VPS] 的命令块派给远程机上的 CodeBuddy Code 网关跑，收回结果和回执，每次留记录。口令只在本机配置文件里，远程机的审批由人点 | 2.3.3 |
 
 ## 怎么装
 
@@ -60,7 +61,7 @@
 
 **装法二：手动装，三步**
 
-1. 装技能。[发布页](https://github.com/adsorgcn/WorkBuddy/releases) 下最新的 `ilang-wechat-awesome-workbuddy-expert-*.zip`，解压。WorkBuddy 进 Skills 面板，Add skill → Upload skill，依次选 `skills/wechat-article`、`skills/wechat-draft-push`、`skills/wechat-topic-hunter` 三个文件夹，看一眼权限，确认。
+1. 装技能。[发布页](https://github.com/adsorgcn/WorkBuddy/releases) 下最新的 `ilang-wechat-awesome-workbuddy-expert-*.zip`，解压。WorkBuddy 进 Skills 面板，Add skill → Upload skill，依次选 `skills/wechat-article`、`skills/wechat-draft-push`、`skills/wechat-topic-hunter`、`skills/remote-dispatch` 四个文件夹，看一眼权限，确认。
 2. 建专家。专家页右上角「我的专家」→「创建专家」。打开 `agents/ilang-wechat-awesome.md`，开头两行 `---` 之间那段设置跳过，从下面第一行起整段复制到文件末尾，粘进专家提示词。名字填「公众号爆文专家」，头像用 `avatars/expert.png`，把三个技能分配给它。
 3. 选模型。自带模型直接用；自定义模型只能填 OpenAI 兼容接口。
 
@@ -147,6 +148,7 @@
 
 ## 更新记录
 
+- 2.3.3（2026-10-09）：新增远程派活技能 remote-dispatch。本机 WorkBuddy 当总控，把 [RUN:VPS] 的命令块发给远程机上的 CodeBuddy Code 网关（命令行版 WorkBuddy，Linux 也能跑）执行，SSE 收结果，跑完存记录；附网关调用实测笔记（三个必带请求头、UTF-8、结果要在跑的时候收）。
 - 2.3.2（2026-10-09）：只改安装说明。README 分国内版和海外版两条路，国内版放市场截图；海外版给「贴命令让 WorkBuddy 自己装」和手动三步，写明自定义模型只认 OpenAI 兼容接口；加「装完自检」命令。专家和技能内容不变。
 - 2.3.1（2026-10-09）：专家改名「公众号爆文专家」（去掉「结构」两个字，自我介绍和开场白同步改）；写稿技能显示名改「公众号爆文写作」；功能不变。
 - 2.3.0（2026-10-09）：新增选题对标技能 wechat-topic-hunter。用用户自己的 wxrank key：看榜（1 积分，返回阅读在看分享字数和链接，按爆款分排）、搜文章、找号、推文列表、单号对标（阅读中位、爆款倍率、爆款分）、单篇数据；每次花积分前报价，对标要用户点头；日上限 300 积分。专家在用户没素材时先走它出选题清单。
