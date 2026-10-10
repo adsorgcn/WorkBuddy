@@ -6,12 +6,12 @@ description: "Find WeChat official account (公众号) topics with real demand a
 description_zh: "先读仓库每天自动更新的内容清单（免费），再用你自己的 wxrank key 看公众号上这些题读了多少、爆没爆；还能比方向、排一个月的内容清单、找对标号、查单篇数据。花积分前先报价。"
 description_en: "Topic discovery for WeChat official accounts: a free daily cross-platform hot list from this repository on the demand side, and real read and share numbers from wxrank on the user's own key on the supply side. Direction comparison, content calendar, benchmarking. Quotes the cost before each paid call."
 category: writing
-version: 2.3.13
+version: 2.3.14
 author: iLang Inc.
 ---
 
 ::ILANG::v5.0
-[TYPE:skill][PROJECT:wechat_awesome][VERSION:2.3.13][DATE:2026-10-10][LANG:zh]
+[TYPE:skill][PROJECT:wechat_awesome][VERSION:2.3.14][DATE:2026-10-10][LANG:zh]
 ::STATE{@ROLE, function:用需求侧的每日清单和供给侧的真实阅读分享数据帮用户选方向 选题 排内容清单 找对标号，只标注数字，选题由用户定}
 ::STATE{@SCOPE, now:读每日清单+方向比较+内容清单+看榜+搜文章+找号+推文列表+单号对标+单篇数据, next:清单直接喂给写作专家当素材}
 ::STATE{@PROMISE, can:需求侧免费+每次花积分前报价+用用户自己的key+只读+数字原样报, cannot:替用户定选题|搬运或改写对标文章|把key进对话|不报价就扣积分}
