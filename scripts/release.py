@@ -34,25 +34,41 @@ def bump(ver, how):
     return {"patch": "%d.%d.%d" % (a, b, c + 1), "minor": "%d.%d.0" % (a, b + 1), "major": "%d.0.0" % (a + 1)}[how]
 
 
+BACKUP = {}   # dry-run 还原用：改之前的原文
+
+
+def vsub(t, old, new, patterns):
+    """只换完整的版本号：'2.3.1' 不碰 '2.3.12'（后面不能再跟数字或点）。patterns 是带 %s 的模板。"""
+    for pat in patterns:
+        t = re.sub(re.escape(pat % old) + r"(?![\d.])", lambda m: pat % new, t)
+    return t
+
+
+def retag(t, new):
+    """正文里的 [VERSION:x] 不管旧值是多少都对齐到新版本，陈旧标签不会再留在原地。"""
+    return re.sub(r"\[VERSION:[\d.]+\]", "[VERSION:%s]" % new, t)
+
+
 def sync_versions(old, new):
     changed = []
-    def sub(path, pairs):
-        t = read(path); t2 = t
-        for o, n in pairs:
-            t2 = t2.replace(o, n)
+    def sub(path, patterns, tag=False):
+        t = read(path); t2 = vsub(t, old, new, patterns)
+        if tag:
+            t2 = retag(t2, new)
         if t2 != t:
+            BACKUP[path] = t
             write(path, t2); changed.append(os.path.relpath(path, ROOT))
-    sub(PLUGIN, [('"version": "%s"' % old, '"version": "%s"' % new)])
-    sub(MARKET, [('"version": "%s"' % old, '"version": "%s"' % new)])
-    sub(os.path.join(EXP, "agents", "ilang-wechat-awesome.md"), [("[VERSION:%s]" % old, "[VERSION:%s]" % new)])
-    sub(os.path.join(EXP, "README.md"), [("v%s" % old, "v%s" % new)])
+    sub(PLUGIN, ['"version": "%s"'])
+    sub(MARKET, ['"version": "%s"'])
+    sub(os.path.join(EXP, "agents", "ilang-wechat-awesome.md"), [], tag=True)
+    sub(os.path.join(EXP, "README.md"), ["v%s"])
     skills = os.path.join(EXP, "skills")
     for d in sorted(os.listdir(skills)):
         p = os.path.join(skills, d, "SKILL.md")
         if os.path.exists(p):
-            sub(p, [("version: %s" % old, "version: %s" % new), ("[VERSION:%s]" % old, "[VERSION:%s]" % new)])
+            sub(p, ["version: %s"], tag=True)
     for name in ("README.md", "README.en.md"):
-        sub(os.path.join(ROOT, name), [("| %s |" % old, "| %s |" % new), ("v%s" % old, "v%s" % new)])
+        sub(os.path.join(ROOT, name), ["| %s |", "v%s"])
     return changed
 
 
@@ -98,8 +114,8 @@ def main():
     write(notes_path, notes)
     print(notes)
     if a.dry_run:
-        for f in changed:
-            subprocess.run(["git", "checkout", "--", f], cwd=ROOT)
+        for p, orig in BACKUP.items():   # 只还原自己改过的版本号，不碰文件里别的未提交改动
+            write(p, orig)
         print("dry-run：不提交不发版，版本号已还原"); return
     sh("git", "add", "-A")
     if sh("git", "status", "--porcelain"):

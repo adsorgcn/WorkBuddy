@@ -209,50 +209,110 @@ def parse_html(raw, src):
     return dedupe(items)
 
 
-def norm_time(d):
+REL_RE = re.compile(r"(\d+)\s*(秒|分钟|分|小时|时|天|日|周|星期|个月|月)\s*前")
+REL_UNIT = {"秒": 1 / 3600, "分钟": 1 / 60, "分": 1 / 60, "小时": 1, "时": 1, "天": 24, "日": 24, "周": 168, "星期": 168, "个月": 720, "月": 720}
+ISO_RE = re.compile(r"(\d{4})[-/.年](\d{1,2})[-/.月](\d{1,2})日?(?:[T\s]+(\d{1,2}):(\d{2})(?::(\d{2}))?(?:\.\d+)?\s*(Z|[+-]\d{2}:?\d{2})?)?")
+MD_RE = re.compile(r"^(\d{1,2})[-/月](\d{1,2})日?(?:\s+(\d{1,2}):(\d{2}))?$")
+
+
+def norm_time(d, now=None):
+    """各源的时间写法统一成本地钟的 'MM-DD HH:MM'：时间戳、ISO（带时区的换算成本地）、RFC2822（同上）、
+    '22分钟前'、'昨天 12:30'、只有日期的按当天 00:00。认不出的原样截 16 位。"""
     if not d:
         return ""
-    if re.fullmatch(r"\d{10}", d):
-        return datetime.datetime.fromtimestamp(int(d)).strftime("%m-%d %H:%M")
-    if re.fullmatch(r"\d{13}", d):
-        return datetime.datetime.fromtimestamp(int(d) / 1000).strftime("%m-%d %H:%M")
-    m = re.search(r"(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})", d)
-    if m:
-        return "%s-%s %s:%s" % (m.group(2), m.group(3), m.group(4), m.group(5))
+    d = str(d).strip()
+    now = now or datetime.datetime.now()
     try:
+        if re.fullmatch(r"\d{10}", d):
+            return datetime.datetime.fromtimestamp(int(d)).strftime("%m-%d %H:%M")
+        if re.fullmatch(r"\d{13}", d):
+            return datetime.datetime.fromtimestamp(int(d) / 1000).strftime("%m-%d %H:%M")
+        if d.startswith("刚刚") or d in ("今天", "今日"):
+            return now.strftime("%m-%d %H:%M")
+        m = REL_RE.search(d)
+        if m:
+            return (now - datetime.timedelta(hours=int(m.group(1)) * REL_UNIT[m.group(2)])).strftime("%m-%d %H:%M")
+        m = re.match(r"^(今天|昨天|前天)\s*(\d{1,2}):(\d{2})$", d)
+        if m:
+            day = now - datetime.timedelta(days={"今天": 0, "昨天": 1, "前天": 2}[m.group(1)])
+            return day.strftime("%m-%d") + " %02d:%s" % (int(m.group(2)), m.group(3))
+        m = ISO_RE.search(d)
+        if m:
+            dt = datetime.datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4) or 0), int(m.group(5) or 0))
+            tz = m.group(7)
+            if tz:
+                off = 0 if tz.upper() == "Z" else (1 if tz[0] == "+" else -1) * (int(tz[1:3]) * 60 + int(tz[-2:]))
+                dt = dt.replace(tzinfo=datetime.timezone(datetime.timedelta(minutes=off))).astimezone().replace(tzinfo=None)
+            return dt.strftime("%m-%d %H:%M")
+        m = MD_RE.match(d)
+        if m:
+            return "%02d-%02d %02d:%s" % (int(m.group(1)), int(m.group(2)), int(m.group(3) or 0), m.group(4) or "00")
         import email.utils
         dt = email.utils.parsedate_to_datetime(d)
+        if dt.tzinfo is not None:
+            dt = dt.astimezone().replace(tzinfo=None)
         return dt.strftime("%m-%d %H:%M")
     except Exception:
         return d[:16]
 
 
+def age_hours(t, now=None):
+    """'MM-DD HH:MM' → 距今小时数；一月初碰到去年十二月的按去年算；不是这个格式返回 None。"""
+    m = re.match(r"^(\d{2})-(\d{2}) (\d{2}):(\d{2})$", t or "")
+    if not m:
+        return None
+    now = now or datetime.datetime.now()
+    try:
+        dt = datetime.datetime(now.year, int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4)))
+        if dt > now + datetime.timedelta(days=2):
+            dt = dt.replace(year=now.year - 1)
+    except ValueError:
+        return None
+    return (now - dt).total_seconds() / 3600
+
+
+def newest(times, now=None):
+    """一组 'MM-DD HH:MM' 里最新的那个：按距今小时数比，不按字符串比大小，跨年不出错。"""
+    best, best_age = "", None
+    for x in times:
+        a = age_hours(x, now)
+        if a is not None and (best_age is None or a < best_age):
+            best, best_age = x, a
+    return best or (max(times) if times else "")
+
+
 def pull(src, n):
+    """拉一个源。打不开、解析不了、配置坏了都只返回 (src, [], 说明)，不抛异常：一条坏源不能拖死整轮。"""
     t0 = time.time()
-    url = src["url"]
+    url = src.get("url") or ""
+    if not url.startswith("http"):
+        return src, [], "配置坏了 缺 url"
     if src.get("cache_bust"):
         url += ("&" if "?" in url else "?") + "%s=%d" % (src["cache_bust"], int(time.time() * 1000))
     try:
         raw = fetch(url)
     except Exception as e:
         return src, [], "打不开 %s" % type(e).__name__
-    typ = src.get("type", "rss")
-    if typ == "rss":
-        items = parse_rss(raw)
-        if src.get("explode_digest"):
-            items = explode_digest(raw, int(src.get("explode_digest") if str(src.get("explode_digest")).isdigit() else 1)) + items
-    elif typ == "json":
-        items = parse_json(raw, src.get("url_tpl"))
-    elif typ == "js":
-        items = parse_js(raw, src.get("url_tpl"))
-    elif typ == "sdata":
-        items = parse_sdata(raw, src.get("url_tpl"))
-    else:
-        items = parse_html(raw, src)
-    if src.get("need_link"):
-        items = [it for it in items if it[1]]
-    if not src.get("keep_date_titles"):
-        items = [it for it in items if not pure_date_title(it[0])]
+    try:
+        typ = src.get("type", "rss")
+        if typ == "rss":
+            items = parse_rss(raw)
+            if src.get("explode_digest"):
+                items = explode_digest(raw, int(src.get("explode_digest") if str(src.get("explode_digest")).isdigit() else 1)) + items
+        elif typ == "json":
+            items = parse_json(raw, src.get("url_tpl"))
+        elif typ == "js":
+            items = parse_js(raw, src.get("url_tpl"))
+        elif typ == "sdata":
+            items = parse_sdata(raw, src.get("url_tpl"))
+        else:
+            items = parse_html(raw, src)
+        if src.get("need_link"):
+            items = [it for it in items if it[1]]
+        if not src.get("keep_date_titles"):
+            items = [it for it in items if not pure_date_title(it[0])]
+    except Exception as e:
+        return src, [], "解析失败 %s" % type(e).__name__
     return src, items[:n], "%.1fs" % (time.time() - t0)
 
 
@@ -279,7 +339,7 @@ def cosine(a, b):
     return len(a & b) / math.sqrt(len(a) * len(b))
 
 
-VERSION_RE = re.compile(r"(?<![\w.])v?\d+(?:\.\d+)+(?![\w.])|(?<=[A-Za-z])\s?\d+(?:\.\d+)?(?![\w.])", re.I)
+VERSION_RE = re.compile(r"(?<![\w.])v?\d+(?:\.\d+)+(?![\w.])|(?<=[A-Za-z])[\s-]?\d+(?:\.\d+)?(?![\w.])", re.I)
 EN_STOP = set("the a an of to in on for and or with by at from is are was were be as it its this that these those new how why what when who vs".split())
 
 
@@ -292,22 +352,45 @@ def words(t):
 
 
 def versions(t):
-    return set(m.group(0).strip().lower() for m in VERSION_RE.finditer(t))
+    return set(m.group(0).strip(" -").lower() for m in VERSION_RE.finditer(t))
+
+
+OPPOSITES = [("跌破", "突破"), ("下跌", "上涨"), ("跌停", "涨停"), ("新低", "新高"), ("最低", "最高"), ("下降", "上升"), ("下滑", "增长"),
+             ("减少", "增加"), ("亏损", "盈利"), ("低于", "超过"), ("退市", "上市"), ("关闭", "开放"), ("否决", "通过"), ("反对", "支持"),
+             ("败诉", "胜诉"), ("否认", "承认"), ("取消", "恢复"), ("下架", "上架"), ("解约", "签约"), ("离职", "入职"), ("卸任", "上任"),
+             ("跌", "涨"), ("降", "升"), ("减", "增")]
+
+
+def opposite(a, b):
+    """一边说跌破一边说突破这种相反说法，不算同一件事。两边都含同一对词的（涨跌互现）不算。"""
+    for x, y in OPPOSITES:
+        ax, ay, bx, by = x in a, y in a, x in b, y in b
+        if (ax and not ay and by and not bx) or (ay and not ax and bx and not by):
+            return True
+    return False
 
 
 def same_event(a, b, ga, gb, th):
-    """候选合并判定：字面相似。中文二字片段余弦，英文词集余弦；完全相同必合并；两边都带版本号且不同不合并。"""
+    """候选合并判定：字面相似。中文二字片段余弦，英文词集余弦；完全相同必合并；
+    两边都带版本号且不同不合并（含 GPT-4 / GPT-5 这种连字符）；相反说法不合并；
+    中文去掉数字标点后不足 5 字、英文不足 2 个实词的短名只在完全相同时合并。"""
     va, vb = versions(a), versions(b)
     if va and vb and va != vb:
         return False
     na, nb = norm_title(a), norm_title(b)
     if na and na == nb:
         return True
+    if opposite(a, b):
+        return False
     if is_ascii(a) or is_ascii(b):
         if not (is_ascii(a) and is_ascii(b)):
             return False
         wa, wb = words(a), words(b)
-        return bool(wa and wb) and cosine(wa, wb) >= 0.5 and len(wa & wb) / min(len(wa), len(wb)) >= 0.6
+        if min(len(wa), len(wb)) < 2:
+            return False
+        return cosine(wa, wb) >= 0.5 and len(wa & wb) / min(len(wa), len(wb)) >= 0.6
+    if min(len(na), len(nb)) < 5:
+        return False
     if not (ga and gb):
         return False
     return cosine(ga, gb) >= th and len(ga & gb) / min(len(ga), len(gb)) >= 0.6
@@ -382,6 +465,12 @@ def match_group(title, g):
     return True
 
 
+def drop_fallbacks(results):
+    """主源拉到了东西，它的备用源（fallback_for）就不要，免得同一个榜出现两份。results: [(src, items, note)]"""
+    got = {s["name"] for s, items, _ in results if items}
+    return [(s, items, note) for s, items, note in results if not (s.get("fallback_for") and s["fallback_for"] in got)]
+
+
 def load_sources(path=None):
     """读 sources.json，跳过 disabled 的源。"""
     cfg = json.load(io.open(path or os.path.join(HERE, "sources.json"), encoding="utf-8"))
@@ -408,9 +497,7 @@ def main():
             if kws:
                 items = [it for it in items if any(k.lower() in it[0].lower() for k in kws)]
             results.append((src, items, note))
-    got = {s["name"] for s, items, _ in results if items}
-    results = [(s, items, note) for s, items, note in results
-               if not (s.get("fallback_for") and s["fallback_for"] in got)]
+    results = drop_fallbacks(results)
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 
     if a.words:

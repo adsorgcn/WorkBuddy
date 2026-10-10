@@ -2,8 +2,10 @@
 """门禁 + 打包（GitHub 版，仓库内跑，本地和 Actions 都用）。
 
 检查：plugin.json / marketplace.json 版本一致、plugin.skills 列全；专家与每个 SKILL 的 frontmatter 齐；
-IML 工作链用官方编译器回环（IML_REPO 指向 iml-protocol 的克隆，没有就跳过并警告）；无控制字符、正文无长破折号；
-商店文案无效果承诺；@references 存在；脚本能编译。
+IML 工作链用官方编译器回环（IML_REPO 指向 iml-protocol 的克隆，本地没有就跳过并警告，Actions 里没有算失败）；
+技能正文的 [VERSION:] 标签与版本一致；无控制字符、正文无长破折号；商店文案无效果承诺；@references 存在；脚本能编译；
+scripts/test_quality.py 的回归用例全过（聚类、时间归一、排序、日程、排版、版本号同步、派活流）。
+依赖：只用标准库；装了 PyYAML 就用它解 frontmatter，没装就用内置的小解析。
 全过才打包：每个技能一个 zip，加一个专家 zip，默认放 dist/（BUILD_OUT 可改）。
 用法：python scripts/build_packages.py [--no-zip]
 """
@@ -37,8 +39,33 @@ def frontmatter(text):
     m = re.match(r"^---\n(.*?)\n---\n", text, re.S)
     if not m:
         return None, text
-    import yaml
-    return yaml.safe_load(m.group(1)), text[m.end():]
+    try:
+        import yaml
+        return yaml.safe_load(m.group(1)), text[m.end():]
+    except ImportError:
+        return parse_simple_yaml(m.group(1)), text[m.end():]
+
+
+def parse_simple_yaml(s):
+    """没有 PyYAML 时的小解析：key: 值、带引号的值、[a, b] 列表、一层缩进的子键（displayName / profession 这种）。"""
+    out, cur = {}, None
+    for line in s.splitlines():
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        ind = len(line) - len(line.lstrip())
+        k, _, v = line.strip().partition(":")
+        v = v.strip()
+        if len(v) >= 2 and v[0] == v[-1] and v[0] in "\"'":
+            v = v[1:-1]
+        elif v.startswith("[") and v.endswith("]"):
+            v = [x.strip().strip("\"'") for x in v[1:-1].split(",") if x.strip()]
+        elif v == "":
+            v = {}
+        if ind == 0:
+            out[k] = v; cur = k if v == {} else None
+        elif cur is not None and isinstance(out.get(cur), dict):
+            out[cur][k] = v
+    return out
 
 
 def iml_available():
@@ -99,6 +126,7 @@ def main():
             if k not in sfm: fail("%s SKILL frontmatter missing %s" % (d, k))
         if sfm.get("name") != d: fail("%s SKILL name %s != dir" % (d, sfm.get("name")))
         if str(sfm.get("version")) != ver: fail("%s SKILL version %s != plugin %s" % (d, sfm.get("version"), ver))
+        if ("[VERSION:%s]" % ver) not in sbody: fail("%s SKILL body VERSION tag != %s" % (d, ver))
         skills[d] = (sfm, sbody)
         ok("%s frontmatter yaml ok" % d)
 
@@ -118,6 +146,8 @@ def main():
             expect_line(os.path.join(SKILLS_DIR, d, "SKILL.md"), d)
         for p in (os.path.join(EXP, "README.md"), os.path.join(ROOT, "README.md"), os.path.join(ROOT, "README.en.md")):
             if expected.get(AGENT_CHAIN) not in iml_lines(read(p)): fail("README %s lacks the agent IML line" % os.path.relpath(p, ROOT))
+    elif os.environ.get("GITHUB_ACTIONS") or os.environ.get("CI"):
+        fail("IML_REPO 不存在（%s），Actions 里必须能回环校验" % IML_REPO)
     else:
         print("warn IML_REPO 不存在（%s），跳过工作链回环校验" % IML_REPO)
 
@@ -156,6 +186,11 @@ def main():
                     except Exception as e:
                         fail("sources.json: %s" % e)
         ok("%s references + scripts ok" % d)
+    tq = os.path.join(ROOT, "scripts", "test_quality.py")
+    if os.path.exists(tq):
+        r = subprocess.run([sys.executable, tq], cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
+        if r.returncode != 0: fail("quality tests failed:\n" + (r.stdout + r.stderr)[-2500:])
+        else: ok("quality tests: " + ((r.stdout.strip().splitlines() or ["passed"])[-1]))
     if fails:
         print("\n%d FAIL(s)" % len(fails)); sys.exit(1)
     if no_zip:

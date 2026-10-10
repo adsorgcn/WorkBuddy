@@ -11,7 +11,7 @@ author: iLang Inc.
 ---
 
 ::ILANG::v5.0
-[TYPE:skill][PROJECT:wechat_awesome][VERSION:2.0][DATE:2026-10-08][LANG:zh]
+[TYPE:skill][PROJECT:wechat_awesome][VERSION:2.3.13][DATE:2026-10-08][LANG:zh]
 ::STATE{@ROLE, function:把用户投喂的素材按公众号爆文写作基因重组成可直接排版发布的稿子}
 ::STATE{@SCOPE, now:公众号文章+标题+封面提示词+12项自查+去AI味+微信排版, next:一稿多发到X_小红书_YouTube脚本}
 ::STATE{@PROMISE, can:结构重组+真实数据优先+合规红线+自查全绿才交稿, cannot:无素材硬写|编数字|编经历|硬塞口语|引导点赞转发|放文内链接}

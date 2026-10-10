@@ -26,6 +26,11 @@ DEAD_AFTER_DAYS = 7
 RAW_LATEST = "https://raw.githubusercontent.com/adsorgcn/WorkBuddy/main/data/hot/latest.json"
 
 
+def sort_key(r, age):
+    """FRESH_HOURS 内的在前；里面多平台优先，再按发布时间从新到旧；过期的全垫底，垫底的也按这个顺序。"""
+    return (age > FRESH_HOURS, -r["platforms"], age, r["title"])
+
+
 def jload(p, default):
     if not os.path.exists(p):
         return default
@@ -103,7 +108,8 @@ def main():
     jdump(SOURCES, cfg)
     jdump(HEALTH, health)
 
-    # 4 聚类 + 分组
+    # 4 聚类 + 分组（主源拉到了的，备用源不要）
+    results = hs.drop_fallbacks(results)
     entries = []  # (source, title, url, time, group)
     plat_of, lang_of = {}, {}
     for src, items, _ in results:
@@ -123,25 +129,18 @@ def main():
         lead = g[0]
         times = [m[3] for m in g if m[3]]
         rows.append({"title": lead[1], "url": lead[2] or "", "source": lead[0], "lang": lang_of.get(lead[0], "zh"),
-                     "published": max(times) if times else "", "time": lead[3], "fetched": today, "group": group,
+                     "published": hs.newest(times), "time": lead[3] or hs.newest(times), "fetched": today, "group": group,
                      "platforms": len(names), "sources": sorted(set(m[0] for m in g)), "merge": "candidate",
                      "members": [{"source": m[0], "title": m[1], "url": m[2] or ""} for m in g[1:]]})
     def age_key(r):
-        # 'MM-DD HH:MM' → 距今小时数；没有时间按 FRESH_HOURS 边界处理（既不当最新也不当最旧）
-        m = re.match(r"^(\d{2})-(\d{2}) (\d{2}):(\d{2})$", r.get("published") or "")
-        if not m:
-            return FRESH_HOURS
-        try:
-            dt = datetime.datetime(datetime.date.today().year, int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4)))
-        except ValueError:
-            return FRESH_HOURS
-        h = (datetime.datetime.now() - dt).total_seconds() / 3600
-        return h + 24 * 365 if h < -48 else h
+        # 距今小时数；没有时间的按 FRESH_HOURS 边界处理（既不当最新也不当最旧）
+        a = hs.age_hours(r.get("published"))
+        return FRESH_HOURS if a is None else a
     by_group = {k: [] for k in GROUPS}
     for r in rows:
         by_group.setdefault(r["group"], []).append(r)
     for k in by_group:
-        lst = sorted(by_group[k], key=lambda r: (-r["platforms"], age_key(r) > FRESH_HOURS, age_key(r), r["title"]))
+        lst = sorted(by_group[k], key=lambda r: sort_key(r, age_key(r)))
         picked, per_src = [], {}
         for r in lst:
             if per_src.get(r["source"], 0) >= PER_SOURCE_CAP:
@@ -151,12 +150,13 @@ def main():
             if len(picked) >= a.n:
                 break
         by_group[k] = picked
-    hot_now = sorted([r for r in rows if r["platforms"] >= 2], key=lambda r: -r["platforms"])[:20]
+    hot_now = sorted([r for r in rows if r["platforms"] >= 2], key=lambda r: (-r["platforms"], age_key(r)))[:20]
     total = sum(len(v) for v in by_group.values())
 
     out = {"date": today, "generated_at": now, "feed": RAW_LATEST,
            "how_to_use": "这是需求侧：今天各平台在聊什么。供给侧用你自己的 wxrank key 查公众号上这些题读了多少、爆没爆，两边对上才是题。platforms 是按标题相似度合并出来的候选数，不是已确认的同一事件，members 里有各源原标题，自己核。",
-           "rules": {"per_source_cap": PER_SOURCE_CAP, "fresh_hours": FRESH_HOURS, "date_titles": "dropped", "digests": "exploded into items", "cluster": "candidate merge by title similarity; zh 2-gram cosine, en word cosine, identical titles always merge, different version numbers never merge"},
+           "rules": {"per_source_cap": PER_SOURCE_CAP, "fresh_hours": FRESH_HOURS, "date_titles": "dropped", "digests": "exploded into items", "cluster": "candidate merge by title similarity; zh 2-gram cosine, en word cosine, identical titles always merge, different version numbers never merge (incl. GPT-4 vs GPT-5), opposite wordings (跌破/突破 etc.) never merge, short names (zh < 5 chars, en < 2 words) merge only when identical",
+                     "sort": "within each group: items within fresh_hours first, then more platforms first, then newest first; older items at the bottom", "time": "MM-DD HH:MM in Asia/Shanghai; relative and date-only source times normalised"},
            "sources": {"active": len([s for s in sources if not s.get("disabled")]), "total": len(sources), **changes},
            "hot_now": hot_now, "groups": by_group}
     jdump(os.path.join(HOT_DIR, today + ".json"), out)
@@ -176,7 +176,7 @@ def main():
         lst = by_group.get(k) or []
         if not lst:
             continue
-        md += ["## %s（%d 条，同一个源最多 %d 条，按发布时间从新到旧）" % (k, len(lst), PER_SOURCE_CAP), "", "| 题 | 源 | 平台数 | 发布时间 | 链接 |", "|---|---|---|---|---|"]
+        md += ["## %s（%d 条，同一个源最多 %d 条，%d 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）" % (k, len(lst), PER_SOURCE_CAP, FRESH_HOURS), "", "| 题 | 源 | 平台数 | 发布时间 | 链接 |", "|---|---|---|---|---|"]
         for r in lst:
             md.append("| %s | %s | %d | %s | %s |" % (r["title"].replace("|", "｜"), r["source"], r["platforms"], r["published"] or "-", r["url"] or "-"))
         md.append("")

@@ -306,7 +306,16 @@ def upload_cover(token, path):
 
 # ---------- Markdown → 微信 HTML ----------
 def inline(text, warnings):
-    """行内：转义、图片占位、链接去 URL、粗体、斜体、行内代码。"""
+    """行内：行内图片只留说明文字（并提醒单独成行）、行内代码先护住（里面的 * ** [] 都不排版）、转义、链接去 URL、粗体、斜体。
+    标题、列表、引用、表格、段落都走这一个函数。"""
+    for mm in INLINE_IMG_RE.finditer(text):
+        warnings.append("行内图片请单独成行：" + mm.group(2)[:60])
+    text = INLINE_IMG_RE.sub(lambda mm: mm.group(1), text)
+    codes = []
+    def keep(m):
+        codes.append(INLINE_CODE + escape(m.group(1)) + "</span>")
+        return "\x00%d\x00" % (len(codes) - 1)
+    text = re.sub(r"`([^`]+)`", keep, text)
     parts = []
     pos = 0
     for m in LINK_RE.finditer(text):
@@ -323,10 +332,21 @@ def inline(text, warnings):
         pos = m.end()
     parts.append(escape(text[pos:]))
     s = "".join(parts)
-    s = re.sub(r"`([^`]+)`", lambda m: INLINE_CODE + m.group(1) + "</span>", s)
     s = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
     s = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"<em>\1</em>", s)
+    s = re.sub("\x00(\\d+)\x00", lambda m: codes[int(m.group(1))], s)
     return s
+
+
+def join_lines(parts):
+    """软换行拼回一段：两边都是英文、数字的补一个空格，中文直接接上。"""
+    out = parts[0] if parts else ""
+    for p in parts[1:]:
+        if out and p and re.search(r"[A-Za-z0-9,.;:!?)\"']$", out) and re.match(r"[A-Za-z0-9(\"']", p):
+            out += " " + p
+        else:
+            out += p
+    return out
 
 
 def md_to_html(md_text, drop_first_h1=True):
@@ -392,12 +412,13 @@ def md_to_html(md_text, drop_first_h1=True):
             while i < len(lines) and lines[i].strip().startswith("|"):
                 rows.append([c.strip() for c in lines[i].strip().strip("|").split("|")])
                 i += 1
+            labels = [inline(h, warnings) if h else "" for h in header]   # 表头只排一次，里面的链接只引一次
             for row in rows:
                 cells = [inline(c, warnings) for c in row]
                 card = '<section style="padding:12px 15px;background-color:#f0f7ff;border-left:4px solid #1a73e8;margin:0;">'
                 card += '<p style="font-size:15px;font-weight:bold;color:#111;line-height:1.8;letter-spacing:0.5px;margin:0;">%s</p>' % (cells[0] if cells else "")
                 for k, c in enumerate(cells[1:], 1):
-                    label = inline(header[k], warnings) if k < len(header) and header[k] else ""
+                    label = labels[k] if k < len(labels) else ""
                     card += P + (label + "：" if label else "") + c + "</p>"
                 card += "</section>"
                 blocks.append(card)
@@ -424,11 +445,7 @@ def md_to_html(md_text, drop_first_h1=True):
         while i < len(lines) and lines[i].strip() and not re.match(r"^(#{1,6}\s|```|>|\||!\[|[-*•]\s|\d+[.、]\s|-{3,}$)", lines[i].strip()):
             para.append(lines[i].strip())
             i += 1
-        ptxt = "".join(para)
-        for mm in INLINE_IMG_RE.finditer(ptxt):
-            warnings.append("行内图片请单独成行：" + mm.group(2)[:60])
-        ptxt = INLINE_IMG_RE.sub(lambda mm: mm.group(1), ptxt)
-        blocks.append(P + inline(ptxt, warnings) + "</p>")
+        blocks.append(P + inline(join_lines(para), warnings) + "</p>")
     return blocks, images, title, warnings
 
 

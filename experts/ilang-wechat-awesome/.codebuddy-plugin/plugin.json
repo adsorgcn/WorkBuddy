@@ -45,7 +45,7 @@
     "zh": "公众号爆文专家"
   },
   "displayDescription": {
-    "en": "Hunt topics with real read and share data first, then feed it your source material and it restructures the piece with writing genes distilled from 200+ field-tested WeChat articles, runs a 12-point self-check with built-in de-AI editing, then outputs publish-ready Markdown, three titles and a cover image prompt while following WeChat content rules. One sentence pushes the approved draft into your WeChat draft box (never publishes). By iLang.",
+    "en": "Hunt topics with real read and share data first, then feed it your source material and it restructures the piece with writing genes distilled from 200+ field-tested WeChat articles, runs a 12-point self-check with built-in de-AI editing, then outputs publish-ready Markdown, three titles and a cover image prompt while following WeChat content rules. One sentence pushes the approved draft into your WeChat draft box; it publishes only after you have read the draft in the WeChat backend and said 发. By iLang.",
     "zh": "投喂素材出公众号文章：先看榜选题，爆文基因重组，12项自查，去AI味，出正文标题封面词，可推草稿箱。"
   },
   "avatar": "avatars/expert.png",

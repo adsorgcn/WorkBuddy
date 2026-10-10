@@ -21,6 +21,7 @@
 网关的三个硬规矩（实测）：请求头带 X-CodeBuddy-Request: 1、Authorization: Bearer 口令、Host: localhost:<端口>；
 正文 UTF-8；结果要在跑的时候挂 /runs/{id}/stream 收，跑完再挂就没了（脚本会自动回退到会话历史）。
 """
+import socket
 import argparse, datetime, io, json, os, re, sys, time, uuid
 import urllib.request, urllib.error
 from urllib.parse import urlparse
@@ -131,7 +132,8 @@ def extract_texts(obj, out):
 
 
 def read_stream(url, pw, port, run_id, max_wait):
-    """挂 SSE，收 message 事件里的 content.markdown，到 done 为止。返回 (markdowns, status, raw_error)。"""
+    """挂 SSE，收 message 事件里的 content.markdown，到 done 为止。返回 (markdowns, status, raw_error)。
+    流中途卡住、断掉都不抛栈：返回已收到的部分和 timeout / 流中断 的状态。"""
     req = urllib.request.Request(url + "/api/v1/runs/%s/stream" % run_id, headers=headers(pw, port, {"Accept": "text/event-stream"}))
     mds, status, event = [], None, None
     deadline = time.time() + max_wait
@@ -146,34 +148,39 @@ def read_stream(url, pw, port, run_id, max_wait):
     if "json" in ctype:
         return mds, status, resp.read().decode("utf-8", "replace")[:300]
     buf = []
-    for line in resp:
-        if time.time() > deadline:
-            return mds, status or "timeout", "超时 %ds" % max_wait
-        line = line.decode("utf-8", "replace").rstrip("\r\n")
-        if line.startswith("event:"):
-            event = line[6:].strip()
-        elif line.startswith("data:"):
-            buf.append(line[5:].strip())
-        elif line == "":
-            if buf:
-                data = "\n".join(buf); buf = []
-                try:
-                    d = json.loads(data)
-                except Exception:
-                    d = {"raw": data}
-                if event == "message":
-                    status = d.get("status") or status
-                    md = (d.get("content") or {}).get("markdown") if isinstance(d.get("content"), dict) else None
-                    if md:
-                        mds.append(md)
-                    calls = (d.get("agent") or {}).get("toolCalls") or []
-                    if calls:
-                        print("  [远程动了 %d 个工具]" % len(calls), file=sys.stderr)
-                elif event == "done":
-                    return mds, status or "completed", None
-                elif event in ("error",):
-                    return mds, "error", data[:300]
-            event = None
+    try:
+        for line in resp:
+            if time.time() > deadline:
+                return mds, status or "timeout", "超时 %ds" % max_wait
+            line = line.decode("utf-8", "replace").rstrip("\r\n")
+            if line.startswith("event:"):
+                event = line[6:].strip()
+            elif line.startswith("data:"):
+                buf.append(line[5:].strip())
+            elif line == "":
+                if buf:
+                    data = "\n".join(buf); buf = []
+                    try:
+                        d = json.loads(data)
+                    except Exception:
+                        d = {"raw": data}
+                    if event == "message":
+                        status = d.get("status") or status
+                        md = (d.get("content") or {}).get("markdown") if isinstance(d.get("content"), dict) else None
+                        if md:
+                            mds.append(md)
+                        calls = (d.get("agent") or {}).get("toolCalls") or []
+                        if calls:
+                            print("  [远程动了 %d 个工具]" % len(calls), file=sys.stderr)
+                    elif event == "done":
+                        return mds, status or "completed", None
+                    elif event in ("error",):
+                        return mds, "error", data[:300]
+                event = None
+    except (TimeoutError, socket.timeout) as e:
+        return mds, status or "timeout", "超时 %ds（流卡住：%s）" % (max_wait, e)
+    except Exception as e:
+        return mds, status or "stream-broken", "流中断 %s: %s" % (type(e).__name__, str(e)[:120])
     return mds, status or "closed", None
 
 
@@ -212,6 +219,7 @@ def cmd_send(args):
         die("要 --file 或 --text")
     if not text.strip():
         die("要发的内容是空的")
+    orig = text
     if not getattr(args, "raw", False):
         text = VIA_NOTE + "\n\n" + text
     client_id = "dispatch-" + uuid.uuid4().hex[:12]
@@ -231,7 +239,7 @@ def cmd_send(args):
     result = "\n\n".join(m for m in mds if m) if mds else None
     if not result and err and "RUN_NOT_FOUND" in err:
         print("  跑得太快没挂上流，改从会话历史读…", file=sys.stderr)
-        result = fallback_history(url, pw, port, text)
+        result = fallback_history(url, pw, port, orig)   # 用原正文对会话名，不带 ::NOTE 前缀
         status = status or "completed"
     if not result and err:
         status = status or "error"

@@ -32,7 +32,6 @@ FEED_LOCAL = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.pat
 ENV = os.path.join(os.path.expanduser("~"), ".wxrank.env")
 LOG = os.path.join(os.path.expanduser("~"), ".wxrank-usage.log")
 DAILY_CAP = int(os.environ.get("WXRANK_DAILY_CAP", "300"))
-PRICE = {"score": 0, "artlist": 1, "getso": 10, "getsu": 10, "getps": 5, "getrk": 2, "artinfo": 1, "artdata": 5}
 ERR = {1000: "积分不足 或 key 不对（key 错时 wxrank 也回 1000）先核 ~/.wxrank.env 再去 data.wxrank.com 充值",
        1001: "参数为空 或不是公众号文章链接", 1002: "请求失败或文章验证失败 可以重试一次", 1003: "获取失败 可以重试一次",
        1004: "wxrank 服务异常 稍后再试", 1008: "请求太频繁 歇一会再查", 9999: "超过 QPS 上限 歇一秒再查"}
@@ -259,6 +258,12 @@ def cmd_article(a, key):
     tail(units, bal)
 
 
+def idx_of(it):
+    """art_url 里的 idx=N：1 是每次推送的头条，2 起是次条。"""
+    m = re.search(r"idx=(\d)", str(it.get("art_url") or ""))
+    return int(m.group(1)) if m else None
+
+
 def cmd_benchmark(a, key):
     n = max(1, min(a.n, 20))
     units = 5 + 2 * n
@@ -271,10 +276,11 @@ def cmd_benchmark(a, key):
     logit("benchmark-posts", a.wxid, len(lst), 5)
     if not lst:
         print("这个号最近一页没有推文，或原始ID不对（5 积分已扣）"); tail(5, bal); return
-    # only the first article of each push (idx=1) is the headline; keep order newest first
+    # 只查每次推送的头条（idx=1 或没有 idx 的）：次条不代表这个号的水平，也省积分；顺序保持最新在前
+    heads = [it for it in lst if (idx_of(it) or 1) == 1]
     rows = []
     spent = 5
-    for it in lst[:n]:
+    for it in heads[:n]:
         url = re.sub(r"\s+", "", str(it.get("art_url") or ""))
         try:
             u = clean_url(url)
@@ -326,6 +332,12 @@ def feed_rows(feed, groups=None, kws=None, hot_only=False, n=15):
             if groups and g not in groups:
                 continue
             rows.extend(lst[:n])
+    out = []
+    for r in rows:
+        r = dict(r)
+        r["time"] = r.get("published") or r.get("time") or ""   # 合并组的领头条可能没时间，published 是组里最新的
+        out.append(r)
+    rows = out
     if kws:
         rows = [r for r in rows if any(k.lower() in r["title"].lower() for k in kws)]
     return rows
@@ -375,9 +387,23 @@ def cmd_direction(a, key):
     tail(len(words), bal)
 
 
+def plan_dates(start, per_week, n):
+    """从 start 起每周 per_week 篇的日期表：第 i 篇在 start 后 round(i*7/per_week) 天，平均下来每周正好 per_week 篇（2 篇/周＝隔 4 天、3 天、4 天…）。"""
+    return [start + datetime.timedelta(days=int(i * 7 / per_week + 0.5)) for i in range(n)]
+
+
 def cmd_calendar(a, key):
-    feed, where = load_feed()
+    # 参数先核完再扣积分
     kws = [x.strip() for x in a.keyword.split(",") if x.strip()]
+    if not kws:
+        die("--keyword 至少给一个词")
+    if not (1 <= a.per_week <= 7):
+        die("--per-week 1 到 7")
+    try:
+        start = datetime.date.fromisoformat(a.start) if a.start else datetime.date.today() + datetime.timedelta(days=1)
+    except ValueError:
+        die("--start 要写成 YYYY-MM-DD，例如 2026-10-14")
+    feed, where = load_feed()
     rows = feed_rows(feed, None, kws, False, 50)
     if len(rows) < a.n:
         rows += [r for r in feed.get("hot_now", []) if r not in rows]
@@ -390,13 +416,9 @@ def cmd_calendar(a, key):
     logit("calendar", kws[0], len(lst), 1)
     supply = {"total": (data or {}).get("total"), "max_read": max([num(it.get("read_num")) for it in lst] or [0]),
               "titles": [clean(it.get("title"), 40) for it in lst[:5]]}
-    start = datetime.date.fromisoformat(a.start) if a.start else datetime.date.today() + datetime.timedelta(days=1)
-    step = max(1, round(7 / max(1, a.per_week)))
     plan = []
-    d = start
-    for i, r in enumerate(rows, 1):
+    for i, (r, d) in enumerate(zip(rows, plan_dates(start, a.per_week, len(rows))), 1):
         plan.append({"no": i, "date": d.isoformat(), "title": r["title"], "platforms": r.get("platforms", 1), "source": r.get("source", ""), "url": r.get("url", ""), "group": r.get("group", "")})
-        d += datetime.timedelta(days=step)
     print("内容清单「%s」%d 条，从 %s 起每周 %d 篇（需求侧来自仓库清单 %s；供给侧 公众号上「%s」%s 命中 %s 篇 最高阅读 %d）" % (
         kws[0], len(plan), start.isoformat(), a.per_week, feed.get("date"), kws[0], a.month or "当月", supply["total"], supply["max_read"]))
     print("| 序 | 计划日期 | 题 | 平台数 | 来源 | 链接 |")

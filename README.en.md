@@ -34,7 +34,7 @@ Each step hands the next an I-Lang block. One machine, one agent, the whole chai
 
 ## Today's topic list, refreshed daily
 
-[HOT-LIST.md](HOT-LIST.md) is for people, `data/hot/latest.json` for agents. GitHub Actions rebuilds both every morning at 06:30 Beijing time: 40+ public sources (Zhihu, Weibo, Douyin, Baidu, Bilibili, Toutiao, The Paper, Tieba, Reference News, 36Kr, Jin10, CLS, IT Home, QbitAI, SSPAI, V2EX, Hacker News, Product Hunt and more), clustered across platforms so the same story on several platforms is marked, grouped into six directions with 15 items each.
+[HOT-LIST.md](HOT-LIST.md) is for people, `data/hot/latest.json` for agents. GitHub Actions rebuilds both every morning at 06:30 Beijing time: 80+ public sources in Chinese, English, Japanese and Korean (Zhihu, Weibo, Douyin, Baidu, Bilibili, Toutiao, The Paper, Tieba, Reference News, 36Kr, Jin10, CLS, IT Home, QbitAI, SSPAI, V2EX, Hacker News, Product Hunt, TechCrunch, BBC, ITmedia, Yonhap, Google Trends for seven regions and more; sources are added and retired automatically, the current count is at the top of HOT-LIST.md), clustered across platforms so the same story on several platforms is marked, grouped into seven directions with 15 items each, items from the last 72 hours first.
 
 Sources manage themselves: candidates that return content for a platform not yet covered are added automatically; a source that fails seven days in a row is retired and revived when it works again. Every change is logged in [UPDATES.md](UPDATES.md).
 

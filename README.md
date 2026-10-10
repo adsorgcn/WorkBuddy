@@ -34,7 +34,7 @@
 
 ## 今日内容清单，每天自动更新
 
-[HOT-LIST.md](HOT-LIST.md) 是人读的，`data/hot/latest.json` 是机器读的，每天北京时间早上六点半由 GitHub Actions 自动跑：拉四十多个公开热点源（知乎、微博、抖音、百度、B 站、头条、澎湃、贴吧、参考消息、36 氪、金十、财联社、IT 之家、量子位、少数派、V2EX、HN、Product Hunt 等），跨平台聚类，同一件事几个平台在聊标出来，按 AI、科技、热榜、财经、产品、海外六个方向分组，每个方向 15 条。
+[HOT-LIST.md](HOT-LIST.md) 是人读的，`data/hot/latest.json` 是机器读的，每天北京时间早上六点半由 GitHub Actions 自动跑：拉八十多个公开热点源（中、英、日、韩：知乎、微博、抖音、百度、B 站、头条、澎湃、贴吧、参考消息、36 氪、金十、财联社、IT 之家、量子位、少数派、V2EX、HN、Product Hunt、TechCrunch、BBC、ITmedia、韩联社、Google Trends 七个地区等；源每天自动增减，当前数量见 HOT-LIST.md 开头），跨平台聚类，同一件事几个平台在聊标出来，按 AI、科技、热榜、财经、产品、海外、热搜词七个方向分组，每个方向 15 条，72 小时内的在前。
 
 源也是自动管的：候选池里能拉到东西、而且这个平台还没有源的，自动加进来；连续 7 天拉不到的自动下线，哪天通了自动恢复。每次增减写在 [UPDATES.md](UPDATES.md)。
 
@@ -208,6 +208,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 每日清单的增减在 [UPDATES.md](UPDATES.md)，每个版本改了什么在 [发布页](https://github.com/adsorgcn/WorkBuddy/releases)。大版本：
 
+- 2.3.14（2026-10-10）：按两份外部检测报告修。清单：一条坏源不再拖死整轮；72 小时内的在前、多平台优先再按新旧，相对时间（22分钟前）、只有日期、带时区的时间都归到北京时间，备用源不再和主源同时出现；聚类加三道闸：跌破/突破这类相反说法不合并、四字以内的短名只在完全相同时合并、GPT-4 和 GPT-5 这种连字符版本号不合并。选题：`feed` 显示发布时间；`calendar` 每周篇数算准、参数错在扣积分之前就报；`benchmark` 只查每次推送的头条。推草稿箱：行内代码里的星号不再排版、表头链接只引一次、英文软换行补空格、标题列表引用表格里的行内图片也只留说明。派活：流中断不再抛栈、回退找会话用原正文。发版：同步版本号不再误伤更长的版本号、dry-run 不再丢未提交改动、技能正文的版本标签一起同步。门禁加回归测试（`scripts/test_quality.py`）、Actions 里缺 IML 编译器算失败、没装 PyYAML 也能跑；三个 http 源改 https。
 - 2.3.6（2026-10-10）：改成任何 Agent 都能装的公众号全链路。新增每日内容清单（`data/hot/latest.json`、`HOT-LIST.md`，Actions 每天自动拉四十多个源、跨平台聚类、自动加源和下线）和更新即发版；选题技能加 `feed`（免费读清单）、`direction`（方向比较）、`calendar`（内容清单）三个命令，热点源脚本并入选题技能；任何 Agent 一条 I-Lang 命令自己学自己装（内置 IML 工作链），写明唯一要花钱的是 wxrank 额度、接口哪台机器都能连。
 - 2.3.5（2026-10-09）：远程派活补齐远程机那一半：`setup-gateway.sh`（Linux）和 `setup-gateway.ps1`（Windows）一键起 CodeBuddy 网关；派出正文前加 `::NOTE{via:remote-dispatch …}`；允许本机按用户指明填 [FILL] 行。
 - 2.3.4（2026-10-09）：推草稿箱：外链收进文末「参考链接」（`--no-cite` 关）；`--comment`、`--source-url`；`tunnel` 子命令借远程机 IP 过白名单；错误码表补全。写稿自查加「AI 味五个信号」。

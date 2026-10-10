@@ -119,7 +119,7 @@
   },
   {
    "name": "参考消息",
-   "url": "http://china.cankaoxiaoxi.com/json/channel/zhongguo/list.json",
+   "url": "https://china.cankaoxiaoxi.com/json/channel/zhongguo/list.json",
    "type": "json",
    "group": "热榜",
    "platform": "cankaoxiaoxi",
@@ -453,7 +453,7 @@
   },
   {
    "name": "BBC Technology",
-   "url": "http://feeds.bbci.co.uk/news/technology/rss.xml",
+   "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
    "type": "rss",
    "group": "海外",
    "platform": "bbc",
@@ -525,7 +525,7 @@
   },
   {
    "name": "arXiv cs.AI",
-   "url": "http://export.arxiv.org/rss/cs.AI",
+   "url": "https://export.arxiv.org/rss/cs.AI",
    "type": "rss",
    "group": "AI",
    "platform": "arxiv",
