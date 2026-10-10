@@ -6,7 +6,7 @@ description: "WeChat official account (公众号) article writing. Use when the 
 description_zh: "投喂素材，按爆文写作基因重组成公众号文章：3 个标题、MD 正文、封面图提示词、12 项自查、内置去 AI 味、合规红线。不接无素材请求。"
 description_en: "Turn your own source material into a WeChat article with field-tested structure, a 12-point self-check, built-in de-AI editing and compliance rules. No material, no article. Built on the iLang protocol (ilang.ai)."
 category: writing
-version: 2.3.12
+version: 2.3.13
 author: iLang Inc.
 ---
 
