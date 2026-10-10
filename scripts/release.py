@@ -25,8 +25,8 @@ def sh(*cmd, check=True, capture=True):
     return (r.stdout or "").strip()
 
 
-def read(p): return io.open(p, encoding="utf-8").read()
-def write(p, t): io.open(p, "w", encoding="utf-8", newline="\n").write(t)
+def read(p): return io.open(p, encoding="utf-8", newline="").read()   # 不翻译换行，CRLF 原样保留
+def write(p, t): io.open(p, "w", encoding="utf-8", newline="").write(t)   # 原样写回，不改换行风格
 
 
 def bump(ver, how):
