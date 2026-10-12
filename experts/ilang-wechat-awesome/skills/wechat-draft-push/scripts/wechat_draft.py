@@ -37,6 +37,14 @@ import socket
 import ssl
 from html import escape
 
+# 强制 IPv4（老板 2026-10-12 定）：公众号 IP 白名单按 IPv4 核，机器走 IPv6 出去会报 40164 而且 errmsg 里是个 v6 地址，填不进去。
+_getaddrinfo_orig = socket.getaddrinfo
+def _getaddrinfo_v4_first(*args, **kwargs):
+    res = _getaddrinfo_orig(*args, **kwargs)
+    v4 = [r for r in res if r[0] == socket.AF_INET]
+    return v4 or res
+socket.getaddrinfo = _getaddrinfo_v4_first
+
 try:
     sys.stdout.reconfigure(encoding="utf-8")
     sys.stderr.reconfigure(encoding="utf-8")
@@ -218,7 +226,7 @@ def multipart(fields, file_field, filename, file_bytes, content_type):
 def explain(j):
     code = j.get("errcode")
     tips = {
-        40164: "调接口的这台机器的公网 IP 不在白名单里。去公众号后台「设置与开发 → 基本配置 → IP 白名单」加上 errmsg 里那个 IP。",
+        40164: "调接口的这台机器的公网 IP 不在白名单里。去公众号后台「设置与开发 → 基本配置 → IP 白名单」加上 errmsg 里那个 IP，加完再跑一次。本机跑的，家里 IP 变了会再报一次，再加一次就行，白名单能存多个，旧的不用删。",
         40013: "AppID 不对。",
         40125: "AppSecret 不对，或者被重置过。",
         40001: "access_token 失效，重跑一次。",
@@ -539,7 +547,7 @@ def article_opts(args):
 
 def cmd_tunnel(args):
     vps = args.vps or "root@远程机IP"
-    print("本机没有固定 IP 时这么用：白名单只填远程机的 IP，本机开一条隧道，微信接口的流量从远程机出去，AppSecret 不离开本机。")
+    print("备选，不想每次 IP 变了都去加白名单时用：白名单只填远程机的 IP，本机开一条隧道，微信接口的流量从远程机出去，AppSecret 不离开本机。")
     print("一 本机开着一条隧道（开着别关）：")
     print("    ssh -N -L 127.0.0.1:8443:api.weixin.qq.com:443 %s" % vps)
     print("二 ~/.wechat-mp.env 加一行：TUNNEL=127.0.0.1:8443")
@@ -790,7 +798,7 @@ def main():
     pb.add_argument("--media-id", required=True, help="草稿的 media_id，从 *.draft-result-<时间>.json 里复制")
     pb.add_argument("--reviewed", action="store_true", help="人已经在后台看过这篇草稿并说了发。没有这个参数直接拒绝")
     pb.add_argument("--out-dir", help="结果文件 *.publish-result-<时间>.json 放哪个目录，默认当前目录")
-    tn = sub.add_parser("tunnel", help="本机没有固定 IP：借远程机的 IP 过白名单。打印 ssh 命令，配了 TUNNEL 就顺带测一下通不通")
+    tn = sub.add_parser("tunnel", help="备选：借远程机的 IP 过白名单（不想每次 IP 变了都加白名单时用）。打印 ssh 命令，配了 TUNNEL 就顺带测一下通不通")
     tn.add_argument("--vps", help="远程机 用户@IP，只用来打印 ssh 命令")
     args = ap.parse_args()
     load_tunnel()
