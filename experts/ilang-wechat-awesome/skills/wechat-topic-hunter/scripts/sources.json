@@ -697,6 +697,14 @@
    "group": "热榜",
    "platform": "iqiyi",
    "added": "2026-10-09"
+  },
+  {
+   "name": "NewsNow 靠谱新闻",
+   "url": "https://newsnow.busiyi.world/api/s?id=kaopu",
+   "type": "json",
+   "group": "热榜",
+   "platform": "kaopu",
+   "added": "2026-10-14"
   }
  ]
 }

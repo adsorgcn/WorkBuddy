@@ -1,208 +1,204 @@
-# 今日内容清单 · 2026-10-13
+# 今日内容清单 · 2026-10-14
 
-需求侧：今天各平台在聊什么，84 个源（中、英、日、韩），每天早上自动拉一次，机器生成。供给侧（公众号上这些题读了多少、爆没爆）用你自己的 wxrank key 查，两边对上才是题。机器可读版 `data/hot/latest.json`。「几个平台」是按标题相似度合并出来的候选数，不是核实过的同一事件，成员标题都列着，自己核。
+需求侧：今天各平台在聊什么，85 个源（中、英、日、韩），每天早上自动拉一次，机器生成。供给侧（公众号上这些题读了多少、爆没爆）用你自己的 wxrank key 查，两边对上才是题。机器可读版 `data/hot/latest.json`。「几个平台」是按标题相似度合并出来的候选数，不是核实过的同一事件，成员标题都列着，自己核。
 
 ## 多个平台同时在聊（20 组，按标题相似度合并的候选，成员标题在下面，自己核）
 
-- **[6 个平台]** Meta 发布 Muse Wonder 系列前沿模型（AIHOT 热点Top10） https://aihot.news/items/v3pogrzxrk9oba4blox86d0w8
-    - AIHOT 精选流：Meta Muse Wonder 系列上线 Agent Arena，分数即将公布 https://aihot.news/items/lj23e9c9bhqwm2dee2hbgcmor
+- **[5 个平台]** 苹果发布 HomeView 智能家居中枢（AIHOT 热点Top10） https://aihot.news/items/kjcq4dywmvs5xijl4emac5o40
+    - NewsNow 财联社热门：苹果智能家居战略升级：HomeView登场 强化生态系统“黏性” https://www.cls.cn/detail/2503908
+    - IT之家：无 AppleCare 维修约占新机价 93%：苹果公布智能家居中枢 HomeView 维修费用 https://www.ithome.com/1/012/657.htm
+    - 新浪科技：苹果智能家居系列亮相 核心产品HomeView挑战亚马逊和谷歌 https://finance.sina.com.cn/world/2026-10-13/doc-inivcatx7302024.shtml
+    - NewsNow 腾讯新闻 综合早报：苹果推出Apple HomeView：配7英寸屏幕，整合家庭娱乐与智能家居控制 https://view.inews.qq.com/a/20261013A0D3VE00
+- **[4 个平台]** Google 发布 Gemini 4 Argon，仅付费用户可用（AIHOT 热点Top10） https://aihot.news/items/smxxtw5ca2c9jscojk4ppe5hf
+    - AIHOT 精选流：Google DeepMind 的 Gemini 4 Argon 上线 OpenRouter https://aihot.news/items/d4oyzg3qte4pt0ywsonolctwf
+    - AIHOT 精选流：Google 发布 Gemini 4 Argon：面向复杂工程与科研任务的前沿模型 https://aihot.news/items/smxxtw5ca2c9jscojk4ppe5hf
+    - 知乎热榜：如何评价10月13日正式推出的Gemini 4 Argon？ https://api.zhihu.com/questions/2093454112922912690
+    - cnBeta：Google推出Gemini 4 Argon 主攻长流程编程、企业工作与网络安全 https://www.cnbeta.com.tw/articles/tech/1582020.htm
+    - ITmedia AI+（日文）：Googleの新モデル「Gemini 4 Argon」一般提供開始　使えるプラン、価格 https://www.itmedia.co.jp/aiplus/article/2610/14/2000002241/
+- **[4 个平台]** Meta 发布首批前沿模型 Muse Wonder 系列（AIHOT 热点Top10） https://aihot.news/items/v3pogrzxrk9oba4blox86d0w8
     - 橘鸦AI早报：要闻 Meta 发布 Muse Wonder 模型系列 https://daily.juya.uk/issues/2026-10-13/
-    - 钛媒体：Muse Wonder肘击Astra，Meta杀回模型前沿 https://www.tmtpost.com/8166180.html
     - 极客公园：曝梁文锋密集见机器人创业者；影石出货量累计突破1000万台；Meta发布Muse Wonder模型｜极客早知道 http://www.geekpark.net/news/372264
-    - cnBeta：Meta推出最新AI模型Muse Wonder https://www.cnbeta.com.tw/articles/tech/1581854.htm
-    - 人人都是产品经理：Muse Wonder 发布：Llama4 之后，Meta 再回舞台 https://www.woshipm.com/ai/6477105.html
-- **[5 个平台]** 尊界V800公布制动踏板第三方检测结果，加严检验至纵向力3000N未出现裂纹和损坏，哪些信息值得关注？（知乎热榜） https://api.zhihu.com/questions/2093283496131129569
-    - 百度热搜：尊界V800公布制动踏板第三方检测结果 https://m.baidu.com/s?word=%E5%B0%8A%E7%95%8CV800%E5%85%AC%E5%B8%83%E5%88%B6%E5%8A%A8%E8%B8%8F%E6%9D%BF%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A3%80%E6%B5%8B%E7%BB%93%E6%9E%9C&sa=fyb_news
-    - 头条热榜：尊界公布制动踏板第三方检测结果 https://www.toutiao.com/trending/7694994042760888363/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227694994042760888363%22%2C%22hot_board_impr_id%22%3A%2220261013110612CFD21E4D38C574BF580C%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%B0%8A%E7%95%8C%E5%85%AC%E5%B8%83%E5%88%B6%E5%8A%A8%E8%B8%8F%E6%9D%BF%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A3%80%E6%B5%8B%E7%BB%93%E6%9E%9C%22%7D&rank=&style_id=40132&topic_id=7694994042760888363
-    - NewsNow 微博：尊界V800公布制动踏板第三方检测结果 https://s.weibo.com/weibo?q=%23%E5%B0%8A%E7%95%8CV800%E5%85%AC%E5%B8%83%E5%88%B6%E5%8A%A8%E8%B8%8F%E6%9D%BF%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A3%80%E6%B5%8B%E7%BB%93%E6%9E%9C%23&t=31&band_rank=1&Refer=top
-    - 新浪科技：尊界V800公布制动踏板第三方检测结果：加严检验至纵向力3000N后，未出现裂纹和损坏 https://finance.sina.com.cn/tech/shenji/2026-10-13/doc-iniuzuyn0478332.shtml
-- **[3 个平台]** MiniMax 入驻天猫开设首家官方旗舰店 开售 Token 套餐（Readhub）
-    - Readhub：MiniMax 首家官方旗舰店落地天猫 https://www.36kr.com/newsflashes/4023685972480135
-    - Readhub：MiniMax 入驻天猫开设其首家官方旗舰店，开卖 Token 套餐 https://www.ithome.com/1/012/198.htm
-    - Readhub：MiniMax 独家入驻天猫，双 11 开卖 token 套餐 https://news.10jqka.com.cn/20261013/c680622783.shtml
-    - 36氪快讯：MiniMax首家官方旗舰店落地天猫 https://www.36kr.com/newsflashes/4023685972480135
-    - IT之家：MiniMax 入驻天猫开设其首家官方旗舰店，开卖 Token 套餐 https://www.ithome.com/1/012/198.htm
-- **[3 个平台]** 何立峰会见美中关系全国委员会负责人（36氪快讯） https://www.36kr.com/newsflashes/4023694872973443
-    - 华尔街见闻快讯：何立峰会见美中关系全国委员会负责人
-    - NewsNow 法布财经 快讯：何立峰会见美中关系全国委员会负责人。 https://www.fastbull.com/cn/fastshort/4319215_214_1
-- **[3 个平台]** 中科院回应“住酒店可进天眼核心区”（百度热搜） https://m.baidu.com/s?word=%E4%B8%AD%E7%A7%91%E9%99%A2%E5%9B%9E%E5%BA%94%E2%80%9C%E4%BD%8F%E9%85%92%E5%BA%97%E5%8F%AF%E8%BF%9B%E5%A4%A9%E7%9C%BC%E6%A0%B8%E5%BF%83%E5%8C%BA%E2%80%9D&sa=fyb_news
-    - 头条热榜：中科院回应“住酒店可进天眼核心区” https://www.toutiao.com/trending/7695297201647635987/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227695297201647635987%22%2C%22hot_board_impr_id%22%3A%2220261013110612CFD21E4D38C574BF580C%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%B8%AD%E7%A7%91%E9%99%A2%E5%9B%9E%E5%BA%94%E2%80%9C%E4%BD%8F%E9%85%92%E5%BA%97%E5%8F%AF%E8%BF%9B%E5%A4%A9%E7%9C%BC%E6%A0%B8%E5%BF%83%E5%8C%BA%E2%80%9D%22%7D&rank=&style_id=40132&topic_id=7695297201647635987
-    - NewsNow 腾讯新闻 综合早报：花钱住酒店可进入“中国天眼”核心区？中国科学院通报：已开展全面核查 https://view.inews.qq.com/a/20261012A0BVKC00
-- **[2 个平台]** 上海钢联发布数据显示，今日MMLC电池级碳酸锂（早盘）中间价报107250元/吨，较上日16:30价格下跌4500元/吨。（华尔街见闻快讯）
-    - NewsNow 法布财经 快讯：上海钢联发布数据显示，今日MMLC电池级碳酸锂（早盘）中间价报107250元/吨，较上日16:30价格下跌4500元/吨。 https://www.fastbull.com/cn/fastshort/4319225_212_1
-- **[2 个平台]** 1688全面接入AI电商工作台Accio（36氪快讯） https://www.36kr.com/newsflashes/4023701788496000
-    - 新浪科技：1688全面接入AI电商工作台Accio https://finance.sina.com.cn/tech/shenji/2026-10-13/doc-iniuzuyi5061992.shtml
-- **[2 个平台]** 恒生指数跌超1%（36氪快讯） https://www.36kr.com/newsflashes/4023688308805763
-    - 华尔街见闻快讯：香港恒生指数跌超1%。海底捞、药明生物、华虹宏力跌超5%。
-- **[2 个平台]** 千问升级个人AI助理，推出Personal Agent“千问Go！”（36氪快讯） https://www.36kr.com/newsflashes/4023677582708611
-    - 新浪科技：千问升级个人AI助理，推出Personal Agent“千问Go！” https://finance.sina.com.cn/tech/shenji/2026-10-13/doc-iniuzuyp7255508.shtml
-- **[2 个平台]** 国际货币基金组织上调2026年世界经济增长预期至3.1%（36氪快讯） https://www.36kr.com/newsflashes/4023666164289665
-    - NewsNow 法布财经 快讯：国际货币基金组织将2026年韩国经济增长预测从2.6%上调至3.3%。 https://www.fastbull.com/cn/fastshort/4319191_212_1
-- **[2 个平台]** 通威、协鑫等光伏企业在杭州举行反内卷闭门会议（36氪快讯） https://www.36kr.com/newsflashes/4023678256140161
-    - 华尔街见闻快讯：通威、协鑫等光伏企业在杭州举行反内卷闭门会议
-- **[2 个平台]** xAI 推出 The X Subscription，Cursor 并入其中（AIHOT 热点Top10） https://aihot.news/items/uy4hvoyz7fwtyycpu0p62dudn
-    - AIHOT 精选流：xAI 推出 The X Subscription 整合 Grok、Grok Bot、Cursor 与 X Premium https://aihot.news/items/uy4hvoyz7fwtyycpu0p62dudn
-    - 橘鸦AI早报：The X Subscription 推出：整合Grok、Cursor 和 X Premium https://daily.juya.uk/issues/2026-10-13/
-- **[2 个平台]** 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两周（橘鸦AI早报） https://daily.juya.uk/issues/2026-10-13/
-    - 雷峰网：阶跃 Step 5 Preview 接入腾讯 WorkBuddy，独家限免 2 周！ https://www.leiphone.com/category/industrynews/J5Gvtdeng3EAvjmF.html
-- **[2 个平台]** kospi（Google Trends 新加坡） https://trends.google.com/trending/rss?geo=SG
-    - Google Trends 香港：kospi https://trends.google.com/trending/rss?geo=HK
-- **[2 个平台]** Google推出Fitbit Edge运动手环：加入OLED屏幕、内置GPS 续航最长7天（cnBeta） https://www.cnbeta.com.tw/articles/tech/1581828.htm
-    - 少数派：派早报：一加发布一加 16，Google 推出 Fitbit Edge 等 https://sspai.com/post/116033
-- **[2 个平台]** dodgers（Google Trends 英国） https://trends.google.com/trending/rss?geo=GB
-    - Google Trends 香港：dodgers https://trends.google.com/trending/rss?geo=HK
-- **[2 个平台]** rj mitte（Google Trends 新加坡） https://trends.google.com/trending/rss?geo=SG
-    - Google Trends 香港：rj mitte https://trends.google.com/trending/rss?geo=HK
-- **[2 个平台]** Epic Games reportedly pivoting to "AI first" game development model（Ars Technica） https://arstechnica.com/gaming/2026/10/report-epic-games-goes-all-in-on-ai-for-disney-collaboration/
-    - Google News AI（英文）：Epic Games reportedly pivoting to "AI first" game development model - Ars Technica https://news.google.com/rss/articles/CBMiogFBVV95cUxOb3ZDOS1wQVVMV1hiTHBLM0hqc0p0QzdGRmpESUZxRFpnakNqOWVwTlJGbnRJc2F0WnZoMFl6WXN0eG1feUJSUGQ4VUdPYXJRU3JzMmZ1ZWdnSWdhOXN0Q2l3ZEd4NWhBdDFJc3Fsd0h4NEVpdmVvTHVOUGh0NDdGMjM5bF9NcUdCdEJOY0EwNjBUeWhRZkx5bGVUdVhpQzVEUnc?oc=5
-- **[2 个平台]** I Got My Muse AI Agent to Sext Me—and Meta Says That’s Totally Fine（Wired） https://www.wired.com/story/i-got-my-muse-ai-agent-to-sext-me-and-meta-says-thats-totally-fine/
-    - Google News AI（英文）：I Got My Muse AI Agent to Sext Me—and Meta Says That’s Totally Fine - WIRED https://news.google.com/rss/articles/CBMimwFBVV95cUxPcUlJTmQyWEJBVXcwTnh3TEdDQW1QczlrMzE0VUhCWDlGU2hWX1hHcE5BakNPRTY3aEtDdlBTRXdVUVhzS1dOdTA2NmJiblFMNlNRZ1BIVzl4RFhIcGwzZC1FUWl5X3UyU0RZU1JpUkFvRnRHaS14SWZvNzNvX2lpSzRlODdfVDJlUm9lWlhwTENlSUR6NFpna2pzdw?oc=5
-- **[2 个平台]** 用户报告 Codex CLI 0.157.0 默认启动持久化自更新后台守护进程（AIHOT 精选流） https://aihot.news/items/amjmxvrvj57q7752kgihp9p9q
-    - HN 中文：Codex CLI 默认会安装一个持久化且能自动更新的后台守护进程 https://github.com/openai/codex/issues/48195
+    - 开源中国：Meta 发布 Muse Wonder，为个人和专业 Agentic 任务提供最先进性能 https://www.oschina.net/news/502995/meta-ai-muse-wonder
+- **[3 个平台]** OpenAI工程师涉装窃听装置被捕（AIHOT 热点Top10） https://aihot.news/items/fgxi5gwvctlssc05odpcyf6ov
+    - cnBeta：FBI逮捕OpenAI工程师 涉嫌在高管会议室安装隐藏录音设备 试图窃听机密谈话 https://www.cnbeta.com.tw/articles/tech/1582042.htm
+    - HN 中文：OpenAI一名工程师因在高管会议室安装窃听器被捕 https://sfstandard.com/2026/10/13/openai-engineer-arrested-alleged-bugging-executive-conference-room/
+- **[3 个平台]** 女子高铁上和男友开免提打1小时电话（百度热搜） https://m.baidu.com/s?word=%E5%A5%B3%E5%AD%90%E9%AB%98%E9%93%81%E4%B8%8A%E5%92%8C%E7%94%B7%E5%8F%8B%E5%BC%80%E5%85%8D%E6%8F%90%E6%89%931%E5%B0%8F%E6%97%B6%E7%94%B5%E8%AF%9D&sa=fyb_news
+    - 头条热榜：女子高铁上和男友开免提打1小时电话 https://www.toutiao.com/trending/7696042594111881225/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227696042594111881225%22%2C%22hot_board_impr_id%22%3A%222026101409184340ACBFDE3A69C78C95AF%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%A5%B3%E5%AD%90%E9%AB%98%E9%93%81%E4%B8%8A%E5%92%8C%E7%94%B7%E5%8F%8B%E5%BC%80%E5%85%8D%E6%8F%90%E6%89%931%E5%B0%8F%E6%97%B6%E7%94%B5%E8%AF%9D%22%7D&rank=&style_id=40132&topic_id=7696042594111881225
+    - NewsNow 微博：女子高铁上和男友开免提打1小时电话 https://s.weibo.com/weibo?q=%23%E5%A5%B3%E5%AD%90%E9%AB%98%E9%93%81%E4%B8%8A%E5%92%8C%E7%94%B7%E5%8F%8B%E5%BC%80%E5%85%8D%E6%8F%90%E6%89%931%E5%B0%8F%E6%97%B6%E7%94%B5%E8%AF%9D%23&t=31&band_rank=1&Refer=top
+- **[2 个平台]** 人民币兑美元中间价较上日调升49点至6.7249，中间价升值至2023年2月2日以来最高。（金十快讯） https://flash.jin10.com/detail/20261014091524569800
+    - 36氪快讯：人民币兑美元中间价报6.7249，上调49点 https://www.36kr.com/newsflashes/4025033783922569
+- **[2 个平台]** SK海力士（金十快讯） https://miniprogram.jin10.com?path=/pages/redirect/redirect&data_type=5&auth=plus&id=602&type=3
+    - NewsNow 雪球 热门股票：SK海力士 https://xueqiu.com/s/SKHY
+- **[2 个平台]** 两市融资余额减少90.66亿元（36氪快讯） https://www.36kr.com/newsflashes/4025006995837060
+    - 华尔街见闻快讯：两市融资余额减少90.66亿元
+- **[2 个平台]** 中国辽宁舰航母编队赴西太平洋开展训练（NewsNow 联合早报） https://www.zaochenbao.com/news/china/202610/1483260.html
+    - NewsNow 靠谱新闻：辽宁舰航母编队将赴西太平洋训练 https://kaopu.news/story/2026-10-14/liaoning-carrier-group-western-pacific-training-c7e43b?utm_source=rss&utm_medium=feed
+- **[2 个平台]** 支付严监管持续，前三季度持牌支付机构罚单超40张（36氪快讯） https://www.36kr.com/newsflashes/4024987177570441
+    - 华尔街见闻快讯：支付严监管持续 前三季度持牌支付机构罚单超40张
+- **[2 个平台]** 德勤调查：英国过半大企业未来一年打算用 AI 替代打工人（Readhub） https://www.ithome.com/1/012/647.htm
+    - IT之家：德勤调查：英国过半大企业未来一年打算用 AI 替代打工人 https://www.ithome.com/1/012/647.htm
+- **[2 个平台]** katie zacharia（Google Trends 韩国） https://trends.google.com/trending/rss?geo=KR
+    - Google Trends 香港：katie zacharia https://trends.google.com/trending/rss?geo=HK
+- **[2 个平台]** tiger attack（Google Trends 新加坡） https://trends.google.com/trending/rss?geo=SG
+    - Google Trends 香港：tiger attack https://trends.google.com/trending/rss?geo=HK
+- **[2 个平台]** 重庆市委原副书记、市政府原市长黄奇帆被查（澎湃热榜） https://www.thepaper.cn/newsDetail_forward_34243299
+    - 钛媒体：【钛晨报】“求索”4.0上线！国内首个人工智能全产业链评测基准发布；重庆市委原副书记、市政府原市长黄奇帆被查；DeepSeek据称将完成1000亿元融资 https://www.tmtpost.com/8167674.html
+- **[2 个平台]** An OpenAI Employee Allegedly Used a Chatbot to Help Plant a Recording Device at the Office（Wired） https://www.wired.com/story/an-openai-employee-allegedly-used-a-chatbot-to-help-plant-a-recording-device-at-the-office/
+    - The Information：OpenAI Employee Arrested For Allegedly Installing Office Listening Device https://www.theinformation.com/briefings/openai-employee-arrested-allegedly-installing-office-listening-device
+- **[2 个平台]** 美货运“龙”飞船为国际空间站送设备物资（新浪科技） https://finance.sina.com.cn/jjxw/2026-10-14/doc-inivchzv7244280.shtml
+    - cnBeta：SpaceX货运“龙”飞船为国际空间站送设备物资 https://www.cnbeta.com.tw/articles/science/1582044.htm
+- **[2 个平台]** FBI arrests OpenAI employee accused of planting hidden recording device in conference room（TechCrunch） https://techcrunch.com/2026/10/13/fbi-arrests-openai-employee-accused-of-planting-hidden-recording-device-in-conference-room/
+    - The Verge：OpenAI employee arrested for allegedly planting a bug in a conference room https://www.theverge.com/ai-artificial-intelligence/1010642/openai-employee-arrested-recording-device
+- **[2 个平台]** 加拉塔萨雷1:4巴萨（NewsNow 抖音） https://www.douyin.com/hot/2693238
+    - NewsNow 懂球帝：巴萨4-1逆转加拉塔萨雷，戈登、阿德耶米破门，亚马尔两助攻 https://www.dongqiudi.com/article/6483051
+- **[2 个平台]** 新款 Apple TV 4K（HN 中文） https://www.apple.com/newsroom/2026/10/apple-unveils-the-new-apple-tv-4k/
+    - NewsNow 酷安：Apple 推出新款 Apple TV 4K：Apple A19 芯片 https://www.coolapk.com/feed/74338053
+- **[2 个平台]** 蒸蒸日上（NewsNow 腾讯视频 热搜榜） https://v.qq.com/x/cover/mzc002004k31fxg.html
+    - NewsNow 爱奇艺 热播榜：蒸蒸日上 https://www.iqiyi.com/v_15ubqc0ao88.html
 
 ## AI（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| Meta 发布 Muse Wonder 系列前沿模型 | AIHOT 热点Top10 | 6 | 10-13 10:12 | https://aihot.news/items/v3pogrzxrk9oba4blox86d0w8 |
-| xAI 推出 The X Subscription，Cursor 并入其中 | AIHOT 热点Top10 | 2 | 10-13 09:48 | https://aihot.news/items/uy4hvoyz7fwtyycpu0p62dudn |
-| 小影科技创始人 & CEO韩晟已确认出席QCon上海，分享小影内容创作的三次范式迁移 | InfoQ 中文 | 1 | 10-13 18:00 | https://www.infoq.cn/article/ZodVZ212r6LtMTycWw7w?utm_source=rss&utm_medium=article |
-| Cursor 使用基于 S3 的 WAL，将 Git 存储扩展到每秒 300 多次 Push | InfoQ 中文 | 1 | 10-13 17:15 | https://www.infoq.cn/article/QPf1GXbpDxhcCHHP4xfo?utm_source=rss&utm_medium=article |
-| Nvidia's China AI-chip share falls as Huawei closes gap, report finds - Reuters | Google News AI（英文） | 1 | 10-13 10:33 | https://news.google.com/rss/articles/CBMiwwFBVV95cUxOZ2lCcTJZLWVsU3NJWjJRV2xZd0RXM1NtbWNnQUtfb1RsSjlNVmFEWnVxYVJ5Y0pXS0lWV284NlVCWkp2Qy1jbm5na2ZFeE5BYmNlWFVaVGttNElacjE1SGlaeVBOc1J5Z042bUlOS3JPbWpHcloxVDF5X3B2NG5hSEdCcHp0SGswU3d5VWNNWE02bE1KS0VyTVROTlJxUTRFUzNQM3hrbERWWWh5X21pSFg2ajBBOG02cXdzS1UyV09MY0k?oc=5 |
-| IMF says AI investment propping up global growth, but war and debt threaten outlook - Miami Herald | Google News AI（英文） | 1 | 10-13 10:17 | https://news.google.com/rss/articles/CBMiggFBVV95cUxOaVJOSHpxMllObW53cDU0Z1BVM3VnUDNVY2c4UmV4bXkzTFNkS1hiN2tXWWVpQlZFdTdNUWxVZ2ZVXzhpN1ZnVDB0eEFFazFhZGEwZlA1WDBnRHdXRUMwT05hZ2Z3aWIxbk4wZ29QeFEwSUdjci1yTzVERXZyQ3FzbDhR?oc=5 |
-| Global economy to slow less than expected in 2026 as AI boom offsets war hit: IMF - CNBC | Google News AI（英文） | 1 | 10-13 10:01 | https://news.google.com/rss/articles/CBMikwFBVV95cUxOYmdUVGlGSjVRUUlNWUxfNU1QYjNjOHJZWWZSMEFIY1BVaDd3aGdJZXVuSHZFV2Z1UGJfVFdkXy1LM0R4UlU5ZkZzeVpIb3JrbGxuTkt4VkdQdS15cnNKaFhZS0Z2OFRZUWNpemZ2VmZoMDhvREJxVVdTWjYxZUw0V1ZLVzRyYkZ4LW1OWk9OeERFTGfSAZgBQVVfeXFMTXZFSmFFNTk3aEVRNnZXU29fTFNMcnZBM3cxb2h2OXE3MkFBSkFRQThTM21MT2JLRzZmRHRNa0RwNnF6VU81MWEtcWJEei1yZzJBOWhGSFJKNDByQ3ExRS1GWEc1a1NRZ1JvUzFoSmpFRWJMTVpxTXB6aXRTbkxhMGhjZms3SWJzZkpTRzVMVlhoTUFHYm10bk0?oc=5 |
-| AIエージェントで「約7人に1人が法令違反リスク」　古いルールを参照させた代償とは | ITmedia AI+（日文） | 1 | 10-13 10:00 | https://atmarkit.itmedia.co.jp/ait/articles/2610/13/news029.html |
-| Codex 第 8 天安排：重置用量额度 | 橘鸦AI早报 | 1 | 10-13 09:48 | https://daily.juya.uk/issues/2026-10-13/ |
-| 发布 智谱推出法律模型 GLM Legal，开放测试申请 | 橘鸦AI早报 | 1 | 10-13 09:48 | https://daily.juya.uk/issues/2026-10-13/ |
-| OpenBMB 发布 MiniCPM V 4.7 系列两款模型 | 橘鸦AI早报 | 1 | 10-13 09:48 | https://daily.juya.uk/issues/2026-10-13/ |
-| Hassabis 祝贺 AMIE 前瞻性临床研究发表于 The Lancet | AIHOT 精选流 | 1 | 10-13 09:09 | https://aihot.news/items/qbi6xi7a3re15txfell8i9a7c |
-| AI Companies have terrible customer service | Reddit r/artificial | 1 | 10-13 08:28 | https://www.reddit.com/r/artificial/comments/1x4ij7r/ai_companies_have_terrible_customer_service/ |
-| Microsoft、第3世代AIチップ「Maia 300」を2027年に投入　GPU比で電力効率4割向上、自社サービスの主力推論基盤に | ITmedia AI+（日文） | 1 | 10-13 08:24 | https://www.itmedia.co.jp/news/article/2610/13/2000002200/ |
-| 新サービス「Gemini Agent」は企業向け、「Gemini Enterprise」加入者は追加料金なし　日本提供時期は未定 | ITmedia AI+（日文） | 1 | 10-13 07:51 | https://www.itmedia.co.jp/aiplus/article/2610/13/2000002199/ |
+| Google 发布 Gemini 4 Argon，仅付费用户可用 | AIHOT 热点Top10 | 4 | 10-14 08:29 | https://aihot.news/items/smxxtw5ca2c9jscojk4ppe5hf |
+| xAI 推 The X Subscription，整合 Grok、Cursor 与 X Premium | AIHOT 热点Top10 | 2 | 10-13 09:48 | https://aihot.news/items/uy4hvoyz7fwtyycpu0p62dudn |
+| 「Google Play」、AI Studioで作った自作アプリを自分の端末で実行可能に　AIでゲームを探す機能も | ITmedia AI+（日文） | 1 | 10-14 08:24 | https://www.itmedia.co.jp/news/article/2610/14/2000002240/ |
+| What's one thing AI does that feels genuinely magical, even when you know how it works? | Reddit r/artificial | 1 | 10-14 07:41 | https://www.reddit.com/r/artificial/comments/1x5cbx4/whats_one_thing_ai_does_that_feels_genuinely/ |
+| Character.ai、米連邦破産法11条を申請　Disney系が一部IPのライセンス取得で先行入札 | ITmedia AI+（日文） | 1 | 10-14 07:14 | https://www.itmedia.co.jp/news/article/2610/14/2000002238/ |
+| 实测Gemini 4 Argon：知识工作强劲但体验糟糕，卡兹克称难撼Claude Opus 5.5与GPT-6 Astra | AIHOT 精选流 | 1 | 10-14 06:56 | https://aihot.news/items/oxaap1c1cvxi9ngybxks1gngi |
+| 手机解锁先见 AI，不再先找 App：阶跃星辰首款智能体手机来了，定价 3999 | InfoQ 中文 | 1 | 10-14 06:26 | https://www.infoq.cn/article/p2TobACROBC8UBPlRKXx?utm_source=rss&utm_medium=article |
+| OpenAI従業員、役員会議室に録音装置を仕掛けた疑いでFBIが逮捕 | ITmedia AI+（日文） | 1 | 10-14 06:17 | https://www.itmedia.co.jp/news/article/2610/14/2000002236/ |
+| Visual Studio Copilot 与 SSMS 远程代码执行漏洞（CVE-2026-103572）技术分析 | AIHOT 精选流 | 1 | 10-14 06:00 | https://aihot.news/items/o8h7g7pscq0qrlenoadabbb96 |
+| 30 名工程师、一个宏大愿景，却没有真实需求：谷歌高管反思产品开发狂热 | InfoQ 中文 | 1 | 10-14 05:34 | https://www.infoq.cn/article/uYQMXN91a1BDTT802G6p?utm_source=rss&utm_medium=article |
+| Meta Muse Wonder (Max) 进入 Arena 榜单：WebDev 第15、文本第2 | AIHOT 精选流 | 1 | 10-14 05:27 | https://aihot.news/items/ob6ryetyialrnqhyjusr2s1iz |
+| Epic Games delays Disney shooter, mandates AI-first development | Reddit r/artificial | 1 | 10-14 05:19 | https://www.reddit.com/r/artificial/comments/1x5934y/epic_games_delays_disney_shooter_mandates_aifirst/ |
+| Meta 新模型杀回AI第一梯队，Alexandr Wang 亲述 Muse 7个月翻身内幕 | InfoQ 中文 | 1 | 10-14 02:32 | https://www.infoq.cn/article/2QXm6PqYYX57AOxTYyO0?utm_source=rss&utm_medium=article |
+| OpenAI’s blockbuster Navier-Stokes proof isn’t what we thought it was | Reddit r/artificial | 1 | 10-14 01:30 | https://www.reddit.com/r/artificial/comments/1x530mt/openais_blockbuster_navierstokes_proof_isnt_what/ |
+| Higgsfield takes AI video from 1 minute to over 10 | OpenAI News | 1 | 10-13 20:00 | https://openai.com/index/higgsfield-longer-videos-voice |
 
 ## 科技（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| MiniMax 入驻天猫开设首家官方旗舰店 开售 Token 套餐 | Readhub | 3 | 10-13 10:55 | - |
-| 1688全面接入AI电商工作台Accio | 36氪快讯 | 2 | 10-13 10:28 | https://www.36kr.com/newsflashes/4023701788496000 |
-| 千问升级个人AI助理，推出Personal Agent“千问Go！” | 36氪快讯 | 2 | 10-13 10:24 | https://www.36kr.com/newsflashes/4023677582708611 |
-| 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两周 | 橘鸦AI早报 | 2 | 10-13 09:48 | https://daily.juya.uk/issues/2026-10-13/ |
-| Google推出Fitbit Edge运动手环：加入OLED屏幕、内置GPS 续航最长7天 | cnBeta | 2 | 10-13 08:01 | https://www.cnbeta.com.tw/articles/tech/1581828.htm |
-| Jev 开发商估值已达 75 亿美元；苹果投资 AI 音频初创；传 OpenAI、Anthropic 高管私下推演 AI 灾难场景 | 极客公园 | 2 | 10-13 03:25 | http://www.geekpark.net/news/372184 |
-| 马斯克豪掷逾2.76亿美元助阵共和党 成2026年美国中期选举最大金主 | cnBeta | 2 | 10-13 01:00 | https://www.cnbeta.com.tw/articles/tech/1581848.htm |
-| 曝梁文锋密集接触具身智能创业者，DeepSeek拟入局具身智能 | 新浪科技 | 2 | 10-12 21:55 | https://finance.sina.com.cn/jjxw/2026-10-12/doc-iniuytnv5205606.shtml |
-| 微软在 Qwen 模型基础上推出决策模型 Microsoft-Decision-1 | Solidot | 2 | 10-12 14:44 | https://www.solidot.org/story?sid=85584 |
-| 微软发布 Maia 300，2027 年扩至多吉瓦级部署 | AIHOT 热点Top10 | 2 | - | https://aihot.news/items/zqlqer8tnl7ejg2ow3xoq7b9q |
-| 鸿蒙智行：问界 M6 累计交付突破 6 万台 | IT之家 | 1 | 10-13 11:03 | https://www.ithome.com/1/012/236.htm |
-| 欧姆龙拟收购工业电脑制造商 OnLogic，交易价值 6.75 亿美元 | IT之家 | 1 | 10-13 11:00 | https://www.ithome.com/1/012/235.htm |
-| AI 让代码量涨了 30%，软件产出却纹丝不动 —— 瓶颈卡在人类 Code Review | 开源中国 | 1 | 10-13 10:57 | https://www.oschina.net/news/502990/ai-coding-agents-generate-more-code-but-not-more-software |
-| 微软 Azure Maia 300 发布 2027 年投产 | Readhub | 1 | 10-13 10:55 | - |
-| 荣耀 WIN 电竞全家桶新品亮相：手机、平板、游戏本、耳机、手柄 | IT之家 | 1 | 10-13 10:54 | https://www.ithome.com/1/012/234.htm |
+| 苹果发布 HomeView 智能家居中枢 | AIHOT 热点Top10 | 5 | 10-14 08:54 | https://aihot.news/items/kjcq4dywmvs5xijl4emac5o40 |
+| Meta 发布首批前沿模型 Muse Wonder 系列 | AIHOT 热点Top10 | 4 | 10-13 14:37 | https://aihot.news/items/v3pogrzxrk9oba4blox86d0w8 |
+| OpenAI工程师涉装窃听装置被捕 | AIHOT 热点Top10 | 3 | 10-14 06:33 | https://aihot.news/items/fgxi5gwvctlssc05odpcyf6ov |
+| 德勤调查：英国过半大企业未来一年打算用 AI 替代打工人 | Readhub | 2 | 10-14 08:11 | https://www.ithome.com/1/012/647.htm |
+| 美货运“龙”飞船为国际空间站送设备物资 | 新浪科技 | 2 | 10-14 06:36 | https://finance.sina.com.cn/jjxw/2026-10-14/doc-inivchzv7244280.shtml |
+| 新款 Apple TV 4K | HN 中文 | 2 | 10-14 00:18 | https://www.apple.com/newsroom/2026/10/apple-unveils-the-new-apple-tv-4k/ |
+| 阶跃 Step 5 Preview 上线 WorkBuddy，独家限免两周 | 橘鸦AI早报 | 2 | 10-13 19:54 | https://daily.juya.uk/issues/2026-10-13/ |
+| 发布100天后，阶跃STEPX Neo智能体手机亮相，印奇首提“复古未来美学” | 新浪科技 | 2 | 10-13 19:50 | https://finance.sina.com.cn/jjxw/2026-10-13/doc-inivasea0583353.shtml |
+| 苹果诉 OpenAI 窃密案新进展：法院准许苹果调取后者招聘材料 | Readhub | 1 | 10-14 09:15 | - |
+| 力拓第三季度铜产量持稳 铁矿石销量同比增 3% | Readhub | 1 | 10-14 09:15 | - |
+| 深度云海宣布获华工科技千万级天使轮投资，加速布局企业AI营销入口 | 新浪科技 | 1 | 10-14 09:15 | https://finance.sina.com.cn/tech/shenji/2026-10-14/doc-inivcxxt8596166.shtml |
+| 吉利控股集团声明：支持中欧汽车贸易磋商共识 | IT之家 | 1 | 10-14 09:09 | https://www.ithome.com/1/012/663.htm |
+| 打破补丁星期二数量纪录：微软 10 月 Win11/Win10 等更新共修复 1411 个漏洞 | IT之家 | 1 | 10-14 09:08 | https://www.ithome.com/1/012/661.htm |
+| 苹果请求法院撤销 57 亿美元专利侵权赔偿判决，称该天价赔偿金基于猜测 | IT之家 | 1 | 10-14 09:06 | https://www.ithome.com/1/012/660.htm |
+| 超越抖音，传红果短剧日均时长 125 分钟；299 美元，苹果推 Siri AI 带屏音箱；谷歌最强模型 Gemini 4 正式上线 | 极客公园 | 1 | 10-14 08:28 | http://www.geekpark.net/news/372304 |
 
 ## 热榜（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| 尊界V800公布制动踏板第三方检测结果，加严检验至纵向力3000N未出现裂纹和损坏，哪些信息值得关注？ | 知乎热榜 | 5 | 10-13 10:20 | https://api.zhihu.com/questions/2093283496131129569 |
-| 中科院回应“住酒店可进天眼核心区” | 百度热搜 | 3 | - | https://m.baidu.com/s?word=%E4%B8%AD%E7%A7%91%E9%99%A2%E5%9B%9E%E5%BA%94%E2%80%9C%E4%BD%8F%E9%85%92%E5%BA%97%E5%8F%AF%E8%BF%9B%E5%A4%A9%E7%9C%BC%E6%A0%B8%E5%BF%83%E5%8C%BA%E2%80%9D&sa=fyb_news |
-| 蒸蒸日上 | NewsNow 腾讯视频 热搜榜 | 2 | 10-13 00:00 | https://v.qq.com/x/cover/mzc002004k31fxg.html |
-| 我不是大师 | NewsNow 腾讯视频 热搜榜 | 2 | 10-13 00:00 | https://v.qq.com/x/cover/mzc00200j47k5l3.html |
-| 伟大的长征 | NewsNow 腾讯视频 热搜榜 | 2 | 10-13 00:00 | https://v.qq.com/x/cover/mzc00200p1ilkw3.html |
-| 刘国梁16岁女儿刘宇婕登顶高尔夫中国女子公开赛，成赛事创办以来首位业余冠军，哪些信息值得关注？ | 知乎热榜 | 2 | 10-12 16:45 | https://api.zhihu.com/questions/2093019602653536666 |
-| 《绝命毒师》老白儿子演员去世 | 百度热搜 | 2 | - | https://m.baidu.com/s?word=%E3%80%8A%E7%BB%9D%E5%91%BD%E6%AF%92%E5%B8%88%E3%80%8B%E8%80%81%E7%99%BD%E5%84%BF%E5%AD%90%E6%BC%94%E5%91%98%E5%8E%BB%E4%B8%96&sa=fyb_news |
-| 今年诺奖得主，2005年曾来华给中国央行提建议 | NewsNow 凤凰网 | 2 | - | https://news.ifeng.com/c/8xAXZl1kNKT |
-| 周杰伦转发视频让“青鸟”破防 | 百度热搜 | 2 | - | https://m.baidu.com/s?word=%E5%91%A8%E6%9D%B0%E4%BC%A6%E8%BD%AC%E5%8F%91%E8%A7%86%E9%A2%91%E8%AE%A9%E2%80%9C%E9%9D%92%E9%B8%9F%E2%80%9D%E7%A0%B4%E9%98%B2&sa=fyb_news |
-| 莫兰特回应杨瀚森13分4板4助 | NewsNow 微博 | 2 | - | https://s.weibo.com/weibo?q=%23%E8%8E%AB%E5%85%B0%E7%89%B9%E5%9B%9E%E5%BA%94%E6%9D%A8%E7%80%9A%E6%A3%AE13%E5%88%864%E6%9D%BF4%E5%8A%A9%23&t=31&band_rank=8&Refer=top |
-| 预计损失数千万欧元！黑客攻击法国数百家超市，调高冰箱温度至50度 | 澎湃热榜 | 1 | 10-13 10:51 | https://www.thepaper.cn/newsDetail_forward_34241064 |
-| JJ-加布里埃尔个人社媒晒训练视频，身着国米训练短裤 | NewsNow 懂球帝 | 1 | 10-13 10:51 | https://www.dongqiudi.com/article/6478508 |
-| 官方：拉斯帕尔马斯二队主帅胡安出任一线队临时主帅 | NewsNow 懂球帝 | 1 | 10-13 10:48 | https://www.dongqiudi.com/article/6478500 |
-| 神农集团61岁实控人离婚案调解落定：女方分得7830.50万股公司股票，市值近24亿元 | 澎湃热榜 | 1 | 10-13 10:46 | https://www.thepaper.cn/newsDetail_forward_34240933 |
-| 西海岸4球惨败英博，李昊赛后怒摔手套和毛巾 | NewsNow 懂球帝 | 1 | 10-13 10:42 | https://www.dongqiudi.com/article/6478491 |
+| 女子高铁上和男友开免提打1小时电话 | 百度热搜 | 3 | - | https://m.baidu.com/s?word=%E5%A5%B3%E5%AD%90%E9%AB%98%E9%93%81%E4%B8%8A%E5%92%8C%E7%94%B7%E5%8F%8B%E5%BC%80%E5%85%8D%E6%8F%90%E6%89%931%E5%B0%8F%E6%97%B6%E7%94%B5%E8%AF%9D&sa=fyb_news |
+| 中国辽宁舰航母编队赴西太平洋开展训练 | NewsNow 联合早报 | 2 | 10-14 08:44 | https://www.zaochenbao.com/news/china/202610/1483260.html |
+| 重庆市委原副书记、市政府原市长黄奇帆被查 | 澎湃热榜 | 2 | 10-14 07:20 | https://www.thepaper.cn/newsDetail_forward_34243299 |
+| 加拉塔萨雷1:4巴萨 | NewsNow 抖音 | 2 | 10-14 04:54 | https://www.douyin.com/hot/2693238 |
+| 蒸蒸日上 | NewsNow 腾讯视频 热搜榜 | 2 | 10-14 00:00 | https://v.qq.com/x/cover/mzc002004k31fxg.html |
+| 我不是大师 | NewsNow 腾讯视频 热搜榜 | 2 | 10-14 00:00 | https://v.qq.com/x/cover/mzc00200j47k5l3.html |
+| 黑岛监狱 | NewsNow 腾讯视频 热搜榜 | 2 | 10-14 00:00 | https://v.qq.com/x/cover/mzc00200kpo6uxt.html |
+| 比亚迪大汉正式上市 | 头条热榜 | 2 | 10-13 22:49 | https://www.toutiao.com/trending/7696223880234402314/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227696223880234402314%22%2C%22hot_board_impr_id%22%3A%222026101409184340ACBFDE3A69C78C95AF%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%AF%94%E4%BA%9A%E8%BF%AA%E5%A4%A7%E6%B1%89%E6%AD%A3%E5%BC%8F%E4%B8%8A%E5%B8%82%22%7D&rank=&style_id=40132&topic_id=7696223880234402314 |
+| 老人凌晨下地干活被气枪击中身亡，持气枪打猎合法吗？案件还有哪些疑点待查？涉事人员将承担什么法律责任？ | 知乎热榜 | 2 | 10-13 21:01 | https://api.zhihu.com/questions/2093446305422862227 |
+| 机器狗第一次进哀牢山就拍到冥界之花 | 百度热搜 | 2 | - | https://m.baidu.com/s?word=%E6%9C%BA%E5%99%A8%E7%8B%97%E7%AC%AC%E4%B8%80%E6%AC%A1%E8%BF%9B%E5%93%80%E7%89%A2%E5%B1%B1%E5%B0%B1%E6%8B%8D%E5%88%B0%E5%86%A5%E7%95%8C%E4%B9%8B%E8%8A%B1&sa=fyb_news |
+| 王星被胁迫借下的网贷该不该还 | 百度热搜 | 2 | - | https://m.baidu.com/s?word=%E7%8E%8B%E6%98%9F%E8%A2%AB%E8%83%81%E8%BF%AB%E5%80%9F%E4%B8%8B%E7%9A%84%E7%BD%91%E8%B4%B7%E8%AF%A5%E4%B8%8D%E8%AF%A5%E8%BF%98&sa=fyb_news |
+| 美以领导人被曝商讨重启对伊军事行动 | NewsNow 凤凰网 | 2 | - | https://news.ifeng.com/c/8xCkGi8ApcK |
+| 蓝天格锐超400亿非法集资案进展：检方申请没收6.18万余枚比特币等资产，法院已受理 | 澎湃热榜 | 1 | 10-14 09:10 | https://www.thepaper.cn/newsDetail_forward_34247094 |
+| 欧盟拟推“欧洲制造”新规 中国车企抢先布局欧洲生产线 | NewsNow 联合早报 | 1 | 10-14 08:52 | https://www.zaochenbao.com/news/china/202610/1483262.html |
+| 台外长警告欧洲 依赖中国大陆供应恐危及自由 | NewsNow 联合早报 | 1 | 10-14 08:52 | https://www.zaochenbao.com/news/taiwan/202610/1483261.html |
 
 ## 财经（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| 何立峰会见美中关系全国委员会负责人 | 36氪快讯 | 3 | 10-13 10:32 | https://www.36kr.com/newsflashes/4023694872973443 |
-| 上海钢联发布数据显示，今日MMLC电池级碳酸锂（早盘）中间价报107250元/吨，较上日16:30价格下跌4500元/吨。 | 华尔街见闻快讯 | 2 | 10-13 10:36 | - |
-| 恒生指数跌超1% | 36氪快讯 | 2 | 10-13 10:26 | https://www.36kr.com/newsflashes/4023688308805763 |
-| 国际货币基金组织上调2026年世界经济增长预期至3.1% | 36氪快讯 | 2 | 10-13 10:21 | https://www.36kr.com/newsflashes/4023666164289665 |
-| 【数读IPO】粤芯半导体，今日上市 | NewsNow 财联社热门 | 2 | - | https://www.cls.cn/detail/2502851 |
-| 英国央行货币政策委员格林：如果我们等到二轮效应显现，便会为时已晚。 | 金十快讯 | 1 | 10-13 11:05 | https://flash.jin10.com/detail/20261013110547087800 |
-| 英国央行货币政策委员Greene：接连发生的通胀浪潮正改变行为模式。 | 华尔街见闻快讯 | 1 | 10-13 11:04 | - |
-| 金十图示：2026年10月13日（周二）全球富豪榜 | 金十快讯 | 1 | 10-13 11:03 | https://flash.jin10.com/detail/20261013110323772800 |
-| 隔夜shibor报1.2880%，下跌0.8个基点；7天shibor报1.3410%，下跌0.5个基点；3个月shibor报1.4300%，与上日持平。点击查看>> | 金十快讯 | 1 | 10-13 11:03 | https://flash.jin10.com/detail/20261013110310995800 |
-| “1 亿游客”挤爆洛阳，当地酒店为啥留不住人？ | 钛媒体 | 1 | 10-13 10:51 | https://www.tmtpost.com/8166423.html |
-| KRAS G12D资产价值大重估？ | 钛媒体 | 1 | 10-13 10:46 | https://www.tmtpost.com/8166419.html |
-| “大模型时代的谷歌，可能永远不会出现” | 钛媒体 | 1 | 10-13 10:42 | https://www.tmtpost.com/8166394.html |
-| A股PCB概念股震荡回升，澳弘电子、协和电子双双涨停，超声电子此前封板，迅捷兴涨超15%，本川智能、依顿电子、满坤科技等涨幅居前。 | 华尔街见闻快讯 | 1 | 10-13 10:42 | - |
-| 国际货币基金组织首席经济学家：人工智能并非拉丁美洲地区的强劲驱动力，大宗商品出口国表现良好。 | NewsNow 法布财经 快讯 | 1 | 10-13 10:41 | https://www.fastbull.com/cn/fastshort/4319229_212_1 |
-| IMF chief economist said the IMF's message to the UK is to stay the course on current fiscal consolidation. | NewsNow MKTNews 快讯 | 1 | 10-13 10:38 | https://mktnews.net/flashDetail.html?id=01a1331f-c539-7ee0-a849-88396e47bade |
+| 人民币兑美元中间价较上日调升49点至6.7249，中间价升值至2023年2月2日以来最高。 | 金十快讯 | 2 | 10-14 09:15 | https://flash.jin10.com/detail/20261014091524569800 |
+| SK海力士 | 金十快讯 | 2 | 10-14 09:15 | https://miniprogram.jin10.com?path=/pages/redirect/redirect&data_type=5&auth=plus&id=602&type=3 |
+| 两市融资余额减少90.66亿元 | 36氪快讯 | 2 | 10-14 08:47 | https://www.36kr.com/newsflashes/4025006995837060 |
+| 支付严监管持续，前三季度持牌支付机构罚单超40张 | 36氪快讯 | 2 | 10-14 08:16 | https://www.36kr.com/newsflashes/4024987177570441 |
+| 越南对中国公民组团赴庆和省旅游试行免签政策。 | NewsNow 法布财经 快讯 | 2 | 10-13 20:19 | https://www.fastbull.com/cn/fastshort/4320216_214_1 |
+| 美股收盘：三大指数震荡走弱 苹果、微软齐创新高 | NewsNow 财联社热门 | 2 | - | https://www.cls.cn/detail/2503947 |
+| 人民币汇率中间价 | 金十快讯 | 1 | 10-14 09:15 | https://miniprogram.jin10.com?path=/pages/redirect/redirect&title=人民币汇率中间价&desc=&category=rmb_exchange_rate&id=550066&type=4 |
+| 人民币兑美元中间价报6.7249，上调49点；上一交易日中间价6.7298，上一交易日官方收盘价6.6945，上日夜盘报收6.6928。 | 华尔街见闻快讯 | 1 | 10-14 09:15 | - |
+| 联合国警告：也门塔伊兹小麦和面粉库存恐不足三周 | 华尔街见闻快讯 | 1 | 10-14 09:13 | - |
+| As of end-September active futures clients stood at 3.148 mln | NewsNow MKTNews 快讯 | 1 | 10-14 09:05 | https://mktnews.net/flashDetail.html?id=01a137f1-8ba6-7ee0-a864-69d5cc7460ed |
+| 星巴克，重新学做中国生意 | 钛媒体 | 1 | 10-14 09:03 | https://www.tmtpost.com/8167760.html |
+| 双11大变天：有人掉队，就有人超车 | 钛媒体 | 1 | 10-14 09:03 | https://www.tmtpost.com/8167622.html |
+| 所有App都在塞AI，但用户已经烦了 | 钛媒体 | 1 | 10-14 09:02 | https://www.tmtpost.com/8167377.html |
+| Taiwan Weighted Index opened up 313.4 points, or 0.65%, at 48,654.71 on Oct. 14 (Wednesday). | NewsNow MKTNews 快讯 | 1 | 10-14 09:01 | https://mktnews.net/flashDetail.html?id=01a137ed-7f2c-7ee0-a864-67a1a6acddb9 |
+| 台湾证交所加权股价指数开盘变动不大，报48,382.64点。 | 华尔街见闻快讯 | 1 | 10-14 09:00 | - |
 
 ## 产品（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| Dota 2 | NewsNow Steam | 1 | 10-13 10:44 | https://store.steampowered.com/app/570/Dota_2/ |
-| Counter-Strike 2 | NewsNow Steam | 1 | 10-13 10:44 | https://store.steampowered.com/app/730/CounterStrike_2/ |
-| AION 2 | NewsNow Steam | 1 | 10-13 10:44 | https://store.steampowered.com/app/3393110/AION_2/ |
-| 竞品分析的本质是找到解决问题的思路：定义、拆解、结论三步法 | 人人都是产品经理 | 1 | 10-13 10:14 | https://www.woshipm.com/share/6476791.html |
-| 马克思的按需分配，是不是高估了人性？ | V2EX 热门 | 1 | 10-13 09:56 | https://www.v2ex.com/t/1248284 |
-| 硬核解读奥乐齐创始人亲述：硬折扣的底层经营法则 | 人人都是产品经理 | 1 | 10-13 09:51 | https://www.woshipm.com/share/6476539.html |
-| 人生滑铁卢了，哎 | V2EX 热门 | 1 | 10-13 09:32 | https://www.v2ex.com/t/1248273 |
-| 33岁了，转行AI产品经理还有前途吗？ | 人人都是产品经理 | 1 | 10-13 09:16 | https://www.woshipm.com/ai/6476781.html |
-| 现在 AI 是不是逐渐能取代很多高水平程序员了 | V2EX 热门 | 1 | 10-13 08:35 | https://www.v2ex.com/t/1248259 |
-| 派评 ｜ 近期值得关注的 App | 少数派 | 1 | 10-12 17:30 | https://sspai.com/post/115934 |
-| iOS 27 推出全新家长控制与儿童安全功能，这些变化值得关注 | 少数派 | 1 | 10-12 15:00 | https://sspai.com/post/115242 |
-| 怀旧手记｜从迷你电脑到口袋笔记本，索尼如何把电脑越做越小 | 少数派 | 1 | 10-12 11:20 | https://sspai.com/post/114821 |
+| 从27亿美元到2000万美元，Character.AI的葬礼告诉我们三件事 | 人人都是产品经理 | 1 | 10-14 09:11 | https://www.woshipm.com/ai/6477561.html |
+| AI 漫画的新玩法：每一格都能 360 度旋转 | 人人都是产品经理 | 1 | 10-14 09:09 | https://www.woshipm.com/ai/6477557.html |
+| Counter-Strike 2 | NewsNow Steam | 1 | 10-14 09:09 | https://store.steampowered.com/app/730/CounterStrike_2/ |
+| Dota 2 | NewsNow Steam | 1 | 10-14 09:09 | https://store.steampowered.com/app/570/Dota_2/ |
+| AION 2 | NewsNow Steam | 1 | 10-14 09:09 | https://store.steampowered.com/app/3393110/AION_2/ |
+| 做内容配图时，11 种视觉 Skill 该怎么选？ | 人人都是产品经理 | 1 | 10-14 08:53 | https://www.woshipm.com/ai/6476875.html |
+| 群晖发布重要更新： 7.4.1-90080 Update 1，修复未知漏洞｜important Update | 小众软件 | 1 | 10-13 21:54 | https://www.appinn.com/synology-7-4-1-90080-update-1-mportant-update/ |
+| reinstall：操作系统自己重装自己？这个开源项目有点神奇 | 小众软件 | 1 | 10-13 20:43 | https://www.appinn.com/bin456789-reinstall/ |
+| 社区速递 161 ｜ 小米手表 S5、EVA 联名香水与换机热议 | 少数派 | 1 | 10-13 17:00 | https://sspai.com/post/116068 |
+| 关于长辈抽烟的问题，有好的解决办法么？ | V2EX 热门 | 1 | 10-13 15:13 | https://www.v2ex.com/t/1248405 |
+| App+1 ｜ 我做了一个专为「P 人」和 ADHD 设计的精力管理 App | 少数派 | 1 | 10-13 15:00 | https://sspai.com/post/115400 |
+| 2026 年了，还有老架构坚持 MySQL 单表数据不能超过 2000 万行 | V2EX 热门 | 1 | 10-13 14:05 | https://www.v2ex.com/t/1248372 |
+| Piczo 相册照片自动分类 ｜ 送码 | V2EX 热门 | 1 | 10-13 13:37 | https://www.v2ex.com/t/1248362 |
+| 迈上生态新台阶，首期 Apple 应用孵化器顺利收官 | 少数派 | 1 | 10-13 11:30 | https://sspai.com/post/116028 |
 | MicYou for iOS – 老 iPhone 又有新用途：变成电脑麦克风，免费开源 | 小众软件 | 1 | 10-12 10:38 | https://www.appinn.com/micyou-for-ios/ |
-| 发现频道：10款大家发现的好评软件[2026年第41期] | 小众软件 | 1 | 10-12 09:00 | https://www.appinn.com/faxian-top10-2641/ |
-| 10 个有意思的 GitHub 项目：比亚迪用上 CarPlay、翻译扫描 PDF，还有一本人生指南 | 小众软件 | 1 | 10-11 18:36 | https://www.appinn.com/10-tools-github/ |
 
 ## 海外（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| Epic Games reportedly pivoting to "AI first" game development model | Ars Technica | 2 | 10-13 04:59 | https://arstechnica.com/gaming/2026/10/report-epic-games-goes-all-in-on-ai-for-disney-collaboration/ |
-| I Got My Muse AI Agent to Sext Me—and Meta Says That’s Totally Fine | Wired | 2 | 10-13 04:13 | https://www.wired.com/story/i-got-my-muse-ai-agent-to-sext-me-and-meta-says-thats-totally-fine/ |
-| 用户报告 Codex CLI 0.157.0 默认启动持久化自更新后台守护进程 | AIHOT 精选流 | 2 | 10-13 03:25 | https://aihot.news/items/amjmxvrvj57q7752kgihp9p9q |
-| Meta releases its first frontier model, Muse Wonder | TechCrunch | 2 | 10-13 01:56 | https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder/ |
-| Knocket | Product Hunt | 1 | 10-13 11:04 | https://www.producthunt.com/products/knocket-2 |
-| Bearconnect 2.0 | Product Hunt | 1 | 10-13 11:04 | https://www.producthunt.com/products/early-access-bearconnect-io |
-| 渋滞で玉突き 追突された女性死亡 | Yahoo Japan 热门（日文） | 1 | 10-13 11:02 | https://news.yahoo.co.jp/pickup/6598601?source=rss |
-| guilds.run | Product Hunt | 1 | 10-13 11:01 | https://www.producthunt.com/products/guilds-run |
-| Researchers Need to Learn How AI Makes Decisions, Says Goodfire’s Tom McGrath | The Information | 1 | 10-13 10:59 | https://www.theinformation.com/articles/researchers-need-learn-ai-makes-decisions-says-goodfires-tom-mcgrath |
-| 愛知小1死亡事件 母親が無罪主張 | Yahoo Japan 热门（日文） | 1 | 10-13 10:38 | https://news.yahoo.co.jp/pickup/6598596?source=rss |
-| 在 Firefox 中实现大文件下载的中断后续传功能 | HN 中文 | 1 | 10-13 10:35 | https://lunarwatcher.codeberg.page/til/firefox/resumable-big-downloads.html |
-| 中間選挙にマスク氏440億円投入か | Yahoo Japan 热门（日文） | 1 | 10-13 10:34 | https://news.yahoo.co.jp/pickup/6598597?source=rss |
-| Seoul shares sharply down late Tue. morning on tech sell-off | 韩联社（英文） | 1 | 10-13 10:27 | https://en.yna.co.kr/view/AEN20261013005500320 |
-| 一名80岁捐赠者的血细胞转化为分子年龄不足20岁的干细胞 | HN 中文 | 1 | 10-13 10:19 | https://doi.org/10.1111/acel.70751 |
-| Drought conditions reported in 97 regions nationwide | 韩联社（英文） | 1 | 10-13 10:08 | https://en.yna.co.kr/view/AEN20261013004700315 |
+| An OpenAI Employee Allegedly Used a Chatbot to Help Plant a Recording Device at the Office | Wired | 2 | 10-14 07:17 | https://www.wired.com/story/an-openai-employee-allegedly-used-a-chatbot-to-help-plant-a-recording-device-at-the-office/ |
+| FBI arrests OpenAI employee accused of planting hidden recording device in conference room | TechCrunch | 2 | 10-14 05:36 | https://techcrunch.com/2026/10/13/fbi-arrests-openai-employee-accused-of-planting-hidden-recording-device-in-conference-room/ |
+| OpenWhispr for iOS | Product Hunt | 1 | 10-14 09:18 | https://www.producthunt.com/products/openwispr-open-source-ai-speech-to-text |
+| Fina Business | Product Hunt | 1 | 10-14 09:18 | https://www.producthunt.com/products/fina |
+| Articos MCP | Product Hunt | 1 | 10-14 09:11 | https://www.producthunt.com/products/articos |
+| 大谷翔平 不振の原因を明かす | Yahoo Japan 热门（日文） | 1 | 10-14 09:08 | https://news.yahoo.co.jp/pickup/6598696?source=rss |
+| 施設で入所者死亡 別の入所者逮捕 | Yahoo Japan 热门（日文） | 1 | 10-14 09:01 | https://news.yahoo.co.jp/pickup/6598694?source=rss |
+| Hyundai Motor Group to invest US$15.5 bln in India through 2032 | 韩联社（英文） | 1 | 10-14 08:53 | https://en.yna.co.kr/view/AEN20261014002300320 |
+| Sonnet 5.5 编码代理指数：最大努力与成本效率的比较 | BestBlogs | 1 | 10-14 08:44 | https://www.bestblogs.dev/en/status/2110169865789309254?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item |
+| Sales of short-term bonds rise 20.4 pct in Q3 | 韩联社（英文） | 1 | 10-14 08:38 | https://en.yna.co.kr/view/AEN20261014002100320 |
+| 即将到来的 AI 代理式客服 DDoS：合法但破坏性的威胁 | BestBlogs | 1 | 10-14 08:29 | https://www.bestblogs.dev/en/status/2110165986926072019?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item |
+| ローマ教皇手術 肺腺がんを確認 | Yahoo Japan 热门（日文） | 1 | 10-14 08:29 | https://news.yahoo.co.jp/pickup/6598691?source=rss |
+| (LEAD) Seoul shares start higher despite Wall Street losses, AI concerns | 韩联社（英文） | 1 | 10-14 08:22 | https://en.yna.co.kr/view/AEN20261014001551320 |
+| 一条被禁视频的后续 | BestBlogs | 1 | 10-14 08:15 | https://www.bestblogs.dev/en/status/2110162642321252627?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item |
+| OpenAI’s Bug and Bumble’s AI-Powered Exit | The Information | 1 | 10-14 08:07 | https://www.theinformation.com/articles/openais-bug-bumbles-ai-powered-exit |
 
 ## 热搜词（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| kospi | Google Trends 新加坡 | 2 | 10-13 09:30 | https://trends.google.com/trending/rss?geo=SG |
-| dodgers | Google Trends 英国 | 2 | 10-13 07:50 | https://trends.google.com/trending/rss?geo=GB |
-| rj mitte | Google Trends 新加坡 | 2 | 10-13 06:00 | https://trends.google.com/trending/rss?geo=SG |
-| jose ramirez | Google Trends 美国 | 1 | 10-13 10:50 | https://trends.google.com/trending/rss?geo=US |
-| indians | Google Trends 美国 | 1 | 10-13 10:50 | https://trends.google.com/trending/rss?geo=US |
-| 三塚琉生 | Google Trends 日本 | 1 | 10-13 10:50 | https://trends.google.com/trending/rss?geo=JP |
-| jim nantz | Google Trends 美国 | 1 | 10-13 10:40 | https://trends.google.com/trending/rss?geo=US |
-| 細野豪志 | Google Trends 日本 | 1 | 10-13 10:30 | https://trends.google.com/trending/rss?geo=JP |
-| 威力 彩 | Google Trends 台湾 | 1 | 10-13 10:30 | https://trends.google.com/trending/rss?geo=TW |
-| 玉晶光 | Google Trends 台湾 | 1 | 10-13 10:30 | https://trends.google.com/trending/rss?geo=TW |
-| アンソロピック | Google Trends 日本 | 1 | 10-13 10:10 | https://trends.google.com/trending/rss?geo=JP |
-| 時間魔術師 | Google Trends 台湾 | 1 | 10-13 10:10 | https://trends.google.com/trending/rss?geo=TW |
-| 삼성전자 주식 | Google Trends 韩国 | 1 | 10-13 09:50 | https://trends.google.com/trending/rss?geo=KR |
-| 선로 | Google Trends 韩国 | 1 | 10-13 09:40 | https://trends.google.com/trending/rss?geo=KR |
-| rams | Google Trends 英国 | 1 | 10-13 09:30 | https://trends.google.com/trending/rss?geo=GB |
+| katie zacharia | Google Trends 韩国 | 2 | 10-14 07:50 | https://trends.google.com/trending/rss?geo=KR |
+| tiger attack | Google Trends 新加坡 | 2 | 10-14 07:40 | https://trends.google.com/trending/rss?geo=SG |
+| brian austin green | Google Trends 美国 | 1 | 10-14 09:00 | https://trends.google.com/trending/rss?geo=US |
+| okc thunder | Google Trends 美国 | 1 | 10-14 09:00 | https://trends.google.com/trending/rss?geo=US |
+| ilias bulaid | Google Trends 美国 | 1 | 10-14 09:00 | https://trends.google.com/trending/rss?geo=US |
+| 横浜市港北区大豆戸町 | Google Trends 日本 | 1 | 10-14 09:00 | https://trends.google.com/trending/rss?geo=JP |
+| 今村聖奈 | Google Trends 日本 | 1 | 10-14 09:00 | https://trends.google.com/trending/rss?geo=JP |
+| 楊千霈 | Google Trends 台湾 | 1 | 10-14 09:00 | https://trends.google.com/trending/rss?geo=TW |
+| ocp | Google Trends 台湾 | 1 | 10-14 09:00 | https://trends.google.com/trending/rss?geo=TW |
+| pope leo | Google Trends 新加坡 | 1 | 10-14 08:50 | https://trends.google.com/trending/rss?geo=SG |
+| 日本 gdp | Google Trends 日本 | 1 | 10-14 08:50 | https://trends.google.com/trending/rss?geo=JP |
+| 韓國股市 | Google Trends 台湾 | 1 | 10-14 08:50 | https://trends.google.com/trending/rss?geo=TW |
+| singapore airlines discounted tickets | Google Trends 新加坡 | 1 | 10-14 08:40 | https://trends.google.com/trending/rss?geo=SG |
+| betway | Google Trends 英国 | 1 | 10-14 08:10 | https://trends.google.com/trending/rss?geo=GB |
+| 민희진 | Google Trends 韩国 | 1 | 10-14 08:10 | https://trends.google.com/trending/rss?geo=KR |
 
 ## 源的变动
 
-- 新增：无
+- 新增：NewsNow 靠谱新闻
 - 下线：无
 - 恢复：无
 
@@ -222,4 +218,4 @@
   NON_GOALS: 替我定题 搬运原文 没报价就扣积分
 ```
 
-生成时间 2026-10-13 11:06。
+生成时间 2026-10-14 09:18。
