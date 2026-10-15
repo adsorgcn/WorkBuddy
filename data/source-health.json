@@ -1,342 +1,342 @@
 {
  "AIHOT 热点Top10": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "AIHOT 精选流": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "量子位": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "InfoQ 中文": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "橘鸦AI早报": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Readhub": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "阮一峰周刊": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "知乎热榜": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "百度热搜": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "百度热搜直连": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "B站热门": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "头条热榜": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "澎湃热榜": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "贴吧热议": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "参考消息": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 微博": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 抖音": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 掘金": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 虎扑": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 财联社热门": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "金十快讯": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "36氪快讯": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "IT之家": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "钛媒体": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "华尔街见闻快讯": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "新浪科技": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "爱范儿": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "极客公园": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "雷峰网": {
-  "fails": 1,
-  "last_ok": "2026-10-13"
+  "fails": 0,
+  "last_ok": "2026-10-15"
  },
  "cnBeta": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Solidot": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "开源中国": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "少数派": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "人人都是产品经理": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "小众软件": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "V2EX 热门": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "HelloGitHub": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "HN 中文": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Product Hunt 中文": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "BestBlogs": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 联合早报": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 酷安": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow MKTNews 快讯": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 懂球帝": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 卫星通讯社": {
-  "fails": 0,
+  "fails": 1,
   "last_ok": "2026-10-14"
  },
  "NewsNow 远景论坛 Win11": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 雪球 热门股票": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 格隆汇": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 法布财经 快讯": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow Github Today": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "TechCrunch": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "The Verge": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Ars Technica": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "MIT Technology Review": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "BBC Technology": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Wired": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "The Information": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Lobsters": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Product Hunt": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Google News AI（英文）": {
-  "fails": 1,
-  "last_ok": "2026-10-13"
+  "fails": 0,
+  "last_ok": "2026-10-15"
  },
  "VentureBeat AI": {
-  "fails": 6,
+  "fails": 7,
   "last_ok": "2026-10-09"
  },
  "OpenAI News": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Reddit r/artificial": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "arXiv cs.AI": {
-  "fails": 0,
+  "fails": 1,
   "last_ok": "2026-10-14"
  },
  "ITmedia AI+（日文）": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Yahoo Japan 热门（日文）": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NHK 主要（日文）": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "韩联社（英文）": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Google Trends 美国": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Google Trends 英国": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Google Trends 新加坡": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Google Trends 日本": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Google Trends 韩国": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Google Trends 台湾": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "Google Trends 香港": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 牛客": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 凤凰网": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 虫部落 最新": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 豆瓣": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow Steam": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 腾讯新闻 综合早报": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow Freebuf": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 腾讯视频 热搜榜": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 爱奇艺 热播榜": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  },
  "NewsNow 靠谱新闻": {
   "fails": 0,
-  "last_ok": "2026-10-14"
+  "last_ok": "2026-10-15"
  }
 }

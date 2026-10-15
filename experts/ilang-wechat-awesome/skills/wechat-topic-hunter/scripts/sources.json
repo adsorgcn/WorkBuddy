@@ -505,7 +505,9 @@
    "type": "rss",
    "group": "AI",
    "platform": "venturebeat",
-   "lang": "en"
+   "lang": "en",
+   "disabled": true,
+   "disabled_on": "2026-10-15"
   },
   {
    "name": "OpenAI News",
