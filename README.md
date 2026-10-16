@@ -151,7 +151,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 | [公众号爆文专家](experts/ilang-wechat-awesome/) | 专家正文。投喂素材，按 200 多篇实战文章验证的写作基因重组，出 MD 正文、3 个标题、封面图提示词；没素材不写，不编数字不编经历。带下面四个技能 | 2.3.23 |
 | [选题对标 wechat-topic-hunter](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/) | `feed` 读每日清单（免费），`direction` 比方向，`calendar` 排内容清单，`hot` 看榜，找号、对标、单篇数据；每次花积分前先报价。附 `hot_sources.py`，上不了 GitHub 时自己拉热点源 | 2.3.23 |
 | [写稿 wechat-article](experts/ilang-wechat-awesome/skills/wechat-article/) | 23 条写作基因，六段式和八区块两种骨架，标题四个公式，12 项自查，去 AI 味三件套和五个信号，脱敏表和敏感词红线，封面提示词模板 | 2.3.23 |
-| [推草稿箱 wechat-draft-push](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check 验凭据和白名单，render 转微信 HTML，push 传图传封面推进草稿箱并回读，verify 回读，publish 只在人看完草稿说「发」后对微信认证号可用。外链自动收进文末「参考链接」，留言开关和「阅读原文」可设。没有删草稿命令 | 2.3.23 |
+| [推草稿箱 wechat-draft-push](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check 验凭据和白名单，render 转微信 HTML，push 传图传封面推进草稿箱并回读，verify 回读，publish 只在人看完草稿说「发」后对微信认证号可用。外链自动收进文末「参考链接」，留言开关和「阅读原文」可设。贴图：newspic_cards.py 把带【第N页】的稿子出成 1080×1440 卡片图，push-newspic 推成图片消息草稿。没有删草稿命令 | 2.3.23 |
 | [远程派活 remote-dispatch](experts/ilang-wechat-awesome/skills/remote-dispatch/) | 可选件。两台机器的人用：本机当总控，把 [RUN:VPS] 的命令块派给远程机上的 CodeBuddy 网关跑，收回结果。远程机起网关的脚本在 scripts 里，Linux 和 Windows 各一个 | 2.3.23 |
 
 ## 怎么用
@@ -208,6 +208,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 每日清单的增减在 [UPDATES.md](UPDATES.md)，每个版本改了什么在 [发布页](https://github.com/adsorgcn/WorkBuddy/releases)。大版本：
 
+- 2.3.24（2026-10-16）：推草稿箱加贴图（图片消息）：`newspic_cards.py` 把带【第N页】标记的稿子用本机 Edge/Chrome 无头截成 1080×1440 卡片图并逐张校验，放不下报错不缩字；`push-newspic` 过门后把图传成永久素材、推成图片消息草稿、回读标题。draft/add 发出去没收到回复不再当失败：落 `*-UNKNOWN-<时间>.json`、退出码 3，先看草稿箱再决定重不重推。`render` 顺带写 390 宽的 `*.preview.html`。引用块认 GFM 提示块 `> [!NOTE|TIP|IMPORTANT|WARNING|CAUTION]`，出四色信息卡。
 - 2.3.18（2026-10-12）：推草稿箱默认在自己电脑上跑：脚本强制 IPv4；白名单填本机当前公网 IP，IP 变了再加一次，白名单能存多个；借远程机 IP 的隧道改成备选。
 - 2.3.14（2026-10-10）：按两份外部检测报告修。清单：一条坏源不再拖死整轮；72 小时内的在前、多平台优先再按新旧，相对时间（22分钟前）、只有日期、带时区的时间都归到北京时间，备用源不再和主源同时出现；聚类加三道闸：跌破/突破这类相反说法不合并、四字以内的短名只在完全相同时合并、GPT-4 和 GPT-5 这种连字符版本号不合并。选题：`feed` 显示发布时间；`calendar` 每周篇数算准、参数错在扣积分之前就报；`benchmark` 只查每次推送的头条。推草稿箱：行内代码里的星号不再排版、表头链接只引一次、英文软换行补空格、标题列表引用表格里的行内图片也只留说明。派活：流中断不再抛栈、回退找会话用原正文。发版：同步版本号不再误伤更长的版本号、dry-run 不再丢未提交改动、技能正文的版本标签一起同步。门禁加回归测试（`scripts/test_quality.py`）、Actions 里缺 IML 编译器算失败、没装 PyYAML 也能跑；三个 http 源改 https。
 - 2.3.6（2026-10-10）：改成任何 Agent 都能装的公众号全链路。新增每日内容清单（`data/hot/latest.json`、`HOT-LIST.md`，Actions 每天自动拉四十多个源、跨平台聚类、自动加源和下线）和更新即发版；选题技能加 `feed`（免费读清单）、`direction`（方向比较）、`calendar`（内容清单）三个命令，热点源脚本并入选题技能；任何 Agent 一条 I-Lang 命令自己学自己装（内置 IML 工作链），写明唯一要花钱的是 wxrank 额度、接口哪台机器都能连。

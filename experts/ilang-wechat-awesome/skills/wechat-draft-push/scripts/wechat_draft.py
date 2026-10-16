@@ -4,9 +4,12 @@
 
 用法：
   python wechat_draft.py check                                  读配置、拿 access_token、打印 ok，不推任何东西
-  python wechat_draft.py render --md 文章.md [--out 文章.html]   只把 Markdown 转成微信 HTML 并校验，不联网
+  python wechat_draft.py render --md 文章.md [--out 文章.html]   只把 Markdown 转成微信 HTML 并校验，不联网；顺带写一个 390 宽的预览页 *.preview.html
   python wechat_draft.py push --md 文章.md --title "标题" --cover 封面.jpg [--digest "摘要"] [--author "作者"] [--dry-run]
                                                                 传图、传封面、推草稿箱、回读核对、落盘结果
+  python wechat_draft.py push-newspic --title "标题" --text 配文.txt --images 1.png,2.png [--images-dir cards] [--comment open|fans|off] [--dry-run]
+                                                                图片消息（公众号里的「贴图」）：一组图加一段纯文本配文，第一张是封面；
+                                                                图先传成永久素材再 draft/add，回读标题，落盘结果。卡片图用 newspic_cards.py 出
   python wechat_draft.py verify --media-id XXXX                 回读一篇草稿，核对中文、图片数、字数
   python wechat_draft.py publish --media-id XXXX --reviewed     人在后台看过草稿、说了「发」之后才跑：
                                                                 回读确认草稿存在并打印标题，提交发布，轮询状态，落盘结果
@@ -60,6 +63,9 @@ BODY_IMG_LIMIT = 1024 * 1024          # uploadimg：jpg/png，1MB 以内
 COVER_LIMIT = 10 * 1024 * 1024        # add_material type=image：10MB 以内
 TITLE_MAX, AUTHOR_MAX, DIGEST_MAX = 32, 16, 120
 CONTENT_MAX_CHARS, CONTENT_MAX_BYTES = 20000, 1024 * 1024
+NEWSPIC_MAX_IMAGES = 20               # 图片消息：官方写的上限 20 张，第一张是封面
+NEWSPIC_TEXT_MAX_BYTES = None         # 官方文档没写配文长度，不硬编码；真撞到限制再把实测值填这里
+NO_REPLY_PREFIXES = ("网络请求失败", "隧道请求失败", "返回的不是 JSON")   # http_json(fatal=False) 自己造的三种「没收到回复」
 
 # 发布状态（freepublish/get 的 publish_status）
 PUBLISH_POLL_TIMES = 6                # 最多查 6 次
@@ -87,6 +93,17 @@ CAPTION = '<p style="font-size:12px;color:#999;text-align:center;letter-spacing:
 HR = '<p style="text-align:center;color:#ccc;margin:0;">────────</p>'
 CODE_LINE = '<p style="font-family:Menlo,Consolas,monospace;font-size:13px;color:#e5e7eb;line-height:1.6;margin:0;word-break:break-all;">'
 INLINE_CODE = '<span style="font-family:Menlo,Consolas,monospace;background-color:#f3f4f6;padding:1px 4px;border-radius:3px;font-size:14px;">'
+CARD_HEAD = '<p style="font-size:15px;font-weight:bold;color:#111;line-height:1.8;letter-spacing:0.5px;margin:0;">'
+CARD = '<section style="padding:12px 15px;background-color:%s;border-left:4px solid %s;margin:0;">%s</section>'
+# GFM 提示块 > [!NOTE] 之类 → 四色信息卡，颜色沿用 html-rules.md 的调色板：蓝 正常信息、绿 推荐、橙 提醒、红 避坑
+CALLOUTS = {
+    "NOTE": ("说明", "#1a73e8", "#f0f7ff"),
+    "IMPORTANT": ("重点", "#1a73e8", "#f0f7ff"),
+    "TIP": ("推荐", "#2e7d32", "#f1f8f2"),
+    "WARNING": ("注意", "#ff8f00", "#fff8e1"),
+    "CAUTION": ("避坑", "#c62828", "#fef2f2"),
+}
+CALLOUT_RE = re.compile(r"^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*(.*)$", re.I)
 
 MARKER_RE = re.compile(r"\[(📝|💬|🖼|📊)[^\]]*\]")
 DASH_RE = re.compile("[—–]")
@@ -226,6 +243,7 @@ def multipart(fields, file_field, filename, file_bytes, content_type):
 def explain(j):
     code = j.get("errcode")
     tips = {
+        -1: "微信系统繁忙，这次没进去，稍等一会再推一次。",
         40164: "调接口的这台机器的公网 IP 不在白名单里。去公众号后台「设置与开发 → 基本配置 → IP 白名单」加上 errmsg 里那个 IP，加完再跑一次。本机跑的，家里 IP 变了会再报一次，再加一次就行，白名单能存多个，旧的不用删。",
         40013: "AppID 不对。",
         40125: "AppSecret 不对，或者被重置过。",
@@ -303,13 +321,34 @@ def upload_body_image(token, path):
     return j["url"].replace("http://", "https://")
 
 
-def upload_cover(token, path):
+def upload_material(token, path, label="封面"):
+    """传成永久图片素材，返回 media_id。图文的封面（thumb_media_id）和图片消息的每一张图都走这里。"""
     name, data, ctype = read_image(path, COVER_LIMIT, shrink=False)
     body, ct = multipart({}, "media", name, data, ctype)
     j = http_json("POST", BASE + "/cgi-bin/material/add_material?access_token=%s&type=image" % token, body, {"Content-Type": ct}, timeout=180)
     if "media_id" not in j:
-        die("封面 add_material 失败：" + explain(j))
+        die("%s add_material 失败（%s）：%s" % (label, os.path.basename(path), explain(j)))
     return j["media_id"]
+
+
+def upload_cover(token, path):
+    return upload_material(token, path, "封面")
+
+
+def no_reply(j):
+    """draft/add 发出去了但没收到微信的回复（断网、超时、回的不是 JSON）。微信自己的 errcode -1 是「系统繁忙」，那是收到了回复，不算。"""
+    return j.get("errcode") == -1 and str(j.get("errmsg") or "").startswith(NO_REPLY_PREFIXES)
+
+
+def draft_add_unknown(stem, kind, info):
+    """没收到回复时草稿可能已经进了草稿箱：落一份 *-UNKNOWN-<时间>.json，退出码 3，让人先去草稿箱看，别重推。"""
+    now = _dt.datetime.now()
+    out = stem + ".%s-UNKNOWN-%s.json" % (kind, now.strftime("%Y%m%d-%H%M%S"))
+    info = dict(info, status="UNKNOWN", at=now.isoformat(timespec="seconds"))
+    io.open(out, "w", encoding="utf-8", newline="\n").write(json.dumps(info, ensure_ascii=False, indent=1))
+    print("draft/add 发出去了但没收到微信的回复：%s" % info.get("error"))
+    print("先去公众号后台草稿箱看有没有《%s》，有就别重推（重推会多一篇重复草稿）；确定没有再推一次。这次的图片 media_id 已记在：%s" % (info.get("title"), out))
+    sys.exit(3)
 
 
 # ---------- Markdown → 微信 HTML ----------
@@ -355,6 +394,20 @@ def join_lines(parts):
         else:
             out += p
     return out
+
+
+def quote_block(quote, warnings):
+    """引用块。第一行是 [!NOTE] [!TIP] [!IMPORTANT] [!WARNING] [!CAUTION]（GFM 提示块，后面可跟自定义标题）就按类型配色出带标题的信息卡；
+    不是就还是原来的橙色引用卡。"""
+    cm = CALLOUT_RE.match(quote[0]) if quote else None
+    if cm:
+        label, border, bg = CALLOUTS[cm.group(1).upper()]
+        head, body = (cm.group(2).strip() or label), quote[1:]
+    else:
+        head, body, border, bg = None, quote, "#ff8f00", "#fff8e1"
+    inner = (CARD_HEAD + inline(head, warnings) + "</p>") if head else ""
+    inner += "".join(P + inline(q, warnings) + "</p>" for q in body if q)
+    return CARD % (bg, border, inner)
 
 
 def md_to_html(md_text, drop_first_h1=True):
@@ -423,21 +476,18 @@ def md_to_html(md_text, drop_first_h1=True):
             labels = [inline(h, warnings) if h else "" for h in header]   # 表头只排一次，里面的链接只引一次
             for row in rows:
                 cells = [inline(c, warnings) for c in row]
-                card = '<section style="padding:12px 15px;background-color:#f0f7ff;border-left:4px solid #1a73e8;margin:0;">'
-                card += '<p style="font-size:15px;font-weight:bold;color:#111;line-height:1.8;letter-spacing:0.5px;margin:0;">%s</p>' % (cells[0] if cells else "")
+                inner = CARD_HEAD + "%s</p>" % (cells[0] if cells else "")
                 for k, c in enumerate(cells[1:], 1):
                     label = labels[k] if k < len(labels) else ""
-                    card += P + (label + "：" if label else "") + c + "</p>"
-                card += "</section>"
-                blocks.append(card)
+                    inner += P + (label + "：" if label else "") + c + "</p>"
+                blocks.append(CARD % ("#f0f7ff", "#1a73e8", inner))
             continue
         if s.startswith(">"):
             quote = []
             while i < len(lines) and lines[i].strip().startswith(">"):
                 quote.append(lines[i].strip()[1:].strip())
                 i += 1
-            inner = "".join(P + inline(q, warnings) + "</p>" for q in quote if q)
-            blocks.append('<section style="padding:12px 15px;background-color:#fff8e1;border-left:4px solid #ff8f00;margin:0;">' + inner + "</section>")
+            blocks.append(quote_block(quote, warnings))
             continue
         if re.match(r"^([-*•]|\d+[.、])\s+", s):
             items = []
@@ -521,6 +571,16 @@ def cmd_check(args):
     print("ok：AppID %s… 拿到 access_token（长度 %d），白名单通。什么都没推。" % (appid[:6], len(token)))
 
 
+def preview_shell(title, fragment, note="本机预览，390 宽；不是微信的真实渲染，图片是本地路径"):
+    """把微信 HTML 片段套进一个 390 宽的手机壳，浏览器打开就能看排版。只是看，不是微信渲染。"""
+    return ('<!doctype html>\n<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+            '<title>预览：%s</title><style>body{margin:0;background:#e5e5e5;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}'
+            '.phone{width:390px;max-width:100%%;margin:24px auto;background:#fff;padding:20px 16px 48px;box-sizing:border-box;min-height:844px}'
+            '.phone h1{font-size:22px;line-height:1.4;margin:0 0 6px;color:#111}.note{font-size:12px;color:#999;margin:0 0 20px}img{max-width:100%%}'
+            '</style></head><body><div class="phone"><h1>%s</h1><p class="note">%s</p>\n%s\n</div></body></html>\n'
+            % (escape(title), escape(title), escape(note), fragment))
+
+
 def cmd_render(args):
     html, images, title, errors, warnings, chars = build(args.md, args.title, "render")
     report_build(title, html, images, errors, warnings, chars)
@@ -529,6 +589,9 @@ def cmd_render(args):
         html = html.replace(ph, escape(src, quote=True))
     io.open(out, "w", encoding="utf-8", newline="\n").write(html)
     print("HTML 已写到：" + out + ("（有不过项，推之前先改）" if errors else ""))
+    prev = os.path.splitext(args.md)[0] + ".preview.html"
+    io.open(prev, "w", encoding="utf-8", newline="\n").write(preview_shell(title or "（没有标题）", html))
+    print("预览页已写到：" + prev + "（浏览器打开看 390 宽的排版；不是微信的真实渲染，最终以草稿箱为准）")
     sys.exit(1 if errors else 0)
 
 
@@ -616,7 +679,10 @@ def cmd_push(args):
                     "thumb_media_id": thumb}, **article_opts(args))
     body = json.dumps({"articles": [article]}, ensure_ascii=False).encode("utf-8")
     j = http_json("POST", BASE + "/cgi-bin/draft/add?access_token=" + token, body,
-                  {"Content-Type": "application/json; charset=utf-8"}, timeout=120)
+                  {"Content-Type": "application/json; charset=utf-8"}, timeout=120, fatal=False)
+    if no_reply(j):
+        draft_add_unknown(os.path.splitext(args.md)[0], "draft-result",
+                          {"title": title, "thumb_media_id": thumb, "images": img_urls, "error": j.get("errmsg")})
     if "media_id" not in j:
         die("draft/add 失败：" + explain(j))
     media_id = j["media_id"]
@@ -629,6 +695,130 @@ def cmd_push(args):
     io.open(out, "w", encoding="utf-8", newline="\n").write(json.dumps(result, ensure_ascii=False, indent=1))
     print("结果已落盘：" + out + "（报 media_id 从这里复制，别手抄）")
     print("接下来是人的活：去公众号后台草稿箱点进这篇，看图和排版，勾「声明原创」，开「赞赏」，没问题再点发布。")
+
+
+# ---------- 图片消息（公众号里的「贴图」，接口叫 newspic） ----------
+def newspic_text(raw):
+    """配文归一：换行统一、每行去尾空格、三个以上空行压成两个、长破折号换逗号（记一条提醒）。不动别的。"""
+    warnings = []
+    text = raw.replace("\r\n", "\n").replace("\r", "\n")
+    n = len(re.findall("[—–]+", text))
+    if n:
+        warnings.append("长破折号 %d 处已换成逗号" % n)
+        text = re.sub("[—–]+", "，", text)
+    text = "\n".join(l.rstrip() for l in text.split("\n"))
+    text = re.sub(r"\n{3,}", "\n\n", text).strip()
+    return text, warnings
+
+
+def newspic_gate(title, text, image_paths):
+    """推之前的门：标题 32 字内、配文非空且是纯文本（不带尖括号、不带待填标记、不带长破折号）、1 到 20 张本地 jpg/png、单张 10MB 内。返回错误列表，空＝过。"""
+    errors = []
+    title = (title or "").strip()
+    if not title:
+        errors.append("没有标题：--title")
+    elif len(title) > TITLE_MAX:
+        errors.append("标题 %d 字，超过 %d" % (len(title), TITLE_MAX))
+    if not text.strip():
+        errors.append("配文是空的")
+    if "<" in text or ">" in text:
+        errors.append("配文里有尖括号：图片消息的 content 是纯文本，不能带 HTML（否则 45166）")
+    markers = MARKER_RE.findall(text)
+    if markers:
+        errors.append("配文还有 %d 处待作者处理的标记 [📝/💬/🖼/📊]" % len(markers))
+    if DASH_RE.search(text):
+        errors.append("配文仍有长破折号")
+    if NEWSPIC_TEXT_MAX_BYTES and len(text.encode("utf-8")) > NEWSPIC_TEXT_MAX_BYTES:
+        errors.append("配文 %d 字节，超过 %d" % (len(text.encode("utf-8")), NEWSPIC_TEXT_MAX_BYTES))
+    n = len(image_paths)
+    if n < 1:
+        errors.append("至少要 1 张图：--images 或 --images-dir")
+    elif n > NEWSPIC_MAX_IMAGES:
+        errors.append("%d 张图，超过 %d 张" % (n, NEWSPIC_MAX_IMAGES))
+    for p in image_paths:
+        if not os.path.exists(p):
+            errors.append("图片不存在：" + p)
+        elif os.path.splitext(p)[1].lower() not in (".jpg", ".jpeg", ".png"):
+            errors.append("只收 jpg/png：" + p)
+        elif os.path.getsize(p) > COVER_LIMIT:
+            errors.append("图片超过 %dMB：%s" % (COVER_LIMIT // 1024 // 1024, p))
+    return errors
+
+
+def collect_images(images, images_dir):
+    """--images a.png,b.png 按给的顺序；--images-dir 目录里的 jpg/png 按文件名排序（newspic_cards.py 出的 01.png…NN.png 刚好）。两个都给就先 --images 再目录。"""
+    paths = [p.strip() for p in (images or "").split(",") if p.strip()]
+    if images_dir:
+        if not os.path.isdir(images_dir):
+            die("--images-dir 不是目录：" + images_dir)
+        paths += [os.path.join(images_dir, f) for f in sorted(os.listdir(images_dir)) if f.lower().endswith((".png", ".jpg", ".jpeg"))]
+    return [os.path.abspath(p) for p in paths]
+
+
+def readback_newspic(token, media_id, title):
+    """图片消息的回读只核标题。news_item 里还有哪些字段先记下来（结果文件里的 readback_fields），攒够实测再决定核什么。"""
+    j = draft_get(token, media_id)
+    if "news_item" not in j:
+        return False, "draft/get 失败：" + explain(j), []
+    a = j["news_item"][0]
+    fields = sorted(a.keys())
+    got = a.get("title")
+    if got != title:
+        return False, "回读：标题不一致，回的是《%s》" % got, fields
+    return True, "回读：标题《%s》一致，article_type=%s" % (got, a.get("article_type", "（接口没回这个字段）")), fields
+
+
+def cmd_push_newspic(args):
+    if not os.path.exists(args.text):
+        die("配文文件不存在：" + args.text)
+    text, warnings = newspic_text(io.open(args.text, encoding="utf-8").read())
+    title = (args.title or "").strip()
+    paths = collect_images(args.images, args.images_dir)
+    errors = newspic_gate(title, text, paths)
+    print("标题：%s（%d 字）" % (title, len(title)))
+    print("配文：%d 字 %d 字节；%d 张图，第一张是封面" % (len(text), len(text.encode("utf-8")), len(paths)))
+    for p in paths:
+        print("  图：%s（%dKB）" % (os.path.basename(p), (os.path.getsize(p) // 1024) if os.path.exists(p) else 0))
+    for w in warnings:
+        print("  提醒：" + w)
+    for e in errors:
+        print("  不过：" + e)
+    if errors:
+        die("先把上面的不过项改掉再推")
+    stem = os.path.splitext(os.path.abspath(args.text))[0]
+    if args.dry_run:
+        payload = {"articles": [dict({"article_type": "newspic", "title": title, "content": text,
+                                      "image_info": {"image_list": [{"image_media_id": "<dry-run:%s>" % os.path.basename(p)} for p in paths]}},
+                                     **article_opts(args))]}
+        out = stem + ".newspic-dryrun.json"
+        io.open(out, "w", encoding="utf-8", newline="\n").write(json.dumps(payload, ensure_ascii=False, indent=1))
+        print("dry-run：没联网。请求体已写到 " + out)
+        return
+    appid, secret = load_credentials()
+    token = get_token(appid, secret)
+    print("ok：access_token 拿到")
+    media_ids = []
+    for k, p in enumerate(paths, 1):
+        mid = upload_material(token, p, "第 %d 张图" % k)
+        media_ids.append({"path": p, "media_id": mid})
+        print("  第 %d 张已传为永久素材：%s -> %s" % (k, os.path.basename(p), mid))
+    article = dict({"article_type": "newspic", "title": title, "content": text,
+                    "image_info": {"image_list": [{"image_media_id": m["media_id"]} for m in media_ids]}}, **article_opts(args))
+    j = post_json(token, "/cgi-bin/draft/add", {"articles": [article]}, timeout=120, fatal=False)
+    if no_reply(j):
+        draft_add_unknown(stem, "newspic-result", {"title": title, "images": media_ids, "error": j.get("errmsg")})
+    if "media_id" not in j:
+        die("draft/add 失败：" + explain(j))
+    media_id = j["media_id"]
+    print("ok：图片消息已进草稿箱，media_id=" + media_id)
+    ok, msg, fields = readback_newspic(token, media_id, title)
+    print(("ok：" if ok else "注意：") + msg)
+    result = {"type": "newspic", "title": title, "media_id": media_id, "images": media_ids, "chars": len(text),
+              "pushed_at": _dt.datetime.now().isoformat(timespec="seconds"), "readback": msg, "readback_fields": fields}
+    out = stem + ".newspic-result-%s.json" % _dt.datetime.now().strftime("%Y%m%d-%H%M%S")
+    io.open(out, "w", encoding="utf-8", newline="\n").write(json.dumps(result, ensure_ascii=False, indent=1))
+    print("结果已落盘：" + out + "（报 media_id 从这里复制，别手抄）")
+    print("接下来是人的活：去公众号后台草稿箱点进这条，逐张看图、看配文、看封面裁切，没问题再点发布。")
 
 
 def draft_get(token, media_id):
@@ -792,6 +982,13 @@ def main():
     p.add_argument("--digest", default="")
     p.add_argument("--author", default="")
     p.add_argument("--dry-run", action="store_true", help="不联网，把请求体写到文件看")
+    pn = sub.add_parser("push-newspic", help="图片消息（公众号里的「贴图」）：一组图加一段纯文本配文推进草稿箱，第一张是封面")
+    pn.add_argument("--title", required=True, help="32 字内")
+    pn.add_argument("--text", required=True, help="配文文件，纯文本，不能带 HTML；结果文件写在它旁边")
+    pn.add_argument("--images", help="图片路径，逗号分隔，顺序就是展示顺序，第一张是封面")
+    pn.add_argument("--images-dir", help="或者给目录：里面的 jpg/png 按文件名排序；newspic_cards.py 出的 cards 目录直接用")
+    pn.add_argument("--comment", choices=["open", "fans", "off"], default="open", help="留言：open 所有人可留言（默认）/ fans 仅粉丝 / off 关闭")
+    pn.add_argument("--dry-run", action="store_true", help="不联网，把请求体写到文件看")
     v = sub.add_parser("verify", help="回读一篇草稿")
     v.add_argument("--media-id", required=True)
     pb = sub.add_parser("publish", help="人在后台看过草稿、说了「发」之后才跑：回读、提交发布、轮询状态；只有微信认证企业号能用")
@@ -810,6 +1007,8 @@ def main():
         cmd_render(args)
     elif args.cmd == "push":
         cmd_push(args)
+    elif args.cmd == "push-newspic":
+        cmd_push_newspic(args)
     elif args.cmd == "verify":
         cmd_verify(args)
     elif args.cmd == "publish":

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """回归用例（门禁 build_packages.py 会跑；本地 python scripts/test_quality.py）。只用标准库，不碰网络，不花积分。
 覆盖 2026-10-10 两份外部检测报告指出的点：聚类误合并、时间归一与时区、排序、日程步长、排版、版本号同步、派活流中断、坏源不拖死整轮。"""
-import datetime, email.utils, io, os, socket, sys
+import datetime, email.utils, io, os, socket, struct, sys, tempfile, zlib
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SK = os.path.join(ROOT, "experts", "ilang-wechat-awesome", "skills")
@@ -16,6 +16,7 @@ except Exception:
 import hot_sources as hs          # noqa: E402
 import wxrank_topics as wx        # noqa: E402
 import wechat_draft as wd         # noqa: E402
+import newspic_cards as nc        # noqa: E402
 import dispatch as dp             # noqa: E402
 import update_hot_list as uhl     # noqa: E402
 import release as rl              # noqa: E402
@@ -128,6 +129,43 @@ check("图片地址不进参考链接", all("x.png" not in u for _, u in wd.CITA
 check("表头链接只引一次", sum(1 for _, u in wd.CITATIONS if u == "https://example.com/a") == 1, wd.CITATIONS)
 check("英文软换行补空格", "wrapped on purpose. Second line here" in html, html[:400])
 check("中文软换行不加空格", "中文接着写不加空格" in html)
+
+# ---- 提示块与预览页 ----
+blocks, _, _, _ = wd.md_to_html("> [!TIP] 推荐这么做\n> 第一条\n\n> [!CAUTION]\n> 别带 HTML\n\n> 普通引用\n")
+check("提示块按类型配色 TIP 绿 带标题", "#2e7d32" in blocks[0] and "#f1f8f2" in blocks[0] and ">推荐这么做</p>" in blocks[0], blocks[0])
+check("提示块没写标题用默认名 CAUTION 避坑", "#c62828" in blocks[1] and ">避坑</p>" in blocks[1] and "别带 HTML" in blocks[1], blocks[1])
+check("普通引用还是橙色卡 没有标题行", "#ff8f00" in blocks[2] and "普通引用" in blocks[2] and "font-weight:bold" not in blocks[2], blocks[2])
+shell = wd.preview_shell("标题<b>", "<p>正文</p>")
+check("预览页标题转义 片段原样 390 宽", "标题&lt;b&gt;" in shell and "<p>正文</p>" in shell and "width:390px" in shell)
+
+# ---- 贴图：切页、门、合成 PNG 校验（不开浏览器） ----
+pages = nc.split_pages("---\nx: 1\n---\n【第1页】\n封面\n副标题\n\n【第 2 页】\n要点\n- 一\n- 二\n【第三页】\n结尾\n")
+check("按【第N页】切页 认空格和中文数字 跳过 YAML 头", [p[0] for p in pages] == ["1", "2", "三"], [p[0] for p in pages])
+check("每页第一行是标题 后面是正文行", nc.page_parts(pages[1][1]) == ("要点", ["- 一", "- 二"]), nc.page_parts(pages[1][1]))
+check("切页校验过", nc.validate_pages(pages) == [], nc.validate_pages(pages))
+check("标记前有内容算错", any("前面有内容" in e for e in nc.validate_pages(nc.split_pages("多出来的\n【第1页】\n封面\n【第2页】\n结尾\n"))))
+check("残留标记和长破折号拦住", len(nc.validate_pages(nc.split_pages("【第1页】\n封面 [📝 填]\n【第2页】\n结尾——\n"))) == 2)
+check("超过 20 页拦住", any("多于 20" in e for e in nc.validate_pages([("1", ["t"])] * 21)))
+txt, w = wd.newspic_text("第一行——\r\n\r\n\r\n\r\n第二行  \n")
+check("配文归一 破折号换逗号 空行压缩 去尾空格", txt == "第一行，\n\n第二行" and len(w) == 1, (txt, w))
+errs = wd.newspic_gate("标题", "纯文本配文", [__file__])
+check("贴图门：非图片文件拦住 其他都过", errs == ["只收 jpg/png：" + __file__], errs)
+errs = wd.newspic_gate("", "<b>x</b> [📝 待填]", [])
+check("贴图门：空标题 HTML 标记 没图 四条都报", len(errs) == 4, errs)
+check("没收到回复才算 UNKNOWN 微信自己的 -1 不算", wd.no_reply({"errcode": -1, "errmsg": "网络请求失败：timeout"}) and not wd.no_reply({"errcode": -1, "errmsg": "system error"}))
+def png_bytes(w, h, rows_red):
+    raw = b"".join(b"\x00" + (bytes([200, 16, 46] if y < rows_red else [255, 255, 255]) * w) for y in range(h))
+    def chunk(tag, data):
+        return struct.pack(">I", len(data)) + tag + data + struct.pack(">I", zlib.crc32(tag + data) & 0xffffffff)
+    return b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 2, 0, 0, 0)) + chunk(b"IDAT", zlib.compress(raw)) + chunk(b"IEND", b"")
+tmpd = tempfile.mkdtemp(prefix="tq-png-")
+io.open(os.path.join(tmpd, "01.png"), "wb").write(png_bytes(nc.W, nc.H, 6))
+io.open(os.path.join(tmpd, "02.png"), "wb").write(png_bytes(nc.W, nc.H, 0))
+io.open(os.path.join(tmpd, "03.png"), "wb").write(png_bytes(100, 100, 0))
+check("PNG 头解析", nc.png_info(os.path.join(tmpd, "02.png")) == (nc.W, nc.H, 8, 2), nc.png_info(os.path.join(tmpd, "02.png")))
+check("顶部红条＝放不下 没红条＝放得下", nc.has_overflow_bar(os.path.join(tmpd, "01.png")) and not nc.has_overflow_bar(os.path.join(tmpd, "02.png")))
+errs, _ = nc.validate_pngs(tmpd, 4)
+check("出图校验：尺寸不对和缺图都报", any("尺寸 100x100" in e for e in errs) and any("第 4 张没出图" in e for e in errs), errs)
 
 # ---- 版本号同步 ----
 txt = "version: 2.3.12\n[VERSION:2.3.10]\n| 2.3.1 |\nv2.3.1 and v2.3.12 and \"version\": \"2.3.1\""

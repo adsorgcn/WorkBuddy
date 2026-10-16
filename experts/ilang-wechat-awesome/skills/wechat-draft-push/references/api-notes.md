@@ -26,7 +26,9 @@
 | 拿 token | GET /cgi-bin/token?grant_type=client_credential&appid&secret | 2 小时有效，每次跑现取 |
 | 正文图 | POST /cgi-bin/media/uploadimg | multipart 字段 media；只收 jpg/png，1MB 以内；返回 url，http 换 https |
 | 封面 | POST /cgi-bin/material/add_material?type=image | 永久素材，10MB 以内；返回 media_id 当 thumb_media_id |
+| 贴图的每一张图 | POST /cgi-bin/material/add_material?type=image | 同上，每张一个 media_id，填进 image_info.image_list |
 | 推草稿 | POST /cgi-bin/draft/add | articles[]；请求体 json.dumps(ensure_ascii=False).encode("utf-8")，头 Content-Type: application/json; charset=utf-8 |
+| 推贴图 | POST /cgi-bin/draft/add | 同一个端点，articles[].article_type 填 "newspic"，见下面「图片消息」一节 |
 | 回读 | POST /cgi-bin/draft/get | body {"media_id"}；响应是 text/plain 不带 charset，必须拿原始字节按 UTF-8 解 |
 | 提交发布 | POST /cgi-bin/freepublish/submit | body {"media_id"}；返回 publish_id、msg_data_id；只有认证号能调 |
 | 查发布状态 | POST /cgi-bin/freepublish/get | body {"publish_id"}；返回 publish_status、article_id、article_detail、fail_idx |
@@ -42,6 +44,25 @@
 | thumb_media_id | news 类型必填，永久素材 |
 | need_open_comment / only_fans_can_comment | 0 或 1；脚本 --comment open（1/0，默认）、fans（1/1）、off（0/0） |
 | content_source_url | 「阅读原文」跳转地址，可空；脚本 --source-url，要 http(s) 开头 |
+
+## 图片消息（公众号里的「贴图」，接口叫 newspic；2.3.24 起有 push-newspic 命令）
+
+官方文档「新建草稿」里 articles[] 的另一种类型。字段按官方页面抄，哪些实测过哪些没有，写明：
+
+| 字段 | 限制 | 脚本怎么做 |
+|---|---|---|
+| article_type | 填 "newspic"；不填就是 news 图文 | 固定填 |
+| title | 32 字内，必填 | --title，过门时核 |
+| content | 纯文本，不能带 HTML（带了 45166）；官方没写长度上限 | --text 配文文件；过门拦尖括号、待填标记、长破折号；长度不硬拦（常量 NEWSPIC_TEXT_MAX_BYTES 默认空，实测撞到再填） |
+| image_info.image_list[].image_media_id | 永久素材的 media_id，最多 20 张，第一张是封面 | 每张图走 add_material 传成永久素材，按给的顺序填 |
+| cover_info.crop_percent_list | 封面裁切，ratio 取 1_1 / 16_9 / 2.35_1，配 x1 y1 x2 y2 比例 | 不传。封面卡的字已经落在中央正方形里，裁切人去后台调 |
+| need_open_comment / only_fans_can_comment | 0 或 1 | --comment，同图文 |
+| product_info | 带货商品标签，要先开带货能力 | 不做 |
+
+- 回读：draft/get 对图片消息回哪些字段没实测。脚本只核标题，news_item[0] 的字段名记进结果文件的 readback_fields，攒够实测再决定核什么。
+- 结果文件：`<配文文件名>.newspic-result-<时间>.json`，有 media_id、每张图的路径和 media_id、配文字数、回读结果。
+- 没收到回复：draft/add 发出去了但断网、超时、回的不是 JSON，草稿可能已经进去了。脚本落 `*-UNKNOWN-<时间>.json`（图片 media_id 在里面）、退出码 3，让人先去草稿箱看有没有这个标题，有就别重推。图文的 push 同样处理。微信自己回 errcode -1 是「系统繁忙」，那是收到了回复，草稿没进去，稍等重推。
+- 卡片图怎么出：`scripts/newspic_cards.py`，按【第N页】切页，填 `scripts/cards.html` 模板，用本机 Edge/Chrome 无头截 1080×1440 PNG，逐张校验，放不下报错不缩字。模板里的颜色、字号、字体由 --style 的 JSON 改（只认 bg/ink/muted/accent/card/font/title/body/cover_title/lh 这几个键）。
 
 ## 发布接口（微信认证企业号，2.2 起有 publish 命令）
 
@@ -105,6 +126,7 @@ publish_status 对照（脚本按这张表报中文）：
 
 | errcode | 意思 | 怎么办 |
 |---|---|---|
+| -1 | 微信系统繁忙 | 这次没进去，稍等再推。脚本自己造的「没收到回复」不是这个，那种退出码 3，先看草稿箱 |
 | 40164 | IP 不在白名单 | errmsg 里的 IP 加进后台白名单 |
 | 40013 | AppID 不对 | 重新复制 |
 | 40125 | AppSecret 不对或被重置 | 重置后更新配置文件 |
@@ -139,7 +161,7 @@ publish_status 对照（脚本按这张表报中文）：
 
 ## 回读核对标准
 
-标题一致；正文中文无损（UTF-8 解码后正常）；mmbiz 图片数等于上传数；没有长破折号。回读显示乱码不等于存储坏了，别重推，重推会多一篇重复草稿。
+标题一致；正文中文无损（UTF-8 解码后正常）；mmbiz 图片数等于上传数；没有长破折号。回读显示乱码不等于存储坏了，别重推，重推会多一篇重复草稿。图片消息只核标题（其他字段没实测，见上面「图片消息」）。
 
 ## 本技能没有的命令
 

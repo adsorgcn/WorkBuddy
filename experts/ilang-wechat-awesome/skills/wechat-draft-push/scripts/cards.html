@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1080">
+<title>card {{PAGE}}/{{TOTAL}}</title>
+<style>
+:root{--w:1080px;--h:1440px;--pad-y:96px;--pad-x:88px;{{CSS_VARS}}}
+html,body{margin:0;padding:0;background:var(--bg)}
+body{width:var(--w);height:var(--h);overflow:hidden;font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased;position:relative}
+.card{box-sizing:border-box;width:var(--w);height:var(--h);padding:var(--pad-y) var(--pad-x);display:flex;flex-direction:column;position:relative;background:var(--bg)}
+.rule{width:72px;height:10px;background:var(--accent);margin-bottom:36px;flex:none}
+.num{font-size:34px;letter-spacing:.3em;color:var(--accent);font-weight:700;margin-bottom:24px;flex:none}
+h1{font-size:var(--title);line-height:1.32;margin:0 0 44px;font-weight:700;letter-spacing:.01em;flex:none;word-break:break-word}
+.body{font-size:var(--body);line-height:var(--lh);flex:1 1 auto;min-height:0;overflow:hidden;word-break:break-word}
+.body p{margin:0 0 .55em}
+.body p.li{padding-left:1.1em;text-indent:-1.1em}
+.body p.li::before{content:"·";color:var(--accent);font-weight:700;margin-right:.5em}
+.foot{flex:none;margin-top:28px;padding-top:24px;border-top:2px solid rgba(0,0,0,.08);font-size:28px;color:var(--muted);display:flex;justify-content:space-between;letter-spacing:.06em}
+/* 封面卡：信息流会裁成 1:1，正文全部落在中央正方形（上下各留 180px）里 */
+.cover .inner{position:absolute;left:var(--pad-x);right:var(--pad-x);top:180px;bottom:180px;display:flex;flex-direction:column;justify-content:center}
+.cover .kicker{font-size:30px;color:var(--muted);letter-spacing:.3em;margin-bottom:40px}
+.cover h1{font-size:var(--cover-title);line-height:1.22;margin:0}
+.cover .sub{font-size:44px;line-height:1.5;color:var(--muted);margin-top:36px}
+.cover .rule{margin:0 0 40px}
+.cover .foot{margin-top:auto}
+.end h1{font-size:var(--title)}
+/* 放不下：顶部一条红条，脚本读 PNG 顶部像素就知道 */
+.overflow .warn{position:absolute;left:0;right:0;top:0;height:120px;line-height:120px;background:#c8102e;color:#fff;font-size:44px;text-align:center;font-weight:700;letter-spacing:.2em;z-index:9}
+</style>
+</head>
+<body>
+<div class="card {{KIND}}">
+  <div class="only-cover">
+    <div class="inner">
+      <div class="rule"></div>
+      <div class="kicker">{{KICKER}}</div>
+      <h1>{{TITLE}}</h1>
+      <div class="sub">{{SUB}}</div>
+    </div>
+  </div>
+  <div class="only-page">
+    <div class="rule"></div>
+    <div class="num">{{NUM}} / {{TOTAL}}</div>
+    <h1>{{TITLE}}</h1>
+    <div class="body">
+{{BODY}}
+    </div>
+  </div>
+  <div class="foot"><span>{{FOOTER}}</span><span>{{PAGE}} / {{TOTAL}}</span></div>
+</div>
+<script>
+(function(){
+  var card = document.querySelector('.card');
+  var isCover = card.classList.contains('cover');
+  document.querySelector('.only-cover').style.display = isCover ? 'block' : 'none';
+  document.querySelector('.only-page').style.display = isCover ? 'none' : 'contents';
+  var over = false;
+  if (!isCover) {
+    var b = document.querySelector('.body');
+    over = b.scrollHeight > b.clientHeight + 2;
+  } else {
+    var inner = document.querySelector('.cover .inner');
+    over = inner.scrollHeight > inner.clientHeight + 2;
+  }
+  if (over) {
+    document.body.classList.add('overflow');
+    var w = document.createElement('div'); w.className = 'warn'; w.textContent = '放不下了，删字';
+    document.body.appendChild(w);
+    document.title = 'CARD_OVERFLOW';
+  }
+})();
+</script>
+</body>
+</html>

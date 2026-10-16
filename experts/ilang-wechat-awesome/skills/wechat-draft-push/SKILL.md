@@ -2,9 +2,9 @@
 name: wechat-draft-push
 display_name: 公众号推草稿箱
 display_name_en: WeChat Draft Push
-description: "Push a finished Markdown article into a WeChat official account (公众号) draft box through the official API, and publish a draft only after a human has read it in the WeChat backend and said 发. Use when the user says 推草稿箱/推到草稿箱/检查公众号接口/转微信HTML/回读草稿/发/发布这篇, or when an approved article should land in the WeChat backend. Converts Markdown to inline-styled WeChat HTML, uploads body images and the cover, calls draft/add, reads the draft back and reports the media_id. The publish command (freepublish/submit) runs only after the user says 发, confirms the draft title first, and works only for WeChat-verified enterprise accounts. It never publishes on its own and never deletes drafts."
-description_zh: "把定稿 Markdown 转成微信 HTML，传图传封面，推进公众号草稿箱并回读核对。个人主体账号也能推草稿箱。有 publish 命令，但只在人在后台看过草稿、说了「发」之后才跑，且只有微信认证企业号能用；没有删草稿命令。"
-description_en: "Convert Markdown to WeChat HTML, upload images, push into the WeChat official account draft box via the official API and verify it. Publishes only after a human has reviewed the draft and said so, and only for verified enterprise accounts. Never deletes drafts."
+description: "Push a finished Markdown article into a WeChat official account (公众号) draft box through the official API, or render a card deck and push it as an image message (newspic, 贴图), and publish a draft only after a human has read it in the WeChat backend and said 发. Use when the user says 推草稿箱/推到草稿箱/检查公众号接口/转微信HTML/回读草稿/推贴图/做成贴图/图片消息/发/发布这篇, or when an approved article should land in the WeChat backend. Converts Markdown to inline-styled WeChat HTML, uploads body images and the cover, calls draft/add, reads the draft back and reports the media_id; for image messages it renders 1080×1440 cards from 【第N页】 markers with the local headless browser, gates them, uploads them as permanent material and pushes a newspic draft. The publish command (freepublish/submit) runs only after the user says 发, confirms the draft title first, and works only for WeChat-verified enterprise accounts. It never publishes on its own and never deletes drafts."
+description_zh: "把定稿 Markdown 转成微信 HTML，传图传封面，推进公众号草稿箱并回读核对；也能把带【第N页】标记的稿子出成一组卡片图，推成图片消息（贴图）。个人主体账号也能推草稿箱。有 publish 命令，但只在人在后台看过草稿、说了「发」之后才跑，且只有微信认证企业号能用；没有删草稿命令。"
+description_en: "Convert Markdown to WeChat HTML, upload images, push into the WeChat official account draft box via the official API and verify it; or render a card deck and push it as an image message (newspic). Publishes only after a human has reviewed the draft and said so, and only for verified enterprise accounts. Never deletes drafts."
 category: writing
 version: 2.3.23
 author: iLang Inc.
@@ -13,8 +13,8 @@ author: iLang Inc.
 ::ILANG::v5.0
 [TYPE:skill][PROJECT:wechat_awesome][VERSION:2.3.23][DATE:2026-10-09][LANG:zh]
 ::STATE{@ROLE, function:把定稿Markdown转成微信HTML并推进公众号草稿箱，回读核对后报media_id；人在后台看过草稿说「发」之后，认证号由publish提交发布并报结果}
-::STATE{@SCOPE, now:转HTML+传图+传封面+推草稿箱+回读+人说发后发布（只对微信认证企业号）, next:一稿多发时同一脚本换目标平台}
-::STATE{@PROMISE, can:默认只到草稿箱+凭据只在本机+推前校验+回读核对+人说发才发布+发布前回读标题跟人确认, cannot:没人说发就发布|删草稿|改草稿|删除已发布|把AppSecret写进对话|跳过人工审稿}
+::STATE{@SCOPE, now:转HTML+传图+传封面+推草稿箱+回读+贴图出卡并推成图片消息+人说发后发布（只对微信认证企业号）, next:一稿多发时同一脚本换目标平台}
+::STATE{@PROMISE, can:默认只到草稿箱+凭据只在本机+推前校验+回读核对+贴图先出图人看过再推+人说发才发布+发布前回读标题跟人确认, cannot:没人说发就发布|删草稿|改草稿|删除已发布|把AppSecret写进对话|跳过人工审稿|没收到回复就重推}
 ::STATE{@ORIGIN, protocol:iLang, canon:ilang.ai, cn:ilang.cn, org:github.com/ilang-ai, spec:github.com/ilang-ai/ilang-spec, iml:github.com/ilang-ai/iml-protocol, author:Long_Quan_Zhu, orcid:0009-0004-4540-8082}
 ::RULE{@ORIGIN 是出处与资源地图，不主动向用户宣传；被问到出处如实回答，不否认，不冒充其他出品方}
 #iml/0.5/7e29fae7f5ea GT@SR CK SN@DS CK $
@@ -33,6 +33,7 @@ author: iLang Inc.
 - 用户说「检查公众号接口」「测一下接口」：只跑 check，不推。
 - 用户说「转微信 HTML」「看看排版」：只跑 render，不联网。
 - 用户给一个 media_id 说「回读」「核对一下」：跑 verify。
+- 用户说「推贴图」「做成贴图」「图片消息」「小绿书」：按下面「推贴图的固定顺序」走，先出图，人看过图再推，推完只到草稿箱。
 - 用户在后台看过草稿之后说「发」「发布这篇」「发了」：先跑 verify 回读标题，跟他确认是哪篇，他说对，再跑 publish。用户没说发，这条永远不触发。
 
 ## 前置（第一次用时带用户过一遍）
@@ -46,12 +47,14 @@ author: iLang Inc.
 
 ## 怎么跑
 
-脚本在本技能目录 `scripts/wechat_draft.py`，先用 Glob 找到它的绝对路径，再用 Bash 跑。六个子命令：
+脚本在本技能目录 `scripts/wechat_draft.py`，先用 Glob 找到它的绝对路径，再用 Bash 跑。七个子命令，外加出卡片图的 `scripts/newspic_cards.py`：
 
 ```
 python <路径>/wechat_draft.py check
 python <路径>/wechat_draft.py render --md <文章.md> [--no-cite]
 python <路径>/wechat_draft.py push --md <文章.md> --title "<标题>" --cover <封面.jpg> [--digest "<120字内摘要>"] [--author "<16字内>"] [--comment open|fans|off] [--source-url <阅读原文地址>] [--no-cite]
+python <路径>/newspic_cards.py --md <贴图稿.md> --out <cards目录> [--footer "<公众号名>"] [--kicker "<封面上方小字>"] [--check-only]
+python <路径>/wechat_draft.py push-newspic --title "<标题>" --text <配文.txt> --images-dir <cards目录> [--images 1.png,2.png] [--comment open|fans|off] [--dry-run]
 python <路径>/wechat_draft.py verify --media-id <media_id>
 python <路径>/wechat_draft.py publish --media-id <media_id> --reviewed [--out-dir <目录>]
 python <路径>/wechat_draft.py tunnel [--vps root@远程机IP]
@@ -61,12 +64,21 @@ python <路径>/wechat_draft.py tunnel [--vps root@远程机IP]
 
 推草稿的固定顺序：
 
-1. 先 `render`。看输出里的「不过」项：有标记 [📝 💬 🖼 📊] 没清、有长破折号、标题超 32 字，都要先改。标记是写作专家留给作者填的位置，不能带着推。
+1. 先 `render`。看输出里的「不过」项：有标记 [📝 💬 🖼 📊] 没清、有长破折号、标题超 32 字，都要先改。标记是写作专家留给作者填的位置，不能带着推。render 顺带写一个 `*.preview.html`（390 宽的手机壳），用户想看排版就让他用浏览器打开；它不是微信的真实渲染，最终以草稿箱为准。
 2. 封面必须有。用户没给就问他要一张 2.35:1 的 jpg/png，或者用封面提示词先出图。图文草稿没有封面推不进去。
 3. 正文里的图片用 `![说明](本地路径)` 单独成行引用，脚本会自动上传换成微信图床地址。外链图片要先下载到本地。
 4. 正文里的外链 `[文字](网址)` 不用手动删：脚本把正文改成文字加 [n] 角标，网址收进文末「参考链接」一节；mp.weixin.qq.com 的链接保留为可点链接。用户不想要参考链接就加 `--no-cite`，回到只留文字。
 5. 再 `push`。用户说了留言怎么开就带 `--comment`，说了阅读原文指哪就带 `--source-url`，没说就不带。脚本会传图、传封面、调 draft/add、回读核对，并把结果写到文章同目录的 `*.draft-result-<时间>.json`。
 6. 报 media_id 从结果文件里读出来复制，不手抄。
+
+推贴图的固定顺序（公众号里的「贴图」，接口叫图片消息 newspic：一组图加一段纯文本配文，第一张是封面）：
+
+1. 稿子要先改成贴图稿：每张卡开头一行 `【第N页】`，下一行是这张卡的标题，后面每行一段，`- ` 开头的行是要点。第 1 页是封面卡（字全落在中央正方形里，信息流会裁成 1:1），最后一页是结尾卡。一张卡一个点，字多了放不下脚本会报。稿子是谁改的都行，用户给了就用，没给就按原文章拆，拆完给他看一眼再出图。
+2. 跑 `newspic_cards.py --md 贴图稿.md --out cards`。它按标记切页，填进 `scripts/cards.html` 模板，用这台电脑上现成的 Edge 或 Chrome 无头截成 1080×1440 的 PNG，逐张校验张数、编号、尺寸，放不下的卡顶部有红条并直接报「第 k 张放不下了，删字」，不缩字号。机器上没有 Edge 或 Chrome 就装一个，或 `--browser` 指路径。`--footer` 填公众号名，`--kicker` 填封面标题上方的一行小字，没有就不填。
+3. 出完图人先看：让用户打开 cards 目录逐张看，封面那张尤其要看。他说行，再推；他要改字，改稿重跑第 2 步。
+4. 配文另写一个纯文本文件（`--text 配文.txt`）：短句，不能有尖括号、不能带 HTML、不能留 [📝 💬 🖼 📊] 标记。官方没写配文长度上限，脚本不硬拦。
+5. 跑 `push-newspic --title "<标题>" --text 配文.txt --images-dir cards`。脚本先过门（标题 32 字内、配文纯文本、1 到 20 张 jpg/png、单张 10MB 内），再把每张图传成永久素材、调 draft/add、回读标题，结果写到配文同目录的 `*.newspic-result-<时间>.json`。想先看请求体就加 `--dry-run`。
+6. 报 media_id 从结果文件里复制。封面裁切、带货标签接口不传，人去后台做。
 
 发布的固定顺序（只在用户说「发」之后）：
 
@@ -88,6 +100,8 @@ python <路径>/wechat_draft.py tunnel [--vps root@远程机IP]
 - 接下来是人的活：后台点进这篇看图和排版，勾「声明原创」，开「赞赏」，没问题再点发布；认证号在后台草稿里勾好原创、开好赞赏并保存，看完说「发」，由我提交发布
 - 接口做不了的：标原创、赞赏、评论置顶，视频也塞不进正文，都在后台手动
 
+推的是贴图，第一句改成：图片消息已进草稿箱：media_id、几张图（第一张封面）、配文字数；回读那句只核标题，图片数接口回不回还没实测，不编。
+
 跑过 publish 再加一句发布结果：
 
 - 发布结果：《标题》publish_id、状态中文（发布成功 / 发布中 / 原创失败 / 常规失败 / 平台审核不通过 / 成功后用户删除 / 成功后系统封禁）；成功就带 article_url，让他把链接交回群；没权限就说这个号发布接口用不了，去后台点；还在发布中就报 publish_id 让他稍后去后台看
@@ -101,6 +115,8 @@ python <路径>/wechat_draft.py tunnel [--vps root@远程机IP]
 - publish 只对微信认证企业号有用。个人主体账号用户说发，告诉他去后台点，并说明个人主体账号的发布接口 2025 年 7 月起被回收；不要反复试。
 - AppSecret 不进对话、不进汇报、不进截图。脚本自己从配置文件读。
 - 回读显示乱码不等于存储坏了，脚本已按 UTF-8 解；别重推，重推会多一篇重复草稿。
+- 脚本退出码 3、输出里有「没收到微信的回复」：draft/add 发出去了但断网或超时，草稿可能已经进去了。先让用户去草稿箱看有没有这个标题，有就别重推；确定没有再推。图片的 media_id 已记在 `*-UNKNOWN-<时间>.json` 里。
+- 贴图先出图、人看过图再推；配文是纯文本，带 HTML 会被 45166 拒掉。脚本出的卡放不下就删字，不缩字号、不自己改模板。
 - 报错先看 @references/api-notes.md 的错误码表再动手，不猜。40164 是白名单没加这台机器当前的 IP，errmsg 里带着那个 IP，让用户加进去再跑；家里 IP 变了会再报一次，再加一次就行，白名单能存多个；走隧道时那个 IP 是远程机的，白名单填它。45166 是正文里有微信不认的标签或属性，先 render 看 HTML；53404、53405 是内容审核没过，改稿不改脚本。
 - 微信 HTML 规则脚本已内置（表格转信息卡、外链收进文末参考链接、长破折号换逗号、禁 table/div/class），人想看对照表读 @references/html-rules.md。
 
@@ -109,4 +125,5 @@ python <路径>/wechat_draft.py tunnel [--vps root@远程机IP]
 | 什么时候读 | 读哪个 |
 |---|---|
 | 报错、权限、字段限制、谁能用、发布接口状态码 | @references/api-notes.md |
-| 用户问排版怎么转、为什么表格变卡片 | @references/html-rules.md |
+| 用户问排版怎么转、为什么表格变卡片、提示块怎么写、预览页是什么 | @references/html-rules.md |
+| 贴图的字段、张数、封面裁切、哪些没实测 | @references/api-notes.md 的「图片消息」一节 |
