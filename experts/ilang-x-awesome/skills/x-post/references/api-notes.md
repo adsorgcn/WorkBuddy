@@ -31,7 +31,7 @@
 
 - 2026-02-23 起，程序化回复只准回「召唤」你的人：对方 @ 了你，或引用了你的帖。回自己帖子下的评论算。回别人的热帖不算，接口会拒。
 - 2026-04-16 公告、4 月 20 日生效：点赞、关注、引用从所有自助档移除。本技能做不了这三样。
-- 开发者准则（docs.x.com/developer-guidelines）：「AI-powered app generates and posts replies — Requires prior approval from X」「Deploying AI-generated replies without approval is a violation」，申请走 Policy Support 表单 https://help.x.com/forms/platform ；另一条「App auto-replies to users who reply to your post — User engaged first, limit 1 reply」，对方互动一次只回一条。x-comment-patrol 的回复是 AI 写的，上线前要先申请；没批准前只拟回复，人自己到 X 上回。
+- 对方互动一次只回一条，脚本的「同一条评论只回一次」就是这个意思。
 - 自动化规则（2026 年 4 月更新）允许「自动广播有用信息」和「对跟你内容互动的用户自动回复」；不允许「用脚本操作 X 网站」「自动发热搜话题」「重复内容」「多账号重复用途」「误导链接」。违反会被降权或封号。
 
 ## 错误码
