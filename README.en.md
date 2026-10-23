@@ -153,6 +153,27 @@ Install it with the same kind of command, pointed at the X expert:
 
 No agent runtime yet? You need one that reads SKILL.md: the international WorkBuddy, Claude Code, Codex or Muse all work. Tutorials: follow [@ai_chuhai](https://x.com/ai_chuhai) on X; start with [the X beginner guide](https://x.com/ai_chuhai/status/2112640526176358616) and [the X algorithm formula](https://x.com/ai_chuhai/status/2113358982391750858).
 
+#### How a beginner uses it
+
+Before the first run, three things:
+
+1. An AI agent that reads skill files: Claude Code, Codex, Muse or the international WorkBuddy. Paste the command above into it; it installs itself and reports back.
+2. Decide how to publish. By hand: free, the expert fills the x.com compose box and you click Post. Through the API: create an app at developer.x.com with Read and write permission, generate the four keys, put them in `~/.x-api.env`; buy $5 of credits (X matches it with $5); run `check` and look for "read-write". If the app was read-only first, regenerate the Access Token after changing the permission.
+3. Tell the expert what your account is about, for whom, and in which language. Once.
+
+```
+Step 1  Say "what should I post today" → it reads the X榜单 boards for what is hot and in which format, then finds a benchmark piece on mainland Chinese media (WeChat, Zhihu, Bilibili, Douyin, Xiaohongshu) → 1 to 3 candidates with the benchmark link, usable images and video, an angle and the closing question → you pick one
+Step 2  It rewrites the benchmark into an X post or thread: hook first, short lines, one point per post, a concrete question at the end, images and video reused → gate check → you read it
+Step 3  Say "post" → by hand: the compose box opens pre-filled, you click; via API: posted and read back, $0.015 per post, $0.20 with a link
+Step 4  Replies arrive, say "patrol" → it pulls every reply under your posts, ranks them, gives a three-line digest above 30 → drafts answers → you nod → sent, $0.010 each, only to people who engaged you, one per person
+Step 5  One or two posts a day; say "status" for today's counts and spend
+```
+
+Cost: the manual route is free. On the API route a new account tops up $5 and gets $5, about $3 a month if you only answer replies, so roughly three months. The public X榜单 boards are free; its MCP is optional.
+
+It never touches politics or geopolitics, never likes, follows or quotes, never comments on strangers' posts, never scripts the X website, never shares your keys.
+
+
 ## Skills
 
 | Name | What | Version |
