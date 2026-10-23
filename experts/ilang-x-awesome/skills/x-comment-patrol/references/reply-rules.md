@@ -43,6 +43,11 @@
 
 一轮最多 20 条，同一个人一轮最多一条，同一条评论只回一次。再多就是刷，不是聊。
 
+## 官方准则里直接管这件事的两条（docs.x.com/developer-guidelines，2026-10-23 核）
+
+- 「AI-powered app generates and posts replies — Requires prior approval from X」「Deploying AI-generated replies without approval is a violation, even if the content itself is helpful」。本技能的回复是专家（AI）写的、脚本发的，正是这一类。上线前先走 Policy Support 表单 https://help.x.com/forms/platform 申请；没批准前，巡查只列拟回复，人自己到 X 上回，脚本不发。
+- 「App auto-replies to users who reply to your post — User engaged first, limit 1 reply」「Reply to users: Only if user engaged first. Max 1 reply per interaction」。对方互动一次只回一条，脚本的「同一条评论只回一次」就是按这条写的。
+
 ## 成本
 
 每天 10 条评论：读 10 条约 0.01 美元，回 10 条 0.10 美元，一个月约 3 美元；每条再读一次原帖上下文加 0.005。

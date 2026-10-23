@@ -13,7 +13,8 @@
   python x_patrol.py status
         打印水位线、发过回过多少条、今天的花费估算。
 
-x_api.py 要在同一台机器上：默认找本技能目录旁边的 ../../x-post/scripts/x_api.py，找不到用环境变量 X_API_PY 指路径。
+x_api.py 要在同一台机器上。找的顺序：环境变量 X_API_PY 指的路径 → 本脚本同目录 → 本技能目录旁边的 ../../x-post/scripts/x_api.py。
+Windows 一般是 python，Mac 和 Linux 多半要写 python3。
 退出码：0 成功；1 参数或门没过；2 接口报错；3 某条回复发出去没收到回复（水位线没推，先去主页看）。
 """
 import argparse
@@ -76,9 +77,14 @@ def cmd_fetch(args):
                "since_id_before": since, "newest_id": newest, "items": items}
     out = args.out or os.path.join(d, "pending.json")
     io.open(out, "w", encoding="utf-8", newline="\n").write(json.dumps(pending, ensure_ascii=False, indent=1))
+    X.append_log(d, "reads.jsonl", {"kind": "mentions", "n": len(rows), "cost": cost})
+    st["last_fetch_at"] = pending["fetched_at"]
+    X.save_state(d, st)
     print("拉到 %d 条新提及，去掉自己的和回过的剩 %d 条（跳过 %d）；本轮读约 %.3f 美元。清单：%s" % (len(rows), len(items), skipped, cost, out))
     for r in items:
         print("  %s  @%s  %s  %s" % (r["id"], r.get("username") or r.get("author_id"), r["kind"], (r.get("text") or "").replace("\n", " ")[:70]))
+    if len(rows) >= args.max:
+        print("拉满了 --max %d，可能还有更早的没拉到。这轮处理完（send 推了水位线）再 fetch 一次。" % args.max)
     if not items:
         print("这轮没有要判的。要把水位线推过去：python x_patrol.py send --replies 空列表文件（内容 []）")
 
@@ -108,13 +114,16 @@ def cmd_send(args):
         X.die("一轮最多回 %d 条，给了 %d 条；挑最值得回的" % (args.max, len(replies)))
     done = replied_ids(d)
     history = [r.get("text", "") for r in X.read_log(d, "replies.jsonl", X.DUP_WINDOW) if r.get("status") == "ok"]
-    seen_authors, errors, plan = set(), [], []
+    seen_authors, seen_to, errors, plan = set(), set(), [], []
     for k, r in enumerate(replies, 1):
         to, text = str(r.get("to") or ""), (r.get("text") or "")
         text, warnings = X.normalize(text)
         item = by_id.get(to)
         if not item:
             errors.append("第 %d 条：to=%s 不在这轮的 pending.json 里，只回这轮拉到的" % (k, to)); continue
+        if to in seen_to:
+            errors.append("第 %d 条：%s 在这个文件里出现了两次，同一条评论只回一次" % (k, to)); continue
+        seen_to.add(to)
         if to in done:
             errors.append("第 %d 条：%s 已经回过" % (k, to)); continue
         author = item.get("author_id")
@@ -160,16 +169,24 @@ def cmd_send(args):
 def cmd_status(args):
     d = X.ops_dir()
     st = X.load_state(d)
+    if not st.get("me_id"):
+        print("还没认过身份：先跑 x_api.py check（它会记下 handle、id 和 App 权限）。数据目录：" + d)
+        return
     posts = X.read_log(d, "posts.jsonl")
     replies = X.read_log(d, "replies.jsonl")
+    reads = X.read_log(d, "reads.jsonl")
     today = _dt.date.today().isoformat()
     tp = [r for r in posts if str(r.get("at", "")).startswith(today) and r.get("status") == "ok"]
     tr = [r for r in replies if str(r.get("at", "")).startswith(today) and r.get("status") == "ok"]
-    cost = sum(X.PRICE["post_url"] if X.has_url(r.get("text", "")) else X.PRICE["post"] for r in tp if r.get("via") == "api") + len(tr) * X.PRICE["reply"]
-    print("账号 @%s  id %s  水位线 since_id=%s  上次巡查 %s" % (st.get("handle"), st.get("me_id"), st.get("since_id"), st.get("last_patrol_at")))
-    print("累计：发 %d 条（接口 %d，手动 %d），回 %d 条；今天：发 %d 回 %d，接口花费约 %.3f 美元（不含读）" % (
+    trd = [r for r in reads if str(r.get("at", "")).startswith(today)]
+    write_cost = sum(X.PRICE["post_url"] if X.has_url(r.get("text", "")) else X.PRICE["post"] for r in tp if r.get("via") == "api") + len(tr) * X.PRICE["reply"]
+    read_cost = sum(float(r.get("cost") or 0) for r in trd)
+    print("账号 @%s  id %s  App 权限 %s  水位线 since_id=%s  上次拉取 %s  上次推水位线 %s" % (
+        st.get("handle"), st.get("me_id"), st.get("access_level") or "未知", st.get("since_id"), st.get("last_fetch_at"), st.get("last_patrol_at")))
+    print("累计：发 %d 条（接口 %d，手动交出 %d），回 %d 条；今天：发 %d 回 %d 读 %d 次，花费约 %.3f 美元（写 %.3f 加读 %.3f）" % (
         len([r for r in posts if r.get("status") == "ok"]), len([r for r in posts if r.get("via") == "api" and r.get("status") == "ok"]),
-        len([r for r in posts if r.get("via") == "intent"]), len([r for r in replies if r.get("status") == "ok"]), len(tp), len(tr), cost))
+        len([r for r in posts if r.get("via") == "intent" and r.get("status") == "handed"]), len([r for r in replies if r.get("status") == "ok"]),
+        len(tp), len(tr), len(trd), write_cost + read_cost, write_cost, read_cost))
     print("数据目录：" + d)
 
 

@@ -215,14 +215,18 @@ xa.append_log(xd, "posts.jsonl", {"kind": "reply", "status": "ok", "text": "c", 
 check("今天发帖计数只算帖和串帖", xa.today_count(xd) == 2, xa.today_count(xd))
 check("禁区：英文整词 BioWare 不拦 Iran 拦", xf.banned_reason("EA closes BioWare") is None and xf.banned_reason("Iran strike plan") == "Iran", (xf.banned_reason("EA closes BioWare"), xf.banned_reason("Iran strike plan")))
 check("禁区：中文子串", xf.banned_reason("泽连斯基表示愿意") == "泽连斯基")
+check("禁区：英文复数和缩写也拦", xf.banned_reason("tribute to 2 late presidents") is not None and xf.banned_reason("ties with N. Korea") is not None and xf.banned_reason("Kim Jong-un's letter") is not None)
+check("禁区：冲突只拦政治语境", xf.banned_reason("今天碰到的一个公共场合的小冲突") is None and xf.banned_reason("巴以冲突升级") == "巴以冲突")
+ny = datetime.timezone(datetime.timedelta(hours=-4))
+check("清单时间按北京时间算 纽约机器不少算", abs(xf.age_hours("10-22 08:00", datetime.datetime(2026, 10, 22, 0, 0, tzinfo=ny)) - 4) < 0.01, xf.age_hours("10-22 08:00", datetime.datetime(2026, 10, 22, 0, 0, tzinfo=ny)))
 xnow = datetime.datetime(2026, 10, 22, 12, 0)
 check("清单时间按小时算 跨年往前推", abs(xf.age_hours("10-22 08:00", xnow) - 4) < 0.01 and xf.age_hours("12-30 08:00", datetime.datetime(2027, 1, 2, 8, 0)) == 72.0)
 xfeed = {"groups": {"AI": [{"title": "Iran drone AI", "published": "10-22 11:00", "lang": "en", "platforms": 3},
                            {"title": "OpenAI 发新模型", "published": "10-22 10:00", "lang": "zh", "platforms": 2},
                            {"title": "旧闻", "published": "10-18 10:00", "lang": "zh", "platforms": 5},
                            {"title": "我发过的 OpenAI 新模型", "published": "10-22 09:00", "lang": "zh", "platforms": 1}]}}
-kept, dropped = xf.pick(xfeed, hours=48, n=10, posted=["我发过的 OpenAI 新模型 真不错"], now=xnow)
-check("清单过滤：禁区 时效 去重 都拦 剩一条", [r["title"] for r in kept] == ["OpenAI 发新模型"] and len(dropped) == 3, ([r["title"] for r in kept], [w for _, w in dropped]))
+kept, dropped, total = xf.pick(xfeed, hours=48, n=10, posted=["我发过的 OpenAI 新模型 真不错"], now=xnow)
+check("清单过滤：禁区 时效 去重 都拦 剩一条", [r["title"] for r in kept] == ["OpenAI 发新模型"] and len(dropped) == 3 and total == 1, ([r["title"] for r in kept], [w for _, w in dropped], total))
 
 # ---- 版本号同步 ----
 txt = "version: 2.3.12\n[VERSION:2.3.10]\n| 2.3.1 |\nv2.3.1 and v2.3.12 and \"version\": \"2.3.1\""

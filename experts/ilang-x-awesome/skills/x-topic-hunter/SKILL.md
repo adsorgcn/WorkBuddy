@@ -48,7 +48,7 @@ author: iLang Inc.
 python <路径>/x_feed.py --n 10 --hours 48 [--group AI,科技,海外] [--lang en|zh] [--keyword 关键词] [--hot-only] [--posted ~/.x-ops/<handle>/posts.jsonl] [--show-banned]
 ```
 
-脚本在本技能目录 `scripts/x_feed.py`，先用 Glob 找到绝对路径再用 Bash 跑。在仓库克隆里跑读本地清单，不在就从 GitHub raw 拉。`--posted` 指向他本机的发帖日志，发过相近的自动去掉。`--show-banned` 把被禁区初筛拦下的也列出来带理由，你再判一遍。
+脚本在本技能目录 `scripts/x_feed.py`，先用 Glob 找到绝对路径再用 Bash 跑（Mac 和 Linux 上 `python` 多半要写成 `python3`）。在仓库克隆里跑读本地清单，不在就从 GitHub raw 拉。打印的「通过 M 条，显示前 N 条」两个数口径不同：M 是整份清单过了禁区和时效的，N 是 `--n` 截断后给你看的。清单里的时间是北京时间，脚本按北京时间算时效，机器在哪个时区都一样。`--posted` 指向他本机的发帖日志，发过相近的自动去掉。`--show-banned` 把被禁区初筛拦下的也列出来带理由，你再判一遍。
 
 ## 固定顺序
 

@@ -34,10 +34,10 @@ author: iLang Inc.
 
 走接口才需要，走手动跳过：
 
-1. 到 developer.x.com 用自己的 X 账号建一个应用，权限选 Read and Write，用自己账号授权，生成四个 OAuth 1.0a 密钥：API Key、API Secret、Access Token、Access Secret。
+1. 到 developer.x.com 用自己的 X 账号建一个应用，权限选 Read and Write，用自己账号授权，生成四个 OAuth 1.0a 密钥：API Key、API Secret、Access Token、Access Secret。权限是在生成 Access Token 之前定的：先建成只读、后来才改成 Read and Write 的，要重新生成 Access Token 和 Secret，旧的还是只读，发帖会 403。
 2. 开发者控制台买积分：按量计费没有月费，自动充值最低 5 美元。新号首次购买后送 20 美元，首次自动充值按金额匹配最多 50 美元，三个月内有效。
 3. 四个值写进用户主目录的 `.x-api.env`，四行：`API_KEY=`、`API_SECRET=`、`ACCESS_TOKEN=`、`ACCESS_SECRET=`。让用户自己用记事本写，专家不接收密钥的值；贴进来了也不复述、不存、不进汇报，只提醒他去重置。
-4. 跑 `check`，打印出 @handle 和 id 就通了。
+4. 跑 `check`，打印出 @handle、id 和 App 权限；权限不是 read-write 它会提醒，那就回第 1 步改权限并重新生成 Access Token。
 
 价格（2026 年 10 月 docs.x.com）：普通帖 0.015 美元一条，正文含任何链接 0.20 一条，回复召唤你的人 0.010 一条，读自己的帖 0.001 一条。
 
@@ -53,7 +53,7 @@ python <路径>/x_api.py thread --file <串帖.txt> [--dry-run]
 python <路径>/x_api.py intent --text "<正文>" | --file <帖.txt> [--thread] [--no-open]
 ```
 
-`thread` 的文件用单独一行的 `---` 分条。`intent` 是手动路：生成 x.com 的编辑框链接并打开浏览器，`--thread` 时一条一个编辑框。`--dry-run` 只打印请求体不联网。
+`thread` 的文件用单独一行的 `---` 分条。`intent` 是手动路：生成 x.com 的编辑框链接并打开浏览器，`--thread` 时一条一个编辑框，`--no-open` 只打印链接不开浏览器。`--dry-run` 只打印请求体不联网。Mac 和 Linux 上 `python` 多半要写成 `python3`。
 
 ## 固定顺序
 
@@ -74,7 +74,7 @@ python <路径>/x_api.py intent --text "<正文>" | --file <帖.txt> [--thread] 
 - 和最近发过的相同或高度相似的不发，想再发同一主题换角度。
 - 脚本退出码 3、输出里有「没收到 X 的回复」：发出去了但断网或超时，先让用户去自己主页看有没有发出去，有就别重发。
 - 密钥不进对话、不进汇报、不进日志。脚本自己从配置文件读。
-- 报错先看 @references/api-notes.md 的表再动手：401 是密钥或权限，402 是积分不够，403 多半是回复了没召唤你的人，429 限频等一会。
+- 报错先看 @references/api-notes.md 的表再动手：401 是密钥或权限，402 是积分不够，403 先看 check 打印的 App 权限（只读的发不了，改成 Read and Write 后要重新生成 Access Token），权限对了才是回复了没召唤你的人，429 限频等一会。
 
 ## Muse 快速启动
 

@@ -32,15 +32,18 @@ FEED_LOCAL = os.environ.get("X_FEED_PATH") or os.path.join(_up, "data", "hot", "
 BANNED = [
     "伊朗", "以色列", "哈马斯", "加沙", "真主党", "胡塞", "俄罗斯", "俄军", "乌克兰", "普京", "泽连斯基", "北约", "台海", "两岸", "统一", "朝鲜", "金正恩",
     "选举", "大选", "竞选", "总统", "议会", "国会", "参议院", "众议院", "政党", "民主党", "共和党", "特朗普", "川普", "拜登", "哈里斯", "首相", "总理",
-    "战争", "开战", "停火", "和平协议", "导弹", "空袭", "轰炸", "袭击", "武装", "军方", "军事", "国防", "阅兵", "冲突", "制裁", "政变", "边境", "领土",
-    "宗教", "穆斯林", "伊斯兰", "基督", "佛教", "教会", "民族", "种族", "新疆", "西藏", "香港", "示威", "抗议", "游行", "独立", "分裂", "人权", "外交", "国务院", "关税", "中美", "美伊", "美俄",
-    "iran", "israel", "hamas", "gaza", "hezbollah", "houthi", "russia", "ukraine", "putin", "zelensky", "nato", "taiwan strait", "north korea",
-    "election", "ballot", "president", "senate", "congress", "parliament", "democrat", "republican", "trump", "biden", "prime minister",
+    "战争", "开战", "停火", "和平协议", "导弹", "空袭", "轰炸", "袭击", "武装", "军方", "军事", "国防", "阅兵", "武装冲突", "军事冲突", "边境冲突", "地区冲突", "巴以冲突", "俄乌冲突", "制裁", "政变", "边境", "领土",
+    "宗教", "穆斯林", "伊斯兰", "基督", "佛教", "教会", "民族", "种族", "新疆", "西藏", "香港", "示威", "抗议", "游行", "独立", "分裂", "人权", "外交", "国务院", "中办", "国办", "中共中央", "党中央", "关税", "中美", "美伊", "美俄",
+    "iran", "israel", "hamas", "gaza", "hezbollah", "houthi", "russia", "ukraine", "putin", "zelensky", "nato", "taiwan strait", "north korea", "n. korea", "kim jong",
+    "election", "midterm", "ballot", "president", "senate", "congress", "parliament", "democrat", "republican", "trump", "biden", "prime minister",
     "war", "ceasefire", "missile", "airstrike", "bombing", "military", "troops", "sanction", "coup", "border", "territory",
     "religion", "muslim", "islam", "christian", "church", "ethnic", "racial", "protest", "riot", "tariff", "diplomat", "human rights",
 ]
 def _pat(w):
-    return (r"\b" + re.escape(w) + r"\b") if re.match(r"^[A-Za-z ]+$", w) else re.escape(w)   # 英文按整词，免得 war 拦住 BioWare
+    """英文按整词匹配（免得 war 拦住 BioWare），允许复数 s/es（presidents 也拦）；中文按子串。"""
+    if re.match(r"^[A-Za-z .]+$", w):
+        return r"\b" + re.escape(w) + r"(?:s|es)?\b"
+    return re.escape(w)
 
 
 BANNED_RE = re.compile("|".join(_pat(w) for w in BANNED), re.I)
@@ -70,14 +73,23 @@ def banned_reason(title):
     return m.group(0) if m else None
 
 
+BJ = _dt.timezone(_dt.timedelta(hours=8))
+
+
 def age_hours(published, now=None):
-    """清单里的时间是 MM-DD HH:MM（北京时间），按当年算，跨年往前推一年。认不出返回 None。"""
+    """清单里的时间是 MM-DD HH:MM 北京时间。本机不管在哪个时区，都换成北京时间来比（纽约的机器不这么算会少算 12 到 13 小时）。
+    now 不给就取此刻；给了不带时区的，当作北京时间。按当年算，跨年往前推一年。认不出返回 None。"""
     m = re.match(r"^(\d{2})-(\d{2}) (\d{2}):(\d{2})$", published or "")
     if not m:
         return None
-    now = now or _dt.datetime.now()
+    if now is None:
+        now = _dt.datetime.now(BJ)
+    elif now.tzinfo is None:
+        now = now.replace(tzinfo=BJ)
+    else:
+        now = now.astimezone(BJ)
     try:
-        t = _dt.datetime(now.year, int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4)))
+        t = _dt.datetime(now.year, int(m.group(1)), int(m.group(2)), int(m.group(3)), int(m.group(4)), tzinfo=BJ)
     except ValueError:
         return None
     if t > now + _dt.timedelta(days=1):
@@ -145,7 +157,7 @@ def pick(feed, groups=None, lang="all", hours=48, n=10, kws=None, hot_only=False
         r["age_hours"] = None if a is None else round(a, 1)
         kept.append(r)
     kept.sort(key=lambda r: (-(r.get("platforms") or 1), r.get("age_hours") if r.get("age_hours") is not None else 999))
-    return kept[:n], dropped
+    return kept[:n], dropped, len(kept)
 
 
 def main():
@@ -163,11 +175,11 @@ def main():
     feed, where = load_feed()
     groups = [x.strip() for x in (a.group or "").split(",") if x.strip()] or None
     kws = [x.strip() for x in (a.keyword or "").split(",") if x.strip()] or None
-    kept, dropped = pick(feed, groups, a.lang, a.hours, a.n, kws, a.hot_only, load_posted(a.posted))
+    kept, dropped, total = pick(feed, groups, a.lang, a.hours, a.n, kws, a.hot_only, load_posted(a.posted))
     if a.json:
-        print(json.dumps({"date": feed.get("date"), "from": where, "kept": kept, "dropped": [(r.get("title"), why) for r, why in dropped]}, ensure_ascii=False, indent=1))
+        print(json.dumps({"date": feed.get("date"), "from": where, "passed": total, "kept": kept, "dropped": [(r.get("title"), why) for r, why in dropped]}, ensure_ascii=False, indent=1))
         return
-    print("仓库内容清单 %s（%s）：入选 %d 条，拦下 %d 条（禁区 %d）" % (feed.get("date"), "本地" if where == FEED_LOCAL else "GitHub", len(kept), len(dropped), sum(1 for _, w in dropped if w.startswith("禁区"))))
+    print("仓库内容清单 %s（%s）：通过 %d 条，显示前 %d 条，拦下 %d 条（禁区 %d）" % (feed.get("date"), "本地" if where == FEED_LOCAL else "GitHub", total, len(kept), len(dropped), sum(1 for _, w in dropped if w.startswith("禁区"))))
     for r in kept:
         print("- [%s] %s  %s  %d平台  %s\n  %s" % (r.get("group"), r.get("published") or r.get("time") or "", r.get("lang"), r.get("platforms") or 1, r.get("title"), r.get("url")))
     if a.show_banned:

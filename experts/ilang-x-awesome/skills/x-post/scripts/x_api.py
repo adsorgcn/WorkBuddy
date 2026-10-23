@@ -3,7 +3,8 @@
 """X（Twitter）官方接口：发帖、串帖、回复、读自己的提及，外加一条不花钱的手动路。只用 Python 3.8+ 标准库。
 
 用法：
-  python x_api.py check                                  验密钥：GET /2/users/me，打印 handle 和 id，把 id 记进本机状态文件
+  python x_api.py check                                  验密钥：GET /2/users/me，打印 handle、id 和 App 权限（只读的发不了帖），把 id 记进本机状态文件
+                                                         Windows 一般是 python，Mac 和 Linux 多半要写 python3，下同
   python x_api.py gate --text "..." | --file 帖.txt       只过门不联网：加权长度、标记、长破折号、链接、重复
   python x_api.py post --text "..." | --file 帖.txt [--reply-to <id>] [--allow-url] [--force] [--dry-run]
                                                          发一条；--dry-run 只打印请求体
@@ -53,7 +54,8 @@ URL_WEIGHT = 23                    # 任何链接按 t.co 长度计
 DAILY_MAX = 2                      # 一天两条，再发要 --force
 DUP_WINDOW = 200                   # 和最近 200 条正文比重复
 SIMILAR_THRESHOLD = 0.8            # 二字片段 Jaccard 超过这个算相似
-PRICE = {"post": 0.015, "post_url": 0.20, "reply": 0.010, "owned_read": 0.001, "read": 0.005}
+PRICE = {"post": 0.015, "post_url": 0.20, "reply": 0.010, "owned_read": 0.001, "read": 0.005, "user_read": 0.010}
+LAST_HEADERS = {}                  # 最近一次接口响应的头，check 用它看 x-access-level（App 是只读还是读写）
 MARKER_RE = re.compile(r"\[(📝|💬|🖼|📊)[^\]]*\]")
 DASH_RE = re.compile("[—–]")
 URL_RE = re.compile(r"https?://\S+|\b[\w\-]+(?:\.[\w\-]+)*\.[a-z]{2,}(?:/\S*)?", re.I)   # 裸域名要有字母后缀，3.5 这种小数不算
@@ -169,11 +171,14 @@ def call(method, path, creds, query=None, body=None, timeout=60, fatal=True):
     req.add_header("User-Agent", UA)
     if data is not None:
         req.add_header("Content-Type", "application/json; charset=utf-8")
+    global LAST_HEADERS
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             raw, status = resp.read(), resp.status
+            LAST_HEADERS = {k.lower(): v for k, v in resp.headers.items()}
     except urllib.error.HTTPError as e:
         raw, status = e.read(), e.code
+        LAST_HEADERS = {k.lower(): v for k, v in (e.headers or {}).items()}
     except Exception as e:
         if not fatal:
             return -1, {"error": "没收到回复：%s" % e}
@@ -189,7 +194,7 @@ def explain(status, j):
     tips = {
         401: "密钥不对、过期，或应用权限不是 Read and Write。去 developer.x.com 重新生成四个密钥再写进配置文件。",
         402: "积分不够了。去开发者控制台充值（自动充值最低 5 美元）。",
-        403: "被拒。回复的话多半是对方没有召唤你（只能回 @你或引用你的帖）；发帖的话看 detail 里的原因。",
+        403: "被拒。先看 check 打印的权限：App 不是 Read and write 就会 403，去 developer.x.com 把 App 权限改成 Read and write，再重新生成 Access Token 和 Secret 写进配置文件。权限对的话，回复多半是对方没有召唤你（只能回 @你或引用你的帖）。",
         429: "限频，等一会再发。",
         503: "X 那边暂时不可用，稍后再试。",
     }
@@ -355,14 +360,18 @@ def read_text(args):
 def cmd_check(args):
     creds = load_credentials()
     u = me(creds)
+    level = LAST_HEADERS.get("x-access-level", "")
     base = os.environ.get("X_OPS_DIR") or os.path.join(os.path.expanduser("~"), ".x-ops")
     os.makedirs(base, exist_ok=True)
     io.open(os.path.join(base, "current.txt"), "w", encoding="utf-8").write(u["username"])
     d = ops_dir(u["username"])
     st = load_state(d)
-    st.update({"me_id": u["id"], "handle": u["username"], "checked_at": _dt.datetime.now().isoformat(timespec="seconds")})
+    st.update({"me_id": u["id"], "handle": u["username"], "access_level": level, "checked_at": _dt.datetime.now().isoformat(timespec="seconds")})
     save_state(d, st)
-    print("ok：@%s（id %s）密钥通。本机数据目录：%s。什么都没发。" % (u["username"], u["id"], d))
+    append_log(d, "reads.jsonl", {"kind": "me", "n": 1, "cost": PRICE["user_read"]})
+    print("ok：@%s（id %s）密钥通，App 权限 %s。本机数据目录：%s。什么都没发。" % (u["username"], u["id"], level or "（响应头没带 x-access-level）", d))
+    if level and "write" not in level:
+        print("注意：这套密钥只能读不能发。去 developer.x.com 的 App 设置把权限改成 Read and write，再重新生成 Access Token 和 Secret 写进配置文件，然后再跑一次 check。")
 
 
 def cmd_gate(args):
@@ -465,6 +474,7 @@ def cmd_mentions(args):
     st = load_state(d)
     me_id = st.get("me_id") or me(creds)["id"]
     rows, meta = get_mentions(creds, me_id, args.since_id or st.get("since_id"), args.max)
+    append_log(d, "reads.jsonl", {"kind": "mentions", "n": len(rows), "cost": len(rows) * PRICE["owned_read"]})
     print(json.dumps({"me_id": me_id, "count": len(rows), "newest_id": meta.get("newest_id"), "mentions": rows}, ensure_ascii=False, indent=1))
 
 
@@ -480,12 +490,15 @@ def cmd_intent(args):
         for w in warnings:
             print("  提醒：" + w)
         print(url)
-        append_log(d, "posts.jsonl", {"id": None, "kind": "intent", "text": t, "via": "intent", "status": "handed"})
+        append_log(d, "posts.jsonl", {"id": None, "kind": "intent", "text": t, "via": "intent", "status": "link" if args.no_open else "handed"})
         if not args.no_open:
             webbrowser.open(url)
             if len(parts) > 1:
                 time.sleep(2)
-    print("浏览器里的编辑框已填好，你自己点发。日志记了「handed」，发没发以你为准。")
+    if args.no_open:
+        print("链接已生成，没开浏览器：复制到浏览器打开就是填好的编辑框，你自己点发。日志记了「link」，发没发以你为准。")
+    else:
+        print("浏览器里的编辑框已填好，你自己点发。日志记了「handed」，发没发以你为准。")
 
 
 def main():

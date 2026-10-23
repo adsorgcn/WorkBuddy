@@ -4,7 +4,7 @@
 
 - 按量计费，无订阅无最低消费。开发者控制台先买积分，用一次扣一次。自动充值最低 5 美元，每 5 分钟最多充一次，余额为零或负时不自动充；可以设每个周期的花费上限，到了上限接口会被拒直到下个周期。
 - 新号激励（2026 年 10 月起陆续放开）：首次购买积分后送 20 美元（只加卡不算，预付卡不算，一张实体卡只送一次）；首次自动充值成功按金额匹配送最多 50 美元（充 5 送 5）。都三个月过期。
-- 老的 Basic 200 美元/月、Pro 5000 美元/月只给老订户。
+- 老的 Basic、Pro 订阅档现行定价页已经不列，2026-02-06 的 changelog 写「Basic and Pro plans remain available」，只给老订户，具体月费以控制台为准。
 
 | 项 | 价 |
 |---|---|
@@ -30,7 +30,8 @@
 ## 规矩（官方原文的意思）
 
 - 2026-02-23 起，程序化回复只准回「召唤」你的人：对方 @ 了你，或引用了你的帖。回自己帖子下的评论算。回别人的热帖不算，接口会拒。
-- 2026-04-16 起，点赞、关注、引用从所有自助档移除。本技能做不了这三样。
+- 2026-04-16 公告、4 月 20 日生效：点赞、关注、引用从所有自助档移除。本技能做不了这三样。
+- 开发者准则（docs.x.com/developer-guidelines）：「AI-powered app generates and posts replies — Requires prior approval from X」「Deploying AI-generated replies without approval is a violation」，申请走 Policy Support 表单 https://help.x.com/forms/platform ；另一条「App auto-replies to users who reply to your post — User engaged first, limit 1 reply」，对方互动一次只回一条。x-comment-patrol 的回复是 AI 写的，上线前要先申请；没批准前只拟回复，人自己到 X 上回。
 - 自动化规则（2026 年 4 月更新）允许「自动广播有用信息」和「对跟你内容互动的用户自动回复」；不允许「用脚本操作 X 网站」「自动发热搜话题」「重复内容」「多账号重复用途」「误导链接」。违反会被降权或封号。
 
 ## 错误码
@@ -39,7 +40,7 @@
 |---|---|---|
 | 401 | 密钥不对、过期，或应用权限不是 Read and Write | 重新生成四个密钥写进配置文件 |
 | 402 | 积分不够 | 去控制台充值 |
-| 403 | 被拒 | 回复的话多半是对方没有召唤你；发帖看 detail |
+| 403 | 被拒 | 先看 check 打印的 App 权限：不是 Read and write 就是它（去 developer.x.com 改权限，重新生成 Access Token 和 Secret）；权限对的话，回复多半是对方没有召唤你；发帖看 detail |
 | 429 | 限频 | 等一会再发 |
 | 503 | X 那边暂时不可用 | 稍后再试 |
 
