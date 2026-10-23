@@ -6,12 +6,12 @@ description: "Find what to post on X (Twitter) with data instead of guessing: qu
 description_zh: "用数据定 X 上发什么：装了 X榜单 MCP 就用它查爆款、查对标号、看今日热点（用户自己的年卡）；没装就读仓库每天自动更新的免费内容清单，按 X 口径过滤（时效、语言、禁区、去重）。每次给 1 到 3 条候选，带来源、角度、争议点、禁区判定。只读，不发帖。"
 description_en: "Data-driven topic picking for X: X榜单 MCP on the user's own key, or this repository's free daily hot list filtered for X. One to three candidates per run with source, angle, controversy hook and banned-topic verdict. Read-only."
 category: writing
-version: 2.3.34
+version: 2.3.35
 author: iLang Inc.
 ---
 
 ::ILANG::v5.0
-[TYPE:skill][PROJECT:x_awesome][VERSION:2.3.34][DATE:2026-10-22][LANG:zh]
+[TYPE:skill][PROJECT:x_awesome][VERSION:2.3.35][DATE:2026-10-22][LANG:zh]
 ::STATE{@ROLE, function:从 X榜单 MCP 或仓库免费清单里按用户定位挑出今天值得发的 1 到 3 条，带来源角度争议点和禁区判定，选哪条由用户定}
 ::STATE{@SCOPE, now:查爆款+查对标号+看热点+读免费清单+过滤去重+出候选, next:候选直接喂给 x-post 写帖}
 ::STATE{@PROMISE, can:只读+用用户自己的年卡+禁区先筛+发过的不再出+数字原样报, cannot:替用户定选题|搬运原帖|把热搜当自动发帖的源|碰时政地缘}
