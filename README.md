@@ -252,7 +252,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 每日清单的增减在 [UPDATES.md](UPDATES.md)，每个版本改了什么在 [发布页](https://github.com/adsorgcn/WorkBuddy/releases)。大版本：
 
-- 2.3.32（2026-10-23）：X 专家按外部验收回包修十几处：check 打印 App 权限并在只读时提醒（真发 403 的根因）；403 解释先指向 App 权限；文档加开发者准则两条（AI 写的回复上线前要 X 批准、互动一次只回一条），没批准前巡查只拟不发；清单时效按北京时间算，机器在哪都一样；禁区词表加缩写复数和中办国办，「冲突」只拦政治组合；通过数和显示数分开打印；intent --no-open 不再说「编辑框已填好」；status 显示读的花费和 App 权限、没 check 时提示；fetch 拉满提示还有更早的；同一条评论回两次单独报；文档统一说明 python3。
+- 2.3.33（2026-10-23）：X 专家按外部验收回包修十几处：check 打印 App 权限并在只读时提醒（真发 403 的根因）；403 解释先指向 App 权限；文档加开发者准则两条（AI 写的回复上线前要 X 批准、互动一次只回一条），没批准前巡查只拟不发；清单时效按北京时间算，机器在哪都一样；禁区词表加缩写复数和中办国办，「冲突」只拦政治组合；通过数和显示数分开打印；intent --no-open 不再说「编辑框已填好」；status 显示读的花费和 App 权限、没 check 时提示；fetch 拉满提示还有更早的；同一条评论回两次单独报；文档统一说明 python3。
 - 2.3.31（2026-10-22）：新增第二个专家「X运营专家」ilang-x-awesome 和三个技能：x-topic-hunter（X榜单 MCP 或仓库免费清单，按 X 口径过滤，时政地缘六类禁区）、x-post（`x_api.py` 标准库 OAuth 1.0a：check / gate / post / thread / reply / mentions，发帖二选一，接口花自己的积分或 intent 开编辑框手动点）、x-comment-patrol（`x_patrol.py` 按水位线拉自己帖下的新评论，专家判，接口回复，只回召唤自己的人）。门禁和发版脚本改成遍历 experts/ 下所有专家，每个专家和每个技能各出一个 zip。
 - 2.3.24（2026-10-16）：推草稿箱加贴图（图片消息）：`newspic_cards.py` 把带【第N页】标记的稿子用本机 Edge/Chrome 无头截成 1080×1440 卡片图并逐张校验，放不下报错不缩字；`push-newspic` 过门后把图传成永久素材、推成图片消息草稿、回读标题。draft/add 发出去没收到回复不再当失败：落 `*-UNKNOWN-<时间>.json`、退出码 3，先看草稿箱再决定重不重推。`render` 顺带写 390 宽的 `*.preview.html`。引用块认 GFM 提示块 `> [!NOTE|TIP|IMPORTANT|WARNING|CAUTION]`，出四色信息卡。
 - 2.3.18（2026-10-12）：推草稿箱默认在自己电脑上跑：脚本强制 IPv4；白名单填本机当前公网 IP，IP 变了再加一次，白名单能存多个；借远程机 IP 的隧道改成备选。
