@@ -34,6 +34,19 @@
 - 对方互动一次只回一条，脚本的「同一条评论只回一次」就是这个意思。
 - 自动化规则（2026 年 4 月更新）允许「自动广播有用信息」和「对跟你内容互动的用户自动回复」；不允许「用脚本操作 X 网站」「自动发热搜话题」「重复内容」「多账号重复用途」「误导链接」。违反会被降权或封号。
 
+## 媒体上传（按 2025 年起的 v2 媒体接口写，没拿真密钥测过）
+
+- 图和 gif：POST /2/media/upload，multipart 字段 media 加 media_category=tweet_image 或 tweet_gif，一次传完，返回 data.id 当 media_id。
+- 视频：POST /2/media/upload/initialize（JSON：media_type、total_bytes、media_category=tweet_video）拿 id → POST /2/media/upload/{id}/append 按 4MB 分块传（multipart，segment_index 从 0 起）→ POST /2/media/upload/{id}/finalize → GET /2/media/upload?command=STATUS&media_id= 轮询到 processing_info.state 是 succeeded。
+- 发帖时 body 加 {"media": {"media_ids": [...]}}。一条最多 4 张图，或 1 个视频，或 1 个 gif。
+- 上限：图 5MB、gif 15MB、视频 512MB。媒体上传本身价目表没单列，按发帖那条计。
+- 第一次用真密钥跑，哪一步返回和这里写的不一样，以实际返回为准改脚本。
+
+## 搬运被封怎么办
+
+- 图和视频搬问题不大，文字整段贴像搬运号。
+- 真被封了去申诉：说是 AI 不小心弄的、下不为例。2026 年 10 月有人这么申诉解封了。
+
 ## 错误码
 
 | HTTP | 意思 | 怎么办 |

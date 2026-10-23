@@ -6,9 +6,10 @@
   python x_api.py check                                  验密钥：GET /2/users/me，打印 handle、id 和 App 权限（只读的发不了帖），把 id 记进本机状态文件
                                                          Windows 一般是 python，Mac 和 Linux 多半要写 python3，下同
   python x_api.py gate --text "..." | --file 帖.txt       只过门不联网：加权长度、标记、长破折号、链接、重复
-  python x_api.py post --text "..." | --file 帖.txt [--reply-to <id>] [--allow-url] [--force] [--dry-run]
-                                                         发一条；--dry-run 只打印请求体
-  python x_api.py thread --file 串帖.txt [--dry-run]      按文件里单独一行的 --- 切条，依次发并串起来
+  python x_api.py post --text "..." | --file 帖.txt [--media a.jpg,b.png | v.mp4] [--reply-to <id>] [--allow-url] [--force] [--dry-run]
+                                                         发一条，可带最多 4 张图或 1 个视频；--dry-run 只打印请求体
+  python x_api.py thread --file 串帖.txt [--media 封面.jpg] [--dry-run]
+                                                         按文件里单独一行的 --- 切条，依次发并串起来，媒体挂第一条
   python x_api.py reply --to <id> --text "..." [--dry-run]
                                                          回复一条（只回召唤你的人：@你或引用你的帖，回自己帖下的评论算）
   python x_api.py mentions [--since-id <id>] [--max 100] 读自己的提及（Owned Reads，0.001 美元一条），打印 JSON
@@ -296,11 +297,116 @@ def me(creds):
     return j["data"]
 
 
-def create_post(creds, text, reply_to=None):
+def create_post(creds, text, reply_to=None, media_ids=None):
     body = {"text": text}
     if reply_to:
         body["reply"] = {"in_reply_to_tweet_id": str(reply_to)}
+    if media_ids:
+        body["media"] = {"media_ids": [str(m) for m in media_ids]}
     return call("POST", "/tweets", creds, body=body, timeout=60, fatal=False)
+
+
+# ---------- 媒体上传（图直接传，视频分块传；按 2025 年起的 v2 媒体接口写，没拿真密钥测过，第一次用看 api-notes 的「没实测」） ----------
+MEDIA_LIMITS = {"image": 5 * 1024 * 1024, "gif": 15 * 1024 * 1024, "video": 512 * 1024 * 1024}
+MEDIA_TYPES = {".jpg": ("image", "image/jpeg"), ".jpeg": ("image", "image/jpeg"), ".png": ("image", "image/png"), ".webp": ("image", "image/webp"),
+               ".gif": ("gif", "image/gif"), ".mp4": ("video", "video/mp4"), ".mov": ("video", "video/quicktime")}
+CHUNK = 4 * 1024 * 1024
+
+
+def media_kind(path):
+    ext = os.path.splitext(path)[1].lower()
+    if ext not in MEDIA_TYPES:
+        die("只收 jpg/png/webp/gif/mp4/mov：" + path)
+    return MEDIA_TYPES[ext]
+
+
+def multipart(fields, file_field, filename, data, ctype):
+    boundary = "----xawesome" + uuid.uuid4().hex
+    body = bytearray()
+    for k, v in fields.items():
+        body.extend(("--%s\r\nContent-Disposition: form-data; name=\"%s\"\r\n\r\n%s\r\n" % (boundary, k, v)).encode("utf-8"))
+    body.extend(("--%s\r\nContent-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\nContent-Type: %s\r\n\r\n" % (boundary, file_field, filename, ctype)).encode("utf-8"))
+    body.extend(data)
+    body.extend(("\r\n--%s--\r\n" % boundary).encode("utf-8"))
+    return bytes(body), "multipart/form-data; boundary=" + boundary
+
+
+def call_raw(method, path, creds, query=None, data=None, content_type=None, timeout=180):
+    """multipart 这类非 JSON 请求体：签名只签查询参数，请求体原样发。"""
+    url = API + path
+    full = url + ("?" + urllib.parse.urlencode(query) if query else "")
+    req = urllib.request.Request(full, data=data, method=method)
+    req.add_header("Authorization", oauth_header(method, url, query, creds))
+    req.add_header("User-Agent", UA)
+    if content_type:
+        req.add_header("Content-Type", content_type)
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            raw, status = resp.read(), resp.status
+    except urllib.error.HTTPError as e:
+        raw, status = e.read(), e.code
+    except Exception as e:
+        die("媒体上传网络请求失败：%s（%s）" % (e, path), 2)
+    try:
+        return status, (json.loads(raw.decode("utf-8")) if raw else {})
+    except Exception:
+        return status, {"raw": raw[:300].decode("utf-8", "replace")}
+
+
+def upload_media(creds, path):
+    """返回 media_id。图和 gif 一次传完；视频 initialize → append 分块 → finalize → 轮询到处理完。"""
+    kind, ctype = media_kind(path)
+    if not os.path.exists(path):
+        die("媒体文件不存在：" + path)
+    data = io.open(path, "rb").read()
+    if len(data) > MEDIA_LIMITS[kind]:
+        die("%s 超过 %dMB：%s" % (kind, MEDIA_LIMITS[kind] // 1024 // 1024, path))
+    name = os.path.basename(path)
+    category = {"image": "tweet_image", "gif": "tweet_gif", "video": "tweet_video"}[kind]
+    if kind != "video":
+        body, ct = multipart({"media_category": category}, "media", name, data, ctype)
+        status, j = call_raw("POST", "/media/upload", creds, data=body, content_type=ct)
+        mid = (j.get("data") or {}).get("id") or j.get("media_id_string")
+        if status not in (200, 201) or not mid:
+            die("图片上传失败（%s）：%s" % (name, explain(status, j)), 2)
+        return str(mid)
+    status, j = call("POST", "/media/upload/initialize", creds, body={"media_type": ctype, "total_bytes": len(data), "media_category": category}, fatal=False)
+    mid = (j.get("data") or {}).get("id")
+    if status not in (200, 201, 202) or not mid:
+        die("视频上传 initialize 失败（%s）：%s" % (name, explain(status, j)), 2)
+    for i in range(0, len(data), CHUNK):
+        body, ct = multipart({"segment_index": str(i // CHUNK)}, "media", name, data[i:i + CHUNK], ctype)
+        status, j = call_raw("POST", "/media/upload/%s/append" % mid, creds, data=body, content_type=ct)
+        if status not in (200, 201, 204):
+            die("视频上传 append 第 %d 块失败：%s" % (i // CHUNK, explain(status, j)), 2)
+    status, j = call("POST", "/media/upload/%s/finalize" % mid, creds, body={}, fatal=False)
+    if status not in (200, 201):
+        die("视频上传 finalize 失败：%s" % explain(status, j), 2)
+    info = (j.get("data") or {}).get("processing_info") or {}
+    waited = 0
+    while info.get("state") in ("pending", "in_progress") and waited < 300:
+        secs = int(info.get("check_after_secs") or 5)
+        time.sleep(secs); waited += secs
+        status, j = call("GET", "/media/upload", creds, query={"command": "STATUS", "media_id": mid}, fatal=False)
+        info = (j.get("data") or {}).get("processing_info") or {}
+    if info.get("state") == "failed":
+        die("视频处理失败：%s" % json.dumps(info, ensure_ascii=False), 2)
+    return str(mid)
+
+
+def upload_all(creds, media_arg):
+    paths = [p.strip() for p in (media_arg or "").split(",") if p.strip()]
+    if len(paths) > 4:
+        die("一条帖最多 4 张图，或 1 个视频，或 1 个 gif")
+    kinds = [media_kind(p)[0] for p in paths]
+    if ("video" in kinds or "gif" in kinds) and len(paths) > 1:
+        die("视频或 gif 只能单独一个，不能和别的混")
+    ids = []
+    for p in paths:
+        mid = upload_media(creds, p)
+        ids.append(mid)
+        print("  媒体已传：%s -> %s" % (os.path.basename(p), mid))
+    return ids
 
 
 def read_post(creds, pid):
@@ -362,19 +468,20 @@ def rank_mentions(items):
     return out
 
 
-def post_one(creds, d, text, kind, reply_to=None, via="api"):
+def post_one(creds, d, text, kind, reply_to=None, via="api", media_ids=None):
     """发一条并落日志。没收到回复＝UNKNOWN，退出码 3。"""
-    status, j = create_post(creds, text, reply_to)
+    status, j = create_post(creds, text, reply_to, media_ids)
+    rec = {"kind": kind, "text": text, "reply_to": reply_to, "via": via, "media_ids": media_ids or []}
     if status == -1:
-        append_log(d, "posts.jsonl", {"id": None, "kind": kind, "text": text, "reply_to": reply_to, "via": via, "status": "UNKNOWN", "error": j.get("error")})
+        append_log(d, "posts.jsonl", dict(rec, id=None, status="UNKNOWN", error=j.get("error")))
         print("发出去了但没收到 X 的回复：%s" % j.get("error"))
         print("先去自己的主页看这条有没有发出去，有就别重发；确定没有再发一次。已记 UNKNOWN 进 posts.jsonl。")
         sys.exit(3)
     if status not in (200, 201) or "data" not in j:
-        append_log(d, "posts.jsonl", {"id": None, "kind": kind, "text": text, "reply_to": reply_to, "via": via, "status": "FAIL", "error": explain(status, j)})
+        append_log(d, "posts.jsonl", dict(rec, id=None, status="FAIL", error=explain(status, j)))
         die("发帖失败：" + explain(status, j), 2)
     pid = j["data"]["id"]
-    append_log(d, "posts.jsonl", {"id": pid, "kind": kind, "text": text, "reply_to": reply_to, "via": via, "status": "ok"})
+    append_log(d, "posts.jsonl", dict(rec, id=pid, status="ok"))
     return pid
 
 
@@ -437,15 +544,24 @@ def cmd_post(args, kind="post"):
     if not is_reply and today_count(d) >= DAILY_MAX and not getattr(args, "force", False):
         die("今天本机日志里已经有 %d 条了，一天一到两条，宁缺毋滥。真要发加 --force" % DAILY_MAX)
     price = PRICE["reply"] if reply_to else (PRICE["post_url"] if has_url(text) else PRICE["post"])
-    print("加权长度 %d / %d；预计 %.3f 美元" % (weighted_len(text), WEIGHTED_MAX, price))
+    media_arg = getattr(args, "media", None)
+    media_paths = [p.strip() for p in (media_arg or "").split(",") if p.strip()]
+    for p in media_paths:
+        media_kind(p)
+        if not os.path.exists(p):
+            die("媒体文件不存在：" + p)
+    print("加权长度 %d / %d；预计 %.3f 美元%s" % (weighted_len(text), WEIGHTED_MAX, price, ("；带 %d 个媒体文件（媒体上传本身价目表没单列）" % len(media_paths)) if media_paths else ""))
     if args.dry_run:
         body = {"text": text}
         if reply_to:
             body["reply"] = {"in_reply_to_tweet_id": str(reply_to)}
+        if media_paths:
+            body["media"] = {"media_ids": ["<dry-run:%s>" % os.path.basename(p) for p in media_paths]}
         print("dry-run：没联网。请求体：\n" + json.dumps(body, ensure_ascii=False, indent=1))
         return
     creds = load_credentials()
-    pid = post_one(creds, d, text, kind, reply_to)
+    media_ids = upload_all(creds, media_arg) if media_paths else None
+    pid = post_one(creds, d, text, kind, reply_to, media_ids=media_ids)
     print("ok：已发，id=%s，https://x.com/i/status/%s" % (pid, pid))
     back = read_post(creds, pid)
     if back.get("text") is not None:
@@ -483,10 +599,11 @@ def cmd_thread(args):
             print("--- [%d]\n%s" % (k, t))
         return
     creds = load_credentials()
+    first_media = upload_all(creds, getattr(args, "media", None)) if getattr(args, "media", None) else None
     prev = None
     ids = []
     for k, t in enumerate(normed, 1):
-        pid = post_one(creds, d, t, "thread", prev)
+        pid = post_one(creds, d, t, "thread", prev, media_ids=first_media if k == 1 else None)
         ids.append(pid)
         print("  [%d/%d] 已发 id=%s" % (k, len(normed), pid))
         prev = pid
@@ -541,9 +658,10 @@ def main():
     g.add_argument("--text"); g.add_argument("--file"); g.add_argument("--allow-url", action="store_true"); g.add_argument("--show", action="store_true")
     p = sub.add_parser("post", help="发一条")
     p.add_argument("--text"); p.add_argument("--file"); p.add_argument("--reply-to"); p.add_argument("--allow-url", action="store_true", help="正文带链接也发（0.20 美元一条）")
+    p.add_argument("--media", help="配图或视频，逗号分隔：最多 4 张 jpg/png/webp，或 1 个 gif，或 1 个 mp4/mov")
     p.add_argument("--force", action="store_true", help="今天已经两条了还要发"); p.add_argument("--dry-run", action="store_true")
     t = sub.add_parser("thread", help="串帖：文件里单独一行的 --- 分隔")
-    t.add_argument("--file", required=True); t.add_argument("--allow-url", action="store_true"); t.add_argument("--force", action="store_true"); t.add_argument("--dry-run", action="store_true")
+    t.add_argument("--file", required=True); t.add_argument("--media", help="挂在第一条上的配图或视频"); t.add_argument("--allow-url", action="store_true"); t.add_argument("--force", action="store_true"); t.add_argument("--dry-run", action="store_true")
     r = sub.add_parser("reply", help="回复一条（只回召唤你的人）")
     r.add_argument("--to", required=True); r.add_argument("--text"); r.add_argument("--file"); r.add_argument("--dry-run", action="store_true")
     m = sub.add_parser("mentions", help="读自己的提及（Owned Reads）")

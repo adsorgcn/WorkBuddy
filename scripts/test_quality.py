@@ -159,6 +159,23 @@ check("贴图门：非图片文件拦住 其他都过", errs == ["只收 jpg/png
 errs = wd.newspic_gate("", "<b>x</b> [📝 待填]", [])
 check("贴图门：空标题 HTML 标记 没图 四条都报", len(errs) == 4, errs)
 check("没收到回复才算 UNKNOWN 微信自己的 -1 不算", wd.no_reply({"errcode": -1, "errmsg": "网络请求失败：timeout"}) and not wd.no_reply({"errcode": -1, "errmsg": "system error"}))
+check("媒体类型：jpg 图 mp4 视频 gif 单列", xa.media_kind("a.JPG") == ("image", "image/jpeg") and xa.media_kind("v.mp4")[0] == "video" and xa.media_kind("g.gif")[0] == "gif")
+mbody, mct = xa.multipart({"media_category": "tweet_image"}, "media", "a.jpg", b"\xff\xd8", "image/jpeg")
+check("multipart 请求体带字段和文件", b'name="media_category"\r\n\r\ntweet_image' in mbody and b'filename="a.jpg"' in mbody and mbody.endswith(b"--\r\n") and mct.startswith("multipart/form-data; boundary="))
+def _dies(fn):
+    try:
+        fn(); return False
+    except SystemExit:
+        return True
+check("媒体门：超过 4 个 或 视频混图 直接拦", _dies(lambda: xa.upload_all({}, "a.jpg,b.jpg,c.jpg,d.jpg,e.jpg")) and _dies(lambda: xa.upload_all({}, "a.jpg,v.mp4")))
+_mbody = {}
+_orig_call = xa.call
+xa.call = lambda method, path, creds, query=None, body=None, timeout=60, fatal=True: (_mbody.update(body or {}) or (201, {"data": {"id": "77"}}))
+try:
+    st, j = xa.create_post({"API_KEY": "k", "API_SECRET": "s", "ACCESS_TOKEN": "t", "ACCESS_SECRET": "u"}, "带图", media_ids=["11", "22"])
+    check("发帖带 media_ids", _mbody.get("media") == {"media_ids": ["11", "22"]} and j["data"]["id"] == "77", _mbody)
+finally:
+    xa.call = _orig_call
 def png_bytes(w, h, rows_red):
     raw = b"".join(b"\x00" + (bytes([200, 16, 46] if y < rows_red else [255, 255, 255]) * w) for y in range(h))
     def chunk(tag, data):

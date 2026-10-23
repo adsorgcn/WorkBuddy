@@ -48,17 +48,17 @@ author: iLang Inc.
 ```
 python <路径>/x_api.py check
 python <路径>/x_api.py gate --text "<正文>" | --file <帖.txt>
-python <路径>/x_api.py post --text "<正文>" | --file <帖.txt> [--allow-url] [--force] [--dry-run]
-python <路径>/x_api.py thread --file <串帖.txt> [--dry-run]
+python <路径>/x_api.py post --text "<正文>" | --file <帖.txt> [--media a.jpg,b.png | v.mp4] [--allow-url] [--force] [--dry-run]
+python <路径>/x_api.py thread --file <串帖.txt> [--media 封面.jpg] [--dry-run]
 python <路径>/x_api.py intent --text "<正文>" | --file <帖.txt> [--thread] [--no-open]
 ```
 
-`thread` 的文件用单独一行的 `---` 分条。`intent` 是手动路：生成 x.com 的编辑框链接并打开浏览器，`--thread` 时一条一个编辑框，`--no-open` 只打印链接不开浏览器。`--dry-run` 只打印请求体不联网。Mac 和 Linux 上 `python` 多半要写成 `python3`。
+`--media` 带配图或视频：最多 4 张 jpg/png/webp，或 1 个 gif，或 1 个 mp4/mov（图 5MB、gif 15MB、视频 512MB 内），串帖挂第一条；媒体上传接口没拿真密钥测过，第一次用看 @references/api-notes.md 的「媒体上传」。`thread` 的文件用单独一行的 `---` 分条。`intent` 是手动路：生成 x.com 的编辑框链接并打开浏览器，`--thread` 时一条一个编辑框，`--no-open` 只打印链接不开浏览器。`--dry-run` 只打印请求体不联网。Mac 和 Linux 上 `python` 多半要写成 `python3`。
 
 ## 固定顺序
 
 1. 问清走哪条路。用户没说过，问一句「走接口（花你的积分）还是手动（我开编辑框你点）」，不默认花他的钱。
-2. 写。按专家正文里的写作基因和 @references/writing-rules.md 的七条写；格式按 @references/post-formats.md：单帖、串帖、长文三选一。长文接口发不了，只走手动。
+2. 写。素材是 x-topic-hunter 交来的对标文（大陆自媒体那篇）：文字按专家正文里的写作基因和 @references/writing-rules.md 重切，观点和数据可以直接用，图和视频直接拿；格式按 @references/post-formats.md：单帖、串帖、长文三选一。长文接口发不了，只走手动。
 3. 过门：跑 `gate`。看「不过」项：加权长度超 280（中日韩每字算 2，链接算 23）、还有 [📝 💬 🖼 📊] 标记、长破折号、正文带链接、和最近发过的相似，都要先改。
 4. 发：
    - 接口：先 `post --dry-run` 或 `thread --dry-run` 把正文给用户看一眼，他说发再去掉 dry-run。今天已经发了两条，脚本会拦，要他说一句「我知道」再加 `--force`。
@@ -72,6 +72,7 @@ python <路径>/x_api.py intent --text "<正文>" | --file <帖.txt> [--thread] 
 - 正文不放第三方链接；自家链接走接口要 0.20 美元一条而且算法压外链。想带链接：走手动路（intent）不花钱，或放简介；走接口回自己的帖不算被召唤，带链接照样 0.20。脚本看到链接会拦，`--allow-url` 只在用户明说要带链接时加。
 - 一天一到两条，大事不受限。脚本按本机日志计数，超了要用户说一句才 `--force`。
 - 和最近发过的相同或高度相似的不发，想再发同一主题换角度。
+- 对标文的图和视频可以直接用，文字不能整段贴，按 X 写法重切。号因为搬运被封了，去申诉，说 AI 不小心弄的、下不为例，有人这么解封过。
 - 脚本退出码 3、输出里有「没收到 X 的回复」：发出去了但断网或超时，先让用户去自己主页看有没有发出去，有就别重发。
 - 密钥不进对话、不进汇报、不进日志。脚本自己从配置文件读。
 - 报错先看 @references/api-notes.md 的表再动手：401 是密钥或权限，402 是积分不够，403 先看 check 打印的 App 权限（只读的发不了，改成 Read and Write 后要重新生成 Access Token），权限对了才是回复了没召唤你的人，429 限频等一会。
