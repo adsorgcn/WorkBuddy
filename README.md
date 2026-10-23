@@ -311,15 +311,15 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 | 名称 | 是什么 | 版本 |
 |---|---|---|
-| [X⁠运⁠营⁠专⁠家](experts/ilang-x-awesome/)<br><sub>ilang-x-awesome</sub> | 专家正文。说清定位，它找题、写帖、发帖、巡查评论并回复，你定方向和拍板；一天一到两条，时政地缘不碰，不用脚本碰 X 网站。带下面三个技能 | 2.3.41 |
-| [X⁠ ⁠选⁠题](experts/ilang-x-awesome/skills/x-topic-hunter/)<br><sub>x-topic-hunter</sub> | 先 `x_rank.py` 读 X榜单 公开榜（24 小时最火推文、话题榜、长文榜、海外榜，免费）看什么热，再到大陆自媒体（公众号、知乎、B 站、抖音、小红书）找对标文；`x_feed.py` 读仓库免费清单兜底；都按 X 口径过滤：禁区、时效、语言、和你发过的去重。X榜单 MCP 可选。只读 | 2.3.41 |
-| [X⁠ ⁠发⁠帖](experts/ilang-x-awesome/skills/x-post/)<br><sub>x-post</sub> | `x_api.py`：check 验密钥，gate 过门（加权 280、无标记、无长破折号、正文无链接、不重复、一天两条），post 单帖，thread 串帖，`--media` 带图或视频，intent 开浏览器编辑框你自己点。接口路发完回读，正文全文记本机日志 | 2.3.41 |
-| [X⁠ ⁠评⁠论⁠巡⁠查](experts/ilang-x-awesome/skills/x-comment-patrol/)<br><sub>x-comment-patrol</sub> | `x_patrol.py`：fetch 按水位线拉你帖子下的新评论交给专家判，send 发专家写好的回复并推进水位线，status 看花费。只回召唤你的人，一轮最多 20 条，回复里不放链接 | 2.3.41 |
-| [公⁠众⁠号⁠爆⁠文⁠专⁠家](experts/ilang-wechat-awesome/)<br><sub>ilang-wechat-awesome</sub> | 专家正文。投喂素材，按 200 多篇实战文章验证的写作基因重组，出 MD 正文、3 个标题、封面图提示词；没素材不写，不编数字不编经历。带下面四个技能 | 2.3.41 |
-| [选⁠题⁠对⁠标](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/)<br><sub>wechat-topic-hunter</sub> | `feed` 读每日清单（免费），`direction` 比方向，`calendar` 排内容清单，`hot` 看榜，找号、对标、单篇数据；每次花积分前先报价。附 `hot_sources.py`，上不了 GitHub 时自己拉热点源 | 2.3.41 |
-| [写⁠稿](experts/ilang-wechat-awesome/skills/wechat-article/)<br><sub>wechat-article</sub> | 23 条写作基因，六段式和八区块两种骨架，标题四个公式，12 项自查，去 AI 味三件套和五个信号，脱敏表和敏感词红线，封面提示词模板 | 2.3.41 |
-| [推⁠草⁠稿⁠箱](experts/ilang-wechat-awesome/skills/wechat-draft-push/)<br><sub>wechat-draft-push</sub> | check 验凭据和白名单，render 转微信 HTML，push 传图传封面推进草稿箱并回读，verify 回读，publish 只在人看完草稿说「发」后对微信认证号可用。外链自动收进文末「参考链接」，留言开关和「阅读原文」可设。贴图：newspic_cards.py 把带【第N页】的稿子出成 1080×1440 卡片图，push-newspic 推成图片消息草稿。没有删草稿命令 | 2.3.41 |
-| [远⁠程⁠派⁠活](experts/ilang-wechat-awesome/skills/remote-dispatch/)<br><sub>remote-dispatch</sub> | 可选件。两台机器的人用：本机当总控，把 [RUN:VPS] 的命令块派给远程机上的 CodeBuddy 网关跑，收回结果。远程机起网关的脚本在 scripts 里，Linux 和 Windows 各一个 | 2.3.41 |
+| [X⁠运⁠营⁠专⁠家](experts/ilang-x-awesome/)<br><sub>ilang-x-awesome</sub> | 专家正文。说清定位，它找题、写帖、发帖、巡查评论并回复，你定方向和拍板；一天一到两条，时政地缘不碰，不用脚本碰 X 网站。带下面三个技能 | 2.3.42 |
+| [X⁠ ⁠选⁠题](experts/ilang-x-awesome/skills/x-topic-hunter/)<br><sub>x-topic-hunter</sub> | 先 `x_rank.py` 读 X榜单 公开榜（24 小时最火推文、话题榜、长文榜、海外榜，免费）看什么热，再到大陆自媒体（公众号、知乎、B 站、抖音、小红书）找对标文；`x_feed.py` 读仓库免费清单兜底；都按 X 口径过滤：禁区、时效、语言、和你发过的去重。X榜单 MCP 可选。只读 | 2.3.42 |
+| [X⁠ ⁠发⁠帖](experts/ilang-x-awesome/skills/x-post/)<br><sub>x-post</sub> | `x_api.py`：check 验密钥，gate 过门（加权 280、无标记、无长破折号、正文无链接、不重复、一天两条），post 单帖，thread 串帖，`--media` 带图或视频，intent 开浏览器编辑框你自己点。接口路发完回读，正文全文记本机日志 | 2.3.42 |
+| [X⁠ ⁠评⁠论⁠巡⁠查](experts/ilang-x-awesome/skills/x-comment-patrol/)<br><sub>x-comment-patrol</sub> | `x_patrol.py`：fetch 按水位线拉你帖子下的新评论交给专家判，send 发专家写好的回复并推进水位线，status 看花费。只回召唤你的人，一轮最多 20 条，回复里不放链接 | 2.3.42 |
+| [公⁠众⁠号⁠爆⁠文⁠专⁠家](experts/ilang-wechat-awesome/)<br><sub>ilang-wechat-awesome</sub> | 专家正文。投喂素材，按 200 多篇实战文章验证的写作基因重组，出 MD 正文、3 个标题、封面图提示词；没素材不写，不编数字不编经历。带下面四个技能 | 2.3.42 |
+| [选⁠题⁠对⁠标](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/)<br><sub>wechat-topic-hunter</sub> | `feed` 读每日清单（免费），`direction` 比方向，`calendar` 排内容清单，`hot` 看榜，找号、对标、单篇数据；每次花积分前先报价。附 `hot_sources.py`，上不了 GitHub 时自己拉热点源 | 2.3.42 |
+| [写⁠稿](experts/ilang-wechat-awesome/skills/wechat-article/)<br><sub>wechat-article</sub> | 23 条写作基因，六段式和八区块两种骨架，标题四个公式，12 项自查，去 AI 味三件套和五个信号，脱敏表和敏感词红线，封面提示词模板 | 2.3.42 |
+| [推⁠草⁠稿⁠箱](experts/ilang-wechat-awesome/skills/wechat-draft-push/)<br><sub>wechat-draft-push</sub> | check 验凭据和白名单，render 转微信 HTML，push 传图传封面推进草稿箱并回读，verify 回读，publish 只在人看完草稿说「发」后对微信认证号可用。外链自动收进文末「参考链接」，留言开关和「阅读原文」可设。贴图：newspic_cards.py 把带【第N页】的稿子出成 1080×1440 卡片图，push-newspic 推成图片消息草稿。没有删草稿命令 | 2.3.42 |
+| [远⁠程⁠派⁠活](experts/ilang-wechat-awesome/skills/remote-dispatch/)<br><sub>remote-dispatch</sub> | 可选件。两台机器的人用：本机当总控，把 [RUN:VPS] 的命令块派给远程机上的 CodeBuddy 网关跑，收回结果。远程机起网关的脚本在 scripts 里，Linux 和 Windows 各一个 | 2.3.42 |
 
 <br>
 
