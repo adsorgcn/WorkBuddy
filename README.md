@@ -252,6 +252,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 每日清单的增减在 [UPDATES.md](UPDATES.md)，每个版本改了什么在 [发布页](https://github.com/adsorgcn/WorkBuddy/releases)。大版本：
 
+- 2.3.36（2026-10-23）：按实测改两句：新号充 5 送 5 一共 10 美元、只回评论能用三个月左右；链接走接口回自己的帖不算召唤照样 0.20，省钱走手动或放简介。
 - 2.3.35（2026-10-23）：巡查回复不设申请门槛：撤掉「没批准前只拟不发」，回自己帖下的评论按原流程发。
 - 2.3.33（2026-10-23）：X 专家按外部验收回包修十几处：check 打印 App 权限并在只读时提醒（真发 403 的根因）；403 解释先指向 App 权限；互动一次只回一条；清单时效按北京时间算，机器在哪都一样；禁区词表加缩写复数和中办国办，「冲突」只拦政治组合；通过数和显示数分开打印；intent --no-open 不再说「编辑框已填好」；status 显示读的花费和 App 权限、没 check 时提示；fetch 拉满提示还有更早的；同一条评论回两次单独报；文档统一说明 python3。
 - 2.3.31（2026-10-22）：新增第二个专家「X运营专家」ilang-x-awesome 和三个技能：x-topic-hunter（X榜单 MCP 或仓库免费清单，按 X 口径过滤，时政地缘六类禁区）、x-post（`x_api.py` 标准库 OAuth 1.0a：check / gate / post / thread / reply / mentions，发帖二选一，接口花自己的积分或 intent 开编辑框手动点）、x-comment-patrol（`x_patrol.py` 按水位线拉自己帖下的新评论，专家判，接口回复，只回召唤自己的人）。门禁和发版脚本改成遍历 experts/ 下所有专家，每个专家和每个技能各出一个 zip。

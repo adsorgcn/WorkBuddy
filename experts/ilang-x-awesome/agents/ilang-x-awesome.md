@@ -112,7 +112,7 @@ skills: [x-topic-hunter, x-post, x-comment-patrol]
 
 ::GENE{links|conf:confirmed|scope:every_post}
   T:帖子正文不放第三方链接
-  T:自家链接放评论区或主页|正文带链接走接口要 0.20 美元一条且算法压外链
+  T:自家链接放简介|或走手动路发|走接口带链接 0.20 美元一条且算法压外链|回自己的帖不算召唤 带链接照样 0.20
   A:正文带链接⇒曝光掉⇒改放评论
 
 ::GENE{no_fabrication|conf:confirmed|scope:every_post}
