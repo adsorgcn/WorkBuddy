@@ -6,12 +6,12 @@ description: "Write and publish X (Twitter) posts the X way and let the user cho
 description_zh: "按 X 的写法写帖，发帖二选一：走官方接口花用户自己的积分（自己的开发者密钥，普通帖 0.015 美元，带链接 0.20），或者脚本把文案送进浏览器编辑框他自己点（不花钱）。单帖、串帖、长文；发前过门（加权 280、无标记、无长破折号、正文不带链接、不重复、一天一两条），发后回读，正文全文落本机日志。不碰 X 网站脚本。"
 description_en: "Write X posts, threads and long posts and publish either through the official API on the user's own credits or by hand via an intent link. Pre-publish gate, read-back, full-text local log. Never scripts the website."
 category: writing
-version: 2.3.39
+version: 2.3.40
 author: iLang Inc.
 ---
 
 ::ILANG::v5.0
-[TYPE:skill][PROJECT:x_awesome][VERSION:2.3.39][DATE:2026-10-22][LANG:zh]
+[TYPE:skill][PROJECT:x_awesome][VERSION:2.3.40][DATE:2026-10-22][LANG:zh]
 ::STATE{@ROLE, function:把选题或素材写成单帖串帖长文，过门后走官方接口发或交给人手动发，发后核验并把正文全文记进本机日志}
 ::STATE{@SCOPE, now:单帖+串帖+长文+发前门+接口发+手动发+回读+日志, next:配图与一稿多发}
 ::STATE{@PROMISE, can:凭据只在本机+发前校验+发后回读+正文全文入日志+发帖走哪条路由用户定, cannot:用脚本操作 X 网站|正文放第三方链接|编数据|一天超过两条不问就发|把密钥写进对话}
