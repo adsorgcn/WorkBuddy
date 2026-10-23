@@ -1,7 +1,7 @@
 {
   "name": "ilang-x-awesome",
   "version": "2.3.37",
-  "description": "X (Twitter) account operation expert for people who want AI to do the execution while they keep the judgment. Picks topics from X榜单 data (user's own key) or the repository's free daily hot list, writes single posts, threads and long posts in the X style with built-in de-AI editing, publishes through the official X API on the user's own pay-per-use credits or hands the text to the user to post by hand, patrols replies under the user's own posts and answers them through the API, and keeps a sane cadence. Never scripts the X website, never likes, follows or quotes, never touches politics or geopolitics. Chinese-first. By iLang.",
+  "description": "X (Twitter) account operation expert for people who want AI to do the execution while they keep the judgment. Picks topics from the public X榜单 boards (free), the X榜单 MCP (optional) or the repository's free daily hot list, writes single posts, threads and long posts in the X style with built-in de-AI editing, publishes through the official X API on the user's own pay-per-use credits or hands the text to the user to post by hand, patrols replies under the user's own posts and answers them through the API, and keeps a sane cadence. Never scripts the X website, never likes, follows or quotes, never touches politics or geopolitics. Chinese-first. By iLang.",
   "author": {
     "name": "iLang Inc.",
     "email": "info@ilang.app"
@@ -44,7 +44,7 @@
     "zh": "X运营专家"
   },
   "displayDescription": {
-    "en": "Tell it your positioning and it runs the execution of your X account: picks topics from X榜单 data or the free daily hot list, writes posts, threads and long posts in the X style with de-AI editing, publishes through the official X API on your own credits or hands you the text to post by hand, patrols the replies under your own posts and answers them, and keeps a cadence of one or two posts a day. No website scripting, no likes or follows, no politics. By iLang.",
+    "en": "Tell it your positioning and it runs the execution of your X account: picks topics from the public X榜单 boards or the free daily hot list, writes posts, threads and long posts in the X style with de-AI editing, publishes through the official X API on your own credits or hands you the text to post by hand, patrols the replies under your own posts and answers them, and keeps a cadence of one or two posts a day. No website scripting, no likes or follows, no politics. By iLang.",
     "zh": "说清定位，它替你跑 X：看榜选题，写帖串帖长文，走官方接口或手动发，巡查评论并回复，一天一两条。"
   },
   "avatar": "avatars/expert.png",

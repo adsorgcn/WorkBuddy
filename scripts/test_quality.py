@@ -235,6 +235,22 @@ check("禁区：英文整词 BioWare 不拦 Iran 拦", xf.banned_reason("EA clos
 check("禁区：中文子串", xf.banned_reason("泽连斯基表示愿意") == "泽连斯基")
 check("禁区：英文复数和缩写也拦", xf.banned_reason("tribute to 2 late presidents") is not None and xf.banned_reason("ties with N. Korea") is not None and xf.banned_reason("Kim Jong-un's letter") is not None)
 check("禁区：冲突只拦政治语境", xf.banned_reason("今天碰到的一个公共场合的小冲突") is None and xf.banned_reason("巴以冲突升级") == "巴以冲突")
+check("禁区：香港开卡 独立开发者 教会你 统一管理 民族品牌 国防科大 都不拦", all(xf.banned_reason(s) is None for s in ("香港开卡保姆级攻略", "X 上值得关注的中文独立开发者", "三分钟教会你配置", "统一管理十个号", "民族品牌出海", "国防科大招生")))
+check("禁区：港独 民族主义 国防部 照拦", all(xf.banned_reason(s) for s in ("港独分子", "民族主义情绪", "国防部回应")))
+import x_rank as xr
+check("X榜单数字：4.2万 3千 1,234", xr.num("4.2万") == 42000 and xr.num("3千") == 3000 and xr.num("1,234") == 1234 and xr.num("abc") is None)
+_posts = '<a class="prow" data-tk="posts" data-id="1" data-cat="none" data-age="5.7" href="https://x.com/a/status/1"><span class="rk"></span><span class="m"><span class="n tw2">正文一 &amp; 二</span><span class="s"><span class="s-av" style=""></span>作者 · 211 赞<span class="prow-seen">看过</span></span></span><span class="v"><b>4.2万</b><i>曝光/时</i></span></a>'
+r = xr.parse_posts(_posts)
+check("X榜单最火推文解析", len(r) == 1 and r[0]["text"] == "正文一 & 二" and r[0]["author"] == "作者 · 211 赞" and r[0]["views_per_hour"] == 42000 and r[0]["age_hours"] == 5.7, r)
+_words = '<details class="hwe-row hwe-top" data-hwi data-c="society" data-s="down"><summary><span class="hwe-th"><span class="hwe-wm">社会民生</span></span><span class="hwe-b"><span class="hwe-t">话题标题</span><span class="hwe-s">一句摘要</span><span class="hwe-m">社会民生 · 31 帖 · 26 人在说 · 13:46 首发</span></span><span class="hwe-r"><b>211.3万</b><i>曝光</i><span class="hwe-sg down">↓ 退烧</span></span></summary></details>'
+r = xr.parse_words(_words)
+check("X榜单话题榜解析", len(r) == 1 and r[0]["title"] == "话题标题" and r[0]["views"] == 2113000 and "31 帖" in r[0]["meta"] and r[0]["signal"] == "↓ 退烧", r)
+_art = '<a class="ac t1" data-tk="art" hidden data-zone="cn" data-age="61.1" data-h="who" data-c="ai_code" href="https://x.com/who/status/9"><span class="ac-pv">预览</span><span class="ac-bd"><span class="ac-c">AI 编程</span><span class="ac-t">长文标题</span><span class="ac-who"><span class="ac-nm"><b>名字</b><i>@who · 210.8万 曝光</i></span><span class="ac-top"><span class="ac-q">11570</span><span class="ac-qu">收藏</span></span></span></span></a><a class="ac t2" data-tk="art" hidden data-zone="global" data-age="1" data-h="x" data-c="y" href="u"><span class="ac-t">海外的</span><span class="ac-nm"><b>n</b><i>@x · 1万 曝光</i></span><span class="ac-q">5</span></a>'
+r = xr.parse_articles(_art, "cn")
+check("X榜单长文榜解析 只取中文区", len(r) == 1 and r[0]["title"] == "长文标题" and r[0]["bookmarks"] == 11570 and r[0]["views"] == 2108000 and r[0]["handle"] == "who", r)
+_glob = '<tr class="gl2-row" data-id="7" data-cat="meme"><td class="tc-r"></td><td class="tc-w"><a href="https://x.com/lucas" target="_blank"><span class="tc-n"><span class="tc-nm"><b>Lucas</b></span><span class="gl2-sub"><span class="gl2-sub-t">@lucas · 10.3万粉</span></span></span></a></td><td class="tc-body"><div class="tc-txt"><div class="tc-clamp"><i class="tc-mk tc-lg">葡语</i><i class="tc-mk">图</i>狗狗被领养前后</div></div></td><td class="gc-likes c-hot">9.2万</td><td class="gc-views">120万</td><td class="gc-rts">300</td><td class="gc-bookmarks">1.1万</td></tr>'
+r = xr.parse_global(_glob)
+check("X榜单海外榜解析 去掉语言和媒体标记", len(r) == 1 and r[0]["handle"] == "lucas" and r[0]["text"] == "狗狗被领养前后" and r[0]["likes"] == 92000 and r[0]["bookmarks"] == 11000, r)
 ny = datetime.timezone(datetime.timedelta(hours=-4))
 check("清单时间按北京时间算 纽约机器不少算", abs(xf.age_hours("10-22 08:00", datetime.datetime(2026, 10, 22, 0, 0, tzinfo=ny)) - 4) < 0.01, xf.age_hours("10-22 08:00", datetime.datetime(2026, 10, 22, 0, 0, tzinfo=ny)))
 xnow = datetime.datetime(2026, 10, 22, 12, 0)

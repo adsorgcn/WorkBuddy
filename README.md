@@ -148,7 +148,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 仓库里的第二个专家 [ilang-x-awesome](experts/ilang-x-awesome/)，给想用 AI 跑 X（Twitter）账号的人。你说清定位，它找题、写帖、发帖、巡查你帖子下的评论并回复；你只定方向和拍板。发帖二选一：走 X 官方接口花你自己的积分（普通帖 0.015 美元一条，带链接 0.20），或者脚本把文案送进浏览器编辑框你自己点，不花钱。评论巡查走官方接口，只回你自己帖子下的评论。它不用脚本碰 X 网站，不点赞关注引用，不发热搜话题，不碰时政地缘，一天不超过两条。
 
-选题数据从 [X榜单](https://xbangdan.com/mcp/) 的 MCP 来（你自己买年卡，每天 300 次查询，只读），没买就用仓库每天自动更新的免费清单。只走 GitHub，不进 WorkBuddy 国内市场，国内网络连不上 x.com。
+选题数据先从 [X榜单](https://xbangdan.com/) 的公开榜来（免费，脚本直接解析四个榜单页），再用仓库每天自动更新的免费清单补；X榜单 的 MCP 可选，要在它 30 天的库里细筛才用得上。只走 GitHub，不进 WorkBuddy 国内市场，国内网络连不上 x.com。
 
 装法和上面一样，一条命令：
 
@@ -194,7 +194,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 | [推草稿箱 wechat-draft-push](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check 验凭据和白名单，render 转微信 HTML，push 传图传封面推进草稿箱并回读，verify 回读，publish 只在人看完草稿说「发」后对微信认证号可用。外链自动收进文末「参考链接」，留言开关和「阅读原文」可设。贴图：newspic_cards.py 把带【第N页】的稿子出成 1080×1440 卡片图，push-newspic 推成图片消息草稿。没有删草稿命令 | 2.3.37 |
 | [远程派活 remote-dispatch](experts/ilang-wechat-awesome/skills/remote-dispatch/) | 可选件。两台机器的人用：本机当总控，把 [RUN:VPS] 的命令块派给远程机上的 CodeBuddy 网关跑，收回结果。远程机起网关的脚本在 scripts 里，Linux 和 Windows 各一个 | 2.3.37 |
 | [X运营专家](experts/ilang-x-awesome/) | 专家正文。说清定位，它找题、写帖、发帖、巡查评论并回复，你定方向和拍板；一天一到两条，时政地缘不碰，不用脚本碰 X 网站。带下面三个技能 | 2.3.37 |
-| [X 选题 x-topic-hunter](experts/ilang-x-awesome/skills/x-topic-hunter/) | 装了 X榜单 MCP 用它查爆款、查对标号、看热点（你自己的年卡）；没装跑 `x_feed.py` 读仓库免费清单，按 X 口径过滤：禁区、时效、语言、和你发过的去重。只读 | 2.3.37 |
+| [X 选题 x-topic-hunter](experts/ilang-x-awesome/skills/x-topic-hunter/) | `x_rank.py` 读 X榜单 公开榜（24 小时最火推文、话题榜、长文榜、海外榜，免费）；`x_feed.py` 读仓库免费清单；都按 X 口径过滤：禁区、时效、语言、和你发过的去重。X榜单 MCP 可选。只读 | 2.3.37 |
 | [X 发帖 x-post](experts/ilang-x-awesome/skills/x-post/) | `x_api.py`：check 验密钥，gate 过门（加权 280、无标记、无长破折号、正文无链接、不重复、一天两条），post 单帖，thread 串帖，intent 开浏览器编辑框你自己点。接口路发完回读，正文全文记本机日志 | 2.3.37 |
 | [X 评论巡查 x-comment-patrol](experts/ilang-x-awesome/skills/x-comment-patrol/) | `x_patrol.py`：fetch 按水位线拉你帖子下的新评论交给专家判，send 发专家写好的回复并推进水位线，status 看花费。只回召唤你的人，一轮最多 20 条，回复里不放链接 | 2.3.37 |
 
@@ -252,6 +252,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 每日清单的增减在 [UPDATES.md](UPDATES.md)，每个版本改了什么在 [发布页](https://github.com/adsorgcn/WorkBuddy/releases)。大版本：
 
+- 2.3.38（2026-10-23）：选题第一源改成 X榜单 公开榜：新脚本 `x_rank.py` 直接解析 /posts/ /words/ /articles/ /global/ 四个页面（免费，不用 MCP 不用账号），MCP 降为可选；禁区词表去掉「香港」「独立」「教会」「统一」「民族」「国防」这类误拦常用词，换成港独、独立运动、民族主义、国防部等组合。
 - 2.3.37（2026-10-23）：巡查按大逻辑改：一条帖几百条回复的号，fetch 按页翻页拉全（默认 300 条），按值得先看的顺序排好（帖下评论优先、作者粉丝数、带链接和几个字的垫底），超过 30 条先给三句摘要再挑着回。
 - 2.3.36（2026-10-23）：按实测改两句：新号充 5 送 5 一共 10 美元、只回评论能用三个月左右；链接走接口回自己的帖不算召唤照样 0.20，省钱走手动或放简介。
 - 2.3.35（2026-10-23）：巡查回复不设申请门槛：撤掉「没批准前只拟不发」，回自己帖下的评论按原流程发。
