@@ -36,7 +36,7 @@ author: iLang Inc.
 
 第一次跑之前先用 x-post 的 `check` 验一次密钥，它会把账号 id 和 App 权限记进本机状态文件；权限不是 read-write 的发不了回复。
 
-还有一条官方规矩要先说给用户：X 的开发者准则写明「AI-powered app generates and posts replies — Requires prior approval from X」，没批准就上线算违规；申请走 Policy Support 表单 https://help.x.com/forms/platform 。本技能的回复是专家写的、脚本发的，正是这一类。所以：用户没申请过，巡查只到「列出拟回复」，由他自己到 X 上回；他申请批准了，脚本再替他 `send`。另一条「对方互动一次只回一条」脚本已经照做。细节见 @references/reply-rules.md。
+还有一条官方规矩要先说给用户：X 的开发者准则写明「AI-powered app generates and posts replies: Requires prior approval from X」，没批准就上线算违规；申请走 Policy Support 表单 https://help.x.com/forms/platform 。本技能的回复是专家写的、脚本发的，正是这一类。所以：用户没申请过，巡查只到「列出拟回复」，由他自己到 X 上回；他申请批准了，脚本再替他 `send`。另一条「对方互动一次只回一条」脚本已经照做。细节见 @references/reply-rules.md。
 
 Mac 和 Linux 上 `python` 多半要写成 `python3`。
 
