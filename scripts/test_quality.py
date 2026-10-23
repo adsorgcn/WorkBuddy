@@ -204,6 +204,24 @@ try:
     check("提及分类 reply_to_me quote mention 带 username 和原帖 id", [r["kind"] for r in rows] == ["reply_to_me", "quote", "mention"] and rows[0]["username"] == "two" and rows[0]["parent_id"] == "1" and meta["newest_id"] == "4", rows)
 finally:
     xa.call = _xcall
+_pages = [
+    (200, {"data": [{"id": "20", "text": "第一页 很长的一条评论说了很多", "author_id": "a", "in_reply_to_user_id": "me"}, {"id": "19", "text": "看 https://x.co/1", "author_id": "b", "in_reply_to_user_id": "me"}],
+           "includes": {"users": [{"id": "a", "username": "aa", "public_metrics": {"followers_count": 50}}, {"id": "b", "username": "bb", "public_metrics": {"followers_count": 9000}}]}, "meta": {"newest_id": "20", "next_token": "p2"}}),
+    (200, {"data": [{"id": "18", "text": "第二页 另一条评论", "author_id": "c", "in_reply_to_user_id": "me"}, {"id": "17", "text": "赞", "author_id": "d"}],
+           "includes": {"users": [{"id": "c", "username": "cc", "public_metrics": {"followers_count": 120000}}]}, "meta": {"newest_id": "18"}}),
+]
+_calls = []
+def _paged(method, path, creds, query=None, body=None, timeout=60, fatal=True):
+    _calls.append(dict(query or {}))
+    return _pages[1] if (query or {}).get("pagination_token") == "p2" else _pages[0]
+xa.call = _paged
+try:
+    rows, newest, pages = xa.get_mentions_all(oc, "me", None, 300)
+    check("提及按 next_token 翻页拉全 newest 取第一页", len(rows) == 4 and pages == 2 and newest == "20" and _calls[1].get("pagination_token") == "p2", (len(rows), pages, newest, _calls))
+    ranked = xa.rank_mentions([dict(r) for r in rows])
+    check("排序：帖下评论先按粉丝多的 带链接和几个字的垫底", [r["id"] for r in ranked] == ["18", "20", "19", "17"] and ranked[0]["rank"] == 1 and ranked[0]["followers"] == 120000, [(r["id"], r.get("followers")) for r in ranked])
+finally:
+    xa.call = _xcall
 os.environ["X_OPS_DIR"] = tempfile.mkdtemp(prefix="tq-xops-")
 xd = xa.ops_dir()
 xa.append_log(xd, "replies.jsonl", {"to": "11", "status": "ok", "text": "回过"})

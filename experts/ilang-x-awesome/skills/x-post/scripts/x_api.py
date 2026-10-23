@@ -308,12 +308,15 @@ def read_post(creds, pid):
     return (j.get("data") or {}) if status == 200 else {}
 
 
-def get_mentions(creds, me_id, since_id=None, max_results=100):
+def get_mentions(creds, me_id, since_id=None, max_results=100, pagination_token=None):
+    """读一页自己的提及（最多 100 条）。返回 (rows, meta)，meta.next_token 有值就还有下一页。"""
     q = {"max_results": str(max(5, min(100, int(max_results)))),
          "tweet.fields": "created_at,author_id,conversation_id,in_reply_to_user_id,referenced_tweets,text",
-         "expansions": "author_id", "user.fields": "username,name"}
+         "expansions": "author_id", "user.fields": "username,name,public_metrics"}
     if since_id:
         q["since_id"] = str(since_id)
+    if pagination_token:
+        q["pagination_token"] = pagination_token
     status, j = call("GET", "/users/%s/mentions" % me_id, creds, query=q)
     if status != 200:
         die("读提及失败：" + explain(status, j), 2)
@@ -324,10 +327,39 @@ def get_mentions(creds, me_id, since_id=None, max_results=100):
         kind = "reply_to_me" if t.get("in_reply_to_user_id") == me_id else ("quote" if any(r.get("type") == "quoted" for r in refs) else "mention")
         u = users.get(t.get("author_id"), {})
         out.append({"id": t["id"], "text": t.get("text", ""), "created_at": t.get("created_at"), "author_id": t.get("author_id"),
-                    "username": u.get("username"), "name": u.get("name"), "kind": kind, "conversation_id": t.get("conversation_id"),
-                    "in_reply_to_user_id": t.get("in_reply_to_user_id"),
+                    "username": u.get("username"), "name": u.get("name"), "followers": (u.get("public_metrics") or {}).get("followers_count"),
+                    "kind": kind, "conversation_id": t.get("conversation_id"), "in_reply_to_user_id": t.get("in_reply_to_user_id"),
                     "parent_id": next((r.get("id") for r in refs if r.get("type") == "replied_to"), None)})
     return out, (j.get("meta") or {})
+
+
+def get_mentions_all(creds, me_id, since_id=None, max_total=300):
+    """一条帖几百条回复的号，一页 100 条拉不完：按 next_token 翻页拉到没有下一页或够 max_total 为止。返回 (rows, newest_id, pages)。"""
+    rows, token, pages, newest = [], None, 0, None
+    while True:
+        page, meta = get_mentions(creds, me_id, since_id, min(100, max_total - len(rows)) if max_total else 100, token)
+        pages += 1
+        rows.extend(page)
+        if newest is None and meta.get("newest_id"):
+            newest = meta.get("newest_id")
+        token = meta.get("next_token")
+        if not token or not page or (max_total and len(rows) >= max_total) or pages >= 50:
+            break
+    if newest is None and rows:
+        newest = max((r["id"] for r in rows), key=int)
+    return rows, newest, pages
+
+
+def rank_mentions(items):
+    """排出值得先看的：自己帖下的评论优先，再按作者粉丝数，再按正文长短；带链接和几个字的放最后。只排序不判断，判断是专家的。"""
+    def key(r):
+        low = 1 if (has_url(r.get("text") or "") or len(norm_text(r.get("text") or "")) < 6) else 0
+        kind = {"reply_to_me": 0, "quote": 1, "mention": 2}.get(r.get("kind"), 3)
+        return (low, kind, -(r.get("followers") or 0), -len(r.get("text") or ""))
+    out = sorted(items, key=key)
+    for i, r in enumerate(out, 1):
+        r["rank"] = i
+    return out
 
 
 def post_one(creds, d, text, kind, reply_to=None, via="api"):

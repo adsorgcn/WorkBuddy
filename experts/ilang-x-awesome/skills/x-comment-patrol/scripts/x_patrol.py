@@ -3,9 +3,11 @@
 """评论巡查：拉自己帖子下的新评论（按水位线只拿新的），把专家写好的回复发出去，推进水位线。只用标准库，复用 x-post 技能的 x_api.py。
 
 脚本不判断回不回、怎么回。它只做三件事：
-  python x_patrol.py fetch [--max 100] [--context] [--out pending.json]
-        读本机 state.json 的 since_id，调 GET /2/users/{me}/mentions（Owned Reads，0.001 美元一条），
-        去掉自己发的和已经回过的，写成 pending.json 交给专家判。--context 顺带把被回复的那条原帖正文拉回来（0.005 美元一条）。
+  python x_patrol.py fetch [--max 300] [--context] [--out pending.json]
+        读本机 state.json 的 since_id，调 GET /2/users/{me}/mentions（Owned Reads，0.001 美元一条）按页翻到够为止，
+        去掉自己发的和已经回过的，按值得先看的顺序排好（帖下评论优先、再看作者粉丝数、带链接和几个字的垫底），
+        写成 pending.json 交给专家判。一条帖几百条回复的号就是为这个场景做的：人看不过来，先拉全、排好、再挑。
+        --context 顺带把被回复的那条原帖正文拉回来（0.005 美元一条）。
   python x_patrol.py send --replies replies.json [--pending pending.json] [--max 20] [--dry-run]
         replies.json 是专家写好的 [{"to": "<评论id>", "text": "..."}]，可以是 []（这轮一条都不回）。
         逐条 POST /2/tweets 回复（召唤回复 0.010 美元一条），每条记进 replies.jsonl，
@@ -61,30 +63,34 @@ def cmd_fetch(args):
         st.update({"me_id": me_id, "handle": u["username"]})
         X.save_state(d, st)
     since = args.since_id or st.get("since_id")
-    rows, meta = X.get_mentions(creds, me_id, since, args.max)
+    rows, newest, pages = X.get_mentions_all(creds, me_id, since, args.max)
     done = replied_ids(d)
     items = [r for r in rows if r.get("author_id") != me_id and r["id"] not in done]
     skipped = len(rows) - len(items)
     cost = len(rows) * X.PRICE["owned_read"]
+    items = X.rank_mentions(items)
     if args.context:
         for r in items:
             if r.get("parent_id"):
                 p = X.read_post(creds, r["parent_id"])
                 r["parent_text"] = p.get("text")
                 cost += X.PRICE["read"]
-    newest = meta.get("newest_id") or (max((r["id"] for r in rows), key=int) if rows else since)
+    newest = newest or since
     pending = {"me_id": me_id, "handle": st.get("handle"), "fetched_at": _dt.datetime.now().isoformat(timespec="seconds"),
-               "since_id_before": since, "newest_id": newest, "items": items}
+               "since_id_before": since, "newest_id": newest, "pages": pages, "items": items}
     out = args.out or os.path.join(d, "pending.json")
     io.open(out, "w", encoding="utf-8", newline="\n").write(json.dumps(pending, ensure_ascii=False, indent=1))
     X.append_log(d, "reads.jsonl", {"kind": "mentions", "n": len(rows), "cost": cost})
     st["last_fetch_at"] = pending["fetched_at"]
     X.save_state(d, st)
-    print("拉到 %d 条新提及，去掉自己的和回过的剩 %d 条（跳过 %d）；本轮读约 %.3f 美元。清单：%s" % (len(rows), len(items), skipped, cost, out))
+    kinds = {k: sum(1 for r in items if r["kind"] == k) for k in ("reply_to_me", "quote", "mention")}
+    low = sum(1 for r in items if X.has_url(r.get("text") or "") or len(X.norm_text(r.get("text") or "")) < 6)
+    print("拉到 %d 条新提及（翻了 %d 页），去掉自己的和回过的剩 %d 条（跳过 %d）；本轮读约 %.3f 美元。清单：%s" % (len(rows), pages, len(items), skipped, cost, out))
+    print("其中：帖下评论 %d、引用 %d、@提及 %d；带链接或只有几个字的 %d 条排在最后。按值得先看的顺序：" % (kinds["reply_to_me"], kinds["quote"], kinds["mention"], low))
     for r in items:
-        print("  %s  @%s  %s  %s" % (r["id"], r.get("username") or r.get("author_id"), r["kind"], (r.get("text") or "").replace("\n", " ")[:70]))
-    if len(rows) >= args.max:
-        print("拉满了 --max %d，可能还有更早的没拉到。这轮处理完（send 推了水位线）再 fetch 一次。" % args.max)
+        print("  #%d  %s  @%s(%s粉)  %s  %s" % (r["rank"], r["id"], r.get("username") or r.get("author_id"), r.get("followers") if r.get("followers") is not None else "?", r["kind"], (r.get("text") or "").replace("\n", " ")[:70]))
+    if args.max and len(rows) >= args.max:
+        print("拉到 --max %d 条就停了，可能还有更早的。这轮处理完（send 推了水位线）再 fetch 一次。" % args.max)
     if not items:
         print("这轮没有要判的。要把水位线推过去：python x_patrol.py send --replies 空列表文件（内容 []）")
 
@@ -194,7 +200,7 @@ def main():
     ap = argparse.ArgumentParser(description="评论巡查：fetch 拉新评论给专家判，send 发专家写好的回复并推水位线，status 看状态")
     sub = ap.add_subparsers(dest="cmd")
     f = sub.add_parser("fetch", help="拉自己帖子下的新评论，写 pending.json")
-    f.add_argument("--since-id"); f.add_argument("--max", type=int, default=100); f.add_argument("--context", action="store_true", help="顺带拉被回复的原帖正文（0.005 美元一条）"); f.add_argument("--out")
+    f.add_argument("--since-id"); f.add_argument("--max", type=int, default=300, help="这轮最多拉多少条，按页翻到够为止（一页 100 条，0.001 美元一条）"); f.add_argument("--context", action="store_true", help="顺带拉被回复的原帖正文（0.005 美元一条）"); f.add_argument("--out")
     s = sub.add_parser("send", help="发专家写好的回复，全部成功后推水位线")
     s.add_argument("--replies", required=True); s.add_argument("--pending"); s.add_argument("--max", type=int, default=ROUND_MAX); s.add_argument("--dry-run", action="store_true")
     sub.add_parser("status", help="看水位线和花费")
