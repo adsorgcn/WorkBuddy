@@ -8,6 +8,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SK = os.path.join(ROOT, "experts", "ilang-wechat-awesome", "skills")
 for d in ("wechat-topic-hunter", "wechat-draft-push", "remote-dispatch"):
     sys.path.insert(0, os.path.join(SK, d, "scripts"))
+XSK = os.path.join(ROOT, "experts", "ilang-x-awesome", "skills")
+for d in ("x-post", "x-topic-hunter", "x-comment-patrol"):
+    sys.path.insert(0, os.path.join(XSK, d, "scripts"))
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 try:
     sys.stdout.reconfigure(encoding="utf-8")
@@ -17,6 +20,9 @@ import hot_sources as hs          # noqa: E402
 import wxrank_topics as wx        # noqa: E402
 import wechat_draft as wd         # noqa: E402
 import newspic_cards as nc        # noqa: E402
+import x_api as xa                # noqa: E402
+import x_feed as xf               # noqa: E402
+import x_patrol as xp             # noqa: E402
 import dispatch as dp             # noqa: E402
 import update_hot_list as uhl     # noqa: E402
 import release as rl              # noqa: E402
@@ -166,6 +172,57 @@ check("PNG 头解析", nc.png_info(os.path.join(tmpd, "02.png")) == (nc.W, nc.H,
 check("顶部红条＝放不下 没红条＝放得下", nc.has_overflow_bar(os.path.join(tmpd, "01.png")) and not nc.has_overflow_bar(os.path.join(tmpd, "02.png")))
 errs, _ = nc.validate_pngs(tmpd, 4)
 check("出图校验：尺寸不对和缺图都报", any("尺寸 100x100" in e for e in errs) and any("第 4 张没出图" in e for e in errs), errs)
+
+# ---- X：加权长度、门、串帖、签名、提及分类、日志、清单过滤（不碰网络） ----
+check("加权长度：中文算 2 英文算 1", xa.weighted_len("你好") == 4 and xa.weighted_len("ab") == 2)
+check("加权长度：链接按 23", xa.weighted_len("看 https://example.com/a/very/long/path/that/goes/on") == 2 + 1 + 23)
+check("加权长度：emoji 算 2", xa.weighted_len("🚀") == 2)
+check("链接识别：裸域名算 小数不算", xa.has_url("去 github.com/adsorgcn 看") and xa.has_url("ilang.ai") and not xa.has_url("今天 3.5 版本上线 v2.3.30"))
+errs = xa.gate("带标记 [📝 填] 和链接 https://a.co 和破折号——", [])
+check("门：标记 链接 破折号 三条都报", len(errs) == 3, errs)
+check("门：回复里不放链接", any("回复里不放链接" in e for e in xa.gate("看 https://a.co", [], is_reply=True)))
+check("门：相似拒发", any("相似" in e for e in xa.gate("这条帖子讲的是加权长度怎么算的问题", ["这条帖子讲的是加权长度怎么算的问题。"])))
+check("门：不相似放行", xa.gate("完全不同的另一条内容，说的是巡查", ["这条帖子讲的是加权长度怎么算的问题"]) == [])
+check("门：超 280 拦", any("加权长度" in e for e in xa.gate("字" * 141, [])))
+check("串帖按单独一行的 --- 切", xa.split_thread("a\n---\nb\n\n---\n\nc") == ["a", "b", "c"])
+t, w = xa.normalize("第一行——\r\n第二行  ")
+check("归一：破折号换逗号 去尾空格", t == "第一行，\n第二行" and len(w) == 1, (t, w))
+oc = {"API_KEY": "xvz1evFS4wEEPTGEFPHBog", "API_SECRET": "kAcSOqF21Fu85e7zjz7ZN2U4ZRhfV3WpwPAoE3Z7kBw",
+      "ACCESS_TOKEN": "370773112-GmHxMAgYyLbNEtIKZeRNFsMKPR9EyMZeS9weJAEb", "ACCESS_SECRET": "LswwdoUaIvS8ltyTt5jkRh4J50vUPVVHtR2YPi5kE"}
+hdr = xa.oauth_header("POST", "https://api.twitter.com/1.1/statuses/update.json",
+                      {"include_entities": "true", "status": "Hello Ladies + Gentlemen, a signed OAuth request!"}, oc,
+                      nonce="kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg", ts="1318622958")
+check("OAuth 1.0a 签名对上官方示例", 'oauth_signature="hCtSmYh%2BiHYCEqBWrE7C7hYmtUk%3D"' in hdr, hdr)
+_xcall = xa.call
+xa.call = lambda method, path, creds, query=None, body=None, timeout=60, fatal=True: (200, {
+    "data": [{"id": "2", "text": "回你", "author_id": "u2", "in_reply_to_user_id": "me", "referenced_tweets": [{"type": "replied_to", "id": "1"}]},
+             {"id": "3", "text": "引用", "author_id": "u3", "referenced_tweets": [{"type": "quoted", "id": "1"}]},
+             {"id": "4", "text": "@me 提一下", "author_id": "u4"}],
+    "includes": {"users": [{"id": "u2", "username": "two"}]}, "meta": {"newest_id": "4"}})
+try:
+    rows, meta = xa.get_mentions(oc, "me")
+    check("提及分类 reply_to_me quote mention 带 username 和原帖 id", [r["kind"] for r in rows] == ["reply_to_me", "quote", "mention"] and rows[0]["username"] == "two" and rows[0]["parent_id"] == "1" and meta["newest_id"] == "4", rows)
+finally:
+    xa.call = _xcall
+os.environ["X_OPS_DIR"] = tempfile.mkdtemp(prefix="tq-xops-")
+xd = xa.ops_dir()
+xa.append_log(xd, "replies.jsonl", {"to": "11", "status": "ok", "text": "回过"})
+xa.append_log(xd, "replies.jsonl", {"to": "12", "status": "FAIL", "text": "失败"})
+check("回过的 id 只算成功的", xp.replied_ids(xd) == {"11"}, xp.replied_ids(xd))
+xa.append_log(xd, "posts.jsonl", {"kind": "post", "status": "ok", "text": "a", "via": "api"})
+xa.append_log(xd, "posts.jsonl", {"kind": "thread", "status": "ok", "text": "b", "via": "api"})
+xa.append_log(xd, "posts.jsonl", {"kind": "reply", "status": "ok", "text": "c", "via": "api"})
+check("今天发帖计数只算帖和串帖", xa.today_count(xd) == 2, xa.today_count(xd))
+check("禁区：英文整词 BioWare 不拦 Iran 拦", xf.banned_reason("EA closes BioWare") is None and xf.banned_reason("Iran strike plan") == "Iran", (xf.banned_reason("EA closes BioWare"), xf.banned_reason("Iran strike plan")))
+check("禁区：中文子串", xf.banned_reason("泽连斯基表示愿意") == "泽连斯基")
+xnow = datetime.datetime(2026, 10, 22, 12, 0)
+check("清单时间按小时算 跨年往前推", abs(xf.age_hours("10-22 08:00", xnow) - 4) < 0.01 and xf.age_hours("12-30 08:00", datetime.datetime(2027, 1, 2, 8, 0)) == 72.0)
+xfeed = {"groups": {"AI": [{"title": "Iran drone AI", "published": "10-22 11:00", "lang": "en", "platforms": 3},
+                           {"title": "OpenAI 发新模型", "published": "10-22 10:00", "lang": "zh", "platforms": 2},
+                           {"title": "旧闻", "published": "10-18 10:00", "lang": "zh", "platforms": 5},
+                           {"title": "我发过的 OpenAI 新模型", "published": "10-22 09:00", "lang": "zh", "platforms": 1}]}}
+kept, dropped = xf.pick(xfeed, hours=48, n=10, posted=["我发过的 OpenAI 新模型 真不错"], now=xnow)
+check("清单过滤：禁区 时效 去重 都拦 剩一条", [r["title"] for r in kept] == ["OpenAI 发新模型"] and len(dropped) == 3, ([r["title"] for r in kept], [w for _, w in dropped]))
 
 # ---- 版本号同步 ----
 txt = "version: 2.3.12\n[VERSION:2.3.10]\n| 2.3.1 |\nv2.3.1 and v2.3.12 and \"version\": \"2.3.1\""

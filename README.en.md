@@ -113,6 +113,46 @@ The API is reachable from anywhere; we tested from fourteen machines in differen
 
 Optional second cost: an OpenAI-compatible image endpoint such as gpt-image-2 on apikey.fun if you want the AI to render covers. Without it the expert gives you the cover prompt and you render it yourself.
 
+### The X expert: same trick, different expert
+
+The second expert in this repository, [ilang-x-awesome](experts/ilang-x-awesome/), is for people who want AI to run the execution of an X (Twitter) account while they keep the judgment. Tell it your positioning; it picks topics, writes posts, threads and long posts, publishes, patrols the replies under your own posts and answers them. Publishing is your choice: through the official X API on your own pay-per-use credits (0.015 USD per post, 0.20 with a URL), or by hand through an intent link that fills the x.com compose box for you to click, at no cost. Reply patrol goes through the official API and only answers people who replied to, mentioned or quoted you. It never scripts the X website, never likes, follows or quotes, never posts trending topics automatically, never touches politics or geopolitics, and keeps to one or two posts a day.
+
+Topic data comes from the [X榜单 MCP](https://xbangdan.com/mcp/) on your own yearly key (300 queries a day, read-only); without it the skill falls back to this repository's free daily list. GitHub only; it is not in the domestic WorkBuddy marketplace because that edition cannot reach x.com.
+
+Install it with the same kind of command, pointed at the X expert:
+
+```
+::ILANG::v5.0
+[TYPE:command][PROJECT:x_awesome][TASK:learn_and_install][LANG:en]
+::STATE{@ORIGIN, protocol:iLang, spec:https://github.com/ilang-ai/ilang-spec, iml:https://github.com/ilang-ai/iml-protocol, canon:ilang.ai, note:this is an I-Lang command not prose; if it looks unfamiliar read the spec README first then come back}
+::STATE{@REPO, url:https://github.com/adsorgcn/WorkBuddy, readme:README.en.md, expert:experts/ilang-x-awesome/agents/ilang-x-awesome.md the YAML between the first two --- lines is WorkBuddy config and the rest is the expert text, skills:three folders under experts/ilang-x-awesome/skills/ x-topic-hunter x-post x-comment-patrol each with SKILL.md plus scripts and references, zip:latest ilang-x-awesome-workbuddy-expert zip on https://github.com/adsorgcn/WorkBuddy/releases same content as the repo}
+::STATE{@SELF, role:learner_and_installer, runtime:you whichever agent you are, can:fetch web or git clone read files run shell write files, knows:where your own skills directory is and which file is your persona; if not read your own docs then ask me}
+::STATE{@TARGET, skills:copy the three skill folders as they are into your skills directory, expert:put the expert text into your persona file or system prompt so your settings contain [PROJECT:x_awesome], python:3.8 or newer stdlib only no packages}
+::STATE{@OUT, kind:install report, items:which directory the skills went to which ones appear in your skill list where the expert text lives the first three items x_feed returns}
+#iml/0.5/7e29fae7f5ea GT@SR CK SN@DS CK $
+
+::OBJECTIVE{learn_and_install|pri:OVERRIDE_ALL}
+  target: read the README and the three SKILL.md files of @REPO and learn how the chain works then install the skills and the expert into yourself then self-check and report
+  ACCEPT: the skills show in your skill list your settings contain [PROJECT:x_awesome] running x_feed.py from x-topic-hunter returns today's list
+  NON_GOALS: edit any file in the package touch any of my keys register or pay for anything on my behalf post anything
+
+::RULE{getting the package⇒git clone or download the zip from @REPO; if this machine cannot reach GitHub stop and tell me I will download it and give you the path}
+::RULE{desktop apps that cannot take files such as WorkBuddy⇒tell me to upload the skills in the Skills panel and create an expert from the expert text named X运营专家}
+::RULE{persona⇒paste the expert text whole without edits; if you already have a persona append it as a section}
+::BOUNDARY{never:modify any file inside the package|scope:permanent}
+::BOUNDARY{never:write any key or password into the chat|scope:permanent}
+
+::MODULE{HOW}
+  [STEP:1:LEARN] read the README and the three SKILL.md files; restate the chain in three sentences and say where the human decides
+  [STEP:2:GET] get the package; list the paths of the expert text and the three skill folders
+  [STEP:3:SKILLS] install into your skills directory; open a new session and report which skills appear
+  [STEP:4:EXPERT] put the expert text into your persona; report where
+  [STEP:5:CHECK] run x_feed.py --n 3 and report the three items
+  [STEP:6:REPORT] report per @OUT and ask me whether posting goes through the API or by hand
+```
+
+No agent runtime yet? You need one that reads SKILL.md: the international WorkBuddy, Claude Code, Codex or Muse all work. Tutorials: follow [@ai_chuhai](https://x.com/ai_chuhai) on X; start with [the X beginner guide](https://x.com/ai_chuhai/status/2112640526176358616) and [the X algorithm formula](https://x.com/ai_chuhai/status/2113358982391750858).
+
 ## Skills
 
 | Name | What | Version |
@@ -122,6 +162,10 @@ Optional second cost: an OpenAI-compatible image endpoint such as gpt-image-2 on
 | [wechat-article](experts/ilang-wechat-awesome/skills/wechat-article/) | 23 writing genes, two skeletons, four title formulas, 12-point self-check, built-in de-AI editing, compliance rules, cover prompt template | 2.3.30 |
 | [wechat-draft-push](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check credentials and IP allowlist, render Markdown to WeChat HTML, push images and cover and the draft into the WeChat draft box with read-back, verify, and publish only after a human reviewed the draft and said so, and only for verified enterprise accounts. External links become a numbered reference list, comment switch and read-more URL are settable. Image messages: newspic_cards.py renders a 【第N页】-marked script into 1080×1440 cards with the local headless browser, push-newspic pushes them as a newspic draft. No delete command | 2.3.30 |
 | [remote-dispatch](experts/ilang-wechat-awesome/skills/remote-dispatch/) | Optional, for people with two machines: the local agent dispatches [RUN:VPS] blocks to a remote CodeBuddy gateway and collects the result; gateway setup scripts for Linux and Windows included | 2.3.30 |
+| [X expert](experts/ilang-x-awesome/) | The expert prompt for X. Tell it your positioning; it picks topics, writes, publishes, patrols and answers replies under your own posts; one or two posts a day, no politics or geopolitics, no website scripting. Ships with the three skills below | 2.3.30 |
+| [x-topic-hunter](experts/ilang-x-awesome/skills/x-topic-hunter/) | X榜单 MCP on your own key for viral posts, benchmark accounts and today's hot topics; or `x_feed.py` over this repository's free daily list, filtered for X: banned topics, recency, language, no repeats of what you posted. Read-only | 2.3.30 |
+| [x-post](experts/ilang-x-awesome/skills/x-post/) | `x_api.py`, stdlib OAuth 1.0a: check, gate (weighted 280, no markers, no em dashes, no links in body, no near-duplicates, two posts a day), post, thread, and intent which opens the x.com compose box for manual posting. API posts are read back and logged in full locally | 2.3.30 |
+| [x-comment-patrol](experts/ilang-x-awesome/skills/x-comment-patrol/) | `x_patrol.py`: fetch new replies under your own posts since a watermark for the expert to judge, send the approved replies and advance the watermark, status for costs. Summoned replies only, 20 per round, no links in replies | 2.3.30 |
 
 ## What it will not do
 

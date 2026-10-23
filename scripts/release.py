@@ -9,7 +9,9 @@
 import argparse, datetime, io, json, os, re, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EXP = os.path.join(ROOT, "experts", "ilang-wechat-awesome")
+EXPERTS_ROOT = os.path.join(ROOT, "experts")
+EXPERTS = sorted(d for d in os.listdir(EXPERTS_ROOT) if os.path.exists(os.path.join(EXPERTS_ROOT, d, ".codebuddy-plugin", "plugin.json")))
+EXP = os.path.join(EXPERTS_ROOT, EXPERTS[0])          # 版本号从第一个专家读；门禁保证所有专家同一个版本号
 PLUGIN = os.path.join(EXP, ".codebuddy-plugin", "plugin.json")
 MARKET = os.path.join(ROOT, ".codebuddy-plugin", "marketplace.json")
 try:
@@ -58,15 +60,17 @@ def sync_versions(old, new):
         if t2 != t:
             BACKUP[path] = t
             write(path, t2); changed.append(os.path.relpath(path, ROOT))
-    sub(PLUGIN, ['"version": "%s"'])
     sub(MARKET, ['"version": "%s"'])
-    sub(os.path.join(EXP, "agents", "ilang-wechat-awesome.md"), [], tag=True)
-    sub(os.path.join(EXP, "README.md"), ["v%s"])
-    skills = os.path.join(EXP, "skills")
-    for d in sorted(os.listdir(skills)):
-        p = os.path.join(skills, d, "SKILL.md")
-        if os.path.exists(p):
-            sub(p, ["version: %s"], tag=True)
+    for e in EXPERTS:
+        exp = os.path.join(EXPERTS_ROOT, e)
+        sub(os.path.join(exp, ".codebuddy-plugin", "plugin.json"), ['"version": "%s"'])
+        sub(os.path.join(exp, "agents", e + ".md"), [], tag=True)
+        sub(os.path.join(exp, "README.md"), ["v%s"])
+        skills = os.path.join(exp, "skills")
+        for d in sorted(os.listdir(skills)):
+            p = os.path.join(skills, d, "SKILL.md")
+            if os.path.exists(p):
+                sub(p, ["version: %s"], tag=True)
     for name in ("README.md", "README.en.md"):
         sub(os.path.join(ROOT, name), ["| %s |", "v%s"])
     return changed

@@ -144,6 +144,46 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 安装非官方技能前，先看一遍源码和权限。这里的脚本都是纯 Python 标准库、凭据从本机配置文件读：推草稿技能的 `wechat_draft.py` 只调微信官方接口，发布命令只在人说「发」之后对认证号可用，没有删草稿命令；选题技能的 `wxrank_topics.py` 只读调用 wxrank，花积分前报价；`hot_sources.py` 只读公开的 RSS 和接口。
 
+### X 运营专家：同一招，换个专家
+
+仓库里的第二个专家 [ilang-x-awesome](experts/ilang-x-awesome/)，给想用 AI 跑 X（Twitter）账号的人。你说清定位，它找题、写帖、发帖、巡查你帖子下的评论并回复；你只定方向和拍板。发帖二选一：走 X 官方接口花你自己的积分（普通帖 0.015 美元一条，带链接 0.20），或者脚本把文案送进浏览器编辑框你自己点，不花钱。评论巡查走官方接口，只回你自己帖子下的评论。它不用脚本碰 X 网站，不点赞关注引用，不发热搜话题，不碰时政地缘，一天不超过两条。
+
+选题数据从 [X榜单](https://xbangdan.com/mcp/) 的 MCP 来（你自己买年卡，每天 300 次查询，只读），没买就用仓库每天自动更新的免费清单。只走 GitHub，不进 WorkBuddy 国内市场，国内网络连不上 x.com。
+
+装法和上面一样，一条命令：
+
+```
+::ILANG::v5.0
+[TYPE:command][PROJECT:x_awesome][TASK:learn_and_install][LANG:zh]
+::STATE{@ORIGIN, protocol:iLang, spec:https://github.com/ilang-ai/ilang-spec, iml:https://github.com/ilang-ai/iml-protocol, canon:ilang.ai, note:这段是 I-Lang 命令 不是自然语言 看不懂先读 spec 的 README 再回来}
+::STATE{@REPO, url:https://github.com/adsorgcn/WorkBuddy, readme:README.md, expert:experts/ilang-x-awesome/agents/ilang-x-awesome.md 开头两行 --- 之间是 WorkBuddy 的设置 其余是专家正文, skills:experts/ilang-x-awesome/skills/ 下三个文件夹 x-topic-hunter x-post x-comment-patrol 每个一份 SKILL.md 加 scripts 和 references, zip:https://github.com/adsorgcn/WorkBuddy/releases 最新版 ilang-x-awesome-workbuddy-expert 开头的 zip 跟仓库同内容}
+::STATE{@SELF, role:learner_and_installer, runtime:你自己 不管你是哪个 Agent, can:读网页或 git clone 读文件 跑 shell 写文件, knows:你自己的技能目录在哪 你自己的人设文件是哪个 不知道就读你自己的文档 再不知道问我}
+::STATE{@TARGET, skills:三个技能文件夹原样拷进你自己的技能目录, expert:专家正文放进你自己的人设文件或系统提示 设定里要能看到 [PROJECT:x_awesome], python:3.8 以上 脚本只用标准库 不装包}
+::STATE{@OUT, kind:装完报告, items:技能装到了哪个目录 哪几个在技能列表里 专家正文放在哪 x_feed 读到的前 3 条}
+#iml/0.5/7e29fae7f5ea GT@SR CK SN@DS CK $
+
+::OBJECTIVE{learn_and_install|pri:OVERRIDE_ALL}
+  target: 先读 @REPO 的 README 和三份 SKILL.md 学会这套东西怎么用 再把技能和专家装进你自己 装完自检 报告
+  ACCEPT: 技能列表里能看到装进去的技能 设定里有 [PROJECT:x_awesome] 跑 x-topic-hunter 的 x_feed.py 能读到今天的清单
+  NON_GOALS: 改包里任何文件 碰我的任何密钥 替我注册或付费 发任何帖子
+
+::RULE{拿包⇒git clone 或下 @REPO 的 zip 都行 本机上不去 GitHub 就停下告诉我 我下好给你路径}
+::RULE{桌面版 WorkBuddy 这类装不进文件的⇒告诉我去 Skills 面板上传技能 去专家页创建专家 把正文粘进去 名字 X运营专家}
+::RULE{人设文件⇒专家正文整段放进去 不删不改 已经有别的人设就追加一段}
+::BOUNDARY{never:改动包里任何文件的内容|scope:permanent}
+::BOUNDARY{never:把任何 key 或口令写进对话|scope:permanent}
+
+::MODULE{HOW}
+  [STEP:1:LEARN] 读 README 和三份 SKILL.md 用三句话复述这条链怎么走 谁在什么时候拍板
+  [STEP:2:GET] 拿包 列出专家正文和三个技能文件夹的路径
+  [STEP:3:SKILLS] 装进你自己的技能目录 新会话看列表 报哪几个在
+  [STEP:4:EXPERT] 把专家正文放进你的人设 报放在哪
+  [STEP:5:CHECK] 跑 x_feed.py --n 3 报前 3 条
+  [STEP:6:REPORT] 按 @OUT 报告 最后问我发帖走接口还是手动
+```
+
+没有任何运行环境的，需要一个能读 SKILL.md 的 Agent：WorkBuddy 海外版、Claude Code、Codex、Muse 都行；教程关注 X 上的 [@ai_chuhai](https://x.com/ai_chuhai)。推荐先读两篇：[X 新手攻略](https://x.com/ai_chuhai/status/2112640526176358616)、[X 算法公式](https://x.com/ai_chuhai/status/2113358982391750858)。
+
 ## 技能清单
 
 | 名称 | 是什么 | 版本 |
@@ -153,6 +193,10 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 | [写稿 wechat-article](experts/ilang-wechat-awesome/skills/wechat-article/) | 23 条写作基因，六段式和八区块两种骨架，标题四个公式，12 项自查，去 AI 味三件套和五个信号，脱敏表和敏感词红线，封面提示词模板 | 2.3.30 |
 | [推草稿箱 wechat-draft-push](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check 验凭据和白名单，render 转微信 HTML，push 传图传封面推进草稿箱并回读，verify 回读，publish 只在人看完草稿说「发」后对微信认证号可用。外链自动收进文末「参考链接」，留言开关和「阅读原文」可设。贴图：newspic_cards.py 把带【第N页】的稿子出成 1080×1440 卡片图，push-newspic 推成图片消息草稿。没有删草稿命令 | 2.3.30 |
 | [远程派活 remote-dispatch](experts/ilang-wechat-awesome/skills/remote-dispatch/) | 可选件。两台机器的人用：本机当总控，把 [RUN:VPS] 的命令块派给远程机上的 CodeBuddy 网关跑，收回结果。远程机起网关的脚本在 scripts 里，Linux 和 Windows 各一个 | 2.3.30 |
+| [X运营专家](experts/ilang-x-awesome/) | 专家正文。说清定位，它找题、写帖、发帖、巡查评论并回复，你定方向和拍板；一天一到两条，时政地缘不碰，不用脚本碰 X 网站。带下面三个技能 | 2.3.30 |
+| [X 选题 x-topic-hunter](experts/ilang-x-awesome/skills/x-topic-hunter/) | 装了 X榜单 MCP 用它查爆款、查对标号、看热点（你自己的年卡）；没装跑 `x_feed.py` 读仓库免费清单，按 X 口径过滤：禁区、时效、语言、和你发过的去重。只读 | 2.3.30 |
+| [X 发帖 x-post](experts/ilang-x-awesome/skills/x-post/) | `x_api.py`：check 验密钥，gate 过门（加权 280、无标记、无长破折号、正文无链接、不重复、一天两条），post 单帖，thread 串帖，intent 开浏览器编辑框你自己点。接口路发完回读，正文全文记本机日志 | 2.3.30 |
+| [X 评论巡查 x-comment-patrol](experts/ilang-x-awesome/skills/x-comment-patrol/) | `x_patrol.py`：fetch 按水位线拉你帖子下的新评论交给专家判，send 发专家写好的回复并推进水位线，status 看花费。只回召唤你的人，一轮最多 20 条，回复里不放链接 | 2.3.30 |
 
 ## 怎么用
 
@@ -208,6 +252,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 每日清单的增减在 [UPDATES.md](UPDATES.md)，每个版本改了什么在 [发布页](https://github.com/adsorgcn/WorkBuddy/releases)。大版本：
 
+- 2.3.31（2026-10-22）：新增第二个专家「X运营专家」ilang-x-awesome 和三个技能：x-topic-hunter（X榜单 MCP 或仓库免费清单，按 X 口径过滤，时政地缘六类禁区）、x-post（`x_api.py` 标准库 OAuth 1.0a：check / gate / post / thread / reply / mentions，发帖二选一，接口花自己的积分或 intent 开编辑框手动点）、x-comment-patrol（`x_patrol.py` 按水位线拉自己帖下的新评论，专家判，接口回复，只回召唤自己的人）。门禁和发版脚本改成遍历 experts/ 下所有专家，每个专家和每个技能各出一个 zip。
 - 2.3.24（2026-10-16）：推草稿箱加贴图（图片消息）：`newspic_cards.py` 把带【第N页】标记的稿子用本机 Edge/Chrome 无头截成 1080×1440 卡片图并逐张校验，放不下报错不缩字；`push-newspic` 过门后把图传成永久素材、推成图片消息草稿、回读标题。draft/add 发出去没收到回复不再当失败：落 `*-UNKNOWN-<时间>.json`、退出码 3，先看草稿箱再决定重不重推。`render` 顺带写 390 宽的 `*.preview.html`。引用块认 GFM 提示块 `> [!NOTE|TIP|IMPORTANT|WARNING|CAUTION]`，出四色信息卡。
 - 2.3.18（2026-10-12）：推草稿箱默认在自己电脑上跑：脚本强制 IPv4；白名单填本机当前公网 IP，IP 变了再加一次，白名单能存多个；借远程机 IP 的隧道改成备选。
 - 2.3.14（2026-10-10）：按两份外部检测报告修。清单：一条坏源不再拖死整轮；72 小时内的在前、多平台优先再按新旧，相对时间（22分钟前）、只有日期、带时区的时间都归到北京时间，备用源不再和主源同时出现；聚类加三道闸：跌破/突破这类相反说法不合并、四字以内的短名只在完全相同时合并、GPT-4 和 GPT-5 这种连字符版本号不合并。选题：`feed` 显示发布时间；`calendar` 每周篇数算准、参数错在扣积分之前就报；`benchmark` 只查每次推送的头条。推草稿箱：行内代码里的星号不再排版、表头链接只引一次、英文软换行补空格、标题列表引用表格里的行内图片也只留说明。派活：流中断不再抛栈、回退找会话用原正文。发版：同步版本号不再误伤更长的版本号、dry-run 不再丢未提交改动、技能正文的版本标签一起同步。门禁加回归测试（`scripts/test_quality.py`）、Actions 里缺 IML 编译器算失败、没装 PyYAML 也能跑；三个 http 源改 https。

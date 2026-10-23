@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 """门禁 + 打包（GitHub 版，仓库内跑，本地和 Actions 都用）。
 
-检查：plugin.json / marketplace.json 版本一致、plugin.skills 列全；专家与每个 SKILL 的 frontmatter 齐；
+对 experts/ 下每一个带 .codebuddy-plugin/plugin.json 的专家都核一遍：
+plugin.json / marketplace.json 版本一致（所有专家同一个版本号）、plugin.skills 列全；专家与每个 SKILL 的 frontmatter 齐；
 IML 工作链用官方编译器回环（IML_REPO 指向 iml-protocol 的克隆，本地没有就跳过并警告，Actions 里没有算失败）；
 技能正文的 [VERSION:] 标签与版本一致；无控制字符、正文无长破折号；商店文案无效果承诺；@references 存在；脚本能编译；
-scripts/test_quality.py 的回归用例全过（聚类、时间归一、排序、日程、排版、版本号同步、派活流）。
+scripts/test_quality.py 的回归用例全过。
 依赖：只用标准库；装了 PyYAML 就用它解 frontmatter，没装就用内置的小解析。
-全过才打包：每个技能一个 zip，加一个专家 zip，默认放 dist/（BUILD_OUT 可改）。
+全过才打包：每个技能一个 zip，每个专家一个 zip，默认放 dist/（BUILD_OUT 可改）。
 用法：python scripts/build_packages.py [--no-zip]
 """
 import datetime, io, json, os, re, subprocess, sys, tempfile, zipfile, py_compile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EXP = os.path.join(ROOT, "experts", "ilang-wechat-awesome")
-SKILLS_DIR = os.path.join(EXP, "skills")
+EXPERTS_ROOT = os.path.join(ROOT, "experts")
 IML_REPO = os.environ.get("IML_REPO") or os.path.join(os.path.dirname(ROOT), "iml-protocol")
 OUT = os.environ.get("BUILD_OUT") or os.path.join(ROOT, "dist")
 TODAY = datetime.date.today().isoformat()
@@ -22,8 +22,11 @@ CHAINS = {
     "wechat-draft-push": "[GET:@SRC]=>[CHEK]=>[SEND:@DST]=>[CHEK]=>[Ω]",
     "wechat-topic-hunter": "[PARS:@USER]=>[GET:@SRC]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]",
     "remote-dispatch": "[PARS:@USER]=>[SEND:@DST]=>[GET:@SRC]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]",
+    "x-topic-hunter": "[PARS:@USER]=>[GET:@SRC]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]",
+    "x-post": "[GET:@SRC]=>[CHEK]=>[SEND:@DST]=>[CHEK]=>[Ω]",
+    "x-comment-patrol": "[GET:@SRC]=>[CHEK]=>[SEND:@DST]=>[SAVE:@DST|grp=date]=>[Ω]",
 }
-AGENT_CHAIN = "wechat-article"
+AGENT_CHAIN = {"ilang-wechat-awesome": "wechat-article", "ilang-x-awesome": "x-post"}   # 专家正文带哪条技能的链
 try:
     sys.stdout.reconfigure(encoding="utf-8")
 except Exception:
@@ -33,6 +36,10 @@ fails = []
 def fail(msg): fails.append(msg); print("FAIL", msg)
 def ok(msg): print("ok  ", msg)
 def read(p): return io.open(p, encoding="utf-8").read()
+
+
+def expert_dirs():
+    return sorted(d for d in os.listdir(EXPERTS_ROOT) if os.path.exists(os.path.join(EXPERTS_ROOT, d, ".codebuddy-plugin", "plugin.json")))
 
 
 def frontmatter(text):
@@ -86,11 +93,12 @@ iml_re = re.compile(r"^`?(#iml/0\.5/7e29fae7f5ea [^`\n]+\$)`?$", re.M)
 def iml_lines(text): return set(iml_re.findall(text))
 
 
-def main():
-    no_zip = "--no-zip" in sys.argv
-    plugin = json.load(io.open(os.path.join(EXP, ".codebuddy-plugin", "plugin.json"), encoding="utf-8"))
-    market = json.load(io.open(os.path.join(ROOT, ".codebuddy-plugin", "marketplace.json"), encoding="utf-8"))
-    ver = plugin["version"]
+def check_expert(name, market, ver, expected):
+    """核一个专家目录。返回 (plugin, skill_dirs)；错误都记进 fails。ver 是所有专家统一的版本号。"""
+    exp = os.path.join(EXPERTS_ROOT, name)
+    skills_dir = os.path.join(exp, "skills")
+    plugin = json.load(io.open(os.path.join(exp, ".codebuddy-plugin", "plugin.json"), encoding="utf-8"))
+    if plugin["version"] != ver: fail("%s plugin version %s != %s（所有专家同一个版本号）" % (name, plugin["version"], ver))
     mp = [p for p in market["plugins"] if p["name"] == plugin["name"]]
     if not mp: fail("marketplace has no entry for " + plugin["name"])
     elif mp[0]["version"] != ver: fail("marketplace version %s != plugin %s" % (mp[0]["version"], ver))
@@ -102,13 +110,13 @@ def main():
     if not (40 <= len(zh) <= 50): fail("displayDescription.zh length %d not in 40-50" % len(zh))
     if len(plugin["tags"]) != 3 or len(plugin["quickPrompts"]) != 3: fail("tags/quickPrompts must be exactly 3")
     if plugin["defaultInitPrompt"]["zh"] != plugin["quickPrompts"][0]["zh"]: fail("defaultInitPrompt must equal quickPrompts[0]")
-    if not os.path.exists(os.path.join(EXP, plugin["avatar"])): fail("avatar missing")
-    skill_dirs = sorted(d for d in os.listdir(SKILLS_DIR) if os.path.isdir(os.path.join(SKILLS_DIR, d)))
+    if not os.path.exists(os.path.join(exp, plugin["avatar"])): fail("avatar missing")
+    skill_dirs = sorted(d for d in os.listdir(skills_dir) if os.path.isdir(os.path.join(skills_dir, d)))
     declared = sorted(os.path.basename(s.rstrip("/")) for s in plugin.get("skills", []))
     if declared != skill_dirs: fail("plugin.skills %s != skills/ dirs %s" % (declared, skill_dirs))
     else: ok("plugin.skills matches skills/: %s" % skill_dirs)
 
-    agent_path = os.path.join(EXP, "agents", "ilang-wechat-awesome.md")
+    agent_path = os.path.join(exp, (plugin.get("agents") or ["./agents/%s.md" % name])[0])
     afm, abody = frontmatter(read(agent_path))
     if afm is None: fail("agent frontmatter unparsable"); abody = ""
     else:
@@ -120,39 +128,31 @@ def main():
         ok("agent frontmatter yaml ok")
     skills = {}
     for d in skill_dirs:
-        sfm, sbody = frontmatter(read(os.path.join(SKILLS_DIR, d, "SKILL.md")))
+        sfm, sbody = frontmatter(read(os.path.join(skills_dir, d, "SKILL.md")))
         if sfm is None: fail("%s SKILL frontmatter unparsable" % d); continue
         for k in ("name", "description", "description_zh", "description_en", "version", "author", "display_name", "display_name_en", "category"):
             if k not in sfm: fail("%s SKILL frontmatter missing %s" % (d, k))
         if sfm.get("name") != d: fail("%s SKILL name %s != dir" % (d, sfm.get("name")))
         if str(sfm.get("version")) != ver: fail("%s SKILL version %s != plugin %s" % (d, sfm.get("version"), ver))
         if ("[VERSION:%s]" % ver) not in sbody: fail("%s SKILL body VERSION tag != %s" % (d, ver))
+        if d not in CHAINS: fail("%s has no IML chain in CHAINS" % d)
         skills[d] = (sfm, sbody)
         ok("%s frontmatter yaml ok" % d)
 
-    if iml_available():
-        expected = {}
-        for name, chain in CHAINS.items():
-            rc, line = compile_chain(chain)
-            if rc != 0: fail("compiler rejects chain for %s: %s" % (name, line)); continue
-            if chain not in decompile_line(line): fail("decompile mismatch for " + name)
-            expected[name] = line
-            ok("%s chain round-trips: %s" % (name, line))
-        def expect_line(path, name):
+    agent_chain = AGENT_CHAIN.get(name)
+    if agent_chain not in skill_dirs: fail("%s AGENT_CHAIN %r is not one of its skills" % (name, agent_chain))
+    if expected is not None:
+        def expect_line(path, chain_name):
             found = iml_lines(read(path))
-            if found != {expected.get(name)}: fail("IML line in %s is %r, expected %r" % (os.path.relpath(path, ROOT), found, expected.get(name)))
-        expect_line(agent_path, AGENT_CHAIN)
+            if found != {expected.get(chain_name)}: fail("IML line in %s is %r, expected %r" % (os.path.relpath(path, ROOT), found, expected.get(chain_name)))
+        expect_line(agent_path, agent_chain)
         for d in skill_dirs:
-            expect_line(os.path.join(SKILLS_DIR, d, "SKILL.md"), d)
-        for p in (os.path.join(EXP, "README.md"), os.path.join(ROOT, "README.md"), os.path.join(ROOT, "README.en.md")):
-            if expected.get(AGENT_CHAIN) not in iml_lines(read(p)): fail("README %s lacks the agent IML line" % os.path.relpath(p, ROOT))
-    elif os.environ.get("GITHUB_ACTIONS") or os.environ.get("CI"):
-        fail("IML_REPO 不存在（%s），Actions 里必须能回环校验" % IML_REPO)
-    else:
-        print("warn IML_REPO 不存在（%s），跳过工作链回环校验" % IML_REPO)
+            expect_line(os.path.join(skills_dir, d, "SKILL.md"), d)
+        for p in (os.path.join(exp, "README.md"), os.path.join(ROOT, "README.md"), os.path.join(ROOT, "README.en.md")):
+            if expected.get(agent_chain) not in iml_lines(read(p)): fail("README %s lacks the agent IML line" % os.path.relpath(p, ROOT))
 
     bad_dash = re.compile("[—–]")
-    for root, _, files in os.walk(EXP):
+    for root, _, files in os.walk(exp):
         for f in files:
             if not f.endswith((".md", ".json")): continue
             p = os.path.join(root, f); t = read(p)
@@ -166,11 +166,11 @@ def main():
         if bad in store: fail("store copy contains forbidden claim: " + bad)
     ok("no effect promises in store copy")
     for d, (sfm, sbody) in skills.items():
-        text = sbody + (abody if d == AGENT_CHAIN else "")
+        text = sbody + (abody if d == agent_chain else "")
         refs = set(re.findall(r"@references/([\w\-]+\.md)", text))
-        missing = [r for r in refs if not os.path.exists(os.path.join(SKILLS_DIR, d, "references", r))]
+        missing = [r for r in refs if not os.path.exists(os.path.join(skills_dir, d, "references", r))]
         if missing: fail("%s missing references: %r" % (d, missing))
-        sdir = os.path.join(SKILLS_DIR, d, "scripts")
+        sdir = os.path.join(skills_dir, d, "scripts")
         if os.path.isdir(sdir):
             for f in os.listdir(sdir):
                 if f.endswith(".py"):
@@ -186,6 +186,37 @@ def main():
                     except Exception as e:
                         fail("sources.json: %s" % e)
         ok("%s references + scripts ok" % d)
+    return plugin, skill_dirs
+
+
+def main():
+    no_zip = "--no-zip" in sys.argv
+    experts = expert_dirs()
+    if not experts: fail("experts/ 下没有带 plugin.json 的专家")
+    market = json.load(io.open(os.path.join(ROOT, ".codebuddy-plugin", "marketplace.json"), encoding="utf-8"))
+    first = json.load(io.open(os.path.join(EXPERTS_ROOT, experts[0], ".codebuddy-plugin", "plugin.json"), encoding="utf-8"))
+    ver = first["version"]
+
+    expected = None
+    if iml_available():
+        expected = {}
+        for name, chain in CHAINS.items():
+            rc, line = compile_chain(chain)
+            if rc != 0: fail("compiler rejects chain for %s: %s" % (name, line)); continue
+            if chain not in decompile_line(line): fail("decompile mismatch for " + name)
+            expected[name] = line
+            ok("%s chain round-trips: %s" % (name, line))
+    elif os.environ.get("GITHUB_ACTIONS") or os.environ.get("CI"):
+        fail("IML_REPO 不存在（%s），Actions 里必须能回环校验" % IML_REPO)
+    else:
+        print("warn IML_REPO 不存在（%s），跳过工作链回环校验" % IML_REPO)
+
+    built_plan = []
+    for name in experts:
+        print("== expert", name)
+        plugin, skill_dirs = check_expert(name, market, ver, expected)
+        built_plan.append((name, skill_dirs))
+
     tq = os.path.join(ROOT, "scripts", "test_quality.py")
     if os.path.exists(tq):
         r = subprocess.run([sys.executable, tq], cwd=ROOT, capture_output=True, text=True, encoding="utf-8")
@@ -205,11 +236,13 @@ def main():
                     p = os.path.join(root, f)
                     z.write(p, os.path.join(arcroot, os.path.relpath(p, base)).replace(os.sep, "/"))
     built = []
-    for d in skill_dirs:
-        z = os.path.join(OUT, "%s-workbuddy-skill-v%s-%s.zip" % (d, ver, TODAY))
-        zipdir(z, os.path.join(SKILLS_DIR, d), d); built.append(z)
-    z2 = os.path.join(OUT, "ilang-wechat-awesome-workbuddy-expert-v%s-%s.zip" % (ver, TODAY))
-    zipdir(z2, EXP, "ilang-wechat-awesome"); built.append(z2)
+    for name, skill_dirs in built_plan:
+        exp = os.path.join(EXPERTS_ROOT, name)
+        for d in skill_dirs:
+            z = os.path.join(OUT, "%s-workbuddy-skill-v%s-%s.zip" % (d, ver, TODAY))
+            zipdir(z, os.path.join(exp, "skills", d), d); built.append(z)
+        z2 = os.path.join(OUT, "%s-workbuddy-expert-v%s-%s.zip" % (name, ver, TODAY))
+        zipdir(z2, exp, name); built.append(z2)
     for z in built:
         print("built", os.path.relpath(z, ROOT), os.path.getsize(z), "bytes")
 

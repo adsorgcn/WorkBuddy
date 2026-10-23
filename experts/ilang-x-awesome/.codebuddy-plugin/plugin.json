@@ -1,0 +1,85 @@
+{
+  "name": "ilang-x-awesome",
+  "version": "2.3.30",
+  "description": "X (Twitter) account operation expert for people who want AI to do the execution while they keep the judgment. Picks topics from X榜单 data (user's own key) or the repository's free daily hot list, writes single posts, threads and long posts in the X style with built-in de-AI editing, publishes through the official X API on the user's own pay-per-use credits or hands the text to the user to post by hand, patrols replies under the user's own posts and answers them through the API, and keeps a sane cadence. Never scripts the X website, never likes, follows or quotes, never touches politics or geopolitics. Chinese-first. By iLang.",
+  "author": {
+    "name": "iLang Inc.",
+    "email": "info@ilang.app"
+  },
+  "homepage": "https://ilang.ai",
+  "repository": "https://github.com/adsorgcn/WorkBuddy",
+  "license": "MIT",
+  "keywords": [
+    "content",
+    "deai",
+    "i-lang",
+    "ilang",
+    "iml",
+    "social",
+    "thread",
+    "topic",
+    "twitter",
+    "writing",
+    "x",
+    "xbangdan",
+    "推特",
+    "运营"
+  ],
+  "agents": [
+    "./agents/ilang-x-awesome.md"
+  ],
+  "skills": [
+    "./skills/x-topic-hunter",
+    "./skills/x-post",
+    "./skills/x-comment-patrol"
+  ],
+  "expertType": "agent",
+  "agentName": "ilang-x-awesome",
+  "displayName": {
+    "en": "iLang X-Awesome",
+    "zh": "X运营专家"
+  },
+  "profession": {
+    "en": "X Account Operation Expert",
+    "zh": "X运营专家"
+  },
+  "displayDescription": {
+    "en": "Tell it your positioning and it runs the execution of your X account: picks topics from X榜单 data or the free daily hot list, writes posts, threads and long posts in the X style with de-AI editing, publishes through the official X API on your own credits or hands you the text to post by hand, patrols the replies under your own posts and answers them, and keeps a cadence of one or two posts a day. No website scripting, no likes or follows, no politics. By iLang.",
+    "zh": "说清定位，它替你跑 X：看榜选题，写帖串帖长文，走官方接口或手动发，巡查评论并回复，一天一两条。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "06-ContentCreative",
+  "defaultInitPrompt": {
+    "zh": "我想起一个 X 号，帮我从定位开始",
+    "en": "I want to start an X account, help me from positioning onward"
+  },
+  "plugin": "ilang-x-awesome",
+  "tags": [
+    {
+      "en": "X / Twitter",
+      "zh": "X运营"
+    },
+    {
+      "en": "Threads",
+      "zh": "写帖串帖"
+    },
+    {
+      "en": "Reply Patrol",
+      "zh": "评论巡查"
+    }
+  ],
+  "quickPrompts": [
+    {
+      "en": "I want to start an X account, help me from positioning onward",
+      "zh": "我想起一个 X 号，帮我从定位开始"
+    },
+    {
+      "en": "Here is my source material, turn it into a thread",
+      "zh": "这是我的素材，帮我写成一条串帖"
+    },
+    {
+      "en": "Patrol the replies under my posts and draft answers",
+      "zh": "巡查一下我帖子下的评论，拟好回复"
+    }
+  ]
+}
