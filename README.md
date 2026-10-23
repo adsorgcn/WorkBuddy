@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="docs/hero-2026-10-23.png" alt="两个专家，一条链：X 运营专家和公众号爆文专家" width="100%">
+  <picture>
+    <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/adsorgcn/WorkBuddy/main/docs/hero-mobile-2026-10-23.png">
+    <img src="docs/hero-2026-10-23.png" alt="两个专家，一条链：X 运营专家和公众号爆文专家" width="100%">
+  </picture>
 </p>
 
 <p align="center">
@@ -343,6 +346,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 每日清单的增减在 [UPDATES.md](UPDATES.md)，每个版本改了什么在 [发布页](https://github.com/adsorgcn/WorkBuddy/releases)。最近几版：
 
+- 2.3.42（2026-10-23）：横幅加手机版：窄于 768 像素时换 4:5 的竖版图，卡片文字在手机上看得清；英文同步。
 - 2.3.41（2026-10-23）：README 改版：新横幅，X 运营专家放最前，两个专家一张对照表，小白五步改成表格，安装命令和自检命令收进折叠块，更新记录只展开最近几版；英文 README 同步。
 - 2.3.40（2026-10-23）：README 的 X 一节加「小白怎么用」：第一次用的三件事、五步、花多少钱、不做的事；英文 README 同步。
 - 2.3.39（2026-10-23）：X 选题改成和公众号一样的找对标逻辑：X榜单 看今天什么热，再到大陆自媒体找对标文，交给 x-post 改写（文字重切，图视频直接拿）；x_api.py 加 `--media` 传图和视频（v2 媒体接口，没实测）；写进搬运被封的申诉话术。

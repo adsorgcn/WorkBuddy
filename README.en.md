@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="docs/hero-en-2026-10-23.png" alt="Two experts, one chain: the X expert and the WeChat expert" width="100%">
+  <picture>
+    <source media="(max-width: 767px)" srcset="https://raw.githubusercontent.com/adsorgcn/WorkBuddy/main/docs/hero-mobile-en-2026-10-23.png">
+    <img src="docs/hero-en-2026-10-23.png" alt="Two experts, one chain: the X expert and the WeChat expert" width="100%">
+  </picture>
 </p>
 
 <p align="center">
@@ -343,6 +346,7 @@ The expert and skills are written in the iLang protocol; the `#iml/0.5/...` line
 
 Daily list changes are in [UPDATES.md](UPDATES.md); what each version changed is on the [Releases](https://github.com/adsorgcn/WorkBuddy/releases) page. Recent versions:
 
+- 2.3.42 (2026-10-23): Phone banner: below 768px the README serves a 4:5 version of the banner so the card text stays readable; English in sync.
 - 2.3.41 (2026-10-23): README redesign: new banner, the X expert first, one comparison table for the two experts, the beginner's five steps as a table, install and self-check commands folded away, changelog shows recent versions only; English README in sync.
 - 2.3.40 (2026-10-23): "How a beginner uses it" added to the X section: three things before the first run, five steps, cost, what it never does.
 - 2.3.39 (2026-10-23): X topic logic now mirrors the WeChat benchmark logic: X榜单 for what is hot today, then a benchmark piece on mainland Chinese media, rewritten by x-post (text recut, images and video reused); `--media` upload for images and video in x_api.py (v2 media endpoints, untested); appeal wording for a suspension after reposting.
