@@ -1,6 +1,6 @@
 {
   "name": "ilang-x-awesome",
-  "version": "2.3.45",
+  "version": "2.3.46",
   "description": "X (Twitter) account operation expert for people who want AI to do the execution while they keep the judgment. Picks topics from the public X榜单 boards (free), the X榜单 MCP (optional) or the repository's free daily hot list, writes single posts, threads and long posts in the X style with built-in de-AI editing, publishes through the official X API on the user's own pay-per-use credits or hands the text to the user to post by hand, patrols replies under the user's own posts and answers them through the API, and keeps a sane cadence. Never scripts the X website, never likes, follows or quotes, never touches politics or geopolitics. Chinese-first. By iLang.",
   "author": {
     "name": "iLang Inc.",
