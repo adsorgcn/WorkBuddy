@@ -40,7 +40,9 @@
    "group": "AI",
    "platform": "juya",
    "explode_digest": 1,
-   "lang": "zh"
+   "lang": "zh",
+   "disabled": true,
+   "disabled_on": "2026-10-27"
   },
   {
    "name": "Readhub",
