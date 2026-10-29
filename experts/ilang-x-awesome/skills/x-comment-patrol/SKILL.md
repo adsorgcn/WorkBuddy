@@ -6,12 +6,12 @@ description: "Patrol the replies under the user's own X (Twitter) posts and answ
 description_zh: "巡查自己帖子下的评论并回复，走官方接口花用户自己的积分：按水位线只拉新评论（0.001 美元一条），交给专家判回不回、怎么回，发出批准的回复（0.010 美元一条），每条全文记日志，推进水位线。只回召唤自己的人（自己帖下的评论、@ 自己、引用自己），不给陌生人的帖评论，不点赞关注，不碰 X 网站脚本，回复里不放链接。WorkBuddy 里说一句「巡查」跑一轮，带定时器的 Agent 自动跑。"
 description_en: "Pull new replies under the user's own posts, let the expert decide, post approved replies through the official API, log and advance the watermark. Summoned replies only; no likes, follows or website scripting."
 category: writing
-version: 2.3.47
+version: 2.3.48
 author: iLang Inc.
 ---
 
 ::ILANG::v5.0
-[TYPE:skill][PROJECT:x_awesome][VERSION:2.3.47][DATE:2026-10-22][LANG:zh]
+[TYPE:skill][PROJECT:x_awesome][VERSION:2.3.48][DATE:2026-10-22][LANG:zh]
 ::STATE{@ROLE, function:按水位线拉自己帖子下的新评论，专家逐条判回不回怎么回，脚本发出批准的回复并推进水位线，每条回复全文记本机日志}
 ::STATE{@SCOPE, now:拉新评论+专家判+发回复+水位线+日志+状态, next:按回复效果回看哪类评论值得回}
 ::STATE{@PROMISE, can:只回召唤自己的人+一轮最多 20 条+同一人一轮一条+同一条只回一次+回复里无链接+凭据只在本机, cannot:给陌生人的帖评论|点赞关注引用|脚本操作 X 网站|回喷子|编事实|密钥进对话}
