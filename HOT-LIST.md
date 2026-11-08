@@ -1,196 +1,198 @@
-# 今日内容清单 · 2026-11-07
+# 今日内容清单 · 2026-11-08
 
 需求侧：今天各平台在聊什么，83 个源（中、英、日、韩），每天早上自动拉一次，机器生成。供给侧（公众号上这些题读了多少、爆没爆）用你自己的 wxrank key 查，两边对上才是题。机器可读版 `data/hot/latest.json`。「几个平台」是按标题相似度合并出来的候选数，不是核实过的同一事件，成员标题都列着，自己核。
 
 ## 多个平台同时在聊（20 组，按标题相似度合并的候选，成员标题在下面，自己核）
 
-- **[4 个平台]** cavaliers vs 76ers（Google Trends 英国） https://trends.google.com/trending/rss?geo=GB
-    - Google Trends 新加坡：cavaliers vs 76ers https://trends.google.com/trending/rss?geo=SG
-    - Google Trends 日本：cavaliers vs 76ers https://trends.google.com/trending/rss?geo=JP
-    - Google Trends 台湾：cavaliers vs 76ers https://trends.google.com/trending/rss?geo=TW
-- **[3 个平台]** 中方就美对华经贸限制表达严正关切（头条热榜） https://www.toutiao.com/trending/7705213174345109002/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%225%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705213174345109002%22%2C%22hot_board_impr_id%22%3A%222026110710073748D2440896CD4EF6F45B%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%B8%AD%E6%96%B9%E5%B0%B1%E7%BE%8E%E5%AF%B9%E5%8D%8E%E7%BB%8F%E8%B4%B8%E9%99%90%E5%88%B6%E8%A1%A8%E8%BE%BE%E4%B8%A5%E6%AD%A3%E5%85%B3%E5%88%87%22%7D&rank=&style_id=40132&topic_id=7705213174345109002
-    - NewsNow 联合早报：何立峰与贝森特和格里尔通话 严正关切美对华经贸限制 https://www.zaochenbao.com/news/china/202611/0784984.html
-    - NewsNow 卫星通讯社：中国副总理：中方就近期美对华经贸限制措施表达严正关切 https://sputniknews.cn/20261107/1073987580.html
-- **[3 个平台]** 马斯克宣布Cybertruck明年逐步停产 得州工厂产能转投Cybercab（NewsNow 财联社热门） https://www.cls.cn/detail/2527791
-    - cnBeta：马斯克：Cybertruck明年逐步停产 https://www.cnbeta.com.tw/articles/tech/1585322.htm
+- **[4 个平台]** UFC总裁拒绝担任白宫新闻秘书（头条热榜） https://www.toutiao.com/trending/7705550990070530570/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705550990070530570%22%2C%22hot_board_impr_id%22%3A%22202611080940055C56449C8823E6E18852%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22UFC%E6%80%BB%E8%A3%81%E6%8B%92%E7%BB%9D%E6%8B%85%E4%BB%BB%E7%99%BD%E5%AE%AB%E6%96%B0%E9%97%BB%E7%A7%98%E4%B9%A6%22%7D&rank=&style_id=40132&topic_id=7705550990070530570
+    - 澎湃热榜：带六名格斗冠军上岗？特朗普让UFC总裁当白宫新闻秘书遭拒 https://www.thepaper.cn/newsDetail_forward_34431269
+    - 华尔街见闻快讯：特朗普邀请UFC掌门人出任白宫新闻秘书遭拒绝
+    - NewsNow 卫星通讯社：特朗普公开邀请UFC总裁出任白宫新闻秘书 https://sputniknews.cn/20261108/1073993848.html
+- **[3 个平台]** 国乒法兰克福冠军赛全军覆没（头条热榜） https://www.toutiao.com/trending/7705487290767835657/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705487290767835657%22%2C%22hot_board_impr_id%22%3A%22202611080940055C56449C8823E6E18852%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%9B%BD%E4%B9%92%E6%B3%95%E5%85%B0%E5%85%8B%E7%A6%8F%E5%86%A0%E5%86%9B%E8%B5%9B%E5%85%A8%E5%86%9B%E8%A6%86%E6%B2%A1%22%7D&rank=&style_id=40132&topic_id=7705487290767835657
+    - NewsNow 微博：国乒法兰克福冠军赛全军覆没 https://s.weibo.com/weibo?q=%23%E5%9B%BD%E4%B9%92%E6%B3%95%E5%85%B0%E5%85%8B%E7%A6%8F%E5%86%A0%E5%86%9B%E8%B5%9B%E5%85%A8%E5%86%9B%E8%A6%86%E6%B2%A1%23&t=31&band_rank=10&Refer=top
+    - NewsNow 联合早报：法兰克福冠军赛  中国男女乒全军覆没 https://www.zaochenbao.com/news/china/202611/0885036.html
+- **[3 个平台]** S16 半决赛 GEN 3:0 淘汰 iG 晋级决赛，如何评价这场比赛？（知乎热榜） https://api.zhihu.com/questions/2102631107258750557
+    - 头条热榜：GEN零封IG晋级决赛 https://www.toutiao.com/trending/7705214780864430116/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705214780864430116%22%2C%22hot_board_impr_id%22%3A%22202611080940055C56449C8823E6E18852%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22GEN%E9%9B%B6%E5%B0%81IG%E6%99%8B%E7%BA%A7%E5%86%B3%E8%B5%9B%22%7D&rank=&style_id=40132&topic_id=7705214780864430116
+    - NewsNow 抖音：GEN零封IG晋级决赛 https://www.douyin.com/hot/2734870
+- **[3 个平台]** 平均成功率91%！苹果研究团队披露机器人“大脑”进展：调用千问模型在宇树G1上验证（新浪科技） https://finance.sina.com.cn/jjxw/2026-11-07/doc-inixxcvw4639327.shtml
+    - cnBeta：苹果研究团队披露机器人“大脑”进展 调用千问模型在宇树G1上验证 https://www.cnbeta.com.tw/articles/tech/1585390.htm
+    - NewsNow 腾讯新闻 综合早报：平均成功率91%！苹果研究团队披露机器人“大脑”进展 https://view.inews.qq.com/a/20261107A0AVQ500
+- **[3 个平台]** 伊朗解除导弹射程限制（NewsNow 抖音） https://www.douyin.com/hot/2734868
+    - 华尔街见闻快讯：伊朗革命卫队称已解除导弹射程限制
+    - NewsNow 凤凰网：伊朗解除导弹射程限制 https://news.ifeng.com/c/8xsUfJlVD5E
+- **[2 个平台]** 明年停产的特斯拉 Cybertruck 又涨价，入门版已暂停接受订单（IT之家） https://www.ithome.com/1/023/863.htm
     - Solidot：特斯拉将停产 Cyber​​truck https://www.solidot.org/story?sid=85819
-- **[3 个平台]** 中央气象台发布暴雪黄色预警（百度热搜） https://m.baidu.com/s?word=%E4%B8%AD%E5%A4%AE%E6%B0%94%E8%B1%A1%E5%8F%B0%E5%8F%91%E5%B8%83%E6%9A%B4%E9%9B%AA%E9%BB%84%E8%89%B2%E9%A2%84%E8%AD%A6&sa=fyb_news
-    - NewsNow 抖音：中央气象台发布暴雪黄色预警 https://www.douyin.com/hot/2733667
-    - NewsNow 腾讯新闻 综合早报：中央气象台发布暴雪黄色预警 京津冀等局地有大到暴雪 https://view.inews.qq.com/a/20261107A034N500
-- **[3 个平台]** 2枚导弹击中伊朗格什姆岛 或是美空袭（头条热榜） https://www.toutiao.com/trending/7705210412316233279/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%225%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705210412316233279%22%2C%22hot_board_impr_id%22%3A%222026110710073748D2440896CD4EF6F45B%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%222%E6%9E%9A%E5%AF%BC%E5%BC%B9%E5%87%BB%E4%B8%AD%E4%BC%8A%E6%9C%97%E6%A0%BC%E4%BB%80%E5%A7%86%E5%B2%9B+%E6%88%96%E6%98%AF%E7%BE%8E%E7%A9%BA%E8%A2%AD%22%7D&rank=&style_id=40132&topic_id=7705210412316233279
-    - NewsNow 抖音：两枚导弹击中伊朗格什姆岛 https://www.douyin.com/hot/2733694
-    - NewsNow 凤凰网：初步报告显示两枚导弹击中伊朗格什姆岛 https://news.ifeng.com/c/8xqmIVwyIdl
-- **[2 个平台]** 騎士 對 76人（Google Trends 台湾） https://trends.google.com/trending/rss?geo=TW
-    - Google Trends 香港：騎士對76人 https://trends.google.com/trending/rss?geo=HK
-- **[2 个平台]** 刷新算力巅峰：IBM 在美国芝加哥揭幕其最强量子计算机（Readhub） https://www.ithome.com/1/023/635.htm
-    - IT之家：刷新算力巅峰：IBM 在美国芝加哥揭幕其最强量子计算机 https://www.ithome.com/1/023/635.htm
-- **[2 个平台]** Libghostty 1.0（HN 中文） https://mitchellh.com/writing/libghostty-1-0
-    - Lobsters：Libghostty 1.0 https://mitchellh.com/writing/libghostty-1-0
-- **[2 个平台]** t1 vs kc（Google Trends 新加坡） https://trends.google.com/trending/rss?geo=SG
-    - Google Trends 香港：t1 vs kc https://trends.google.com/trending/rss?geo=HK
-- **[2 个平台]** How Stephen Miller Schemed His Way to the Top（Wired） https://www.wired.com/story/how-stephen-miller-schemed-his-way-to-the-top/
-    - Google Trends 新加坡：stephen miller https://trends.google.com/trending/rss?geo=SG
-- **[2 个平台]** Cursor 推出与智能体的实时语音聊天（AIHOT 精选流） https://aihot.news/items/nzxzrjiqbmjkybz85mcylo2xo
-    - Readhub：AI 编程工具 Cursor 推出与智能体实时语音聊天功能
-    - Readhub：AI 编程进入「通话时代」：Cursor 智能体可实时语音协作 https://www.ithome.com/1/023/610.htm
-- **[2 个平台]** 谷神星二号遥三运载火箭发射成功（Readhub）
-    - 36氪快讯：谷神星二号遥三运载火箭发射成功 https://www.36kr.com/newsflashes/4058963265049478
-- **[2 个平台]** 何立峰与美财长及贸易代表视频通话（澎湃热榜） https://www.thepaper.cn/newsDetail_forward_34425218
-    - 36氪快讯：何立峰与美国财政部长贝森特、贸易代表格里尔举行视频通话 https://www.36kr.com/newsflashes/4058960006894470
-- **[2 个平台]** 今日立冬（百度热搜） https://m.baidu.com/s?word=%E4%BB%8A%E6%97%A5%E7%AB%8B%E5%86%AC&sa=fyb_news
-    - Google Trends 香港：立冬 2026 https://trends.google.com/trending/rss?geo=HK
-- **[2 个平台]** Silver Lake 和 PIF 磋商收购 Unity Software（Solidot） https://www.solidot.org/story?sid=85816
-    - The Information：Silver Lake, Saudi Arabia’s PIF Made Takeover Approach for Unity Software https://www.theinformation.com/briefings/silver-lake-saudi-arabias-pif-made-takeover-approach-unity-software
-- **[2 个平台]** Measuring how AI agents handle everyday wet-lab science - OpenAI（Google News AI（英文）） https://news.google.com/rss/articles/CBMifEFVX3lxTE0xR2JJZ0FQU2ptTi1UcE9reDg3aGdRZ2lHM0d3NHYxcS1KbDhacDJ4RWlKM2R6ZHpEdFh4TTdmVm82VkZ2enhZOWFjanZfQzR2aUcyS3FkbjRoOHFTcXlfaVI0YTd4aFVyMFQ5SFVtelhjVmtTVE11R2k2LUI?oc=5
-    - OpenAI News：Measuring how AI agents handle everyday wet-lab science https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science
-- **[2 个平台]** 伟大的长征（NewsNow 腾讯视频 热搜榜） https://v.qq.com/x/cover/mzc00200p1ilkw3.html
-    - NewsNow 爱奇艺 热播榜：伟大的长征 https://www.iqiyi.com/v_1jm50v4hx7c.html
-- **[2 个平台]** 蒸蒸日上（NewsNow 腾讯视频 热搜榜） https://v.qq.com/x/cover/mzc002004k31fxg.html
-    - NewsNow 爱奇艺 热播榜：蒸蒸日上 https://www.iqiyi.com/v_15ubqc0ao88.html
-- **[2 个平台]** 当 Coding Agent 走进研发团队：我们打造并开源了自进化研发平台 LoopForge（InfoQ 中文） https://www.infoq.cn/article/QGaIWSgd9uwx2WGw0yFv?utm_source=rss&utm_medium=article
-    - 开源中国：当 Coding Agent 走进研发团队：腾讯开源了云端自进化研发平台 LoopForge https://www.oschina.net/news/503437
-- **[2 个平台]** 白宫网络监测到住宅代理活动（Solidot） https://www.solidot.org/story?sid=85806
-    - NewsNow Freebuf：白宫网络被监测到流出住宅代理流量，或成内部系统入侵入口 https://www.freebuf.com/news/511175.html
+- **[2 个平台]** Google 发布 Omni 1.2 Flash，视频生成提至 15 秒（AIHOT 热点Top10） https://aihot.news/items/yjwroxww17lcg4ntcu9ruo105
+    - Product Hunt 中文：Google Omni 1.2 Flash - Gemini Omni 1.2 Flash：15秒AI视频，每秒0.07美元 https://www.producthunt.com/r/EAQRQBPBLUGUTY
+- **[2 个平台]** ChatGPT Images 2.6（Product Hunt） https://www.producthunt.com/products/openai
+    - OpenAI News：Introducing Images 2.6 https://openai.com/index/introducing-images-2-6
+- **[2 个平台]** Houthi political council member says Saudi strikes on civilian targets constitute war crimes（金十快讯） https://flash.jin10.com/detail/20261108091404112800
+    - NewsNow MKTNews 快讯：Houthi political council member says Saudi strikes on civilian targets constitute war crimes https://mktnews.net/flashDetail.html?id=01a1b8b8-3c56-7ee0-aac2-7b3c1d156537
+- **[2 个平台]** Australian house sales and auction clearance rates rise; market shows early signs of stabilizing（金十快讯） https://flash.jin10.com/detail/20261108085442894800
+    - NewsNow MKTNews 快讯：Australian house sales and auction clearance rates rise; market shows early signs of stabilizing https://mktnews.net/flashDetail.html?id=01a1b8a6-844b-7ee0-aac2-75f5ae9d1c26
+- **[2 个平台]** Trump to meet UFC CEO Dana White to discuss White House press secretary role（金十快讯） https://flash.jin10.com/detail/20261108084249915800
+    - NewsNow MKTNews 快讯：Trump to meet UFC CEO Dana White to discuss White House press secretary role https://mktnews.net/flashDetail.html?id=01a1b89b-a337-7ee0-aac2-6ff990c113db
+- **[2 个平台]** krakow（Google Trends 新加坡） https://trends.google.com/trending/rss?geo=SG
+    - Google Trends 香港：krakow https://trends.google.com/trending/rss?geo=HK
+- **[2 个平台]** CoreWeave urges incoming Texas governor to cooperate on data center projects（金十快讯） https://flash.jin10.com/detail/20261108081630357800
+    - NewsNow MKTNews 快讯：CoreWeave urges incoming Texas governor to cooperate on data center projects https://mktnews.net/flashDetail.html?id=01a1b883-8912-7ee0-aac2-5bc52c72edaf
+- **[2 个平台]** 据以色列国土报：以色列政界预计，如果以色列反对派领导人艾森科特未能成功组建政府，以色列总统赫尔佐格将动用全部政治影响力，推动组建民族团结政府。（金十快讯） https://flash.jin10.com/detail/20261108055522025800
+    - NewsNow 法布财经 快讯：据以色列国土报：以色列政界预计，如果以色列反对派领导人艾森科特未能成功组建政府，以色列总统赫尔佐格将动用全部政治影响力，推动组建民族团结政府。 https://www.fastbull.com/cn/fastshort/4349166_1_1
+- **[2 个平台]** 据CNN：消息人士称，UFC首席执行官达纳·怀特拒绝了特朗普提出的邀请，未接受出任白宫新闻秘书一职。（金十快讯） https://flash.jin10.com/detail/20261108054125488800
+    - NewsNow 法布财经 快讯：达纳·怀特拒绝特朗普提出的白宫新闻秘书任职邀请。 https://www.fastbull.com/cn/fastshort/4349165_212_1
+- **[2 个平台]** 英国海事贸易组织：接获一起涉及一艘散货船与军方人员的事件报告，事发地点位于阿曼湾，距离阿联酋豪尔费坎以东约18海里。（金十快讯） https://flash.jin10.com/detail/20261108053144906800
+    - NewsNow 法布财经 快讯：英国海事贸易组织：接获一起涉及一艘散货船与军方人员的事件报告，事发地点位于阿曼湾，距离阿联酋豪尔费坎以东约18海里。 https://www.fastbull.com/cn/fastshort/4349164_1_1
+- **[2 个平台]** CoreWeave (CRWV.O) writes to Texas governor-elect seeking cooperation on data‑center projects（金十快讯） https://flash.jin10.com/detail/20261108051820201800
+    - NewsNow MKTNews 快讯：CoreWeave (CRWV.O) writes to Texas governor-elect seeking cooperation on data‑center projects https://mktnews.net/flashDetail.html?id=01a1b7e0-6aac-7ee0-aac2-54210485d212
+- **[2 个平台]** Iran says two tankers struck mines, caught fire in Strait of Hormuz（金十快讯） https://flash.jin10.com/detail/20261108051234891800
+    - NewsNow MKTNews 快讯：Iran says two tankers struck mines, caught fire in Strait of Hormuz https://mktnews.net/flashDetail.html?id=01a1b7db-25c5-7ee0-aac2-4982f56be73b
+    - NewsNow MKTNews 快讯：Iran's Islamic Revolutionary Guard Corps says two oil tankers struck mines and caught fire in the Strait of Hormuz. https://mktnews.net/flashDetail.html?id=01a1b7da-3482-7ee0-aac2-465d876d6cd8
+- **[2 个平台]** 比亚迪仰望鼎曜「山河鼎韵」限量版开启预定，定金 30 万元（Readhub）
+    - Readhub：国产超豪华天花板！仰望鼎曜山河鼎韵限量版预定开启：定金 30 万 https://news.mydrivers.com/1/1164/1164026.htm
+    - Readhub：比亚迪仰望鼎曜「山河鼎韵」限量版轿车设计细节公布，拥有专属外观内饰「棕岩白玉」及高定配置 https://www.ithome.com/1/023/825.htm
+    - 爱范儿：最贵比亚迪来了！仰望鼎曜亮相中东，「山河鼎韵」限量版定金 30 万元 https://www.ifanr.com/1688312?utm_source=rss&utm_medium=rss&utm_campaign=
+- **[2 个平台]** 今年双11，为什么收到的快递包装变烂了？（钛媒体） https://www.tmtpost.com/8196866.html
+    - cnBeta：今年双11 为什么收到的快递包装变烂了？ https://www.cnbeta.com.tw/articles/tech/1585396.htm
 
 ## AI（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| Measuring how AI agents handle everyday wet-lab science - OpenAI | Google News AI（英文） | 2 | 11-07 03:09 | https://news.google.com/rss/articles/CBMifEFVX3lxTE0xR2JJZ0FQU2ptTi1UcE9reDg3aGdRZ2lHM0d3NHYxcS1KbDhacDJ4RWlKM2R6ZHpEdFh4TTdmVm82VkZ2enhZOWFjanZfQzR2aUcyS3FkbjRoOHFTcXlfaVI0YTd4aFVyMFQ5SFVtelhjVmtTVE11R2k2LUI?oc=5 |
+| Google 发布 Omni 1.2 Flash，视频生成提至 15 秒 | AIHOT 热点Top10 | 2 | 11-08 09:26 | https://aihot.news/items/yjwroxww17lcg4ntcu9ruo105 |
+| ChatGPT Images 2.6 | Product Hunt | 2 | 11-08 09:23 | https://www.producthunt.com/products/openai |
+| Meta在Muse推出spaces并升级模型 | AIHOT 热点Top10 | 2 | 11-07 05:49 | https://aihot.news/items/f3hogz1c4bmgbcwblqblumxpv |
+| OpenAI 110亿美元首笔融资到账，估值1.25万亿 | AIHOT 热点Top10 | 2 | 11-07 05:10 | https://aihot.news/items/m45kaixmfb2554qlzxbpnir36 |
 | 当 Coding Agent 走进研发团队：我们打造并开源了自进化研发平台 LoopForge | InfoQ 中文 | 2 | 11-06 15:14 | https://www.infoq.cn/article/QGaIWSgd9uwx2WGw0yFv?utm_source=rss&utm_medium=article |
-| 百度开源 280B 参数 ERNIE 5.5 Flash Base 基座模型 | AIHOT 热点Top10 | 2 | 11-05 19:39 | https://aihot.news/items/r3360gkpmqpyyt2ii9cp1k9rz |
-| 线上 Worker 变慢，本地却复现不了？Cloudflare 让开发者直接看生产环境火焰图 | InfoQ 中文 | 1 | 11-07 17:00 | https://www.infoq.cn/article/pMNGPheLLJ8hkfikmjUU?utm_source=rss&utm_medium=article |
-| Church quits role at AI startup Radical, claims ‘sleazy’ behavior stole credit from partner - Endpoints News | Google News AI（英文） | 1 | 11-07 08:52 | https://news.google.com/rss/articles/CBMisgFBVV95cUxNa1VuaE96cllxUDA0akMwanZLMDktVnliUWZuVk5uSHB5V3RMZE5JR0Nud05tcGxPM0hySEF1YXAxSnE1Q2h6LTY0VlVCR29PZ0pHRzR6TGNJd0M3QVBYaGdhR1J4Rl81TnJDMEFBWHpvWFV3c0tKRzBkQlp1MjdCaDlpXzJlcDlhdkNla2xnWndWdGZqQnpUOFhJZ0FPaU1YNjRGRXJvTmZ5bnhUWnVnUTdB?oc=5 |
-| Claude helped solve the first 3D structure of a mysterious 'vault' particle, a hollow protein shell encoded by a bacteriophage virus | Reddit r/artificial | 1 | 11-07 07:48 | https://www.reddit.com/r/artificial/comments/1xprvev/claude_helped_solve_the_first_3d_structure_of_a/ |
-| Artificial Analysis 实测 GPT Image 2.6 图像生成与编辑表现 | AIHOT 精选流 | 1 | 11-07 07:40 | https://aihot.news/items/pqbbgx5sn86iy7v4izf1qv49z |
-| Anthropic's falling IPO valuation raises stakes for broader AI trade - Axios | Google News AI（英文） | 1 | 11-07 06:18 | https://news.google.com/rss/articles/CBMidkFVX3lxTE4yTl96WG92c29IdFAtUW9FWXhGRDNRaFhyVXVEb1ZWMHNTTzRpcTk4cVBYbGJQSGc4S1R0c0RXSnVuUVA4LUJZc19IeGlzb3dlZFo2TWFxb3JNd0I1Q29mcXpKQ3hLS3Jka1VIRFp0aE1rTzlMN0E?oc=5 |
-| AI面接を導入したのに、応募者情報は手入力？　採用現場の「二度手間」を解消へ | ITmedia AI+（日文） | 1 | 11-07 06:00 | https://kn.itmedia.co.jp/kn/article/2611/07/2000002951/ |
-| 「ChatGPTの回答にリンクがない＝見られていない」　実は違うAIの情報収集 | ITmedia AI+（日文） | 1 | 11-07 06:00 | https://kn.itmedia.co.jp/kn/article/2611/07/2000002948/ |
-| AIで営業は効率化した、でもなぜ売れない？　成果を出す人が大切にしていること | ITmedia AI+（日文） | 1 | 11-07 06:00 | https://kn.itmedia.co.jp/kn/article/2611/07/2000002945/ |
-| Bloomberg：OpenAI 完成 110 亿美元融资首批到账，估值达 1.25 万亿美元 | AIHOT 精选流 | 1 | 11-07 05:10 | https://aihot.news/items/m45kaixmfb2554qlzxbpnir36 |
-| AI teddy makes unprompted 'I can't help with killing you' remark | Reddit r/artificial | 1 | 11-07 04:08 | https://www.reddit.com/r/artificial/comments/1xpmrry/ai_teddy_makes_unprompted_i_cant_help_with/ |
-| Turkey Uses AI and Other Tech to Claw Back 100 Looted Antiquities from the US | Reddit r/artificial | 1 | 11-07 02:19 | https://www.reddit.com/r/artificial/comments/1xpk0wl/turkey_uses_ai_and_other_tech_to_claw_back_100/ |
-| Cloudflare 与 VoidZero 联合推出 tsrs：由 AI 生成的 TypeScript 编译器 Rust 移植版 | InfoQ 中文 | 1 | 11-07 01:00 | https://www.infoq.cn/article/lGoA1ZSw6ojeh68GVlBl?utm_source=rss&utm_medium=article |
+| 自动路由真能省钱吗？便宜模型出错后，人类修一小时可能更贵 | InfoQ 中文 | 1 | 11-08 17:00 | https://www.infoq.cn/article/gOcDmZM2MPAQhWtNb6IJ?utm_source=rss&utm_medium=article |
+| Americans are anxious about the AI boom going bust - The Washington Post | Google News AI（英文） | 1 | 11-08 09:32 | https://news.google.com/rss/articles/CBMiswFBVV95cUxOb1VmQjZaSFpBNlM4eXNWWGdfZ05kR1p6SnhJMVh2OURjd0t3Nl9kUHBiS3pXUzRfVDlOcUY4UUI2ejZ0RWZfd2gwbEl6WWhMWE5xNDd1SkxZVWhXVjNsWWRRRm45bl9VVFVCMkxQRjdDOU42ekhTWUoyMFhjZUtxazByTFhxYTVZb3l5RGlHT0xlaTFOQTVkbVpVLTJPeW8tRkZXbTFuQU5XSzNJTnF2dUo0MA?oc=5 |
+| Opinion: College dual enrollment programs risk fueling a high school AI arms race - Anchorage Daily News | Google News AI（英文） | 1 | 11-08 09:00 | https://news.google.com/rss/articles/CBMivgFBVV95cUxOR0hqLU1GUUx6ajg4dmhjOW10d1FfclY0OWZaQjdrSE9NQ0xVdU9QZWtXU0FxcHF2Q0tiQVhSQUctMENNT2Zwc0FTTFlBd2lzX3FRQjZRci1SdDBJbm5KM3NBekNkZ09PVnZsejB2ZDhGU3hEM3p6V1llR0FlaEU3bXlpQVFNYkdPekJHVTNOd3dabjI3UExVSTdud01faWpxdzBZN2RndzBhMXlMc2NzZzdBZVZrenltTVh2Y0lB?oc=5 |
+| An AI system just proved an 18-year-old quantum conjecture — and Lean checked every step | Reddit r/artificial | 1 | 11-08 08:38 | https://www.reddit.com/r/artificial/comments/1xqlg8p/an_ai_system_just_proved_an_18yearold_quantum/ |
+| Camerimage Founder Marek Zydowicz on AI, Aronofsky and Why “Cinematographers Are Artists, Not Technicians” - The Hollywood Reporter | Google News AI（英文） | 1 | 11-08 08:18 | https://news.google.com/rss/articles/CBMixgFBVV95cUxOSDlnajZPWFFUQ0w5dEVfUkRCT05QczFwTUFXQTVfN1puUFltMHZxdFFFN3ZQS3RSMUQ0NF9fbEEtTkJwXzBUN0dseWFNazFURDQ1N2NGRFZWWEd3cTg4X2VrVjBFRjhUV0E4eEY5ZjhQXy1QeGU5QzFXWTQ0VVNYeWtLMmpVQnV2VWxMdjdhVzg3eS1SV1pzc2tkU2J2QU4xZFUyTWpwUW41aGZuT3Z6S2xsdTRkYmI0a3h4eElUYW9JUU5oZEE?oc=5 |
+| We Closed $10K Worth Of Web Design Deals Using This | Reddit r/artificial | 1 | 11-08 07:26 | https://www.reddit.com/r/artificial/comments/1xqjyf8/we_closed_10k_worth_of_web_design_deals_using_this/ |
+| 【図解あり】マルチエージェント設計「15のパターン」　GitHub、Google、Siemensの知見を一気に整理 | ITmedia AI+（日文） | 1 | 11-08 07:00 | https://atmarkit.itmedia.co.jp/ait/articles/2611/08/news001.html |
+| CrowdGPT - A collaborative AI model | Reddit r/artificial | 1 | 11-08 06:48 | https://www.reddit.com/r/artificial/comments/1xqj621/crowdgpt_a_collaborative_ai_model/ |
+| 不复制海量数据，直接查询 S3：CSIRO 重构基因组分析架构 | InfoQ 中文 | 1 | 11-08 00:11 | https://www.infoq.cn/article/mF9A6U1M6SQFWfEKOJGW?utm_source=rss&utm_medium=article |
+| 美国家长起诉谷歌 Gemini 被指协助 13 岁女孩制定轻生计划 | AIHOT 精选流 | 1 | 11-07 17:16 | https://aihot.news/items/r0hypv8lgeq3nhx29eby0y3uv |
 
 ## 科技（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| 马斯克宣布Cybertruck明年逐步停产 得州工厂产能转投Cybercab | NewsNow 财联社热门 | 3 | 11-07 00:22 | https://www.cls.cn/detail/2527791 |
-| 刷新算力巅峰：IBM 在美国芝加哥揭幕其最强量子计算机 | Readhub | 2 | 11-07 09:22 | https://www.ithome.com/1/023/635.htm |
-| Cursor 推出与智能体的实时语音聊天 | AIHOT 精选流 | 2 | 11-07 08:31 | https://aihot.news/items/nzxzrjiqbmjkybz85mcylo2xo |
-| 白宫网络监测到住宅代理活动 | Solidot | 2 | 11-06 10:29 | https://www.solidot.org/story?sid=85806 |
-| 神舟二十四号载人飞行任务标识发布，首次中外航天员联合飞行 | IT之家 | 1 | 11-07 10:07 | https://www.ithome.com/1/023/647.htm |
-| 踏浪出征！中国第 43 次南极考察起航，“雪龙”号等三船共同保障 | IT之家 | 1 | 11-07 10:05 | https://www.ithome.com/1/023/646.htm |
-| 税收征管法修订草案拟规定税款滞纳金不得超税款本数二倍 | Readhub | 1 | 11-07 10:01 | - |
-| 中国“天宫”空间站将迎首位外籍航天员，巴基斯坦载荷专家确认参加神舟二十四号任务并乘神二十三飞船返回 | IT之家 | 1 | 11-07 10:01 | https://www.ithome.com/1/023/645.htm |
-| IBM 在芝加哥投运其当前最先进量子计算机 | Readhub | 1 | 11-07 09:45 | - |
-| 宣布将于2026年11月6日推出新项目 | NewsNow 远景论坛 Win11 | 1 | 11-07 09:37 | https://bbs.pcbeta.com/viewthread-2083893-1-1.html |
-| Windows 11 Insider Preview 29704.1000 (rs_prerelease)来了 | NewsNow 远景论坛 Win11 | 1 | 11-07 09:13 | https://bbs.pcbeta.com/viewthread-2083890-1-1.html |
-| 马斯克官宣 Cybertruck 停产：销量不足预期一成；李飞飞团队推出世界模型「模拟掌机」；小米汽车成立国际事业部｜极客早知道 | 极客公园 | 1 | 11-07 08:48 | http://www.geekpark.net/news/373639 |
-| 早报｜触屏MacBook Pro开卖即缺货/仰望U9 Xtreme突破503kph/博世吴永桥：汽车不该拿来订咖啡机票 | 爱范儿 | 1 | 11-07 08:27 | https://www.ifanr.com/1688251?utm_source=rss&utm_medium=rss&utm_campaign= |
-| 直击进博会 ｜它石智航与安波福进博会签约，深化具身智能战略合作 | 新浪科技 | 1 | 11-07 07:52 | https://finance.sina.com.cn/tob/2026-11-07/doc-inixwhsk8404468.shtml |
-| 出现 Windows Server 2028 字符串 | NewsNow 远景论坛 Win11 | 1 | 11-07 06:11 | https://bbs.pcbeta.com/viewthread-2083887-1-1.html |
+| 平均成功率91%！苹果研究团队披露机器人“大脑”进展：调用千问模型在宇树G1上验证 | 新浪科技 | 3 | 11-08 00:43 | https://finance.sina.com.cn/jjxw/2026-11-07/doc-inixxcvw4639327.shtml |
+| 明年停产的特斯拉 Cybertruck 又涨价，入门版已暂停接受订单 | IT之家 | 2 | 11-08 09:37 | https://www.ithome.com/1/023/863.htm |
+| 比亚迪仰望鼎曜「山河鼎韵」限量版开启预定，定金 30 万元 | Readhub | 2 | 11-08 00:50 | - |
+| 全球最速之后，比亚迪仰望推出了一台「全球最豪」的新车 | Readhub | 2 | 11-07 23:37 | http://www.geekpark.net/news/373647 |
+| 豆包工作个人版取消5小时额度限制 | 新浪科技 | 2 | 11-06 20:27 | https://finance.sina.com.cn/tech/it/2026-11-06/doc-inixvfew8804680.shtml |
+| 微软使出新招推广 Win11 新版 Outlook：给用户奖励 Microsoft Rewards 积分 | IT之家 | 1 | 11-08 09:30 | https://www.ithome.com/1/023/862.htm |
+| 陶琳：特斯拉上海超级工厂零部件本土化率达 98% | IT之家 | 1 | 11-08 09:29 | https://www.ithome.com/1/023/861.htm |
+| 围绕三大核心主线 一周逾 550 家上市公司迎来投资者调研 | Readhub | 1 | 11-08 09:10 | - |
+| 收购 EA 后，银湖资本与沙特基金 250 亿美元报价 Unity；超10万款应用已适配iPhone Duo；美国再发生 NVIDIA AI 设备失窃案 | 极客公园 | 1 | 11-08 08:57 | http://www.geekpark.net/news/373649 |
+| 科技爱好者周刊（第 418 期）：如果科技停止在21世纪初 | 阮一峰周刊 | 1 | 11-08 08:52 | http://www.ruanyifeng.com/blog/2026/11/weekly-issue-418.html |
+| Googlebook更新优化本地AI内存占用 最高可释放6GB系统内存 | cnBeta | 1 | 11-08 07:11 | https://www.cnbeta.com.tw/articles/tech/1585418.htm |
+| 已经出现 Win11 26340.10xxx 了 | NewsNow 远景论坛 Win11 | 1 | 11-08 06:57 | https://bbs.pcbeta.com/viewthread-2083991-1-1.html |
+| 14岁奥地利少年创建本地多AI智能体协作桌面应用OpenAutark | cnBeta | 1 | 11-08 04:40 | https://www.cnbeta.com.tw/articles/tech/1585416.htm |
+| 美国再发生NVIDIA AI硬件失窃案：价值1140万美元设备运输途中神秘消失 | cnBeta | 1 | 11-08 03:15 | https://www.cnbeta.com.tw/articles/tech/1585414.htm |
+| ESA Hera 探测器发回 DART 撞击的小行星照片 | Solidot | 1 | 11-08 00:17 | https://www.solidot.org/story?sid=85825 |
 
 ## 热榜（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| 中方就美对华经贸限制表达严正关切 | 头条热榜 | 3 | 11-07 09:30 | https://www.toutiao.com/trending/7705213174345109002/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%225%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705213174345109002%22%2C%22hot_board_impr_id%22%3A%222026110710073748D2440896CD4EF6F45B%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%B8%AD%E6%96%B9%E5%B0%B1%E7%BE%8E%E5%AF%B9%E5%8D%8E%E7%BB%8F%E8%B4%B8%E9%99%90%E5%88%B6%E8%A1%A8%E8%BE%BE%E4%B8%A5%E6%AD%A3%E5%85%B3%E5%88%87%22%7D&rank=&style_id=40132&topic_id=7705213174345109002 |
-| 2枚导弹击中伊朗格什姆岛 或是美空袭 | 头条热榜 | 3 | - | https://www.toutiao.com/trending/7705210412316233279/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%225%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705210412316233279%22%2C%22hot_board_impr_id%22%3A%222026110710073748D2440896CD4EF6F45B%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%222%E6%9E%9A%E5%AF%BC%E5%BC%B9%E5%87%BB%E4%B8%AD%E4%BC%8A%E6%9C%97%E6%A0%BC%E4%BB%80%E5%A7%86%E5%B2%9B+%E6%88%96%E6%98%AF%E7%BE%8E%E7%A9%BA%E8%A2%AD%22%7D&rank=&style_id=40132&topic_id=7705210412316233279 |
-| 中央气象台发布暴雪黄色预警 | 百度热搜 | 3 | - | https://m.baidu.com/s?word=%E4%B8%AD%E5%A4%AE%E6%B0%94%E8%B1%A1%E5%8F%B0%E5%8F%91%E5%B8%83%E6%9A%B4%E9%9B%AA%E9%BB%84%E8%89%B2%E9%A2%84%E8%AD%A6&sa=fyb_news |
-| 伟大的长征 | NewsNow 腾讯视频 热搜榜 | 2 | 11-07 00:00 | https://v.qq.com/x/cover/mzc00200p1ilkw3.html |
-| 蒸蒸日上 | NewsNow 腾讯视频 热搜榜 | 2 | 11-07 00:00 | https://v.qq.com/x/cover/mzc002004k31fxg.html |
-| 收1.98万误转账去派出所归还却遭起诉 | 百度热搜 | 2 | - | https://m.baidu.com/s?word=%E6%94%B61.98%E4%B8%87%E8%AF%AF%E8%BD%AC%E8%B4%A6%E5%8E%BB%E6%B4%BE%E5%87%BA%E6%89%80%E5%BD%92%E8%BF%98%E5%8D%B4%E9%81%AD%E8%B5%B7%E8%AF%89&sa=fyb_news |
-| 波尔津吉斯发声 | NewsNow 微博 | 2 | - | https://s.weibo.com/weibo?q=%23%E6%B3%A2%E5%B0%94%E6%B4%A5%E5%90%89%E6%96%AF%E5%8F%91%E5%A3%B0%23&t=31&band_rank=6&Refer=top |
-| 特朗普任命新白宫办公厅主任 | NewsNow 凤凰网 | 2 | - | https://news.ifeng.com/c/8xqWagzSy9p |
-| 国足11月大名单：吴曦领衔，李昊、布尼亚明、王钰栋、林良铭入选>> | NewsNow 懂球帝 | 1 | 11-07 10:06 | https://www.dongqiudi.com/article/6619627 |
-| 中共中央发出通知，部署党的二十一大代表选举工作 | 澎湃热榜 | 1 | 11-07 10:03 | https://www.thepaper.cn/newsDetail_forward_34425821 |
-| 中国空间站将迎来首位外籍航天员 | 澎湃热榜 | 1 | 11-07 10:03 | https://www.thepaper.cn/newsDetail_forward_34425812 |
-| 从未失手，T1只要进入世界赛全部晋级四强 | NewsNow 懂球帝 | 1 | 11-07 10:03 | https://www.dongqiudi.com/article/6619616 |
-| 宿命对决！BLG半决赛将对阵T1，比赛将于下周一早6点进行 | NewsNow 懂球帝 | 1 | 11-07 09:57 | https://www.dongqiudi.com/article/6619609 |
-| 美军中央司令部悬赏征集伊朗核计划情报 | NewsNow 靠谱新闻 | 1 | 11-07 09:42 | https://kaopu.news/story/2026-11-07/us-centcom-offers-reward-iran-nuclear-intelligence-084feb?utm_source=rss&utm_medium=feed |
-| 外媒在北京看到怎样的“新质生产力” | 参考消息 | 1 | 11-07 09:31 | https://ckxxapp.ckxx.net/pages/2026/11/07/82c076e440de452894ead64ff7962c06.html |
+| UFC总裁拒绝担任白宫新闻秘书 | 头条热榜 | 4 | 11-08 09:34 | https://www.toutiao.com/trending/7705550990070530570/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705550990070530570%22%2C%22hot_board_impr_id%22%3A%22202611080940055C56449C8823E6E18852%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22UFC%E6%80%BB%E8%A3%81%E6%8B%92%E7%BB%9D%E6%8B%85%E4%BB%BB%E7%99%BD%E5%AE%AB%E6%96%B0%E9%97%BB%E7%A7%98%E4%B9%A6%22%7D&rank=&style_id=40132&topic_id=7705550990070530570 |
+| 国乒法兰克福冠军赛全军覆没 | 头条热榜 | 3 | 11-08 08:40 | https://www.toutiao.com/trending/7705487290767835657/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705487290767835657%22%2C%22hot_board_impr_id%22%3A%22202611080940055C56449C8823E6E18852%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%9B%BD%E4%B9%92%E6%B3%95%E5%85%B0%E5%85%8B%E7%A6%8F%E5%86%A0%E5%86%9B%E8%B5%9B%E5%85%A8%E5%86%9B%E8%A6%86%E6%B2%A1%22%7D&rank=&style_id=40132&topic_id=7705487290767835657 |
+| S16 半决赛 GEN 3:0 淘汰 iG 晋级决赛，如何评价这场比赛？ | 知乎热榜 | 3 | 11-08 05:18 | https://api.zhihu.com/questions/2102631107258750557 |
+| 伊朗解除导弹射程限制 | NewsNow 抖音 | 3 | 11-07 20:03 | https://www.douyin.com/hot/2734868 |
+| 伟大的长征 | NewsNow 腾讯视频 热搜榜 | 2 | 11-08 00:00 | https://v.qq.com/x/cover/mzc00200p1ilkw3.html |
+| 蒸蒸日上 | NewsNow 腾讯视频 热搜榜 | 2 | 11-08 00:00 | https://v.qq.com/x/cover/mzc002004k31fxg.html |
+| 伯克希尔Q3净利润大降28%，投资收益缩水近半，回购创年内单季新高，现金升至3774亿美元 ｜ 财报见闻 | 华尔街见闻快讯 | 2 | 11-07 21:21 | - |
+| 男子被雇主扇耳光 昏迷14个月离世 | 百度热搜 | 2 | 11-07 20:40 | https://m.baidu.com/s?word=%E7%94%B7%E5%AD%90%E8%A2%AB%E9%9B%87%E4%B8%BB%E6%89%87%E8%80%B3%E5%85%89+%E6%98%8F%E8%BF%B714%E4%B8%AA%E6%9C%88%E7%A6%BB%E4%B8%96&sa=fyb_news |
+| 也门遭沙特空袭致22死30伤 | 华尔街见闻快讯 | 2 | 11-07 19:44 | - |
+| 当我们终于开始认真谈论友情 | 百度热搜 | 2 | 11-07 17:33 | https://m.baidu.com/s?word=%E5%BD%93%E6%88%91%E4%BB%AC%E7%BB%88%E4%BA%8E%E5%BC%80%E5%A7%8B%E8%AE%A4%E7%9C%9F%E8%B0%88%E8%AE%BA%E5%8F%8B%E6%83%85&sa=fyb_news |
+| 中国空间站将迎首位外籍航天员，巴基斯坦载荷专家参加神舟二十四号任务，具有哪些意义？ | 知乎热榜 | 2 | 11-07 10:20 | https://api.zhihu.com/questions/2102344635867559303 |
+| 于和伟等现身《伟大的长征》座谈会 | 百度热搜 | 2 | - | https://m.baidu.com/s?word=%E4%BA%8E%E5%92%8C%E4%BC%9F%E7%AD%89%E7%8E%B0%E8%BA%AB%E3%80%8A%E4%BC%9F%E5%A4%A7%E7%9A%84%E9%95%BF%E5%BE%81%E3%80%8B%E5%BA%A7%E8%B0%88%E4%BC%9A&sa=fyb_news |
+| 于正求厉娜原谅许飞 | 头条热榜 | 2 | - | https://www.toutiao.com/trending/7704676494911569956/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227704676494911569956%22%2C%22hot_board_impr_id%22%3A%22202611080940055C56449C8823E6E18852%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%BA%8E%E6%AD%A3%E6%B1%82%E5%8E%89%E5%A8%9C%E5%8E%9F%E8%B0%85%E8%AE%B8%E9%A3%9E%22%7D&rank=&style_id=40132&topic_id=7704676494911569956 |
+| 以总统授权埃森科特组建新政府 | NewsNow 抖音 | 2 | - | https://www.douyin.com/hot/2735141 |
+| 央行连续第24个月增持黄金 | NewsNow 抖音 | 2 | - | https://www.douyin.com/hot/2733835 |
 
 ## 财经（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| 谷神星二号遥三运载火箭发射成功 | Readhub | 2 | 11-07 08:31 | - |
-| 何立峰与美财长及贸易代表视频通话 | 澎湃热榜 | 2 | 11-07 08:07 | https://www.thepaper.cn/newsDetail_forward_34425218 |
-| 国常会：完善资本市场稳市机制，增强股市内在稳定性 | NewsNow 财联社热门 | 2 | - | https://www.cls.cn/detail/2527772 |
-| 税款滞纳金上不封顶或将成历史 | Readhub | 2 | - | https://www.36kr.com/newsflashes/4059041294259076 |
-| 美股收盘：AI概念股止跌反弹 纳指收涨1% 仍难逃周线四连跌 | NewsNow 财联社热门 | 2 | - | https://www.cls.cn/detail/2527967 |
-| 金十图示：2026年11月07日（周六）中国10月末官方储备资产变化一览 | 金十快讯 | 1 | 11-07 10:06 | https://flash.jin10.com/detail/20261107100625254800 |
-| 中国央行：中国10月末外汇储备报34051.78亿美元，环比增加49.27亿美元。 | 金十快讯 | 1 | 11-07 10:06 | https://flash.jin10.com/detail/20261107100612327800 |
-| 中国外汇储备 | 金十快讯 | 1 | 11-07 10:05 | https://miniprogram.jin10.com?path=/pages/redirect/redirect&attr_id=0&category=ForeignExchange&data=%5Bobject%20Object%5D&id=67667&type=1 |
-| 50系突然疯涨，买不起显卡，年轻人又挤进网吧包夜了 | 钛媒体 | 1 | 11-07 09:54 | https://www.tmtpost.com/8196665.html |
-| 深度聊聊“字节时间” | 钛媒体 | 1 | 11-07 09:54 | https://www.tmtpost.com/8196953.html |
-| 比特币升破76000美元，日内涨0.21%。 | NewsNow 法布财经 快讯 | 1 | 11-07 09:41 | https://www.fastbull.com/cn/fastshort/4348986_212_1 |
-| 美国总统特朗普：我们在伊朗问题上取得了很大进展……我们七个月来没有损失任何人，所以我不认为那是一场战争。我们拥有完全控制权。不过，我们正在与伊朗方面打交道；我们拭目以待事态如何发展。 | NewsNow 法布财经 快讯 | 1 | 11-07 09:35 | https://www.fastbull.com/cn/fastshort/4348985_212_1 |
-| 美国总统特朗普：民主党在选举中表现不错的消息传出后，我们损失了约3万亿美元，这相当出人意料，但生活就是这样。这与我们不允许伊朗拥有核武器有关，所以必须始终把这一点放在首位。 | NewsNow 法布财经 快讯 | 1 | 11-07 09:35 | https://www.fastbull.com/cn/fastshort/4348984_212_1 |
-| Axios: Vance working behind the scenes on new Iran agreement | NewsNow MKTNews 快讯 | 1 | 11-07 09:34 | https://mktnews.net/flashDetail.html?id=01a1b3a5-0688-7ee0-aabc-f76ef750cfb7 |
-| Launch ceremony for China's 43rd Antarctic expedition held in Sanya | NewsNow MKTNews 快讯 | 1 | 11-07 09:24 | https://mktnews.net/flashDetail.html?id=01a1b39b-1431-7ee0-aabc-eee61c16632c |
+| Houthi political council member says Saudi strikes on civilian targets constitute war crimes | 金十快讯 | 2 | 11-08 09:14 | https://flash.jin10.com/detail/20261108091404112800 |
+| Australian house sales and auction clearance rates rise; market shows early signs of stabilizing | 金十快讯 | 2 | 11-08 08:54 | https://flash.jin10.com/detail/20261108085442894800 |
+| Trump to meet UFC CEO Dana White to discuss White House press secretary role | 金十快讯 | 2 | 11-08 08:42 | https://flash.jin10.com/detail/20261108084249915800 |
+| 今年双11，为什么收到的快递包装变烂了？ | 钛媒体 | 2 | 11-08 00:50 | https://www.tmtpost.com/8196866.html |
+| 美中央司令部成立特遣队 阻止伊朗通过陆路运输先进武器 | 华尔街见闻快讯 | 2 | 11-07 21:59 | - |
+| UFC总裁将与特朗普面谈 | 华尔街见闻快讯 | 1 | 11-08 09:38 | - |
+| Edge AI Daily 早报（11月8日） | 钛媒体 | 1 | 11-08 08:58 | https://www.tmtpost.com/8197405.html |
+| 卡塔尔首相称美伊之间斡旋仍在继续 | 华尔街见闻快讯 | 1 | 11-08 08:35 | - |
+| 市场消息：胡塞武装运营的卫生部门称，沙特阿拉伯周六对也门首都萨那以东的一个村庄发动空袭，造成33人死亡、39人受伤。 | NewsNow 法布财经 快讯 | 1 | 11-08 08:05 | https://www.fastbull.com/cn/fastshort/4349172_212_1 |
+| 美国司法部加入德克萨斯州对计划生育联合会的诉讼。 | NewsNow 法布财经 快讯 | 1 | 11-08 05:01 | https://www.fastbull.com/cn/fastshort/4349163_212_1 |
+| 波兰总理：两名女性和一名男性被发现死于枪手家中，死者很可能是枪手的家人。 | NewsNow 法布财经 快讯 | 1 | 11-08 04:57 | https://www.fastbull.com/cn/fastshort/4349162_212_1 |
+| US forces disable merchant ship in Gulf of Oman, CENTCOM says | NewsNow MKTNews 快讯 | 1 | 11-08 04:51 | https://mktnews.net/flashDetail.html?id=01a1b7c7-e11e-7ee0-aac2-3a79ca381007 |
+| TASNIM NEWS cited sources saying explosions heard on Qeshm Island were unrelated to a missile strike. | NewsNow MKTNews 快讯 | 1 | 11-08 04:33 | https://mktnews.net/flashDetail.html?id=01a1b7b6-f77b-7ee0-aac2-23ef84ead0b5 |
+| Israeli opposition leader Eizenkot said he will do everything to make a national government a reality. | NewsNow MKTNews 快讯 | 1 | 11-08 04:25 | https://mktnews.net/flashDetail.html?id=01a1b7b0-7fa3-7ee0-aac2-1b48be9919a2 |
+| 存储风暴压顶，小众手机「在劫难逃」 | 钛媒体 | 1 | 11-07 17:33 | https://www.tmtpost.com/8197119.html |
 
 ## 产品（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| Counter-Strike 2 | NewsNow Steam | 1 | 11-07 09:50 | https://store.steampowered.com/app/730/CounterStrike_2/ |
-| Dota 2 | NewsNow Steam | 1 | 11-07 09:50 | https://store.steampowered.com/app/570/Dota_2/ |
-| Call of Duty® | NewsNow Steam | 1 | 11-07 09:50 | https://store.steampowered.com/app/1938090/Call_of_Duty/ |
-| 四家主流体检预约平台实测：从首页到预约，需要经过哪些步骤？从产品视角看各平台预约流程的侧重维度 | 人人都是产品经理 | 1 | 11-06 17:54 | https://www.woshipm.com/evaluating/6490103.html |
-| 企业AI转型落不了地？一张清单说清组织侧7步 | 人人都是产品经理 | 1 | 11-06 17:53 | https://www.woshipm.com/pd/6490135.html |
+| Counter-Strike 2 | NewsNow Steam | 1 | 11-08 09:31 | https://store.steampowered.com/app/730/CounterStrike_2/ |
+| Dota 2 | NewsNow Steam | 1 | 11-08 09:31 | https://store.steampowered.com/app/570/Dota_2/ |
+| Call of Duty® | NewsNow Steam | 1 | 11-08 09:31 | https://store.steampowered.com/app/1938090/Call_of_Duty/ |
+| 请问大佬们买 Macbook 各种系列 24GB 以上的都是什么需求 | V2EX 热门 | 1 | 11-07 20:29 | https://www.v2ex.com/t/1255251 |
+| TotK Recomp – 在 Windows 上原生运行《塞尔达传说：王国之泪》，不需要模拟器，支持 4K 纹理包 | 小众软件 | 1 | 11-07 20:19 | https://www.appinn.com/totk-recomp/ |
+| QNAP 威联通发布警告：Plex2Shell 漏洞正被黑客利用，已有 NAS 疑似遭入侵 | 小众软件 | 1 | 11-07 19:08 | https://www.appinn.com/plex2shell-plex-nas-security-vulnerability/ |
+| Windows 画图曝出高危漏洞：无需用户操作，就可能遭到远程攻击｜CVE-2026-83844 | 小众软件 | 1 | 11-07 18:51 | https://www.appinn.com/windows-paint-cve-2026-83844/ |
+| 一个 05 后的个人数码编年史 | 少数派 | 1 | 11-07 17:05 | https://sspai.com/post/116750 |
+| 从独占 61% 企业开源账单到巨头分成，开源模型开始商业化下半场 | 人人都是产品经理 | 1 | 11-07 16:34 | https://www.woshipm.com/it/6490454.html |
+| 龙虾突然撕掉单人标签，整个科技圈的Agent可能都要换一种活法 | 人人都是产品经理 | 1 | 11-07 16:09 | https://www.woshipm.com/ai/6490314.html |
+| 8款国内主流办公Agent横测，第一竟然是… | 人人都是产品经理 | 1 | 11-07 15:14 | https://www.woshipm.com/ai/6490419.html |
+| ChatGpt 大面积封号？ | V2EX 热门 | 1 | 11-07 12:41 | https://www.v2ex.com/t/1255172 |
+| 有点纠结选西屋的 K16 还是格米莱 G3006J 的咖啡机 | V2EX 热门 | 1 | 11-07 12:27 | https://www.v2ex.com/t/1255169 |
 | 本周看什么 ｜ 最近值得一看的 9 部作品 | 少数派 | 1 | 11-06 17:30 | https://sspai.com/post/118623 |
-| 今天离职谈话领导说他心寒了 | V2EX 热门 | 1 | 11-06 17:01 | https://www.v2ex.com/t/1255048 |
-| 腾讯阿里字节，又要被DeepSeek吊打了？ | 人人都是产品经理 | 1 | 11-06 16:22 | https://www.woshipm.com/ai/6490157.html |
-| 本周赛博领鸡蛋（11.6~11.12）：《遗忘国度：放置勇士》《浮游世界》《巴别塔圣歌》 | 小众软件 | 1 | 11-06 16:21 | https://www.appinn.com/eggs-261106/ |
-| 著名 Mac 菜单栏日历 Itsycal 更新：现在可以显示苹果提醒事项了 | 小众软件 | 1 | 11-06 15:28 | https://www.appinn.com/itsycal-reminders/ |
-| 宝藏 Mac 工具 NotchNook 满血复活 | 小众软件 | 1 | 11-06 15:03 | https://www.appinn.com/notchnook/ |
 | iPhone 变强了，但我没有 | 少数派 | 1 | 11-06 14:56 | https://sspai.com/post/118250 |
-| 如果不上班了，你还能靠什么继续谋生！ | V2EX 热门 | 1 | 11-06 13:27 | https://www.v2ex.com/t/1254971 |
-| 大佬们今年双 11 准备买点啥？ | V2EX 热门 | 1 | 11-06 13:22 | https://www.v2ex.com/t/1254969 |
-| 更高能效比，带来新惊喜：M6 款 MacBook Pro 初探 | 少数派 | 1 | 11-06 11:06 | https://sspai.com/post/118570 |
 
 ## 海外（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| Libghostty 1.0 | HN 中文 | 2 | 11-07 09:22 | https://mitchellh.com/writing/libghostty-1-0 |
 | Silver Lake 和 PIF 磋商收购 Unity Software | Solidot | 2 | 11-07 06:00 | https://www.solidot.org/story?sid=85816 |
-| 直播 ｜ 巴拉圭危机：总统圣地亚哥·培尼亚不赴国会，由律师代表出席弹劾审判 - BBC News Mundo | BestBlogs | 1 | 11-07 19:42 | https://www.bestblogs.dev/en/article/044d33a7f8?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item |
-| Turnstone | Product Hunt | 1 | 11-07 10:05 | https://www.producthunt.com/products/turnstone |
-| Tobira Site Agent | Product Hunt | 1 | 11-07 10:04 | https://www.producthunt.com/products/tobira-ai |
-| EdgeBar | Product Hunt | 1 | 11-07 10:02 | https://www.producthunt.com/products/edgebar |
-| Meta Strategy Chief Dave Wehner to Become Fireworks CFO | The Information | 1 | 11-07 10:01 | https://www.theinformation.com/briefings/exclusive-meta-strategy-chief-dave-wehner-become-fireworks-cfo |
-| 故障車修理中 車突っ込み1人死亡 | Yahoo Japan 热门（日文） | 1 | 11-07 09:58 | https://news.yahoo.co.jp/pickup/6601623?source=rss |
-| 个人金融 AI 产品缺乏自主智能体 | BestBlogs | 1 | 11-07 09:47 | https://www.bestblogs.dev/en/status/2118883019625005508?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item |
-| Grok Bot 自动化商务任务的六个实际案例 | BestBlogs | 1 | 11-07 09:47 | https://www.bestblogs.dev/en/status/2118882927610360204?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item |
-| Crusoe sells troubled Wyoming data center project to Google | TechCrunch | 1 | 11-07 09:40 | https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/ |
-| 強い寒気 北海道と東北は暴風警戒 | Yahoo Japan 热门（日文） | 1 | 11-07 09:39 | https://news.yahoo.co.jp/pickup/6601620?source=rss |
-| 钠离子电池的成本已接近与磷酸铁锂电池持平 | HN 中文 | 1 | 11-07 09:06 | https://www.pv-magazine.com/2026/11/06/sodium-ion-batteries-approach-cost-parity-with-lfp-with-70-gwh-covered-by-supply-agreements/ |
-| 戦力外の藤浪 もう一回頑張りたい | Yahoo Japan 热门（日文） | 1 | 11-07 09:03 | https://news.yahoo.co.jp/pickup/6601615?source=rss |
-| How hard could implementing DTLS 1.3 possibly be? | Lobsters | 1 | 11-07 08:54 | https://joturk.net/posts/dtls |
+| Quest | Product Hunt | 1 | 11-08 09:33 | https://www.producthunt.com/products/quest-d8e9c4e8-cc0d-4b07-baee-e3dbf712c279 |
+| The Writer's Quarter | Product Hunt | 1 | 11-08 09:26 | https://www.producthunt.com/products/the-writer-s-quarter |
+| Duly | Product Hunt | 1 | 11-08 09:24 | https://www.producthunt.com/products/duly-life-organizer |
+| GPT‑6 Cyber - OpenAI 的网络安全模型，仅向经过审核的防御人员开放访问权限 | Product Hunt 中文 | 1 | 11-08 09:23 | https://www.producthunt.com/r/EQ2CDO3EYPSTVU |
+| 東大の新学部開設 学生有志猛反発 | Yahoo Japan 热门（日文） | 1 | 11-08 09:22 | https://news.yahoo.co.jp/pickup/6601752?source=rss |
+| 出火後に家に戻ったか 2遺体発見 | Yahoo Japan 热门（日文） | 1 | 11-08 09:12 | https://news.yahoo.co.jp/pickup/6601751?source=rss |
+| New elementary school enrollment to drop below 300,000 for 1st time amid low birth rate | 韩联社（英文） | 1 | 11-08 09:11 | https://en.yna.co.kr/view/AEN20261108000800315 |
+| 藤浪晋太郎 イベントで柵越え連発 | Yahoo Japan 热门（日文） | 1 | 11-08 09:06 | https://news.yahoo.co.jp/pickup/6601750?source=rss |
+| S. Korea reviewing plan to expand label-free mandate to foreign-produced bottled water | 韩联社（英文） | 1 | 11-08 08:59 | https://en.yna.co.kr/view/AEN20261108000700320 |
+| Can the Zelda remake capture the magic of the original? | BBC Technology | 1 | 11-08 08:37 | https://www.bbc.co.uk/news/articles/cm8xznl0n1q4o?at_medium=RSS&at_campaign=rss |
+| 特朗普政府向寻求情报派发最高 2000 万美元奖励以调查伊朗核计划 | BestBlogs | 1 | 11-08 08:30 | https://www.bestblogs.dev/en/status/2119225929071509803?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item |
+| Real Madrid 3-0 战胜 Valencia Mourinho 战术大揭秀 | BestBlogs | 1 | 11-08 08:25 | https://www.bestblogs.dev/en/status/2119224721569132891?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item |
+| 克劳德·科德（Claude Code）的“Don't Ask Again”在1,122个公开的GitHub文件中泄露了密码 | HN 中文 | 1 | 11-08 08:06 | https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again |
+| 谷歌现拥有约 690 亿美元的 SpaceX 股权 | BestBlogs | 1 | 11-08 08:06 | https://www.bestblogs.dev/en/status/2119219992143245531?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item |
 
 ## 热搜词（15 条，同一个源最多 3 条，72 小时内的在前、多平台优先、再按发布时间从新到旧，过期的垫底）
 
 | 题 | 源 | 平台数 | 发布时间 | 链接 |
 |---|---|---|---|---|
-| cavaliers vs 76ers | Google Trends 英国 | 4 | 11-07 09:40 | https://trends.google.com/trending/rss?geo=GB |
-| 騎士 對 76人 | Google Trends 台湾 | 2 | 11-07 09:30 | https://trends.google.com/trending/rss?geo=TW |
-| t1 vs kc | Google Trends 新加坡 | 2 | 11-07 09:00 | https://trends.google.com/trending/rss?geo=SG |
-| How Stephen Miller Schemed His Way to the Top | Wired | 2 | 11-07 08:50 | https://www.wired.com/story/how-stephen-miller-schemed-his-way-to-the-top/ |
-| 今日立冬 | 百度热搜 | 2 | 11-07 06:50 | https://m.baidu.com/s?word=%E4%BB%8A%E6%97%A5%E7%AB%8B%E5%86%AC&sa=fyb_news |
-| zion williamson | Google Trends 美国 | 1 | 11-07 09:50 | https://trends.google.com/trending/rss?geo=US |
-| chris hansen | Google Trends 美国 | 1 | 11-07 09:50 | https://trends.google.com/trending/rss?geo=US |
-| northern lights aurora borealis forecast | Google Trends 美国 | 1 | 11-07 09:50 | https://trends.google.com/trending/rss?geo=US |
-| nz vs ind | Google Trends 英国 | 1 | 11-07 09:50 | https://trends.google.com/trending/rss?geo=GB |
-| ウイル | Google Trends 日本 | 1 | 11-07 09:50 | https://trends.google.com/trending/rss?geo=JP |
-| kindle | Google Trends 日本 | 1 | 11-07 09:50 | https://trends.google.com/trending/rss?geo=JP |
-| 篠塚 大輝 | Google Trends 日本 | 1 | 11-07 09:50 | https://trends.google.com/trending/rss?geo=JP |
-| new zealand vs india | Google Trends 新加坡 | 1 | 11-07 09:40 | https://trends.google.com/trending/rss?geo=SG |
-| gimli glider | Google Trends 英国 | 1 | 11-07 09:30 | https://trends.google.com/trending/rss?geo=GB |
-| 騙 中 傳奇 | Google Trends 香港 | 1 | 11-07 09:20 | https://trends.google.com/trending/rss?geo=HK |
+| krakow | Google Trends 新加坡 | 2 | 11-08 08:40 | https://trends.google.com/trending/rss?geo=SG |
+| dylan douglas | Google Trends 新加坡 | 1 | 11-08 09:30 | https://trends.google.com/trending/rss?geo=SG |
+| 馬場徹 | Google Trends 日本 | 1 | 11-08 09:30 | https://trends.google.com/trending/rss?geo=JP |
+| 謝祖武 | Google Trends 台湾 | 1 | 11-08 09:30 | https://trends.google.com/trending/rss?geo=TW |
+| jon gruden | Google Trends 美国 | 1 | 11-08 09:20 | https://trends.google.com/trending/rss?geo=US |
+| peter berg | Google Trends 美国 | 1 | 11-08 09:20 | https://trends.google.com/trending/rss?geo=US |
+| gina hinojosa spacex land sale | Google Trends 美国 | 1 | 11-08 09:20 | https://trends.google.com/trending/rss?geo=US |
+| hawks vs nets | Google Trends 英国 | 1 | 11-08 09:20 | https://trends.google.com/trending/rss?geo=GB |
+| トット | Google Trends 日本 | 1 | 11-08 09:20 | https://trends.google.com/trending/rss?geo=JP |
+| ジェラードン | Google Trends 日本 | 1 | 11-08 09:20 | https://trends.google.com/trending/rss?geo=JP |
+| warriors vs magic | Google Trends 英国 | 1 | 11-08 09:10 | https://trends.google.com/trending/rss?geo=GB |
+| 英特爾 | Google Trends 台湾 | 1 | 11-08 09:10 | https://trends.google.com/trending/rss?geo=TW |
+| u23 世界盃棒球錦標賽 | Google Trends 台湾 | 1 | 11-08 09:10 | https://trends.google.com/trending/rss?geo=TW |
+| marcos degli | Google Trends 英国 | 1 | 11-08 09:00 | https://trends.google.com/trending/rss?geo=GB |
+| sk하이닉스 | Google Trends 韩国 | 1 | 11-08 08:30 | https://trends.google.com/trending/rss?geo=KR |
 
 ## 源的变动
 
@@ -214,4 +216,4 @@
   NON_GOALS: 替我定题 搬运原文 没报价就扣积分
 ```
 
-生成时间 2026-11-07 10:07。
+生成时间 2026-11-08 09:40。
