@@ -1,6 +1,6 @@
 {
- "date": "2026-11-13",
- "generated_at": "2026-11-13 10:44",
+ "date": "2026-11-14",
+ "generated_at": "2026-11-14 10:34",
  "feed": "https://raw.githubusercontent.com/adsorgcn/WorkBuddy/main/data/hot/latest.json",
  "how_to_use": "这是需求侧：今天各平台在聊什么。供给侧用你自己的 wxrank key 查公众号上这些题读了多少、爆没爆，两边对上才是题。platforms 是按标题相似度合并出来的候选数，不是已确认的同一事件，members 里有各源原标题，自己核。",
  "rules": {
@@ -21,504 +21,236 @@
  },
  "hot_now": [
   {
-   "title": "Google 发布 Gemini 4 Hydrogen，接入搜索与编程工具",
-   "url": "https://aihot.news/items/uy1ayrrlqx1snqsv4lub7whsa",
-   "source": "AIHOT 热点Top10",
-   "lang": "zh",
-   "published": "11-13 09:17",
-   "time": "11-13 09:17",
-   "fetched": "2026-11-13",
-   "group": "AI",
-   "platforms": 5,
-   "sources": [
-    "AIHOT 热点Top10",
-    "AIHOT 精选流",
-    "ITmedia AI+（日文）",
-    "cnBeta",
-    "知乎热榜",
-    "钛媒体"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "AIHOT 精选流",
-     "title": "Google DeepMind 发布 Gemini 4 Hydrogen",
-     "url": "https://aihot.news/items/uy1ayrrlqx1snqsv4lub7whsa"
-    },
-    {
-     "source": "知乎热榜",
-     "title": "如何评价Google 11月13日发布的模型Gemini 4 Hydrogen？",
-     "url": "https://api.zhihu.com/questions/2104402653010834622"
-    },
-    {
-     "source": "钛媒体",
-     "title": "Gemini 4 Hydrogen来了，所有人都能用",
-     "url": "https://www.tmtpost.com/8203746.html"
-    },
-    {
-     "source": "cnBeta",
-     "title": "Google正式发布Gemini 4 Hydrogen 速度与智能水平大幅提升",
-     "url": "https://www.cnbeta.com.tw/articles/tech/1586138.htm"
-    },
-    {
-     "source": "ITmedia AI+（日文）",
-     "title": "Google、高速で低価格の「Gemini 4 Hydrogen」発表　無料ユーザーも利用可能",
-     "url": "https://www.itmedia.co.jp/news/article/2611/13/2000003162/"
-    }
-   ]
-  },
-  {
-   "title": "微软Outlook服务宕机",
-   "url": "https://s.weibo.com/weibo?q=%E5%BE%AE%E8%BD%AFOutlook%E6%9C%8D%E5%8A%A1%E5%AE%95%E6%9C%BA&t=31&band_rank=2&Refer=top",
-   "source": "NewsNow 微博",
-   "lang": "zh",
-   "published": "11-13 09:52",
-   "time": "11-13 09:52",
-   "fetched": "2026-11-13",
-   "group": "热榜",
-   "platforms": 4,
-   "sources": [
-    "Google Trends 台湾",
-    "NewsNow 微博",
-    "NewsNow 联合早报",
-    "NewsNow 远景论坛 Win11"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "NewsNow 联合早报",
-     "title": "微软Outlook突发大规模故障 全球数万用户受影响 波及新加坡",
-     "url": "https://www.zaochenbao.com/news/politics/202611/1385427.html"
-    },
-    {
-     "source": "NewsNow 远景论坛 Win11",
-     "title": "Happy weekend Outlook 服务歇菜了",
-     "url": "https://bbs.pcbeta.com/viewthread-2084465-1-1.html"
-    },
-    {
-     "source": "Google Trends 台湾",
-     "title": "outlook 故障",
-     "url": "https://trends.google.com/trending/rss?geo=TW"
-    }
-   ]
-  },
-  {
-   "title": "黄仁勋辞职，CFO出任临时CEO",
-   "url": "https://bbs.hupu.com/643884968.html",
-   "source": "NewsNow 虎扑",
-   "lang": "zh",
-   "published": "11-13 09:17",
-   "time": "11-13 09:17",
-   "fetched": "2026-11-13",
-   "group": "热榜",
-   "platforms": 4,
-   "sources": [
-    "NewsNow 腾讯新闻 综合早报",
-    "NewsNow 虎扑",
-    "NewsNow 酷安",
-    "钛媒体"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "钛媒体",
-     "title": "黄仁勋时代落幕，英伟达宣布其卸任，CFO克雷斯出任临时CEO",
-     "url": "https://www.tmtpost.com/8203591.html"
-    },
-    {
-     "source": "NewsNow 酷安",
-     "title": "英伟达CEO黄仁勋辞职，科莱特·克雷斯出任临时CEO",
-     "url": "https://www.coolapk.com/feed/75028550"
-    },
-    {
-     "source": "NewsNow 腾讯新闻 综合早报",
-     "title": "英伟达宣布黄仁勋辞职 首席财务官克雷斯出任临时CEO",
-     "url": "https://view.inews.qq.com/a/20261112A0ERD700"
-    }
-   ]
-  },
-  {
-   "title": "段永平回应黄仁勋辞职",
-   "url": "",
-   "source": "华尔街见闻快讯",
-   "lang": "zh",
-   "published": "11-13 10:31",
-   "time": "11-13 10:31",
-   "fetched": "2026-11-13",
-   "group": "热榜",
+   "title": "FAA lifts nationwide ground stop that blocked takeoffs for hours",
+   "url": "https://www.theverge.com/news/1033489/faa-ground-stop",
+   "source": "The Verge",
+   "lang": "en",
+   "published": "11-14 10:33",
+   "time": "11-14 10:33",
+   "fetched": "2026-11-14",
+   "group": "海外",
    "platforms": 3,
    "sources": [
-    "NewsNow 凤凰网",
-    "NewsNow 卫星通讯社",
+    "Google Trends 新加坡",
+    "The Verge",
+    "Wired"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "Wired",
+     "title": "The FAA Nationwide Ground Stop Is Over",
+     "url": "https://www.wired.com/story/the-faa-nationwide-ground-stop-is-over/"
+    },
+    {
+     "source": "Google Trends 新加坡",
+     "title": "ground stop",
+     "url": "https://trends.google.com/trending/rss?geo=SG"
+    }
+   ]
+  },
+  {
+   "title": "美国联邦航空管理局因通信问题发布地面停飞令",
+   "url": "https://www.36kr.com/newsflashes/4068900848063369",
+   "source": "36氪快讯",
+   "lang": "zh",
+   "published": "11-14 10:23",
+   "time": "11-14 10:23",
+   "fetched": "2026-11-14",
+   "group": "财经",
+   "platforms": 3,
+   "sources": [
+    "36氪快讯",
+    "HN 中文",
     "华尔街见闻快讯"
    ],
    "merge": "candidate",
    "members": [
     {
-     "source": "NewsNow 卫星通讯社",
-     "title": "特朗普、马斯克、赵长鹏回应黄仁勋辞职",
-     "url": "https://sputniknews.cn/20261113/1074098209.html"
+     "source": "华尔街见闻快讯",
+     "title": "美国联邦航空管理局解除地面停飞令，航班获准恢复起降",
+     "url": ""
     },
-    {
-     "source": "NewsNow 凤凰网",
-     "title": "特朗普、马斯克、赵长鹏回应黄仁勋辞职",
-     "url": "https://original.ifeng.com/c/8y0ZpSEe8Cg"
-    }
-   ]
-  },
-  {
-   "title": "timberwolves vs mavericks",
-   "url": "https://trends.google.com/trending/rss?geo=GB",
-   "source": "Google Trends 英国",
-   "lang": "en",
-   "published": "11-13 10:20",
-   "time": "11-13 09:20",
-   "fetched": "2026-11-13",
-   "group": "热搜词",
-   "platforms": 3,
-   "sources": [
-    "Google Trends 台湾",
-    "Google Trends 新加坡",
-    "Google Trends 英国"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "Google Trends 新加坡",
-     "title": "timberwolves vs mavericks",
-     "url": "https://trends.google.com/trending/rss?geo=SG"
-    },
-    {
-     "source": "Google Trends 台湾",
-     "title": "timberwolves vs mavericks",
-     "url": "https://trends.google.com/trending/rss?geo=TW"
-    }
-   ]
-  },
-  {
-   "title": "Nvidia CEO Jensen Huang has resigned",
-   "url": "https://arstechnica.com/gadgets/2026/11/ceo-jensen-huangs-job-is-suddenly-on-the-line-at-nvidia/",
-   "source": "Ars Technica",
-   "lang": "en",
-   "published": "11-13 03:49",
-   "time": "11-12 22:05",
-   "fetched": "2026-11-13",
-   "group": "海外",
-   "platforms": 3,
-   "sources": [
-    "Ars Technica",
-    "BBC Technology",
-    "Reddit r/artificial"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "BBC Technology",
-     "title": "What we know as Nvidia CEO Jensen Huang resigns over affair allegations",
-     "url": "https://www.bbc.co.uk/news/articles/ckgel338xql3o?at_medium=RSS&at_campaign=rss"
-    },
-    {
-     "source": "Reddit r/artificial",
-     "title": "Nvidia CEO Jensen Huang Resigns After Multiple Affairs",
-     "url": "https://www.reddit.com/r/artificial/comments/1xumr55/nvidia_ceo_jensen_huang_resigns_after_multiple/"
-    }
-   ]
-  },
-  {
-   "title": "Anthropic启动IPO路演，估值预期回落至1.25–1.75万亿美元",
-   "url": "https://aihot.news/items/xywgx35ocbe6mzl2pnajw8ruu",
-   "source": "AIHOT 热点Top10",
-   "lang": "zh",
-   "published": "11-12 18:11",
-   "time": "11-12 18:11",
-   "fetched": "2026-11-13",
-   "group": "AI",
-   "platforms": 3,
-   "sources": [
-    "AIHOT 热点Top10",
-    "极客公园",
-    "量子位"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "量子位",
-     "title": "Anthropic启动IPO路演，估值已缩水6000亿美元",
-     "url": "https://www.qbitai.com/2026/11/509381.html"
-    },
-    {
-     "source": "极客公园",
-     "title": "Anthropic 启动 IPO 路演，创始人将套现 17.5 亿美元；谷歌最强 AI 模型正式开放；任天堂招新：经典游戏保存员",
-     "url": "http://www.geekpark.net/news/373796"
-    }
-   ]
-  },
-  {
-   "title": "国务院安委会办公室对11个市级政府开展安全生产约谈",
-   "url": "https://www.thepaper.cn/newsDetail_forward_34465374",
-   "source": "澎湃热榜",
-   "lang": "zh",
-   "published": "11-13 10:42",
-   "time": "11-13 10:42",
-   "fetched": "2026-11-13",
-   "group": "热榜",
-   "platforms": 2,
-   "sources": [
-    "华尔街见闻快讯",
-    "澎湃热榜"
-   ],
-   "merge": "candidate",
-   "members": [
     {
      "source": "华尔街见闻快讯",
-     "title": "国务院安委会办公室对11个市级政府开展安全生产约谈",
+     "title": "美国联邦航空管理局（FAA）已解除地面停飞令。（路透）",
      "url": ""
+    },
+    {
+     "source": "华尔街见闻快讯",
+     "title": "美国联邦航空管理局（FAA）的地面停飞令即将解除。（Air Current）",
+     "url": ""
+    },
+    {
+     "source": "HN 中文",
+     "title": "美国联邦航空管理局（FAA）于0119Z时解除了全国范围的地面停飞令",
+     "url": "https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11142026&advn=5"
     }
    ]
   },
   {
-   "title": "中际旭创",
-   "url": "https://flash.jin10.com/detail/60827695",
-   "source": "金十快讯",
+   "title": "美“星舰”第15次试飞，助推器未能按计划返回发射场",
+   "url": "https://www.36kr.com/newsflashes/4068939134588037",
+   "source": "36氪快讯",
    "lang": "zh",
-   "published": "11-13 10:40",
-   "time": "11-13 10:40",
-   "fetched": "2026-11-13",
+   "published": "11-14 09:52",
+   "time": "11-14 09:52",
+   "fetched": "2026-11-14",
    "group": "财经",
-   "platforms": 2,
+   "platforms": 3,
    "sources": [
-    "NewsNow 雪球 热门股票",
-    "金十快讯"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "NewsNow 雪球 热门股票",
-     "title": "中际旭创",
-     "url": "https://xueqiu.com/s/SZ300308"
-    }
-   ]
-  },
-  {
-   "title": "中芯国际",
-   "url": "https://miniprogram.jin10.com?path=/pages/redirect/redirect&data_type=5&auth=plus&id=581&type=3",
-   "source": "金十快讯",
-   "lang": "zh",
-   "published": "11-13 10:40",
-   "time": "11-13 10:40",
-   "fetched": "2026-11-13",
-   "group": "财经",
-   "platforms": 2,
-   "sources": [
-    "NewsNow 雪球 热门股票",
-    "金十快讯"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "NewsNow 雪球 热门股票",
-     "title": "中芯国际",
-     "url": "https://xueqiu.com/s/SH688981"
-    }
-   ]
-  },
-  {
-   "title": "Scandal-hit Nvidia CEO Jensen Huang quits, plunging AI chipmaking giant into turmoil",
-   "url": "https://www.bbc.co.uk/news/articles/cmq5vd1wdgz6o?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Technology",
-   "lang": "en",
-   "published": "11-13 10:39",
-   "time": "11-13 10:39",
-   "fetched": "2026-11-13",
-   "group": "海外",
-   "platforms": 2,
-   "sources": [
-    "BBC Technology",
-    "Google News AI（英文）"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "Google News AI（英文）",
-     "title": "Scandal-hit Nvidia CEO Jensen Huang quits, plunging AI chipmaking giant into turmoil - BBC",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9HY0g2NTA4UDg1bGFHUXhyZkJCeGJsYXdGeVFFWXNBWHlSNGlDYzVXQkw5YkxheFhEbG1jNGRpXzVVeThsMkJYWENEQ3ZtNi1SZkZfT0RZWnNrckE?oc=5"
-    }
-   ]
-  },
-  {
-   "title": "黄仁勋辞职后，英伟达总部外出现鲜花和蜡烛",
-   "url": "https://www.ithome.com/1/026/492.htm",
-   "source": "IT之家",
-   "lang": "zh",
-   "published": "11-13 10:29",
-   "time": "11-13 09:35",
-   "fetched": "2026-11-13",
-   "group": "科技",
-   "platforms": 2,
-   "sources": [
-    "IT之家",
+    "36氪快讯",
+    "NewsNow 联合早报",
     "新浪科技"
    ],
    "merge": "candidate",
    "members": [
     {
      "source": "新浪科技",
-     "title": "黄仁勋辞职后 英伟达总部外出现鲜花和蜡烛",
-     "url": "https://finance.sina.com.cn/stock/usstock/c/2026-11-13/doc-iniypzqk8099984.shtml"
+     "title": "SpaceX星舰第15次试飞 助推器未能按计划返回发射场",
+     "url": "https://finance.sina.com.cn/stock/usstock/c/2026-11-14/doc-iniysepc0456728.shtml"
+    },
+    {
+     "source": "NewsNow 联合早报",
+     "title": "“星舰”第15次试飞 助推器未能按计划返回发射场",
+     "url": "https://www.zaochenbao.com/news/politics/202611/1485500.html"
     }
    ]
   },
   {
-   "title": "央行邹澜：信贷降速提质成宏观运行新常态 征信体系适配性有待提升",
-   "url": "",
-   "source": "Readhub",
+   "title": "特斯拉 Cybercab 面向个人用户开放销售：售 29990 美元，每月还需支付 299 美元自动驾驶订阅费用",
+   "url": "https://www.ithome.com/1/027/034.htm",
+   "source": "IT之家",
    "lang": "zh",
-   "published": "11-13 10:25",
-   "time": "11-13 10:25",
-   "fetched": "2026-11-13",
+   "published": "11-14 08:59",
+   "time": "11-14 08:59",
+   "fetched": "2026-11-14",
    "group": "科技",
-   "platforms": 2,
+   "platforms": 3,
    "sources": [
-    "36氪快讯",
-    "Readhub"
+    "IT之家",
+    "华尔街见闻快讯",
+    "新浪科技"
    ],
    "merge": "candidate",
    "members": [
     {
-     "source": "Readhub",
-     "title": "央行邹澜：信贷降速提质成宏观运行新常态，征信体系适配性有待提升",
-     "url": "https://www.36kr.com/newsflashes/4067538787439750"
+     "source": "华尔街见闻快讯",
+     "title": "特斯拉称已开始面向个人用户销售Cybercab",
+     "url": ""
+    },
+    {
+     "source": "新浪科技",
+     "title": "特斯拉：开始面向个人销售Cybercab",
+     "url": "https://finance.sina.com.cn/stock/usstock/c/2026-11-14/doc-iniysepi0754222.shtml"
+    }
+   ]
+  },
+  {
+   "title": "美国全国性地面停飞令已解除",
+   "url": "https://www.toutiao.com/trending/7707833019603635738/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227707833019603635738%22%2C%22hot_board_impr_id%22%3A%22202611141034326DB8794E7048D94B267B%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%BE%8E%E5%9B%BD%E5%85%A8%E5%9B%BD%E6%80%A7%E5%9C%B0%E9%9D%A2%E5%81%9C%E9%A3%9E%E4%BB%A4%E5%B7%B2%E8%A7%A3%E9%99%A4%22%7D&rank=&style_id=40132&topic_id=7707833019603635738",
+   "source": "头条热榜",
+   "lang": "zh",
+   "published": "11-14 05:37",
+   "time": "11-14 05:37",
+   "fetched": "2026-11-14",
+   "group": "热榜",
+   "platforms": 3,
+   "sources": [
+    "HN 中文",
+    "NewsNow 抖音",
+    "头条热榜"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "NewsNow 抖音",
+     "title": "美国航班全国性地面停飞",
+     "url": "https://www.douyin.com/hot/2745402"
+    },
+    {
+     "source": "HN 中文",
+     "title": "美国联邦航空管理局发布全国性地面停飞令",
+     "url": "https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11132026&advn=111"
+    }
+   ]
+  },
+  {
+   "title": "全美航班停飞令已解除",
+   "url": "https://m.baidu.com/s?word=%E5%85%A8%E7%BE%8E%E8%88%AA%E7%8F%AD%E5%81%9C%E9%A3%9E%E4%BB%A4%E5%B7%B2%E8%A7%A3%E9%99%A4&sa=fyb_news",
+   "source": "百度热搜",
+   "lang": "zh",
+   "published": "",
+   "time": "",
+   "fetched": "2026-11-14",
+   "group": "热榜",
+   "platforms": 3,
+   "sources": [
+    "36氪快讯",
+    "NewsNow 凤凰网",
+    "百度热搜"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "百度热搜",
+     "title": "全美航班停飞 上上次是9·11",
+     "url": "https://m.baidu.com/s?word=%E5%85%A8%E7%BE%8E%E8%88%AA%E7%8F%AD%E5%81%9C%E9%A3%9E+%E4%B8%8A%E4%B8%8A%E6%AC%A1%E6%98%AF9%C2%B711&sa=fyb_news"
     },
     {
      "source": "36氪快讯",
-     "title": "央行邹澜：信贷降速提质成宏观运行新常态，征信体系适配性有待提升",
-     "url": "https://www.36kr.com/newsflashes/4067538787439750"
-    }
-   ]
-  },
-  {
-   "title": "Rust 1.100",
-   "url": "https://blog.rust-lang.org/2026/11/12/Rust-1.100.0/",
-   "source": "HN 中文",
-   "lang": "zh",
-   "published": "11-13 10:23",
-   "time": "11-13 05:26",
-   "fetched": "2026-11-13",
-   "group": "产品",
-   "platforms": 2,
-   "sources": [
-    "HN 中文",
-    "NewsNow Steam"
-   ],
-   "merge": "candidate",
-   "members": [
+     "title": "美媒：全美航班停飞令已解除",
+     "url": "https://www.36kr.com/newsflashes/4068936138199940"
+    },
     {
-     "source": "NewsNow Steam",
-     "title": "Rust",
-     "url": "https://store.steampowered.com/app/252490/Rust/"
-    }
-   ]
-  },
-  {
-   "title": "Sigmastar据悉计划在香港上市，融资3亿美元",
-   "url": "https://www.36kr.com/newsflashes/4067561366262658",
-   "source": "36氪快讯",
-   "lang": "zh",
-   "published": "11-13 10:14",
-   "time": "11-13 10:14",
-   "fetched": "2026-11-13",
-   "group": "财经",
-   "platforms": 2,
-   "sources": [
-    "36氪快讯",
-    "华尔街见闻快讯"
-   ],
-   "merge": "candidate",
-   "members": [
+     "source": "NewsNow 凤凰网",
+     "title": "全美航班停飞令已解除",
+     "url": "https://news.ifeng.com/c/8y2Yd6OHvpd"
+    },
     {
-     "source": "华尔街见闻快讯",
-     "title": "芯片制造商Sigmastar据悉计划在香港上市，融资3亿美元。（彭博）",
-     "url": ""
+     "source": "NewsNow 凤凰网",
+     "title": "全美航班停飞，上上次还是“9·11”",
+     "url": "https://news.ifeng.com/c/8y2OJv6Z0ZL"
     }
    ]
   },
   {
-   "title": "央行：引导机构负责任放贷 严格落实明示综合融资成本等规定",
-   "url": "https://api3.cls.cn/share/article/2533443?os=web&sv=8.4.6&app=CailianpressWeb",
-   "source": "Readhub",
+   "title": "美国所有航班暂停起飞",
+   "url": "https://m.baidu.com/s?word=%E7%BE%8E%E5%9B%BD%E6%89%80%E6%9C%89%E8%88%AA%E7%8F%AD%E6%9A%82%E5%81%9C%E8%B5%B7%E9%A3%9E&sa=fyb_news",
+   "source": "百度热搜",
    "lang": "zh",
-   "published": "11-13 10:09",
-   "time": "11-13 10:09",
-   "fetched": "2026-11-13",
-   "group": "科技",
-   "platforms": 2,
-   "sources": [
-    "Readhub",
-    "华尔街见闻快讯"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "华尔街见闻快讯",
-     "title": "央行：引导机构负责任放贷 严格落实明示综合融资成本等规定",
-     "url": ""
-    }
-   ]
-  },
-  {
-   "title": "消息：白宫正权衡是否罢免商务部长卢特尼克",
-   "url": "https://www.zaochenbao.com/news/politics/202611/1385425.html",
-   "source": "NewsNow 联合早报",
-   "lang": "zh",
-   "published": "11-13 09:52",
-   "time": "11-13 09:52",
-   "fetched": "2026-11-13",
+   "published": "",
+   "time": "",
+   "fetched": "2026-11-14",
    "group": "热榜",
-   "platforms": 2,
+   "platforms": 3,
    "sources": [
-    "NewsNow 卫星通讯社",
-    "NewsNow 联合早报"
+    "NewsNow 腾讯新闻 综合早报",
+    "NewsNow 财联社热门",
+    "百度热搜"
    ],
    "merge": "candidate",
    "members": [
     {
-     "source": "NewsNow 卫星通讯社",
-     "title": "媒体：白宫正权衡是否罢免美商务部长卢特尼克",
-     "url": "https://sputniknews.cn/20261113/1074096912.html"
-    }
-   ]
-  },
-  {
-   "title": "马斯克谈黄仁勋结束 33 年掌舵英伟达生涯：创始人很难被取代",
-   "url": "https://www.ithome.com/1/026/506.htm",
-   "source": "IT之家",
-   "lang": "zh",
-   "published": "11-13 09:51",
-   "time": "11-13 09:51",
-   "fetched": "2026-11-13",
-   "group": "科技",
-   "platforms": 2,
-   "sources": [
-    "IT之家",
-    "cnBeta"
-   ],
-   "merge": "candidate",
-   "members": [
+     "source": "NewsNow 财联社热门",
+     "title": "突发：美国联邦航空管理局下令所有航班暂停起飞",
+     "url": "https://www.cls.cn/detail/2534337"
+    },
     {
-     "source": "cnBeta",
-     "title": "马斯克回应黄仁勋辞职：创始人很难被取代",
-     "url": "https://www.cnbeta.com.tw/articles/tech/1586154.htm"
+     "source": "NewsNow 腾讯新闻 综合早报",
+     "title": "突发：美国联邦航空管理局下令所有航班暂停起飞",
+     "url": "https://view.inews.qq.com/a/20261114A03TGW00"
     }
    ]
   },
   {
-   "title": "new zealand national cricket team vs india national cricket team match scorecard",
+   "title": "guatemala vs canada",
    "url": "https://trends.google.com/trending/rss?geo=GB",
    "source": "Google Trends 英国",
    "lang": "en",
-   "published": "11-13 09:50",
-   "time": "11-13 09:50",
-   "fetched": "2026-11-13",
+   "published": "11-14 10:20",
+   "time": "11-14 10:20",
+   "fetched": "2026-11-14",
    "group": "热搜词",
    "platforms": 2,
    "sources": [
@@ -529,36 +261,289 @@
    "members": [
     {
      "source": "Google Trends 新加坡",
-     "title": "new zealand national cricket team vs india national cricket team match scorecard",
+     "title": "guatemala vs canada",
      "url": "https://trends.google.com/trending/rss?geo=SG"
     }
    ]
   },
   {
-   "title": "央行今日开展3000亿元7天期逆回购操作",
-   "url": "https://www.36kr.com/newsflashes/4067515383206793",
-   "source": "36氪快讯",
+   "title": "APEC深圳会议各项筹备工作已就绪",
+   "url": "https://m.baidu.com/s?word=APEC%E6%B7%B1%E5%9C%B3%E4%BC%9A%E8%AE%AE%E5%90%84%E9%A1%B9%E7%AD%B9%E5%A4%87%E5%B7%A5%E4%BD%9C%E5%B7%B2%E5%B0%B1%E7%BB%AA&sa=fyb_news",
+   "source": "百度热搜",
    "lang": "zh",
-   "published": "11-13 09:22",
-   "time": "11-13 09:22",
-   "fetched": "2026-11-13",
+   "published": "11-14 10:05",
+   "time": "11-14 10:05",
+   "fetched": "2026-11-14",
    "group": "财经",
    "platforms": 2,
    "sources": [
-    "36氪快讯",
-    "NewsNow 法布财经 快讯"
+    "华尔街见闻快讯",
+    "百度热搜"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "华尔街见闻快讯",
+     "title": "APEC深圳会议各项筹备工作已经就绪",
+     "url": ""
+    }
+   ]
+  },
+  {
+   "title": "美国交通部长达菲：已与特朗普交谈过，特朗普高度关注。",
+   "url": "https://flash.jin10.com/detail/20261114100148907800",
+   "source": "金十快讯",
+   "lang": "zh",
+   "published": "11-14 10:01",
+   "time": "11-14 10:01",
+   "fetched": "2026-11-14",
+   "group": "财经",
+   "platforms": 2,
+   "sources": [
+    "NewsNow 法布财经 快讯",
+    "金十快讯"
    ],
    "merge": "candidate",
    "members": [
     {
      "source": "NewsNow 法布财经 快讯",
-     "title": "中国央行今日开展3640亿元隔夜逆回购操作，操作利率1.25%。同时，以固定数量、利率招标、多重价位中标方式开展了3000亿元7天期逆回购操作。",
-     "url": "https://www.fastbull.com/cn/fastshort/4354048_204_1"
+     "title": "美国交通部长达菲：特朗普全力参与了进来。",
+     "url": "https://www.fastbull.com/cn/fastshort/4355046_212_1"
+    }
+   ]
+  },
+  {
+   "title": "阿根廷1:2乌拉圭",
+   "url": "https://www.douyin.com/hot/2744094",
+   "source": "NewsNow 抖音",
+   "lang": "zh",
+   "published": "11-14 09:56",
+   "time": "11-14 09:56",
+   "fetched": "2026-11-14",
+   "group": "热榜",
+   "platforms": 2,
+   "sources": [
+    "NewsNow 懂球帝",
+    "NewsNow 抖音"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "NewsNow 懂球帝",
+     "title": "阿根廷友谊赛22连胜遭乌拉圭终结",
+     "url": "https://www.dongqiudi.com/article/6651912"
     },
     {
-     "source": "NewsNow 法布财经 快讯",
-     "title": "中国央行公开市场今日进行3000亿元人民币七天期逆回购操作。",
-     "url": "https://www.fastbull.com/cn/fastshort/4354047_1_1"
+     "source": "NewsNow 懂球帝",
+     "title": "阿媒：阿根廷主场24年-26年10月不败，前后输球都是对乌拉圭",
+     "url": "https://www.dongqiudi.com/article/6651898"
+    }
+   ]
+  },
+  {
+   "title": "英媒：英伟达就接班人问题接触安谋CEO哈斯",
+   "url": "https://www.zaochenbao.com/news/politics/202611/1485498.html",
+   "source": "NewsNow 联合早报",
+   "lang": "zh",
+   "published": "11-14 09:51",
+   "time": "11-14 09:51",
+   "fetched": "2026-11-14",
+   "group": "热榜",
+   "platforms": 2,
+   "sources": [
+    "NewsNow 联合早报",
+    "NewsNow 靠谱新闻"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "NewsNow 靠谱新闻",
+     "title": "金融时报称英伟达接触安谋CEO哈斯谈接班",
+     "url": "https://kaopu.news/story/2026-11-14/ft-reports-nvidia-contact-arm-ceo-haas-9cde5c?utm_source=rss&utm_medium=feed"
+    }
+   ]
+  },
+  {
+   "title": "美国国土安全部长穆林：未发现任何证据表明此次事件是网络攻击或人工智能所致。",
+   "url": "https://flash.jin10.com/detail/20261114094507023800",
+   "source": "金十快讯",
+   "lang": "zh",
+   "published": "11-14 09:48",
+   "time": "11-14 09:45",
+   "fetched": "2026-11-14",
+   "group": "财经",
+   "platforms": 2,
+   "sources": [
+    "华尔街见闻快讯",
+    "金十快讯"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "华尔街见闻快讯",
+     "title": "美国国土安全部长穆林：未发现任何证据表明此次事件是网络攻击或人工智能所致。\n\n仍在审视网络攻击的可能性，并未排除这一可能。",
+     "url": ""
+    }
+   ]
+  },
+  {
+   "title": "中美举行贸易理事会首次会议",
+   "url": "https://www.zaochenbao.com/news/china/202611/1485496.html",
+   "source": "NewsNow 联合早报",
+   "lang": "zh",
+   "published": "11-14 09:43",
+   "time": "11-14 09:30",
+   "fetched": "2026-11-14",
+   "group": "热榜",
+   "platforms": 2,
+   "sources": [
+    "NewsNow 联合早报",
+    "NewsNow 靠谱新闻"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "NewsNow 靠谱新闻",
+     "title": "中美贸易理事会举行首次正式会议",
+     "url": "https://kaopu.news/story/2026-11-14/us-china-trade-council-holds-first-meeting-139785?utm_source=rss&utm_medium=feed"
+    }
+   ]
+  },
+  {
+   "title": "SpaceX 星舰第 15 次试飞发射升空，助推器回收失败改为海上溅落，目前进展如何？",
+   "url": "https://api.zhihu.com/questions/2103048368494793787",
+   "source": "知乎热榜",
+   "lang": "zh",
+   "published": "11-14 09:42",
+   "time": "11-09 08:56",
+   "fetched": "2026-11-14",
+   "group": "热榜",
+   "platforms": 2,
+   "sources": [
+    "NewsNow 靠谱新闻",
+    "知乎热榜"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "NewsNow 靠谱新闻",
+     "title": "星舰第15次试飞助推器海上溅落时起火",
+     "url": "https://kaopu.news/story/2026-11-14/starship-booster-splashes-down-gulf-fire-c4ef20?utm_source=rss&utm_medium=feed"
+    }
+   ]
+  },
+  {
+   "title": "特朗普：美空管系统故障与网络攻击无关",
+   "url": "https://www.toutiao.com/trending/7707821891762946084/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227707821891762946084%22%2C%22hot_board_impr_id%22%3A%22202611141034326DB8794E7048D94B267B%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%89%B9%E6%9C%97%E6%99%AE%EF%BC%9A%E7%BE%8E%E7%A9%BA%E7%AE%A1%E7%B3%BB%E7%BB%9F%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB%E6%97%A0%E5%85%B3%22%7D&rank=&style_id=40132&topic_id=7707821891762946084",
+   "source": "头条热榜",
+   "lang": "zh",
+   "published": "11-14 08:54",
+   "time": "11-14 08:54",
+   "fetched": "2026-11-14",
+   "group": "财经",
+   "platforms": 2,
+   "sources": [
+    "华尔街见闻快讯",
+    "头条热榜"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "华尔街见闻快讯",
+     "title": "特朗普说美空管系统故障与网络攻击无关",
+     "url": ""
+    }
+   ]
+  },
+  {
+   "title": "Amazon has a plan to index the world’s online shopping data",
+   "url": "https://www.theverge.com/tech/1033697/amazon-world-product-graph-ai-search",
+   "source": "The Verge",
+   "lang": "en",
+   "published": "11-14 07:49",
+   "time": "11-14 07:49",
+   "fetched": "2026-11-14",
+   "group": "海外",
+   "platforms": 2,
+   "sources": [
+    "Google News AI（英文）",
+    "The Verge"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "Google News AI（英文）",
+     "title": "EXCLUSIVE: Amazon’s plan to own the world’s product data and fight AI shopping agents - Reuters",
+     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQY2FJOXhDLWZqYzRxQ3BNVGRyeDNGWGZYU0VwNm5PV09tWGVwRklHdGFQaDRGWEQwM3pBZ1g2X0lYQVFGUU9RdHhyVk9kSnhrcWxob3o2ZUVNTE5SWW5OSWtkZEVlZm83ZUdrZHJ6X1N6bjhqT2F2WWxpWXVaUGhBZldsU0N5MEhjS19yR1pJcFlDN2N4ekpfWDZmR1FPT3k4eGY0bkdEQldjVnVZX21BYlVXX0h4d1JwbFVSaQ?oc=5"
+    }
+   ]
+  },
+  {
+   "title": "argentina vs uruguay",
+   "url": "https://trends.google.com/trending/rss?geo=SG",
+   "source": "Google Trends 新加坡",
+   "lang": "en",
+   "published": "11-14 07:30",
+   "time": "11-14 06:30",
+   "fetched": "2026-11-14",
+   "group": "热搜词",
+   "platforms": 2,
+   "sources": [
+    "Google Trends 新加坡",
+    "Google Trends 香港"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "Google Trends 香港",
+     "title": "argentina vs uruguay",
+     "url": "https://trends.google.com/trending/rss?geo=HK"
+    }
+   ]
+  },
+  {
+   "title": "The unfolding Jensen Huang scandal: a timeline",
+   "url": "https://techcrunch.com/2026/11/13/nvidia-ceo-jensen-huangs-affair-with-alleged-chinese-spy-a-timeline/",
+   "source": "TechCrunch",
+   "lang": "en",
+   "published": "11-14 07:00",
+   "time": "11-13 23:58",
+   "fetched": "2026-11-14",
+   "group": "海外",
+   "platforms": 2,
+   "sources": [
+    "BBC Technology",
+    "TechCrunch"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "BBC Technology",
+     "title": "How the Jensen Huang scandal created a headache for business-friendly Singapore",
+     "url": "https://www.bbc.co.uk/news/articles/ck1exevgql4qo?at_medium=RSS&at_campaign=rss"
+    }
+   ]
+  },
+  {
+   "title": "FAA expands AI advice to manage air traffic congestion across entire US airspace",
+   "url": "https://arstechnica.com/features/2026/11/faa-expands-ai-advice-to-manage-air-traffic-congestion-across-entire-us-airspace/",
+   "source": "Ars Technica",
+   "lang": "en",
+   "published": "11-14 05:20",
+   "time": "11-14 05:20",
+   "fetched": "2026-11-14",
+   "group": "海外",
+   "platforms": 2,
+   "sources": [
+    "Ars Technica",
+    "Google News AI（英文）"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "Google News AI（英文）",
+     "title": "FAA expands AI advice to manage air traffic congestion across entire US airspace - Ars Technica",
+     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOV1JlVVdFenkyRlRoSGVaTW0zdEVYelMtMF9McU8ycFRVMzl1VDJETzRRR2RJZG1wRmhDakRZemRidkZ3akgyVkZzcDZoaGVIOG9sRkJrdmJRRUdFNDRxelgwSmRIQWFxZkowdjlBVlFWS1FFZGpYMWNWVmx5WHdzQi1KODRER2Q5RkZTcVJZaU5rZWlVUXVfV3RPTDBFQ2l3ejMyMkw0b1ZvVVl1Q0lSaU9va0ZsQ05tUmR6S251Zw?oc=5"
     }
    ]
   }
@@ -566,45 +551,90 @@
  "groups": {
   "AI": [
    {
-    "title": "Google 发布 Gemini 4 Hydrogen，接入搜索与编程工具",
-    "url": "https://aihot.news/items/uy1ayrrlqx1snqsv4lub7whsa",
+    "title": "OpenAI推出ChatGPT Wallet，智能体可代用户购物",
+    "url": "https://aihot.news/items/vot1htumxjgnb0i88rbq3zsuq",
     "source": "AIHOT 热点Top10",
     "lang": "zh",
-    "published": "11-13 09:17",
-    "time": "11-13 09:17",
-    "fetched": "2026-11-13",
+    "published": "11-14 01:03",
+    "time": "11-14 01:03",
+    "fetched": "2026-11-14",
     "group": "AI",
-    "platforms": 5,
+    "platforms": 2,
     "sources": [
      "AIHOT 热点Top10",
-     "AIHOT 精选流",
-     "ITmedia AI+（日文）",
-     "cnBeta",
-     "知乎热榜",
-     "钛媒体"
+     "cnBeta"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "AIHOT 精选流",
-      "title": "Google DeepMind 发布 Gemini 4 Hydrogen",
-      "url": "https://aihot.news/items/uy1ayrrlqx1snqsv4lub7whsa"
-     },
-     {
-      "source": "知乎热榜",
-      "title": "如何评价Google 11月13日发布的模型Gemini 4 Hydrogen？",
-      "url": "https://api.zhihu.com/questions/2104402653010834622"
-     },
-     {
-      "source": "钛媒体",
-      "title": "Gemini 4 Hydrogen来了，所有人都能用",
-      "url": "https://www.tmtpost.com/8203746.html"
-     },
-     {
       "source": "cnBeta",
-      "title": "Google正式发布Gemini 4 Hydrogen 速度与智能水平大幅提升",
-      "url": "https://www.cnbeta.com.tw/articles/tech/1586138.htm"
-     },
+      "title": "OpenAI推出ChatGPT Wallet：AI代理可代替用户完成在线支付",
+      "url": "https://www.cnbeta.com.tw/articles/tech/1586304.htm"
+     }
+    ]
+   },
+   {
+    "title": "黄仁勋辞职，英伟达33年首换帅，市值蒸发超3万亿",
+    "url": "https://www.qbitai.com/2026/11/509995.html",
+    "source": "量子位",
+    "lang": "zh",
+    "published": "11-13 17:02",
+    "time": "11-13 17:02",
+    "fetched": "2026-11-14",
+    "group": "AI",
+    "platforms": 2,
+    "sources": [
+     "Solidot",
+     "量子位"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "Solidot",
+      "title": "黄仁勋辞职",
+      "url": "https://www.solidot.org/story?sid=85872"
+     }
+    ]
+   },
+   {
+    "title": "黄仁勋辞任英伟达CEO并退出董事会",
+    "url": "https://aihot.news/items/qsbjbz754aodhcijq56puh6va",
+    "source": "AIHOT 热点Top10",
+    "lang": "zh",
+    "published": "11-13 16:39",
+    "time": "11-13 16:39",
+    "fetched": "2026-11-14",
+    "group": "AI",
+    "platforms": 2,
+    "sources": [
+     "AIHOT 热点Top10",
+     "开源中国"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "开源中国",
+      "title": "黄仁勋辞任英伟达 CEO，CFO 接任临时掌门",
+      "url": "https://www.oschina.net/news/503568/nvidia-announces-ceo-transition"
+     }
+    ]
+   },
+   {
+    "title": "Google 发布 Gemini 4 Hydrogen，接入搜索与编程工具",
+    "url": "https://aihot.news/items/uy1ayrrlqx1snqsv4lub7whsa",
+    "source": "AIHOT 热点Top10",
+    "lang": "zh",
+    "published": "11-13 07:04",
+    "time": "11-13 07:04",
+    "fetched": "2026-11-14",
+    "group": "AI",
+    "platforms": 2,
+    "sources": [
+     "AIHOT 热点Top10",
+     "ITmedia AI+（日文）"
+    ],
+    "merge": "candidate",
+    "members": [
      {
       "source": "ITmedia AI+（日文）",
       "title": "Google、高速で低価格の「Gemini 4 Hydrogen」発表　無料ユーザーも利用可能",
@@ -613,70 +643,13 @@
     ]
    },
    {
-    "title": "Anthropic启动IPO路演，估值预期回落至1.25–1.75万亿美元",
-    "url": "https://aihot.news/items/xywgx35ocbe6mzl2pnajw8ruu",
-    "source": "AIHOT 热点Top10",
-    "lang": "zh",
-    "published": "11-12 18:11",
-    "time": "11-12 18:11",
-    "fetched": "2026-11-13",
-    "group": "AI",
-    "platforms": 3,
-    "sources": [
-     "AIHOT 热点Top10",
-     "极客公园",
-     "量子位"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "量子位",
-      "title": "Anthropic启动IPO路演，估值已缩水6000亿美元",
-      "url": "https://www.qbitai.com/2026/11/509381.html"
-     },
-     {
-      "source": "极客公园",
-      "title": "Anthropic 启动 IPO 路演，创始人将套现 17.5 亿美元；谷歌最强 AI 模型正式开放；任天堂招新：经典游戏保存员",
-      "url": "http://www.geekpark.net/news/373796"
-     }
-    ]
-   },
-   {
-    "title": "United Airlines blocks AI agents from booking flights, citing cybersecurity risks",
-    "url": "https://techcrunch.com/2026/11/12/united-airlines-blocks-ai-agents-from-booking-flights-citing-cybersecurity-risks/",
-    "source": "TechCrunch",
-    "lang": "en",
-    "published": "11-13 01:17",
-    "time": "11-13 01:17",
-    "fetched": "2026-11-13",
-    "group": "AI",
-    "platforms": 2,
-    "sources": [
-     "Reddit r/artificial",
-     "TechCrunch"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "Reddit r/artificial",
-      "title": "United Airlines bans AI agents from booking flights on behalf of travelers",
-      "url": "https://www.reddit.com/r/artificial/comments/1xu8l1b/united_airlines_bans_ai_agents_from_booking/"
-     },
-     {
-      "source": "Reddit r/artificial",
-      "title": "United Airlines restricts AI agents from booking flights",
-      "url": "https://www.reddit.com/r/artificial/comments/1xugf9u/united_airlines_restricts_ai_agents_from_booking/"
-     }
-    ]
-   },
-   {
-    "title": "GFlow：面向游戏设计的多 Agent 协作与验证实践｜AICon北京",
-    "url": "https://www.infoq.cn/article/dkQAAL0SSdhIq1h61eKx?utm_source=rss&utm_medium=article",
+    "title": "AI 自动写 PR，模型反而最简单：Inkitt 如何应对 Webhook 重复、CI 失败与合并冲突",
+    "url": "https://www.infoq.cn/article/YRXscVHsTh0g6CVCJJ0D?utm_source=rss&utm_medium=article",
     "source": "InfoQ 中文",
     "lang": "zh",
-    "published": "11-13 18:00",
-    "time": "11-13 18:00",
-    "fetched": "2026-11-13",
+    "published": "11-14 18:00",
+    "time": "11-14 18:00",
+    "fetched": "2026-11-14",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -686,13 +659,13 @@
     "members": []
    },
    {
-    "title": "谷歌推出 LiteRT Tensor API，用于构建、定制与优化端侧机器学习模型",
-    "url": "https://www.infoq.cn/article/joYjCTbwWFSkbACK5lje?utm_source=rss&utm_medium=article",
+    "title": "从提效到扩能：AI 驱动小团队的能力突破与组织演进｜AICon北京",
+    "url": "https://www.infoq.cn/article/eTz8pt2LoALMvzvxj4aa?utm_source=rss&utm_medium=article",
     "source": "InfoQ 中文",
     "lang": "zh",
-    "published": "11-13 17:17",
-    "time": "11-13 17:17",
-    "fetched": "2026-11-13",
+    "published": "11-14 18:00",
+    "time": "11-14 18:00",
+    "fetched": "2026-11-14",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -702,13 +675,13 @@
     "members": []
    },
    {
-    "title": "In the end, the biggest risk Jensen Huang faced for Nvidia was himself - Business Insider",
-    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOek52T2hDNndvcjl3dzByVHp3dXdqbzJwbFdCQTFSaDF6bGQ5bExORWw4dlhnbUJOR3ZfUElFRWZHZ0JzMHNfeGlYZ2tubE5TZkN5NGY4UDE1VlZwdGdQSm0wWUpYcHdKTEVtNXI0TkFpVkdFRFdFNWtkSThGQ3RiX0E3bXp1TjBQQTdxdHlfUmI5VndO?oc=5",
+    "title": "Nvidia continues to be ‘connective tissue’ of AI trade, investment strategist says - Fox Business",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5LMnlnTU1rcmVMNFR1bGw0VmxYTEdfU1diUEFuZGs0VGQyNERGejBLYnJYNnB3dGd0WjNueVRZTXN3WEZvbWYxVjRYYWdNeEpVdnY2c1libFV4REE?oc=5",
     "source": "Google News AI（英文）",
     "lang": "en",
-    "published": "11-13 10:25",
-    "time": "11-13 10:25",
-    "fetched": "2026-11-13",
+    "published": "11-14 09:27",
+    "time": "11-14 09:27",
+    "fetched": "2026-11-14",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -718,13 +691,13 @@
     "members": []
    },
    {
-    "title": "What could happen to AI development and chip production as Huang resigns from Nvidia - Yahoo",
-    "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQYlJQenhNUFRnSVlpaFZaT2kxSVNSSVFNckZyajQtMDA0VmMwdUhNQW1OYWRoenN6M1NIMjdsMFFHUTdNUkprOHVLNDJHRWxNSDJzT3hpVlo2T2FrYjRjcGJvSm1RSzhqR3JOekQ2aUp2akRTbkFCRWYwWURBeXVXWlhsbWtoMzBm?oc=5",
+    "title": "Company behind FAA’s AI tool says tech didn’t cause ground stop - NBC News",
+    "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQdWtUekJXMUhJSDdlSTRUbHVFalNOQUk5aWFyNTFGeDdVUWYwTlZLNWhCdE0zSzk1WGFRQkJ2MFZhblczMFNrMFIwdl9ZSTdpWGhobmZOTlQzajhKRVh6XzFhUXhYOVBhNC1SSkJ4dENBOV84SVUyMnJKWFRoYmhnMmthREkwUDh2U2J2eV9WMkJYeHR6SzNVV2hXYUlwMXJRVkp5VHgtTmE2YUpNR25FTlFqdw?oc=5",
     "source": "Google News AI（英文）",
     "lang": "en",
-    "published": "11-13 09:52",
-    "time": "11-13 09:52",
-    "fetched": "2026-11-13",
+    "published": "11-14 09:10",
+    "time": "11-14 09:10",
+    "fetched": "2026-11-14",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -734,109 +707,13 @@
     "members": []
    },
    {
-    "title": "Jensen Huang's sudden Nvidia exit raises questions about the future of AI - Yahoo Finance",
-    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPdXNFNERTMU9fMEVNWlYxaXNXV015bGtZN2lfeWNuMnkyU3A3dzRwY25ta3p4bnBXZGtmLWRncWJPWG9qaTJCWWpfSDE1dFpIVUNGWnlBVDNhVUE1Z3JUTDFmZjVKZk1LUTN2Q3piZ1hsVUlSbDNpaTJLR29GWDdOYU1RZlduRW1JZU9jZDZKdTRGZUdyWTRWZ2U5VEQ?oc=5",
-    "source": "Google News AI（英文）",
-    "lang": "en",
-    "published": "11-13 09:52",
-    "time": "11-13 09:52",
-    "fetched": "2026-11-13",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "Google News AI（英文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "「好機が来た」――なぜ今Sakana AIは、イチからAIモデルを作るのか　“新たな一手”のねらいを聞いた",
-    "url": "https://www.itmedia.co.jp/aiplus/article/2611/13/2000003141/",
-    "source": "ITmedia AI+（日文）",
-    "lang": "ja",
-    "published": "11-13 09:44",
-    "time": "11-13 09:44",
-    "fetched": "2026-11-13",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "ITmedia AI+（日文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "「AI処理、データ非保持が守られず」――Notionが委託先の問題指摘、漏えいの恐れ巡り",
-    "url": "https://www.itmedia.co.jp/aiplus/article/2611/13/2000003172/",
-    "source": "ITmedia AI+（日文）",
-    "lang": "ja",
-    "published": "11-13 09:22",
-    "time": "11-13 09:22",
-    "fetched": "2026-11-13",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "ITmedia AI+（日文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "M365障害、ChatGPT／Claudeのコネクタにも影響　「ほとんどのリクエストで動作しない」",
-    "url": "https://www.itmedia.co.jp/aiplus/article/2611/13/2000003164/",
-    "source": "ITmedia AI+（日文）",
-    "lang": "ja",
-    "published": "11-13 08:08",
-    "time": "11-13 08:08",
-    "fetched": "2026-11-13",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "ITmedia AI+（日文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "黄仁勋辞去英伟达总裁兼CEO，作者梳理14天风波始末",
-    "url": "https://aihot.news/items/t86m3q7vdlqmvm2zmx91vps5a",
-    "source": "AIHOT 精选流",
-    "lang": "zh",
-    "published": "11-13 07:56",
-    "time": "11-13 07:56",
-    "fetched": "2026-11-13",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "AIHOT 精选流"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "民主党对 Nvidia 对华芯片销售启动调查，致函质疑黄仁勋与特朗普的安排",
-    "url": "https://aihot.news/items/cfh0nazzl7eedgttz8n99fza4",
-    "source": "AIHOT 精选流",
-    "lang": "zh",
-    "published": "11-13 06:42",
-    "time": "11-13 06:42",
-    "fetched": "2026-11-13",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "AIHOT 精选流"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "A United Nations survey last year found that as many as 80% of people in [China] support data center construction. At least two-thirds of Chinese people use AI in their day-to-day life, as many embrace the technology and the infrastructure behind it",
-    "url": "https://www.reddit.com/r/artificial/comments/1xuqml7/a_united_nations_survey_last_year_found_that_as/",
+    "title": "Did AI ground US flights? DHS is looking at the FAA's new AI tool",
+    "url": "https://www.reddit.com/r/artificial/comments/1xvnyzp/did_ai_ground_us_flights_dhs_is_looking_at_the/",
     "source": "Reddit r/artificial",
     "lang": "en",
-    "published": "11-13 06:22",
-    "time": "11-13 06:22",
-    "fetched": "2026-11-13",
+    "published": "11-14 08:04",
+    "time": "11-14 08:04",
+    "fetched": "2026-11-14",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -846,13 +723,13 @@
     "members": []
    },
    {
-    "title": "Google 智能眼镜开放预购，12 月 10 日发货",
-    "url": "https://aihot.news/items/hjhcsj440ym8b7ynttcx4433j",
+    "title": "美联储金融稳定报告：AI成为华尔街头号金融风险",
+    "url": "https://aihot.news/items/xzt8t0xkgj3mm17k11s2yo3d4",
     "source": "AIHOT 精选流",
     "lang": "zh",
-    "published": "11-13 05:23",
-    "time": "11-13 05:23",
-    "fetched": "2026-11-13",
+    "published": "11-14 07:54",
+    "time": "11-14 07:54",
+    "fetched": "2026-11-14",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -860,126 +737,138 @@
     ],
     "merge": "candidate",
     "members": []
+   },
+   {
+    "title": "Dario Amodei 回应市场动荡：Anthropic IPO 前称对时机并不在意",
+    "url": "https://aihot.news/items/dl9ehywczofu8vp5sj62s6j4n",
+    "source": "AIHOT 精选流",
+    "lang": "zh",
+    "published": "11-14 07:39",
+    "time": "11-14 07:39",
+    "fetched": "2026-11-14",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "AIHOT 精选流"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "Why Anthropic’s Dario Amodei Has Angered OpenAI and Other A.I. Peers - The New York Times",
+    "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPUWxHUTR3T2hmZ0hnbEpjd1VtQUpIS3V4MjY5LUhvQzhTS1BaMEVwVEg5bVFnTlp1dGc3SEZrdG55VDByX1lXbVhxdTFLUlp4NklDXzFWZ1FOa2U0OFZlc1JsUi0zWXFXYXkxMVJHdU50X1psazB4SzZzZmVDNVJsdjRlSGdVdDJjRmQ0?oc=5",
+    "source": "Google News AI（英文）",
+    "lang": "en",
+    "published": "11-14 07:20",
+    "time": "11-14 07:20",
+    "fetched": "2026-11-14",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "Google News AI（英文）"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "Jensen Huang 离任或给 AI 创业融资留下大缺口，投资人和创始人担忧",
+    "url": "https://aihot.news/items/kq4awkrys4uz37b7gsvj5r1dj",
+    "source": "AIHOT 精选流",
+    "lang": "zh",
+    "published": "11-14 06:43",
+    "time": "11-14 06:43",
+    "fetched": "2026-11-14",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "AIHOT 精选流"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "NVIDIAをつくった男、ジェンスン・フアン　“デニーズの皿洗い“から“AI時代の主役“へ、激動の半生",
+    "url": "https://www.itmedia.co.jp/business/articles/2611/14/news008.html",
+    "source": "ITmedia AI+（日文）",
+    "lang": "ja",
+    "published": "11-14 06:30",
+    "time": "11-14 06:30",
+    "fetched": "2026-11-14",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "ITmedia AI+（日文）"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "从快速部署到记忆共享，数据库如何支撑 Agent 应用？",
+    "url": "https://www.infoq.cn/video/FwbOyyfoAmkQPMTItMDN?utm_source=rss&utm_medium=article",
+    "source": "InfoQ 中文",
+    "lang": "zh",
+    "published": "11-14 04:54",
+    "time": "11-14 04:54",
+    "fetched": "2026-11-14",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "InfoQ 中文"
+    ],
+    "merge": "candidate",
+    "members": []
    }
   ],
   "科技": [
    {
-    "title": "黄仁勋辞职后，英伟达总部外出现鲜花和蜡烛",
-    "url": "https://www.ithome.com/1/026/492.htm",
+    "title": "特斯拉 Cybercab 面向个人用户开放销售：售 29990 美元，每月还需支付 299 美元自动驾驶订阅费用",
+    "url": "https://www.ithome.com/1/027/034.htm",
     "source": "IT之家",
     "lang": "zh",
-    "published": "11-13 10:29",
-    "time": "11-13 09:35",
-    "fetched": "2026-11-13",
+    "published": "11-14 08:59",
+    "time": "11-14 08:59",
+    "fetched": "2026-11-14",
     "group": "科技",
-    "platforms": 2,
+    "platforms": 3,
     "sources": [
      "IT之家",
+     "华尔街见闻快讯",
      "新浪科技"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "新浪科技",
-      "title": "黄仁勋辞职后 英伟达总部外出现鲜花和蜡烛",
-      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-11-13/doc-iniypzqk8099984.shtml"
-     }
-    ]
-   },
-   {
-    "title": "央行邹澜：信贷降速提质成宏观运行新常态 征信体系适配性有待提升",
-    "url": "",
-    "source": "Readhub",
-    "lang": "zh",
-    "published": "11-13 10:25",
-    "time": "11-13 10:25",
-    "fetched": "2026-11-13",
-    "group": "科技",
-    "platforms": 2,
-    "sources": [
-     "36氪快讯",
-     "Readhub"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "Readhub",
-      "title": "央行邹澜：信贷降速提质成宏观运行新常态，征信体系适配性有待提升",
-      "url": "https://www.36kr.com/newsflashes/4067538787439750"
-     },
-     {
-      "source": "36氪快讯",
-      "title": "央行邹澜：信贷降速提质成宏观运行新常态，征信体系适配性有待提升",
-      "url": "https://www.36kr.com/newsflashes/4067538787439750"
-     }
-    ]
-   },
-   {
-    "title": "央行：引导机构负责任放贷 严格落实明示综合融资成本等规定",
-    "url": "https://api3.cls.cn/share/article/2533443?os=web&sv=8.4.6&app=CailianpressWeb",
-    "source": "Readhub",
-    "lang": "zh",
-    "published": "11-13 10:09",
-    "time": "11-13 10:09",
-    "fetched": "2026-11-13",
-    "group": "科技",
-    "platforms": 2,
-    "sources": [
-     "Readhub",
-     "华尔街见闻快讯"
     ],
     "merge": "candidate",
     "members": [
      {
       "source": "华尔街见闻快讯",
-      "title": "央行：引导机构负责任放贷 严格落实明示综合融资成本等规定",
+      "title": "特斯拉称已开始面向个人用户销售Cybercab",
       "url": ""
+     },
+     {
+      "source": "新浪科技",
+      "title": "特斯拉：开始面向个人销售Cybercab",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-11-14/doc-iniysepi0754222.shtml"
      }
     ]
    },
    {
-    "title": "马斯克谈黄仁勋结束 33 年掌舵英伟达生涯：创始人很难被取代",
-    "url": "https://www.ithome.com/1/026/506.htm",
-    "source": "IT之家",
+    "title": "美国查获从币安被盗的12亿美元加密货币",
+    "url": "https://www.cnbeta.com.tw/articles/tech/1586300.htm",
+    "source": "cnBeta",
     "lang": "zh",
-    "published": "11-13 09:51",
-    "time": "11-13 09:51",
-    "fetched": "2026-11-13",
+    "published": "11-13 22:11",
+    "time": "11-13 22:11",
+    "fetched": "2026-11-14",
     "group": "科技",
     "platforms": 2,
     "sources": [
-     "IT之家",
+     "Solidot",
      "cnBeta"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "cnBeta",
-      "title": "马斯克回应黄仁勋辞职：创始人很难被取代",
-      "url": "https://www.cnbeta.com.tw/articles/tech/1586154.htm"
-     }
-    ]
-   },
-   {
-    "title": "京东13.35亿欧元收购CECONOMY",
-    "url": "https://finance.sina.com.cn/roll/2026-11-13/doc-iniypzqm3686832.shtml",
-    "source": "新浪科技",
-    "lang": "zh",
-    "published": "11-13 09:16",
-    "time": "11-13 09:16",
-    "fetched": "2026-11-13",
-    "group": "科技",
-    "platforms": 2,
-    "sources": [
-     "cnBeta",
-     "新浪科技"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "cnBeta",
-      "title": "历时15个月 京东完成欧洲消费电子零售集团CECONOMY的收购",
-      "url": "https://www.cnbeta.com.tw/articles/tech/1586160.htm"
+      "source": "Solidot",
+      "title": "美国扣押了从币安盗走的逾 12 亿美元加密货币",
+      "url": "https://www.solidot.org/story?sid=85876"
      }
     ]
    },
@@ -990,7 +879,7 @@
     "lang": "zh",
     "published": "11-13 08:00",
     "time": "11-13 08:00",
-    "fetched": "2026-11-13",
+    "fetched": "2026-11-14",
     "group": "科技",
     "platforms": 2,
     "sources": [
@@ -1007,82 +896,13 @@
     ]
    },
    {
-    "title": "天文学家发现一个恒星系统每八分钟发射一次射电信号",
-    "url": "https://www.solidot.org/story?sid=85870",
-    "source": "Solidot",
-    "lang": "zh",
-    "published": "11-13 03:50",
-    "time": "11-12 21:55",
-    "fetched": "2026-11-13",
-    "group": "科技",
-    "platforms": 2,
-    "sources": [
-     "HN 中文",
-     "Solidot"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "HN 中文",
-      "title": "研究人员发现了一个罕见的恒星系统，该系统每8分钟会发射一次射电信号",
-      "url": "https://www.curtin.edu.au/news/media-release/researchers-discover-rare-star-system-that-emits-radio-signals-every-eight-minutes/"
-     }
-    ]
-   },
-   {
-    "title": "黄仁勋辞职后，Nvidia 与 AI 热潮的未来走向分析",
-    "url": "https://aihot.news/items/toq4wymx9maq8lhhz8jryi0sv",
-    "source": "AIHOT 精选流",
-    "lang": "zh",
-    "published": "11-13 00:19",
-    "time": "11-13 00:19",
-    "fetched": "2026-11-13",
-    "group": "科技",
-    "platforms": 2,
-    "sources": [
-     "AIHOT 精选流",
-     "Solidot"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "Solidot",
-      "title": "黄仁勋辞职",
-      "url": "https://www.solidot.org/story?sid=85872"
-     }
-    ]
-   },
-   {
-    "title": "央行：探索加强央行征信系统与社会化征信机构的多方位合作",
-    "url": "https://wallstreetcn.com/livenews/3199501",
-    "source": "Readhub",
-    "lang": "zh",
-    "published": "",
-    "time": "",
-    "fetched": "2026-11-13",
-    "group": "科技",
-    "platforms": 2,
-    "sources": [
-     "36氪快讯",
-     "Readhub"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "36氪快讯",
-      "title": "央行：探索加强央行征信系统与社会化征信机构的多方位合作",
-      "url": "https://www.36kr.com/newsflashes/4067552275764104"
-     }
-    ]
-   },
-   {
-    "title": "第九届央企优秀故事暨AIGC作品获奖名单发布",
-    "url": "https://finance.sina.com.cn/roll/2026-11-13/doc-iniypzqm3747462.shtml",
+    "title": "2026年ABAC第四次会议开幕 李凡荣、曾毓群、张伟武等出席",
+    "url": "https://finance.sina.com.cn/roll/2026-11-14/doc-iniyskvh7439626.shtml",
     "source": "新浪科技",
     "lang": "zh",
-    "published": "11-13 10:32",
-    "time": "11-13 10:32",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:34",
+    "time": "11-14 10:34",
+    "fetched": "2026-11-14",
     "group": "科技",
     "platforms": 1,
     "sources": [
@@ -1092,13 +912,67 @@
     "members": []
    },
    {
-    "title": "华为鸿蒙电脑更新 7.0.0.115 SP11 版本，小艺 Work 支持文档处理、PPT 制作等",
-    "url": "https://www.ithome.com/1/026/526.htm",
+    "title": "苹果推送 tvOS 27.2.1 更新，第二/三代 Apple TV 4K 新增 Siri AI 支持",
+    "url": "",
+    "source": "Readhub",
+    "lang": "zh",
+    "published": "11-14 10:30",
+    "time": "11-14 10:30",
+    "fetched": "2026-11-14",
+    "group": "科技",
+    "platforms": 1,
+    "sources": [
+     "Readhub"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "Readhub",
+      "title": "苹果推送 tvOS 27.2.1 更新，第二 / 第三代 Apple TV 4K 新增 Siri AI 支持",
+      "url": "https://www.ithome.com/1/027/052.htm"
+     }
+    ]
+   },
+   {
+    "title": "宣布将于 2026 年 11 月 13 日推出新项目",
+    "url": "https://bbs.pcbeta.com/viewthread-2084552-1-1.html",
+    "source": "NewsNow 远景论坛 Win11",
+    "lang": "zh",
+    "published": "11-14 10:18",
+    "time": "11-14 10:18",
+    "fetched": "2026-11-14",
+    "group": "科技",
+    "platforms": 1,
+    "sources": [
+     "NewsNow 远景论坛 Win11"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "llama.cpp 与 ggml 双双迈入 1.0.0，本地大模型推理库迎来稳定新阶段",
+    "url": "",
+    "source": "Readhub",
+    "lang": "zh",
+    "published": "11-14 10:10",
+    "time": "11-14 10:10",
+    "fetched": "2026-11-14",
+    "group": "科技",
+    "platforms": 1,
+    "sources": [
+     "Readhub"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "实现“躺平式办公”：Mac 版 Perplexity 上线“AI 队友”，组建你的全天候数字员工",
+    "url": "https://www.ithome.com/1/027/050.htm",
     "source": "IT之家",
     "lang": "zh",
-    "published": "11-13 10:24",
-    "time": "11-13 10:24",
-    "fetched": "2026-11-13",
+    "published": "11-14 09:58",
+    "time": "11-14 09:58",
+    "fetched": "2026-11-14",
     "group": "科技",
     "platforms": 1,
     "sources": [
@@ -1108,13 +982,61 @@
     "members": []
    },
    {
-    "title": "黄仁勋的陨落 是硅谷权力流失的信号",
-    "url": "https://finance.sina.com.cn/stock/usstock/c/2026-11-13/doc-iniypzqc1081594.shtml",
+    "title": "消息称某厂 6.3 英寸 1.5K 小屏机立项，预计小米 REDMI 旗下",
+    "url": "https://www.ithome.com/1/027/048.htm",
+    "source": "IT之家",
+    "lang": "zh",
+    "published": "11-14 09:52",
+    "time": "11-14 09:52",
+    "fetched": "2026-11-14",
+    "group": "科技",
+    "platforms": 1,
+    "sources": [
+     "IT之家"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "羽迹 鼠标指针",
+    "url": "https://bbs.pcbeta.com/viewthread-2084548-1-1.html",
+    "source": "NewsNow 远景论坛 Win11",
+    "lang": "zh",
+    "published": "11-14 09:45",
+    "time": "11-14 09:45",
+    "fetched": "2026-11-14",
+    "group": "科技",
+    "platforms": 1,
+    "sources": [
+     "NewsNow 远景论坛 Win11"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "升级29704后电脑自动开机、重启和关机",
+    "url": "https://bbs.pcbeta.com/viewthread-2084546-1-1.html",
+    "source": "NewsNow 远景论坛 Win11",
+    "lang": "zh",
+    "published": "11-14 09:28",
+    "time": "11-14 09:28",
+    "fetched": "2026-11-14",
+    "group": "科技",
+    "platforms": 1,
+    "sources": [
+     "NewsNow 远景论坛 Win11"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "以色列风投：英伟达风波给竞品带来机遇",
+    "url": "https://finance.sina.com.cn/stock/usstock/c/2026-11-14/doc-iniysepc0461217.shtml",
     "source": "新浪科技",
     "lang": "zh",
-    "published": "11-13 10:24",
-    "time": "11-13 10:24",
-    "fetched": "2026-11-13",
+    "published": "11-14 09:06",
+    "time": "11-14 09:06",
+    "fetched": "2026-11-14",
     "group": "科技",
     "platforms": 1,
     "sources": [
@@ -1124,49 +1046,49 @@
     "members": []
    },
    {
-    "title": "科技爱好者周刊（第 419 期）：机房来了，写字楼走了",
-    "url": "http://www.ruanyifeng.com/blog/2026/11/weekly-issue-419.html",
-    "source": "阮一峰周刊",
+    "title": "Anthropic摩根大通总部路演 对算力支出表态谨慎",
+    "url": "https://finance.sina.com.cn/stock/usstock/c/2026-11-14/doc-iniysepm3111917.shtml",
+    "source": "新浪科技",
     "lang": "zh",
-    "published": "11-13 09:57",
-    "time": "11-13 09:57",
-    "fetched": "2026-11-13",
+    "published": "11-14 08:46",
+    "time": "11-14 08:46",
+    "fetched": "2026-11-14",
     "group": "科技",
     "platforms": 1,
     "sources": [
-     "阮一峰周刊"
+     "新浪科技"
     ],
     "merge": "candidate",
     "members": []
    },
    {
-    "title": "解决办法：系统自动更新至26300.9974失败，报错代码为：0x800f0915",
-    "url": "https://bbs.pcbeta.com/viewthread-2084470-1-1.html",
-    "source": "NewsNow 远景论坛 Win11",
+    "title": "黄仁勋风波持续发酵 英伟达创逾18个月来最差单周表现",
+    "url": "https://www.cnbeta.com.tw/articles/tech/1586328.htm",
+    "source": "cnBeta",
     "lang": "zh",
-    "published": "11-13 09:48",
-    "time": "11-13 09:48",
-    "fetched": "2026-11-13",
+    "published": "11-14 06:52",
+    "time": "11-14 06:52",
+    "fetched": "2026-11-14",
     "group": "科技",
     "platforms": 1,
     "sources": [
-     "NewsNow 远景论坛 Win11"
+     "cnBeta"
     ],
     "merge": "candidate",
     "members": []
    },
    {
-    "title": "Apache HTTP服务器HTTP/2模块曝9.8分漏洞，可远程执行代码",
-    "url": "https://bbs.pcbeta.com/viewthread-2084466-1-1.html",
-    "source": "NewsNow 远景论坛 Win11",
+    "title": "美联储警告：部分由AI推动的资产价格高企存在潜在风险",
+    "url": "https://www.cnbeta.com.tw/articles/tech/1586326.htm",
+    "source": "cnBeta",
     "lang": "zh",
-    "published": "11-13 09:36",
-    "time": "11-13 09:36",
-    "fetched": "2026-11-13",
+    "published": "11-14 06:50",
+    "time": "11-14 06:50",
+    "fetched": "2026-11-14",
     "group": "科技",
     "platforms": 1,
     "sources": [
-     "NewsNow 远景论坛 Win11"
+     "cnBeta"
     ],
     "merge": "candidate",
     "members": []
@@ -1174,170 +1096,196 @@
   ],
   "热榜": [
    {
-    "title": "微软Outlook服务宕机",
-    "url": "https://s.weibo.com/weibo?q=%E5%BE%AE%E8%BD%AFOutlook%E6%9C%8D%E5%8A%A1%E5%AE%95%E6%9C%BA&t=31&band_rank=2&Refer=top",
-    "source": "NewsNow 微博",
+    "title": "美国全国性地面停飞令已解除",
+    "url": "https://www.toutiao.com/trending/7707833019603635738/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227707833019603635738%22%2C%22hot_board_impr_id%22%3A%22202611141034326DB8794E7048D94B267B%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%BE%8E%E5%9B%BD%E5%85%A8%E5%9B%BD%E6%80%A7%E5%9C%B0%E9%9D%A2%E5%81%9C%E9%A3%9E%E4%BB%A4%E5%B7%B2%E8%A7%A3%E9%99%A4%22%7D&rank=&style_id=40132&topic_id=7707833019603635738",
+    "source": "头条热榜",
     "lang": "zh",
-    "published": "11-13 09:52",
-    "time": "11-13 09:52",
-    "fetched": "2026-11-13",
-    "group": "热榜",
-    "platforms": 4,
-    "sources": [
-     "Google Trends 台湾",
-     "NewsNow 微博",
-     "NewsNow 联合早报",
-     "NewsNow 远景论坛 Win11"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "NewsNow 联合早报",
-      "title": "微软Outlook突发大规模故障 全球数万用户受影响 波及新加坡",
-      "url": "https://www.zaochenbao.com/news/politics/202611/1385427.html"
-     },
-     {
-      "source": "NewsNow 远景论坛 Win11",
-      "title": "Happy weekend Outlook 服务歇菜了",
-      "url": "https://bbs.pcbeta.com/viewthread-2084465-1-1.html"
-     },
-     {
-      "source": "Google Trends 台湾",
-      "title": "outlook 故障",
-      "url": "https://trends.google.com/trending/rss?geo=TW"
-     }
-    ]
-   },
-   {
-    "title": "黄仁勋辞职，CFO出任临时CEO",
-    "url": "https://bbs.hupu.com/643884968.html",
-    "source": "NewsNow 虎扑",
-    "lang": "zh",
-    "published": "11-13 09:17",
-    "time": "11-13 09:17",
-    "fetched": "2026-11-13",
-    "group": "热榜",
-    "platforms": 4,
-    "sources": [
-     "NewsNow 腾讯新闻 综合早报",
-     "NewsNow 虎扑",
-     "NewsNow 酷安",
-     "钛媒体"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "钛媒体",
-      "title": "黄仁勋时代落幕，英伟达宣布其卸任，CFO克雷斯出任临时CEO",
-      "url": "https://www.tmtpost.com/8203591.html"
-     },
-     {
-      "source": "NewsNow 酷安",
-      "title": "英伟达CEO黄仁勋辞职，科莱特·克雷斯出任临时CEO",
-      "url": "https://www.coolapk.com/feed/75028550"
-     },
-     {
-      "source": "NewsNow 腾讯新闻 综合早报",
-      "title": "英伟达宣布黄仁勋辞职 首席财务官克雷斯出任临时CEO",
-      "url": "https://view.inews.qq.com/a/20261112A0ERD700"
-     }
-    ]
-   },
-   {
-    "title": "段永平回应黄仁勋辞职",
-    "url": "",
-    "source": "华尔街见闻快讯",
-    "lang": "zh",
-    "published": "11-13 10:31",
-    "time": "11-13 10:31",
-    "fetched": "2026-11-13",
+    "published": "11-14 05:37",
+    "time": "11-14 05:37",
+    "fetched": "2026-11-14",
     "group": "热榜",
     "platforms": 3,
     "sources": [
-     "NewsNow 凤凰网",
-     "NewsNow 卫星通讯社",
-     "华尔街见闻快讯"
+     "HN 中文",
+     "NewsNow 抖音",
+     "头条热榜"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "NewsNow 卫星通讯社",
-      "title": "特朗普、马斯克、赵长鹏回应黄仁勋辞职",
-      "url": "https://sputniknews.cn/20261113/1074098209.html"
+      "source": "NewsNow 抖音",
+      "title": "美国航班全国性地面停飞",
+      "url": "https://www.douyin.com/hot/2745402"
+     },
+     {
+      "source": "HN 中文",
+      "title": "美国联邦航空管理局发布全国性地面停飞令",
+      "url": "https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11132026&advn=111"
+     }
+    ]
+   },
+   {
+    "title": "全美航班停飞令已解除",
+    "url": "https://m.baidu.com/s?word=%E5%85%A8%E7%BE%8E%E8%88%AA%E7%8F%AD%E5%81%9C%E9%A3%9E%E4%BB%A4%E5%B7%B2%E8%A7%A3%E9%99%A4&sa=fyb_news",
+    "source": "百度热搜",
+    "lang": "zh",
+    "published": "",
+    "time": "",
+    "fetched": "2026-11-14",
+    "group": "热榜",
+    "platforms": 3,
+    "sources": [
+     "36氪快讯",
+     "NewsNow 凤凰网",
+     "百度热搜"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "百度热搜",
+      "title": "全美航班停飞 上上次是9·11",
+      "url": "https://m.baidu.com/s?word=%E5%85%A8%E7%BE%8E%E8%88%AA%E7%8F%AD%E5%81%9C%E9%A3%9E+%E4%B8%8A%E4%B8%8A%E6%AC%A1%E6%98%AF9%C2%B711&sa=fyb_news"
+     },
+     {
+      "source": "36氪快讯",
+      "title": "美媒：全美航班停飞令已解除",
+      "url": "https://www.36kr.com/newsflashes/4068936138199940"
      },
      {
       "source": "NewsNow 凤凰网",
-      "title": "特朗普、马斯克、赵长鹏回应黄仁勋辞职",
-      "url": "https://original.ifeng.com/c/8y0ZpSEe8Cg"
+      "title": "全美航班停飞令已解除",
+      "url": "https://news.ifeng.com/c/8y2Yd6OHvpd"
+     },
+     {
+      "source": "NewsNow 凤凰网",
+      "title": "全美航班停飞，上上次还是“9·11”",
+      "url": "https://news.ifeng.com/c/8y2OJv6Z0ZL"
      }
     ]
    },
    {
-    "title": "国务院安委会办公室对11个市级政府开展安全生产约谈",
-    "url": "https://www.thepaper.cn/newsDetail_forward_34465374",
-    "source": "澎湃热榜",
+    "title": "美国所有航班暂停起飞",
+    "url": "https://m.baidu.com/s?word=%E7%BE%8E%E5%9B%BD%E6%89%80%E6%9C%89%E8%88%AA%E7%8F%AD%E6%9A%82%E5%81%9C%E8%B5%B7%E9%A3%9E&sa=fyb_news",
+    "source": "百度热搜",
     "lang": "zh",
-    "published": "11-13 10:42",
-    "time": "11-13 10:42",
-    "fetched": "2026-11-13",
+    "published": "",
+    "time": "",
+    "fetched": "2026-11-14",
     "group": "热榜",
-    "platforms": 2,
+    "platforms": 3,
     "sources": [
-     "华尔街见闻快讯",
-     "澎湃热榜"
+     "NewsNow 腾讯新闻 综合早报",
+     "NewsNow 财联社热门",
+     "百度热搜"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "华尔街见闻快讯",
-      "title": "国务院安委会办公室对11个市级政府开展安全生产约谈",
-      "url": ""
+      "source": "NewsNow 财联社热门",
+      "title": "突发：美国联邦航空管理局下令所有航班暂停起飞",
+      "url": "https://www.cls.cn/detail/2534337"
+     },
+     {
+      "source": "NewsNow 腾讯新闻 综合早报",
+      "title": "突发：美国联邦航空管理局下令所有航班暂停起飞",
+      "url": "https://view.inews.qq.com/a/20261114A03TGW00"
      }
     ]
    },
    {
-    "title": "消息：白宫正权衡是否罢免商务部长卢特尼克",
-    "url": "https://www.zaochenbao.com/news/politics/202611/1385425.html",
+    "title": "阿根廷1:2乌拉圭",
+    "url": "https://www.douyin.com/hot/2744094",
+    "source": "NewsNow 抖音",
+    "lang": "zh",
+    "published": "11-14 09:56",
+    "time": "11-14 09:56",
+    "fetched": "2026-11-14",
+    "group": "热榜",
+    "platforms": 2,
+    "sources": [
+     "NewsNow 懂球帝",
+     "NewsNow 抖音"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "NewsNow 懂球帝",
+      "title": "阿根廷友谊赛22连胜遭乌拉圭终结",
+      "url": "https://www.dongqiudi.com/article/6651912"
+     },
+     {
+      "source": "NewsNow 懂球帝",
+      "title": "阿媒：阿根廷主场24年-26年10月不败，前后输球都是对乌拉圭",
+      "url": "https://www.dongqiudi.com/article/6651898"
+     }
+    ]
+   },
+   {
+    "title": "英媒：英伟达就接班人问题接触安谋CEO哈斯",
+    "url": "https://www.zaochenbao.com/news/politics/202611/1485498.html",
     "source": "NewsNow 联合早报",
     "lang": "zh",
-    "published": "11-13 09:52",
-    "time": "11-13 09:52",
-    "fetched": "2026-11-13",
+    "published": "11-14 09:51",
+    "time": "11-14 09:51",
+    "fetched": "2026-11-14",
     "group": "热榜",
     "platforms": 2,
     "sources": [
-     "NewsNow 卫星通讯社",
-     "NewsNow 联合早报"
+     "NewsNow 联合早报",
+     "NewsNow 靠谱新闻"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "NewsNow 卫星通讯社",
-      "title": "媒体：白宫正权衡是否罢免美商务部长卢特尼克",
-      "url": "https://sputniknews.cn/20261113/1074096912.html"
+      "source": "NewsNow 靠谱新闻",
+      "title": "金融时报称英伟达接触安谋CEO哈斯谈接班",
+      "url": "https://kaopu.news/story/2026-11-14/ft-reports-nvidia-contact-arm-ceo-haas-9cde5c?utm_source=rss&utm_medium=feed"
      }
     ]
    },
    {
-    "title": "Rohan Paul 类比乔布斯被逐，评 NVIDIA 放走黄仁勋",
-    "url": "https://aihot.news/items/k1kga19xtdab67lhplor8he8n",
-    "source": "AIHOT 精选流",
+    "title": "中美举行贸易理事会首次会议",
+    "url": "https://www.zaochenbao.com/news/china/202611/1485496.html",
+    "source": "NewsNow 联合早报",
     "lang": "zh",
-    "published": "11-13 05:39",
-    "time": "11-13 05:39",
-    "fetched": "2026-11-13",
+    "published": "11-14 09:43",
+    "time": "11-14 09:30",
+    "fetched": "2026-11-14",
     "group": "热榜",
     "platforms": 2,
     "sources": [
-     "AIHOT 精选流",
-     "B站热门"
+     "NewsNow 联合早报",
+     "NewsNow 靠谱新闻"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "B站热门",
-      "title": "NVIDIA：黄仁勋辞职",
-      "url": "https://b23.tv/BV1efWd6CEvF"
+      "source": "NewsNow 靠谱新闻",
+      "title": "中美贸易理事会举行首次正式会议",
+      "url": "https://kaopu.news/story/2026-11-14/us-china-trade-council-holds-first-meeting-139785?utm_source=rss&utm_medium=feed"
+     }
+    ]
+   },
+   {
+    "title": "SpaceX 星舰第 15 次试飞发射升空，助推器回收失败改为海上溅落，目前进展如何？",
+    "url": "https://api.zhihu.com/questions/2103048368494793787",
+    "source": "知乎热榜",
+    "lang": "zh",
+    "published": "11-14 09:42",
+    "time": "11-09 08:56",
+    "fetched": "2026-11-14",
+    "group": "热榜",
+    "platforms": 2,
+    "sources": [
+     "NewsNow 靠谱新闻",
+     "知乎热榜"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "NewsNow 靠谱新闻",
+      "title": "星舰第15次试飞助推器海上溅落时起火",
+      "url": "https://kaopu.news/story/2026-11-14/starship-booster-splashes-down-gulf-fire-c4ef20?utm_source=rss&utm_medium=feed"
      }
     ]
    },
@@ -1346,9 +1294,9 @@
     "url": "https://v.qq.com/x/cover/mzc00200p1ilkw3.html",
     "source": "NewsNow 腾讯视频 热搜榜",
     "lang": "zh",
-    "published": "11-13 00:00",
-    "time": "11-13 00:00",
-    "fetched": "2026-11-13",
+    "published": "11-14 00:00",
+    "time": "11-14 00:00",
+    "fetched": "2026-11-14",
     "group": "热榜",
     "platforms": 2,
     "sources": [
@@ -1369,9 +1317,9 @@
     "url": "https://v.qq.com/x/cover/mzc002004k31fxg.html",
     "source": "NewsNow 腾讯视频 热搜榜",
     "lang": "zh",
-    "published": "11-13 00:00",
-    "time": "11-13 00:00",
-    "fetched": "2026-11-13",
+    "published": "11-14 00:00",
+    "time": "11-14 00:00",
+    "fetched": "2026-11-14",
     "group": "热榜",
     "platforms": 2,
     "sources": [
@@ -1388,13 +1336,41 @@
     ]
    },
    {
-    "title": "“甲醛白菜”案等18起涉食品安全重大犯罪案件被挂牌督办",
-    "url": "https://www.thepaper.cn/newsDetail_forward_34459136",
+    "title": "王忠林被查，湖北省委：坚决拥护",
+    "url": "https://www.thepaper.cn/newsDetail_forward_34469875",
     "source": "澎湃热榜",
     "lang": "zh",
-    "published": "11-12 16:44",
-    "time": "11-12 16:44",
-    "fetched": "2026-11-13",
+    "published": "11-13 21:34",
+    "time": "11-13 21:34",
+    "fetched": "2026-11-14",
+    "group": "热榜",
+    "platforms": 2,
+    "sources": [
+     "NewsNow 腾讯新闻 综合早报",
+     "澎湃热榜"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "澎湃热榜",
+      "title": "王忠林被查，湖北省委：坚决拥护党中央决定",
+      "url": "https://www.thepaper.cn/newsDetail_forward_34469875"
+     },
+     {
+      "source": "NewsNow 腾讯新闻 综合早报",
+      "title": "王忠林被查，湖北省委：坚决拥护党中央决定",
+      "url": "https://view.inews.qq.com/a/20261113A0E65I00"
+     }
+    ]
+   },
+   {
+    "title": "河南财经政法大学再通报“教师性骚扰女生”：予以开除并报请撤销其教师资格",
+    "url": "https://www.thepaper.cn/newsDetail_forward_34469621",
+    "source": "澎湃热榜",
+    "lang": "zh",
+    "published": "11-13 21:34",
+    "time": "11-13 21:34",
+    "fetched": "2026-11-14",
     "group": "热榜",
     "platforms": 2,
     "sources": [
@@ -1405,134 +1381,74 @@
     "members": [
      {
       "source": "NewsNow 腾讯新闻 综合早报",
-      "title": "“甲醛白菜”案等18起涉食品安全重大犯罪案件被挂牌督办",
-      "url": "https://view.inews.qq.com/a/20261112A0A0OO00"
+      "title": "教师性骚扰女生？河南财经政法大学：给予其开除党籍处分，并予以开除",
+      "url": "https://view.inews.qq.com/a/20261113A0DKBN00"
      }
     ]
    },
    {
-    "title": "赵丽颖起诉红果和抖音，律师：关键是公众能不能认出这个AI人像赵丽颖",
-    "url": "https://www.thepaper.cn/newsDetail_forward_34458622",
+    "title": "特朗普称应中东盟友请求延缓对伊朗行动",
+    "url": "https://www.thepaper.cn/newsDetail_forward_34468437",
     "source": "澎湃热榜",
     "lang": "zh",
-    "published": "11-12 13:44",
-    "time": "11-12 13:44",
-    "fetched": "2026-11-13",
+    "published": "11-13 18:34",
+    "time": "11-13 18:34",
+    "fetched": "2026-11-14",
     "group": "热榜",
     "platforms": 2,
     "sources": [
-     "NewsNow 虎扑",
+     "NewsNow 腾讯新闻 综合早报",
      "澎湃热榜"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "NewsNow 虎扑",
-      "title": "赵丽颖起诉红果短剧！",
-      "url": "https://bbs.hupu.com/643862529.html"
-     }
-    ]
-   },
-   {
-    "title": "9类高危习惯悄悄诱发膀胱癌",
-    "url": "https://m.baidu.com/s?word=9%E7%B1%BB%E9%AB%98%E5%8D%B1%E4%B9%A0%E6%83%AF%E6%82%84%E6%82%84%E8%AF%B1%E5%8F%91%E8%86%80%E8%83%B1%E7%99%8C&sa=fyb_news",
-    "source": "百度热搜",
-    "lang": "zh",
-    "published": "",
-    "time": "",
-    "fetched": "2026-11-13",
-    "group": "热榜",
-    "platforms": 2,
-    "sources": [
-     "头条热榜",
-     "百度热搜"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "头条热榜",
-      "title": "9类高危习惯悄悄诱发膀胱癌",
-      "url": "https://www.toutiao.com/trending/7707472004437327882/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%226%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227707472004437327882%22%2C%22hot_board_impr_id%22%3A%2220261113104425B7A71438772FFAB3A4CB%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%229%E7%B1%BB%E9%AB%98%E5%8D%B1%E4%B9%A0%E6%83%AF%E6%82%84%E6%82%84%E8%AF%B1%E5%8F%91%E8%86%80%E8%83%B1%E7%99%8C%22%7D&rank=&style_id=40132&topic_id=7707472004437327882"
-     }
-    ]
-   },
-   {
-    "title": "刘欢妻子发8000字长文",
-    "url": "https://m.baidu.com/s?word=%E5%88%98%E6%AC%A2%E5%A6%BB%E5%AD%90%E5%8F%918000%E5%AD%97%E9%95%BF%E6%96%87&sa=fyb_news",
-    "source": "百度热搜",
-    "lang": "zh",
-    "published": "",
-    "time": "",
-    "fetched": "2026-11-13",
-    "group": "热榜",
-    "platforms": 2,
-    "sources": [
-     "头条热榜",
-     "百度热搜"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "头条热榜",
-      "title": "刘欢妻子发8000字长文",
-      "url": "https://www.toutiao.com/trending/7707452217988484662/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2213%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227707452217988484662%22%2C%22hot_board_impr_id%22%3A%2220261113104425B7A71438772FFAB3A4CB%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%88%98%E6%AC%A2%E5%A6%BB%E5%AD%90%E5%8F%918000%E5%AD%97%E9%95%BF%E6%96%87%22%7D&rank=&style_id=40132&topic_id=7707452217988484662"
-     }
-    ]
-   },
-   {
-    "title": "特朗普称美国不需要与伊朗达成协议 国际油价大幅拉升 现货黄金失守3900美元关口",
-    "url": "https://www.cls.cn/detail/2533138",
-    "source": "NewsNow 财联社热门",
-    "lang": "zh",
-    "published": "",
-    "time": "",
-    "fetched": "2026-11-13",
-    "group": "热榜",
-    "platforms": 2,
-    "sources": [
-     "NewsNow 腾讯新闻 综合早报",
-     "NewsNow 财联社热门"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
       "source": "NewsNow 腾讯新闻 综合早报",
-      "title": "特朗普称美国不需要与伊朗达成协议",
-      "url": "https://view.inews.qq.com/a/20261112A0E9FG00"
+      "title": "特朗普称应中东盟友请求延缓对伊朗行动",
+      "url": "https://view.inews.qq.com/a/20261113A0BI6Z00"
      }
     ]
    },
    {
-    "title": "破译流言 不可不知的100个真相",
-    "url": "https://m.baidu.com/s?word=%E7%A0%B4%E8%AF%91%E6%B5%81%E8%A8%80+%E4%B8%8D%E5%8F%AF%E4%B8%8D%E7%9F%A5%E7%9A%84100%E4%B8%AA%E7%9C%9F%E7%9B%B8&sa=fyb_news",
-    "source": "百度热搜",
-    "lang": "zh",
-    "published": "",
-    "time": "",
-    "fetched": "2026-11-13",
-    "group": "热榜",
-    "platforms": 2,
-    "sources": [
-     "头条热榜",
-     "百度热搜"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "头条热榜",
-      "title": "破译“科学”流言不可不知100个真相",
-      "url": "https://www.toutiao.com/trending/7707476395047436330/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227707476395047436330%22%2C%22hot_board_impr_id%22%3A%2220261113104425B7A71438772FFAB3A4CB%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%A0%B4%E8%AF%91%E2%80%9C%E7%A7%91%E5%AD%A6%E2%80%9D%E6%B5%81%E8%A8%80%E4%B8%8D%E5%8F%AF%E4%B8%8D%E7%9F%A5100%E4%B8%AA%E7%9C%9F%E7%9B%B8%22%7D&rank=&style_id=40132&topic_id=7707476395047436330"
-     }
-    ]
-   },
-   {
-    "title": "外媒：小因扎吉能否续约要看未来8场战绩，明年1月前不会谈判",
-    "url": "https://www.dongqiudi.com/article/6648230",
+    "title": "厄瓜多尔2-0哥斯达黎加，霍尔迪-凯塞多破门，凯塞多锁定胜局",
+    "url": "https://www.dongqiudi.com/article/6651939",
     "source": "NewsNow 懂球帝",
     "lang": "zh",
-    "published": "11-13 10:36",
-    "time": "11-13 10:36",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:05",
+    "time": "11-14 10:05",
+    "fetched": "2026-11-14",
+    "group": "热榜",
+    "platforms": 1,
+    "sources": [
+     "NewsNow 懂球帝"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "哥伦比亚1-0智利，马里潘乌龙送礼，古铁雷斯任意球中柱",
+    "url": "https://www.dongqiudi.com/article/6651937",
+    "source": "NewsNow 懂球帝",
+    "lang": "zh",
+    "published": "11-14 10:04",
+    "time": "11-14 10:04",
+    "fetched": "2026-11-14",
+    "group": "热榜",
+    "platforms": 1,
+    "sources": [
+     "NewsNow 懂球帝"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "日职乙角球统计：RB大宫松鼠场均3个，山形山神场均5.8个",
+    "url": "https://www.dongqiudi.com/article/6651935",
+    "source": "NewsNow 懂球帝",
+    "lang": "zh",
+    "published": "11-14 10:04",
+    "time": "11-14 10:04",
+    "fetched": "2026-11-14",
     "group": "热榜",
     "platforms": 1,
     "sources": [
@@ -1544,110 +1460,258 @@
   ],
   "财经": [
    {
-    "title": "中际旭创",
-    "url": "https://flash.jin10.com/detail/60827695",
-    "source": "金十快讯",
-    "lang": "zh",
-    "published": "11-13 10:40",
-    "time": "11-13 10:40",
-    "fetched": "2026-11-13",
-    "group": "财经",
-    "platforms": 2,
-    "sources": [
-     "NewsNow 雪球 热门股票",
-     "金十快讯"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "NewsNow 雪球 热门股票",
-      "title": "中际旭创",
-      "url": "https://xueqiu.com/s/SZ300308"
-     }
-    ]
-   },
-   {
-    "title": "中芯国际",
-    "url": "https://miniprogram.jin10.com?path=/pages/redirect/redirect&data_type=5&auth=plus&id=581&type=3",
-    "source": "金十快讯",
-    "lang": "zh",
-    "published": "11-13 10:40",
-    "time": "11-13 10:40",
-    "fetched": "2026-11-13",
-    "group": "财经",
-    "platforms": 2,
-    "sources": [
-     "NewsNow 雪球 热门股票",
-     "金十快讯"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "NewsNow 雪球 热门股票",
-      "title": "中芯国际",
-      "url": "https://xueqiu.com/s/SH688981"
-     }
-    ]
-   },
-   {
-    "title": "Sigmastar据悉计划在香港上市，融资3亿美元",
-    "url": "https://www.36kr.com/newsflashes/4067561366262658",
+    "title": "美国联邦航空管理局因通信问题发布地面停飞令",
+    "url": "https://www.36kr.com/newsflashes/4068900848063369",
     "source": "36氪快讯",
     "lang": "zh",
-    "published": "11-13 10:14",
-    "time": "11-13 10:14",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:23",
+    "time": "11-14 10:23",
+    "fetched": "2026-11-14",
     "group": "财经",
-    "platforms": 2,
+    "platforms": 3,
     "sources": [
      "36氪快讯",
+     "HN 中文",
      "华尔街见闻快讯"
     ],
     "merge": "candidate",
     "members": [
      {
       "source": "华尔街见闻快讯",
-      "title": "芯片制造商Sigmastar据悉计划在香港上市，融资3亿美元。（彭博）",
+      "title": "美国联邦航空管理局解除地面停飞令，航班获准恢复起降",
+      "url": ""
+     },
+     {
+      "source": "华尔街见闻快讯",
+      "title": "美国联邦航空管理局（FAA）已解除地面停飞令。（路透）",
+      "url": ""
+     },
+     {
+      "source": "华尔街见闻快讯",
+      "title": "美国联邦航空管理局（FAA）的地面停飞令即将解除。（Air Current）",
+      "url": ""
+     },
+     {
+      "source": "HN 中文",
+      "title": "美国联邦航空管理局（FAA）于0119Z时解除了全国范围的地面停飞令",
+      "url": "https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11142026&advn=5"
+     }
+    ]
+   },
+   {
+    "title": "美“星舰”第15次试飞，助推器未能按计划返回发射场",
+    "url": "https://www.36kr.com/newsflashes/4068939134588037",
+    "source": "36氪快讯",
+    "lang": "zh",
+    "published": "11-14 09:52",
+    "time": "11-14 09:52",
+    "fetched": "2026-11-14",
+    "group": "财经",
+    "platforms": 3,
+    "sources": [
+     "36氪快讯",
+     "NewsNow 联合早报",
+     "新浪科技"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "新浪科技",
+      "title": "SpaceX星舰第15次试飞 助推器未能按计划返回发射场",
+      "url": "https://finance.sina.com.cn/stock/usstock/c/2026-11-14/doc-iniysepc0456728.shtml"
+     },
+     {
+      "source": "NewsNow 联合早报",
+      "title": "“星舰”第15次试飞 助推器未能按计划返回发射场",
+      "url": "https://www.zaochenbao.com/news/politics/202611/1485500.html"
+     }
+    ]
+   },
+   {
+    "title": "APEC深圳会议各项筹备工作已就绪",
+    "url": "https://m.baidu.com/s?word=APEC%E6%B7%B1%E5%9C%B3%E4%BC%9A%E8%AE%AE%E5%90%84%E9%A1%B9%E7%AD%B9%E5%A4%87%E5%B7%A5%E4%BD%9C%E5%B7%B2%E5%B0%B1%E7%BB%AA&sa=fyb_news",
+    "source": "百度热搜",
+    "lang": "zh",
+    "published": "11-14 10:05",
+    "time": "11-14 10:05",
+    "fetched": "2026-11-14",
+    "group": "财经",
+    "platforms": 2,
+    "sources": [
+     "华尔街见闻快讯",
+     "百度热搜"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "华尔街见闻快讯",
+      "title": "APEC深圳会议各项筹备工作已经就绪",
       "url": ""
      }
     ]
    },
    {
-    "title": "央行今日开展3000亿元7天期逆回购操作",
-    "url": "https://www.36kr.com/newsflashes/4067515383206793",
-    "source": "36氪快讯",
+    "title": "美国交通部长达菲：已与特朗普交谈过，特朗普高度关注。",
+    "url": "https://flash.jin10.com/detail/20261114100148907800",
+    "source": "金十快讯",
     "lang": "zh",
-    "published": "11-13 09:22",
-    "time": "11-13 09:22",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:01",
+    "time": "11-14 10:01",
+    "fetched": "2026-11-14",
     "group": "财经",
     "platforms": 2,
     "sources": [
-     "36氪快讯",
-     "NewsNow 法布财经 快讯"
+     "NewsNow 法布财经 快讯",
+     "金十快讯"
     ],
     "merge": "candidate",
     "members": [
      {
       "source": "NewsNow 法布财经 快讯",
-      "title": "中国央行今日开展3640亿元隔夜逆回购操作，操作利率1.25%。同时，以固定数量、利率招标、多重价位中标方式开展了3000亿元7天期逆回购操作。",
-      "url": "https://www.fastbull.com/cn/fastshort/4354048_204_1"
-     },
-     {
-      "source": "NewsNow 法布财经 快讯",
-      "title": "中国央行公开市场今日进行3000亿元人民币七天期逆回购操作。",
-      "url": "https://www.fastbull.com/cn/fastshort/4354047_1_1"
+      "title": "美国交通部长达菲：特朗普全力参与了进来。",
+      "url": "https://www.fastbull.com/cn/fastshort/4355046_212_1"
      }
     ]
    },
    {
-    "title": "印尼雅加达股市上涨1.6%，报5,332.359点。",
-    "url": "https://flash.jin10.com/detail/20261113104223339800",
+    "title": "美国国土安全部长穆林：未发现任何证据表明此次事件是网络攻击或人工智能所致。",
+    "url": "https://flash.jin10.com/detail/20261114094507023800",
     "source": "金十快讯",
     "lang": "zh",
-    "published": "11-13 10:42",
-    "time": "11-13 10:42",
-    "fetched": "2026-11-13",
+    "published": "11-14 09:48",
+    "time": "11-14 09:45",
+    "fetched": "2026-11-14",
+    "group": "财经",
+    "platforms": 2,
+    "sources": [
+     "华尔街见闻快讯",
+     "金十快讯"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "华尔街见闻快讯",
+      "title": "美国国土安全部长穆林：未发现任何证据表明此次事件是网络攻击或人工智能所致。\n\n仍在审视网络攻击的可能性，并未排除这一可能。",
+      "url": ""
+     }
+    ]
+   },
+   {
+    "title": "特朗普：美空管系统故障与网络攻击无关",
+    "url": "https://www.toutiao.com/trending/7707821891762946084/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227707821891762946084%22%2C%22hot_board_impr_id%22%3A%22202611141034326DB8794E7048D94B267B%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E7%89%B9%E6%9C%97%E6%99%AE%EF%BC%9A%E7%BE%8E%E7%A9%BA%E7%AE%A1%E7%B3%BB%E7%BB%9F%E6%95%85%E9%9A%9C%E4%B8%8E%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB%E6%97%A0%E5%85%B3%22%7D&rank=&style_id=40132&topic_id=7707821891762946084",
+    "source": "头条热榜",
+    "lang": "zh",
+    "published": "11-14 08:54",
+    "time": "11-14 08:54",
+    "fetched": "2026-11-14",
+    "group": "财经",
+    "platforms": 2,
+    "sources": [
+     "华尔街见闻快讯",
+     "头条热榜"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "华尔街见闻快讯",
+      "title": "特朗普说美空管系统故障与网络攻击无关",
+      "url": ""
+     }
+    ]
+   },
+   {
+    "title": "“美国茅台”再创新高",
+    "url": "https://m.baidu.com/s?word=%E2%80%9C%E7%BE%8E%E5%9B%BD%E8%8C%85%E5%8F%B0%E2%80%9D%E5%86%8D%E5%88%9B%E6%96%B0%E9%AB%98&sa=fyb_news",
+    "source": "百度热搜",
+    "lang": "zh",
+    "published": "",
+    "time": "",
+    "fetched": "2026-11-14",
+    "group": "财经",
+    "platforms": 2,
+    "sources": [
+     "NewsNow 财联社热门",
+     "百度热搜"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "NewsNow 财联社热门",
+      "title": "美股收盘：苹果、“美国茅台”再创新高 AI交易依然颠簸",
+      "url": "https://www.cls.cn/detail/2534350"
+     }
+    ]
+   },
+   {
+    "title": "央行将开展2000亿元买断式逆回购操作 缩量续作稳定市场预期",
+    "url": "https://www.cls.cn/detail/2534228",
+    "source": "NewsNow 财联社热门",
+    "lang": "zh",
+    "published": "",
+    "time": "",
+    "fetched": "2026-11-14",
+    "group": "财经",
+    "platforms": 2,
+    "sources": [
+     "NewsNow 腾讯新闻 综合早报",
+     "NewsNow 财联社热门"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "NewsNow 腾讯新闻 综合早报",
+      "title": "央行出手！2000亿元买断式逆回购来了",
+      "url": "https://view.inews.qq.com/a/20261113A0D3VN00"
+     }
+    ]
+   },
+   {
+    "title": "英伟达供应链变数丛生 亚洲半导体厂商担忧长期合作稳定性",
+    "url": "https://www.cls.cn/detail/2533903",
+    "source": "NewsNow 财联社热门",
+    "lang": "zh",
+    "published": "",
+    "time": "",
+    "fetched": "2026-11-14",
+    "group": "财经",
+    "platforms": 2,
+    "sources": [
+     "NewsNow 腾讯新闻 综合早报",
+     "NewsNow 财联社热门"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "NewsNow 腾讯新闻 综合早报",
+      "title": "英伟达供应链变数丛生，亚洲半导体厂商担忧长期合作稳定性",
+      "url": "https://view.inews.qq.com/a/20261113A0AL2Q00"
+     }
+    ]
+   },
+   {
+    "title": "中方称涉伊朗战事重启言论令人担忧",
+    "url": "",
+    "source": "华尔街见闻快讯",
+    "lang": "zh",
+    "published": "11-14 10:25",
+    "time": "11-14 10:25",
+    "fetched": "2026-11-14",
+    "group": "财经",
+    "platforms": 1,
+    "sources": [
+     "华尔街见闻快讯"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "美国交通部长达菲：我认为在感恩节旅行高峰期到来时，我们会恢复正常运营。",
+    "url": "https://flash.jin10.com/detail/20261114102416415800",
+    "source": "金十快讯",
+    "lang": "zh",
+    "published": "11-14 10:24",
+    "time": "11-14 10:24",
+    "fetched": "2026-11-14",
     "group": "财经",
     "platforms": 1,
     "sources": [
@@ -1657,77 +1721,13 @@
     "members": []
    },
    {
-    "title": "上海钢联发布数据显示，今日MMLC电池级碳酸锂（早盘）中间价报91750元/吨，较上日16:30价格上涨600元/吨。",
-    "url": "",
-    "source": "华尔街见闻快讯",
-    "lang": "zh",
-    "published": "11-13 10:35",
-    "time": "11-13 10:35",
-    "fetched": "2026-11-13",
-    "group": "财经",
-    "platforms": 1,
-    "sources": [
-     "华尔街见闻快讯"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "截至早盘收盘，日经225指数涨1.6%，东证指数涨0.8%。",
-    "url": "",
-    "source": "华尔街见闻快讯",
-    "lang": "zh",
-    "published": "11-13 10:35",
-    "time": "11-13 10:35",
-    "fetched": "2026-11-13",
-    "group": "财经",
-    "platforms": 1,
-    "sources": [
-     "华尔街见闻快讯"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "10月高频数据折射中国经济稳中向好态势",
-    "url": "",
-    "source": "华尔街见闻快讯",
-    "lang": "zh",
-    "published": "11-13 10:34",
-    "time": "11-13 10:34",
-    "fetched": "2026-11-13",
-    "group": "财经",
-    "platforms": 1,
-    "sources": [
-     "华尔街见闻快讯"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "Asian session oil slips as market weighs diplomatic outlook",
-    "url": "https://mktnews.net/flashDetail.html?id=01a1d2b9-5dd9-7bbc-abc4-4d8ec9d2d5ac",
-    "source": "NewsNow MKTNews 快讯",
-    "lang": "zh",
-    "published": "11-13 10:25",
-    "time": "11-13 10:25",
-    "fetched": "2026-11-13",
-    "group": "财经",
-    "platforms": 1,
-    "sources": [
-     "NewsNow MKTNews 快讯"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "视频号的逆袭路，绿泡泡走不了",
-    "url": "https://www.tmtpost.com/8203575.html",
+    "title": "苹果不想一直“躺赢”",
+    "url": "https://www.tmtpost.com/8204097.html",
     "source": "钛媒体",
     "lang": "zh",
-    "published": "11-13 10:22",
-    "time": "11-13 10:22",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:17",
+    "time": "11-14 10:17",
+    "fetched": "2026-11-14",
     "group": "财经",
     "platforms": 1,
     "sources": [
@@ -1737,87 +1737,49 @@
     "members": []
    },
    {
-    "title": "China holds national on-site meeting on high-quality grain industry development in Qingdao",
-    "url": "https://mktnews.net/flashDetail.html?id=01a1d2b0-a807-7bbc-abc4-3f7955706b65",
-    "source": "NewsNow MKTNews 快讯",
+    "title": "银泰到底姓什么？43亿REITs背后的招牌之争",
+    "url": "https://www.tmtpost.com/8204078.html",
+    "source": "钛媒体",
     "lang": "zh",
-    "published": "11-13 10:15",
-    "time": "11-13 10:15",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:13",
+    "time": "11-14 10:13",
+    "fetched": "2026-11-14",
     "group": "财经",
     "platforms": 1,
     "sources": [
-     "NewsNow MKTNews 快讯"
+     "钛媒体"
     ],
     "merge": "candidate",
     "members": []
    },
    {
-    "title": "伊朗伊斯兰革命卫队称，为报复伊朗锡里克电信塔遭袭，其袭击目标是位于巴林的“美国早期预警雷达”。",
-    "url": "https://www.fastbull.com/cn/fastshort/4354097_212_1",
-    "source": "NewsNow 法布财经 快讯",
+    "title": "英伟达第一次没有黄仁勋",
+    "url": "https://www.tmtpost.com/8204046.html",
+    "source": "钛媒体",
     "lang": "zh",
-    "published": "11-13 10:12",
-    "time": "11-13 10:12",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:09",
+    "time": "11-14 10:09",
+    "fetched": "2026-11-14",
     "group": "财经",
     "platforms": 1,
     "sources": [
-     "NewsNow 法布财经 快讯"
+     "钛媒体"
     ],
     "merge": "candidate",
     "members": []
    },
    {
-    "title": "Indonesia export agency to levy single‑digit USD/ton service fee on bulk commodity exports",
-    "url": "https://mktnews.net/flashDetail.html?id=01a1d2ab-4d76-7bbc-abc4-2254057208f9",
-    "source": "NewsNow MKTNews 快讯",
+    "title": "伊朗革命卫队称处于最高战备状态",
+    "url": "",
+    "source": "华尔街见闻快讯",
     "lang": "zh",
-    "published": "11-13 10:10",
-    "time": "11-13 10:10",
-    "fetched": "2026-11-13",
+    "published": "11-14 09:48",
+    "time": "11-14 09:48",
+    "fetched": "2026-11-14",
     "group": "财经",
     "platforms": 1,
     "sources": [
-     "NewsNow MKTNews 快讯"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "印尼盾兑美元走弱至18230。菲律宾比索兑美元跌至63.857。",
-    "url": "https://www.fastbull.com/cn/fastshort/4354092_1_1",
-    "source": "NewsNow 法布财经 快讯",
-    "lang": "zh",
-    "published": "11-13 10:05",
-    "time": "11-13 10:05",
-    "fetched": "2026-11-13",
-    "group": "财经",
-    "platforms": 1,
-    "sources": [
-     "NewsNow 法布财经 快讯"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "NewsNow 法布财经 快讯",
-      "title": "印尼盾兑美元跌至18,230。",
-      "url": "https://www.fastbull.com/cn/fastshort/4354086_212_1"
-     }
-    ]
-   },
-   {
-    "title": "市场消息：卡塔尔似乎正通过苏伊士运河向欧洲运送另一批液化天然气货物。",
-    "url": "https://www.fastbull.com/cn/fastshort/4354088_212_1",
-    "source": "NewsNow 法布财经 快讯",
-    "lang": "zh",
-    "published": "11-13 10:03",
-    "time": "11-13 10:03",
-    "fetched": "2026-11-13",
-    "group": "财经",
-    "platforms": 1,
-    "sources": [
-     "NewsNow 法布财经 快讯"
+     "华尔街见闻快讯"
     ],
     "merge": "candidate",
     "members": []
@@ -1825,36 +1787,13 @@
   ],
   "产品": [
    {
-    "title": "Rust 1.100",
-    "url": "https://blog.rust-lang.org/2026/11/12/Rust-1.100.0/",
-    "source": "HN 中文",
-    "lang": "zh",
-    "published": "11-13 10:23",
-    "time": "11-13 05:26",
-    "fetched": "2026-11-13",
-    "group": "产品",
-    "platforms": 2,
-    "sources": [
-     "HN 中文",
-     "NewsNow Steam"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "NewsNow Steam",
-      "title": "Rust",
-      "url": "https://store.steampowered.com/app/252490/Rust/"
-     }
-    ]
-   },
-   {
     "title": "Counter-Strike 2",
     "url": "https://store.steampowered.com/app/730/CounterStrike_2/",
     "source": "NewsNow Steam",
     "lang": "zh",
-    "published": "11-13 10:23",
-    "time": "11-13 10:23",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:20",
+    "time": "11-14 10:20",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1868,9 +1807,9 @@
     "url": "https://store.steampowered.com/app/570/Dota_2/",
     "source": "NewsNow Steam",
     "lang": "zh",
-    "published": "11-13 10:23",
-    "time": "11-13 10:23",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:20",
+    "time": "11-14 10:20",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1884,9 +1823,9 @@
     "url": "https://store.steampowered.com/app/4262460/ROB_RUN/",
     "source": "NewsNow Steam",
     "lang": "zh",
-    "published": "11-13 10:23",
-    "time": "11-13 10:23",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:20",
+    "time": "11-14 10:20",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1896,13 +1835,13 @@
     "members": []
    },
    {
-    "title": "大参林的1.38亿会员，背后是一套怎样的「大私域」经营体系？",
-    "url": "https://www.woshipm.com/share/6492999.html",
+    "title": "AI 落地前的活儿，比 AI 本身多：一个用户反馈闭环的实操拆解",
+    "url": "https://www.woshipm.com/pd/6493736.html",
     "source": "人人都是产品经理",
     "lang": "zh",
-    "published": "11-13 09:59",
-    "time": "11-13 09:59",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:09",
+    "time": "11-14 10:09",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1912,13 +1851,13 @@
     "members": []
    },
    {
-    "title": "下一代社交 App，正在想办法让你赶紧离开",
-    "url": "https://www.woshipm.com/chuangye/6493011.html",
+    "title": "搞 AI 人工智能，有必要生个孩子养",
+    "url": "https://www.woshipm.com/ai/6493746.html",
     "source": "人人都是产品经理",
     "lang": "zh",
-    "published": "11-13 09:31",
-    "time": "11-13 09:31",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:08",
+    "time": "11-14 10:08",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1928,13 +1867,13 @@
     "members": []
    },
    {
-    "title": "爱马仕总裁布朗卡特：关于奢侈、创新和品质的7个认知，永不褪色",
-    "url": "https://www.woshipm.com/share/6493006.html",
+    "title": "泼天而来的综艺流量，怎么变成双 11 营销大棋？",
+    "url": "https://www.woshipm.com/share/6493684.html",
     "source": "人人都是产品经理",
     "lang": "zh",
-    "published": "11-13 09:24",
-    "time": "11-13 09:24",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:02",
+    "time": "11-14 10:02",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1944,13 +1883,13 @@
     "members": []
    },
    {
-    "title": "能否探讨一下皮衣黄离职，对英伟达的影响和对 AI 行业的影响？",
-    "url": "https://www.v2ex.com/t/1256671",
+    "title": "酷态科暴雷了，充电头会死机大电压烧毁设备",
+    "url": "https://www.v2ex.com/t/1256928",
     "source": "V2EX 热门",
     "lang": "zh",
-    "published": "11-13 08:54",
-    "time": "11-13 08:54",
-    "fetched": "2026-11-13",
+    "published": "11-13 19:27",
+    "time": "11-13 19:27",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1960,13 +1899,13 @@
     "members": []
    },
    {
-    "title": "派早报：英伟达 CEO 黄仁勋宣布辞职等",
-    "url": "https://sspai.com/post/118966",
+    "title": "本周看什么 | 最近值得一看的 10 部作品",
+    "url": "https://sspai.com/post/118999",
     "source": "少数派",
     "lang": "zh",
-    "published": "11-13 08:48",
-    "time": "11-13 08:48",
-    "fetched": "2026-11-13",
+    "published": "11-13 17:39",
+    "time": "11-13 17:39",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1976,13 +1915,13 @@
     "members": []
    },
    {
-    "title": "[KeyVia 满血中转站] 原生 Claude Fable5.2、GPT-6 Astra 免费用",
-    "url": "https://www.v2ex.com/t/1256560",
+    "title": "ns2 入手一周感受",
+    "url": "https://www.v2ex.com/t/1256832",
     "source": "V2EX 热门",
     "lang": "zh",
-    "published": "11-12 18:35",
-    "time": "11-12 18:35",
-    "fetched": "2026-11-13",
+    "published": "11-13 15:18",
+    "time": "11-13 15:18",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1992,29 +1931,29 @@
     "members": []
    },
    {
-    "title": "本月起正式停止续费 codex 了",
-    "url": "https://www.v2ex.com/t/1256551",
-    "source": "V2EX 热门",
+    "title": "研究生如何用 AI 辅助完成一篇综述：我的科研写作工具与实践经验",
+    "url": "https://sspai.com/post/118153",
+    "source": "少数派",
     "lang": "zh",
-    "published": "11-12 18:09",
-    "time": "11-12 18:09",
-    "fetched": "2026-11-13",
+    "published": "11-13 15:00",
+    "time": "11-13 15:00",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
-     "V2EX 热门"
+     "少数派"
     ],
     "merge": "candidate",
     "members": []
    },
    {
-    "title": "网云连：把分散的设备连成一个家",
-    "url": "https://www.appinn.com/wangyunlian/",
+    "title": "赛博领鸡蛋：InstaBox，免费领 4 核 8GB 云电脑，支持 Linux 桌面、安卓镜像和 AI Agent",
+    "url": "https://www.appinn.com/egg-instabox/",
     "source": "小众软件",
     "lang": "zh",
-    "published": "11-12 17:39",
-    "time": "11-12 17:39",
-    "fetched": "2026-11-13",
+    "published": "11-13 14:41",
+    "time": "11-13 14:41",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -2024,49 +1963,65 @@
     "members": []
    },
    {
-    "title": "城市漫步指南｜夏末大阪，「青黄不接」的时节刚刚好",
-    "url": "https://sspai.com/post/118366",
-    "source": "少数派",
-    "lang": "zh",
-    "published": "11-12 16:37",
-    "time": "11-12 16:37",
-    "fetched": "2026-11-13",
-    "group": "产品",
-    "platforms": 1,
-    "sources": [
-     "少数派"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "Mac 选购指南 2026 冬季版",
-    "url": "https://sspai.com/post/85735",
-    "source": "少数派",
-    "lang": "zh",
-    "published": "11-12 14:42",
-    "time": "11-12 14:42",
-    "fetched": "2026-11-13",
-    "group": "产品",
-    "platforms": 1,
-    "sources": [
-     "少数派"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "Chrome 曝出高危 0day 漏洞：已遭黑客实际利用，Google 紧急发布更新｜CVE-2026-125350",
-    "url": "https://www.appinn.com/chrome-cve-2026-125350-zero-day-exploit/",
+    "title": "本周赛博领鸡蛋（11.13~11.19）：《斗阵骑士》",
+    "url": "https://www.appinn.com/eggs-261113/",
     "source": "小众软件",
     "lang": "zh",
-    "published": "11-12 14:18",
-    "time": "11-12 14:18",
-    "fetched": "2026-11-13",
+    "published": "11-13 14:00",
+    "time": "11-13 14:00",
+    "fetched": "2026-11-14",
     "group": "产品",
     "platforms": 1,
     "sources": [
      "小众软件"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "微软故意让 Windows 11 启动项变慢：只需修改两个参数，启动时间从 150 秒降到 30 秒",
+    "url": "https://www.appinn.com/windows-11-startup-delay-registry-fix/",
+    "source": "小众软件",
+    "lang": "zh",
+    "published": "11-13 13:42",
+    "time": "11-13 13:42",
+    "fetched": "2026-11-14",
+    "group": "产品",
+    "platforms": 1,
+    "sources": [
+     "小众软件"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "有神仙老哥还没被 Claude 炸号、KYC 的吗，可以分享一下经验吗？",
+    "url": "https://www.v2ex.com/t/1256766",
+    "source": "V2EX 热门",
+    "lang": "zh",
+    "published": "11-13 12:28",
+    "time": "11-13 12:28",
+    "fetched": "2026-11-14",
+    "group": "产品",
+    "platforms": 1,
+    "sources": [
+     "V2EX 热门"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "在快 AI 时代，我是怎么把 Mole 做成一款「慢产品」的？",
+    "url": "https://sspai.com/post/118512",
+    "source": "少数派",
+    "lang": "zh",
+    "published": "11-13 11:35",
+    "time": "11-13 11:35",
+    "fetched": "2026-11-14",
+    "group": "产品",
+    "platforms": 1,
+    "sources": [
+     "少数派"
     ],
     "merge": "candidate",
     "members": []
@@ -2074,144 +2029,150 @@
   ],
   "海外": [
    {
-    "title": "Nvidia CEO Jensen Huang has resigned",
-    "url": "https://arstechnica.com/gadgets/2026/11/ceo-jensen-huangs-job-is-suddenly-on-the-line-at-nvidia/",
-    "source": "Ars Technica",
+    "title": "FAA lifts nationwide ground stop that blocked takeoffs for hours",
+    "url": "https://www.theverge.com/news/1033489/faa-ground-stop",
+    "source": "The Verge",
     "lang": "en",
-    "published": "11-13 03:49",
-    "time": "11-12 22:05",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:33",
+    "time": "11-14 10:33",
+    "fetched": "2026-11-14",
     "group": "海外",
     "platforms": 3,
     "sources": [
-     "Ars Technica",
-     "BBC Technology",
-     "Reddit r/artificial"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "BBC Technology",
-      "title": "What we know as Nvidia CEO Jensen Huang resigns over affair allegations",
-      "url": "https://www.bbc.co.uk/news/articles/ckgel338xql3o?at_medium=RSS&at_campaign=rss"
-     },
-     {
-      "source": "Reddit r/artificial",
-      "title": "Nvidia CEO Jensen Huang Resigns After Multiple Affairs",
-      "url": "https://www.reddit.com/r/artificial/comments/1xumr55/nvidia_ceo_jensen_huang_resigns_after_multiple/"
-     }
-    ]
-   },
-   {
-    "title": "Scandal-hit Nvidia CEO Jensen Huang quits, plunging AI chipmaking giant into turmoil",
-    "url": "https://www.bbc.co.uk/news/articles/cmq5vd1wdgz6o?at_medium=RSS&at_campaign=rss",
-    "source": "BBC Technology",
-    "lang": "en",
-    "published": "11-13 10:39",
-    "time": "11-13 10:39",
-    "fetched": "2026-11-13",
-    "group": "海外",
-    "platforms": 2,
-    "sources": [
-     "BBC Technology",
-     "Google News AI（英文）"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "Google News AI（英文）",
-      "title": "Scandal-hit Nvidia CEO Jensen Huang quits, plunging AI chipmaking giant into turmoil - BBC",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9HY0g2NTA4UDg1bGFHUXhyZkJCeGJsYXdGeVFFWXNBWHlSNGlDYzVXQkw5YkxheFhEbG1jNGRpXzVVeThsMkJYWENEQ3ZtNi1SZkZfT0RZWnNrckE?oc=5"
-     }
-    ]
-   },
-   {
-    "title": "The rise of 'housefishing' - when does using AI go from enhancing to misleading?",
-    "url": "https://www.bbc.co.uk/news/articles/cm62y0wrnz9zo?at_medium=RSS&at_campaign=rss",
-    "source": "BBC Technology",
-    "lang": "en",
-    "published": "11-13 08:13",
-    "time": "11-13 08:13",
-    "fetched": "2026-11-13",
-    "group": "海外",
-    "platforms": 2,
-    "sources": [
-     "BBC Technology",
-     "Google News AI（英文）"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "Google News AI（英文）",
-      "title": "The rise of 'housefishing' - when does using AI go from enhancing to misleading? - BBC",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1KX2IydG8xQ3g3VjZjTF9WOVYxWUg1RVh1SXdFM3lSMmduaVBVclpiNm4yWHV5MjExV3UxWndxcFVKN1dwZXdOZEc5TGFuaFgxNUM0eWhTLTBidzA?oc=5"
-     }
-    ]
-   },
-   {
-    "title": "Roborock Robot Vacuum Early Black Friday Deals (2026)",
-    "url": "https://www.wired.com/story/best-early-black-friday-robot-vacuum-deals-roborock-2026/",
-    "source": "Wired",
-    "lang": "en",
-    "published": "11-13 08:10",
-    "time": "11-13 07:54",
-    "fetched": "2026-11-13",
-    "group": "海外",
-    "platforms": 2,
-    "sources": [
-     "Google Trends 香港",
+     "Google Trends 新加坡",
+     "The Verge",
      "Wired"
     ],
     "merge": "candidate",
     "members": [
      {
       "source": "Wired",
-      "title": "The 10 Best Early Black Friday TV Deals (2026)",
-      "url": "https://www.wired.com/story/early-black-friday-tv-deals-11-12-26/"
+      "title": "The FAA Nationwide Ground Stop Is Over",
+      "url": "https://www.wired.com/story/the-faa-nationwide-ground-stop-is-over/"
      },
      {
-      "source": "Wired",
-      "title": "Walmart Early Black Friday Deals Double as Great Gifts (2026)",
-      "url": "https://www.wired.com/story/walmart-black-friday-deals-gifts-2026/"
-     },
-     {
-      "source": "Google Trends 香港",
-      "title": "black friday",
-      "url": "https://trends.google.com/trending/rss?geo=HK"
+      "source": "Google Trends 新加坡",
+      "title": "ground stop",
+      "url": "https://trends.google.com/trending/rss?geo=SG"
      }
     ]
    },
    {
-    "title": "Google’s latest Search upgrade promises better answers to your most complicated questions",
-    "url": "https://techcrunch.com/2026/11/12/googles-latest-search-upgrade-promises-better-answers-to-your-most-complicated-questions/",
-    "source": "TechCrunch",
+    "title": "Amazon has a plan to index the world’s online shopping data",
+    "url": "https://www.theverge.com/tech/1033697/amazon-world-product-graph-ai-search",
+    "source": "The Verge",
     "lang": "en",
-    "published": "11-13 05:55",
-    "time": "11-13 03:27",
-    "fetched": "2026-11-13",
+    "published": "11-14 07:49",
+    "time": "11-14 07:49",
+    "fetched": "2026-11-14",
     "group": "海外",
     "platforms": 2,
     "sources": [
-     "TechCrunch",
+     "Google News AI（英文）",
      "The Verge"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "The Verge",
-      "title": "Google’s new Gemini model is better at understanding complicated questions",
-      "url": "https://www.theverge.com/ai-artificial-intelligence/1032505/google-search-ai-mode-gemini-4-hydrogen"
+      "source": "Google News AI（英文）",
+      "title": "EXCLUSIVE: Amazon’s plan to own the world’s product data and fight AI shopping agents - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQY2FJOXhDLWZqYzRxQ3BNVGRyeDNGWGZYU0VwNm5PV09tWGVwRklHdGFQaDRGWEQwM3pBZ1g2X0lYQVFGUU9RdHhyVk9kSnhrcWxob3o2ZUVNTE5SWW5OSWtkZEVlZm83ZUdrZHJ6X1N6bjhqT2F2WWxpWXVaUGhBZldsU0N5MEhjS19yR1pJcFlDN2N4ekpfWDZmR1FPT3k4eGY0bkdEQldjVnVZX21BYlVXX0h4d1JwbFVSaQ?oc=5"
      }
     ]
    },
    {
-    "title": "YouArt Desktop App",
-    "url": "https://www.producthunt.com/products/youart",
+    "title": "The unfolding Jensen Huang scandal: a timeline",
+    "url": "https://techcrunch.com/2026/11/13/nvidia-ceo-jensen-huangs-affair-with-alleged-chinese-spy-a-timeline/",
+    "source": "TechCrunch",
+    "lang": "en",
+    "published": "11-14 07:00",
+    "time": "11-13 23:58",
+    "fetched": "2026-11-14",
+    "group": "海外",
+    "platforms": 2,
+    "sources": [
+     "BBC Technology",
+     "TechCrunch"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "BBC Technology",
+      "title": "How the Jensen Huang scandal created a headache for business-friendly Singapore",
+      "url": "https://www.bbc.co.uk/news/articles/ck1exevgql4qo?at_medium=RSS&at_campaign=rss"
+     }
+    ]
+   },
+   {
+    "title": "FAA expands AI advice to manage air traffic congestion across entire US airspace",
+    "url": "https://arstechnica.com/features/2026/11/faa-expands-ai-advice-to-manage-air-traffic-congestion-across-entire-us-airspace/",
+    "source": "Ars Technica",
+    "lang": "en",
+    "published": "11-14 05:20",
+    "time": "11-14 05:20",
+    "fetched": "2026-11-14",
+    "group": "海外",
+    "platforms": 2,
+    "sources": [
+     "Ars Technica",
+     "Google News AI（英文）"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "Google News AI（英文）",
+      "title": "FAA expands AI advice to manage air traffic congestion across entire US airspace - Ars Technica",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOV1JlVVdFenkyRlRoSGVaTW0zdEVYelMtMF9McU8ycFRVMzl1VDJETzRRR2RJZG1wRmhDakRZemRidkZ3akgyVkZzcDZoaGVIOG9sRkJrdmJRRUdFNDRxelgwSmRIQWFxZkowdjlBVlFWS1FFZGpYMWNWVmx5WHdzQi1KODRER2Q5RkZTcVJZaU5rZWlVUXVfV3RPTDBFQ2l3ejMyMkw0b1ZvVVl1Q0lSaU9va0ZsQ05tUmR6S251Zw?oc=5"
+     }
+    ]
+   },
+   {
+    "title": "OpenAI Launches ChatGPT Wallet",
+    "url": "https://www.theinformation.com/briefings/openai-launches-chatgpt-wallet",
+    "source": "The Information",
+    "lang": "en",
+    "published": "11-14 04:42",
+    "time": "11-14 04:42",
+    "fetched": "2026-11-14",
+    "group": "海外",
+    "platforms": 2,
+    "sources": [
+     "OpenAI News",
+     "The Information"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "OpenAI News",
+      "title": "Introducing ChatGPT Wallet",
+      "url": "https://openai.com/index/introducing-chatgpt-wallet"
+     }
+    ]
+   },
+   {
+    "title": "教宗良十四世在秘鲁：首次到访奇克拉约——这座开启他教宗之路的城市 - BBC News Mundo",
+    "url": "https://www.bestblogs.dev/en/article/24e38979bc?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+    "source": "BestBlogs",
+    "lang": "zh",
+    "published": "11-14 12:59",
+    "time": "11-14 12:59",
+    "fetched": "2026-11-14",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "BestBlogs"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "Aven App Agent",
+    "url": "https://www.producthunt.com/products/aven-app-agent",
     "source": "Product Hunt",
     "lang": "en",
-    "published": "11-13 10:42",
-    "time": "11-13 10:42",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:31",
+    "time": "11-14 10:31",
+    "fetched": "2026-11-14",
     "group": "海外",
     "platforms": 1,
     "sources": [
@@ -2221,13 +2182,13 @@
     "members": []
    },
    {
-    "title": "Sendr V4: Lovable for GTM",
-    "url": "https://www.producthunt.com/products/sendr",
+    "title": "Filament by Galaxy",
+    "url": "https://www.producthunt.com/products/galaxy",
     "source": "Product Hunt",
     "lang": "en",
-    "published": "11-13 10:39",
-    "time": "11-13 10:39",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:26",
+    "time": "11-14 10:26",
+    "fetched": "2026-11-14",
     "group": "海外",
     "platforms": 1,
     "sources": [
@@ -2237,109 +2198,13 @@
     "members": []
    },
    {
-    "title": "Neura HQ",
-    "url": "https://www.producthunt.com/products/neura-4",
-    "source": "Product Hunt",
-    "lang": "en",
-    "published": "11-13 10:39",
-    "time": "11-13 10:39",
-    "fetched": "2026-11-13",
-    "group": "海外",
-    "platforms": 1,
-    "sources": [
-     "Product Hunt"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "Microsoft struggling to restore service as global outage affects Outlook and Teams",
-    "url": "https://www.bbc.co.uk/news/articles/c5gm3g9ldz8xo?at_medium=RSS&at_campaign=rss",
-    "source": "BBC Technology",
-    "lang": "en",
-    "published": "11-13 10:38",
-    "time": "11-13 10:38",
-    "fetched": "2026-11-13",
-    "group": "海外",
-    "platforms": 1,
-    "sources": [
-     "BBC Technology"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "おでん店主殺害 娘夫婦が無罪主張",
-    "url": "https://news.yahoo.co.jp/pickup/6602394?source=rss",
-    "source": "Yahoo Japan 热门（日文）",
-    "lang": "ja",
-    "published": "11-13 10:38",
-    "time": "11-13 10:38",
-    "fetched": "2026-11-13",
-    "group": "海外",
-    "platforms": 1,
-    "sources": [
-     "Yahoo Japan 热门（日文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "Seoul shares trade up late Fri. morning after Nvidia leadership turmoil",
-    "url": "https://en.yna.co.kr/view/AEN20261113003300320",
-    "source": "韩联社（英文）",
-    "lang": "en",
-    "published": "11-13 10:31",
-    "time": "11-13 10:31",
-    "fetched": "2026-11-13",
-    "group": "海外",
-    "platforms": 1,
-    "sources": [
-     "韩联社（英文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "エヌビディア 暫定CEOにクレス氏",
-    "url": "https://news.yahoo.co.jp/pickup/6602391?source=rss",
-    "source": "Yahoo Japan 热门（日文）",
-    "lang": "ja",
-    "published": "11-13 10:30",
-    "time": "11-13 10:30",
-    "fetched": "2026-11-13",
-    "group": "海外",
-    "platforms": 1,
-    "sources": [
-     "Yahoo Japan 热门（日文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "Microsoft障害 日本政府にも影響",
-    "url": "https://news.yahoo.co.jp/pickup/6602393?source=rss",
-    "source": "Yahoo Japan 热门（日文）",
-    "lang": "ja",
-    "published": "11-13 10:22",
-    "time": "11-13 10:22",
-    "fetched": "2026-11-13",
-    "group": "海外",
-    "platforms": 1,
-    "sources": [
-     "Yahoo Japan 热门（日文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "人工智能正让苹果的应用审核流程成为合成器开发者的噩梦",
-    "url": "https://synthanatomy.com/2026/11/ai-is-turning-apples-app-review-process-into-a-nightmare-for-developers.html",
+    "title": "乌克兰在不到两周的时间内摧毁了俄罗斯36%的炼油产能",
+    "url": "https://english.nv.ua/nation/thirteen-day-drone-blitz-paralyzes-36-of-moscow-s-oil-50658616.html",
     "source": "HN 中文",
     "lang": "zh",
-    "published": "11-13 10:14",
-    "time": "11-13 10:14",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:23",
+    "time": "11-14 10:23",
+    "fetched": "2026-11-14",
     "group": "海外",
     "platforms": 1,
     "sources": [
@@ -2349,13 +2214,77 @@
     "members": []
    },
    {
-    "title": "Kia to invest $2 bln in India to ramp up production",
-    "url": "https://en.yna.co.kr/view/AEN20261113003200320",
+    "title": "Templify AI",
+    "url": "https://www.producthunt.com/products/templify",
+    "source": "Product Hunt",
+    "lang": "en",
+    "published": "11-14 10:16",
+    "time": "11-14 10:16",
+    "fetched": "2026-11-14",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "Product Hunt"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "在全美联邦航空管理局（FAA）实施地面停飞令期间，Amtrak预订系统出现重大故障",
+    "url": "https://www.fox5dc.com/news/amtrak-outage-ticket-booking-faa-ground-stop-november-13-2026",
+    "source": "HN 中文",
+    "lang": "zh",
+    "published": "11-14 10:08",
+    "time": "11-14 10:08",
+    "fetched": "2026-11-14",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "HN 中文"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "測量中崩れた岩に挟まれ 29歳死亡",
+    "url": "https://news.yahoo.co.jp/pickup/6602521?source=rss",
+    "source": "Yahoo Japan 热门（日文）",
+    "lang": "ja",
+    "published": "11-14 09:55",
+    "time": "11-14 09:55",
+    "fetched": "2026-11-14",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "Yahoo Japan 热门（日文）"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "全米 航空機の地上待機命令を解除",
+    "url": "https://news.yahoo.co.jp/pickup/6602522?source=rss",
+    "source": "Yahoo Japan 热门（日文）",
+    "lang": "ja",
+    "published": "11-14 09:50",
+    "time": "11-14 09:50",
+    "fetched": "2026-11-14",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "Yahoo Japan 热门（日文）"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "Actor Ko Kyung-pyo caught drunk driving after crashing into cleaning truck",
+    "url": "https://en.yna.co.kr/view/AEN20261114001200315",
     "source": "韩联社（英文）",
     "lang": "en",
-    "published": "11-13 10:13",
-    "time": "11-13 10:13",
-    "fetched": "2026-11-13",
+    "published": "11-14 09:38",
+    "time": "11-14 09:38",
+    "fetched": "2026-11-14",
     "group": "海外",
     "platforms": 1,
     "sources": [
@@ -2363,46 +2292,39 @@
     ],
     "merge": "candidate",
     "members": []
-   }
-  ],
-  "热搜词": [
+   },
    {
-    "title": "timberwolves vs mavericks",
-    "url": "https://trends.google.com/trending/rss?geo=GB",
-    "source": "Google Trends 英国",
+    "title": "(LEAD) Trump to meet Xi, Putin in China next week; no plans for N. Korea engagement: reports",
+    "url": "https://en.yna.co.kr/view/AEN20261114001151315",
+    "source": "韩联社（英文）",
     "lang": "en",
-    "published": "11-13 10:20",
-    "time": "11-13 09:20",
-    "fetched": "2026-11-13",
-    "group": "热搜词",
-    "platforms": 3,
+    "published": "11-14 09:30",
+    "time": "11-14 09:30",
+    "fetched": "2026-11-14",
+    "group": "海外",
+    "platforms": 1,
     "sources": [
-     "Google Trends 台湾",
-     "Google Trends 新加坡",
-     "Google Trends 英国"
+     "韩联社（英文）"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "Google Trends 新加坡",
-      "title": "timberwolves vs mavericks",
-      "url": "https://trends.google.com/trending/rss?geo=SG"
-     },
-     {
-      "source": "Google Trends 台湾",
-      "title": "timberwolves vs mavericks",
-      "url": "https://trends.google.com/trending/rss?geo=TW"
+      "source": "韩联社（英文）",
+      "title": "Trump to meet Xi, Putin in China next week; no plans for N. Korea engagement: reports",
+      "url": "https://en.yna.co.kr/view/AEN20261114001100315"
      }
     ]
-   },
+   }
+  ],
+  "热搜词": [
    {
-    "title": "new zealand national cricket team vs india national cricket team match scorecard",
+    "title": "guatemala vs canada",
     "url": "https://trends.google.com/trending/rss?geo=GB",
     "source": "Google Trends 英国",
     "lang": "en",
-    "published": "11-13 09:50",
-    "time": "11-13 09:50",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:20",
+    "time": "11-14 10:20",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 2,
     "sources": [
@@ -2413,19 +2335,42 @@
     "members": [
      {
       "source": "Google Trends 新加坡",
-      "title": "new zealand national cricket team vs india national cricket team match scorecard",
+      "title": "guatemala vs canada",
       "url": "https://trends.google.com/trending/rss?geo=SG"
      }
     ]
    },
    {
-    "title": "trae young",
+    "title": "argentina vs uruguay",
+    "url": "https://trends.google.com/trending/rss?geo=SG",
+    "source": "Google Trends 新加坡",
+    "lang": "en",
+    "published": "11-14 07:30",
+    "time": "11-14 06:30",
+    "fetched": "2026-11-14",
+    "group": "热搜词",
+    "platforms": 2,
+    "sources": [
+     "Google Trends 新加坡",
+     "Google Trends 香港"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "Google Trends 香港",
+      "title": "argentina vs uruguay",
+      "url": "https://trends.google.com/trending/rss?geo=HK"
+     }
+    ]
+   },
+   {
+    "title": "houston vs colorado",
     "url": "https://trends.google.com/trending/rss?geo=US",
     "source": "Google Trends 美国",
     "lang": "en",
-    "published": "11-13 10:30",
-    "time": "11-13 10:30",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:20",
+    "time": "11-14 10:20",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
@@ -2435,13 +2380,13 @@
     "members": []
    },
    {
-    "title": "jabari walker",
+    "title": "tyler herro",
     "url": "https://trends.google.com/trending/rss?geo=US",
     "source": "Google Trends 美国",
     "lang": "en",
-    "published": "11-13 10:30",
-    "time": "11-13 10:30",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:20",
+    "time": "11-14 10:20",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
@@ -2451,13 +2396,13 @@
     "members": []
    },
    {
-    "title": "kyle larson 2026 nascar champion",
+    "title": "robin murphy missing",
     "url": "https://trends.google.com/trending/rss?geo=US",
     "source": "Google Trends 美国",
     "lang": "en",
-    "published": "11-13 10:30",
-    "time": "11-13 10:30",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:20",
+    "time": "11-14 10:20",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
@@ -2467,13 +2412,13 @@
     "members": []
    },
    {
-    "title": "bruno fernandes contract negotiations united",
+    "title": "spurs vs warriors",
     "url": "https://trends.google.com/trending/rss?geo=GB",
     "source": "Google Trends 英国",
     "lang": "en",
-    "published": "11-13 10:30",
-    "time": "11-13 10:30",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:20",
+    "time": "11-14 10:20",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
@@ -2483,13 +2428,13 @@
     "members": []
    },
    {
-    "title": "google gemini",
+    "title": "岸和田アクアパーク",
     "url": "https://trends.google.com/trending/rss?geo=JP",
     "source": "Google Trends 日本",
     "lang": "ja",
-    "published": "11-13 10:30",
-    "time": "11-13 10:30",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:20",
+    "time": "11-14 10:20",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
@@ -2499,51 +2444,45 @@
     "members": []
    },
    {
-    "title": "伊曼紐爾·奎克利",
-    "url": "https://trends.google.com/trending/rss?geo=TW",
-    "source": "Google Trends 台湾",
-    "lang": "zh-tw",
-    "published": "11-13 10:30",
-    "time": "11-13 10:30",
-    "fetched": "2026-11-13",
+    "title": "糸井嘉男",
+    "url": "https://trends.google.com/trending/rss?geo=JP",
+    "source": "Google Trends 日本",
+    "lang": "ja",
+    "published": "11-14 10:20",
+    "time": "11-14 10:20",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
-     "Google Trends 台湾"
+     "Google Trends 日本"
     ],
     "merge": "candidate",
     "members": []
    },
    {
-    "title": "hkexpress",
-    "url": "https://trends.google.com/trending/rss?geo=HK",
-    "source": "Google Trends 香港",
-    "lang": "zh-hk",
-    "published": "11-13 10:20",
-    "time": "11-13 10:20",
-    "fetched": "2026-11-13",
+    "title": "bulls vs hawks",
+    "url": "https://trends.google.com/trending/rss?geo=GB",
+    "source": "Google Trends 英国",
+    "lang": "en",
+    "published": "11-14 10:10",
+    "time": "11-14 10:10",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
-     "Google Trends 香港"
+     "Google Trends 英国"
     ],
     "merge": "candidate",
-    "members": [
-     {
-      "source": "Google Trends 香港",
-      "title": "hk express",
-      "url": "https://trends.google.com/trending/rss?geo=HK"
-     }
-    ]
+    "members": []
    },
    {
-    "title": "singtel net profit drop h1",
+    "title": "cyclist accident singapore",
     "url": "https://trends.google.com/trending/rss?geo=SG",
     "source": "Google Trends 新加坡",
     "lang": "en",
-    "published": "11-13 10:20",
-    "time": "11-13 10:20",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:10",
+    "time": "11-14 10:10",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
@@ -2553,13 +2492,29 @@
     "members": []
    },
    {
-    "title": "セレッソ大阪",
+    "title": "pacers vs knicks",
+    "url": "https://trends.google.com/trending/rss?geo=SG",
+    "source": "Google Trends 新加坡",
+    "lang": "en",
+    "published": "11-14 10:00",
+    "time": "11-14 10:00",
+    "fetched": "2026-11-14",
+    "group": "热搜词",
+    "platforms": 1,
+    "sources": [
+     "Google Trends 新加坡"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "ポケモンgoワイルドエリア2026",
     "url": "https://trends.google.com/trending/rss?geo=JP",
     "source": "Google Trends 日本",
     "lang": "ja",
-    "published": "11-13 10:20",
-    "time": "11-13 10:20",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:00",
+    "time": "11-14 10:00",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
@@ -2569,13 +2524,13 @@
     "members": []
    },
    {
-    "title": "蘇輝湟",
+    "title": "楊超越",
     "url": "https://trends.google.com/trending/rss?geo=TW",
     "source": "Google Trends 台湾",
     "lang": "zh-tw",
-    "published": "11-13 10:20",
-    "time": "11-13 10:20",
-    "fetched": "2026-11-13",
+    "published": "11-14 10:00",
+    "time": "11-14 10:00",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
@@ -2585,45 +2540,29 @@
     "members": []
    },
    {
-    "title": "76ers vs raptors",
-    "url": "https://trends.google.com/trending/rss?geo=HK",
-    "source": "Google Trends 香港",
-    "lang": "zh-hk",
-    "published": "11-13 10:20",
-    "time": "11-13 10:20",
-    "fetched": "2026-11-13",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 香港"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "黒須駿",
-    "url": "https://trends.google.com/trending/rss?geo=JP",
-    "source": "Google Trends 日本",
-    "lang": "ja",
-    "published": "11-13 10:10",
-    "time": "11-13 10:10",
-    "fetched": "2026-11-13",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 日本"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "r·j·巴瑞特",
+    "title": "u23",
     "url": "https://trends.google.com/trending/rss?geo=TW",
     "source": "Google Trends 台湾",
     "lang": "zh-tw",
-    "published": "11-13 10:10",
-    "time": "11-13 10:10",
-    "fetched": "2026-11-13",
+    "published": "11-14 09:50",
+    "time": "11-14 09:50",
+    "fetched": "2026-11-14",
+    "group": "热搜词",
+    "platforms": 1,
+    "sources": [
+     "Google Trends 台湾"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "馬刺 對 勇士",
+    "url": "https://trends.google.com/trending/rss?geo=TW",
+    "source": "Google Trends 台湾",
+    "lang": "zh-tw",
+    "published": "11-14 09:40",
+    "time": "11-14 09:40",
+    "fetched": "2026-11-14",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
