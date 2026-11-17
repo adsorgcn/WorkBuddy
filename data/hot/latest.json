@@ -1,6 +1,6 @@
 {
- "date": "2026-11-16",
- "generated_at": "2026-11-16 10:18",
+ "date": "2026-11-17",
+ "generated_at": "2026-11-17 12:40",
  "feed": "https://raw.githubusercontent.com/adsorgcn/WorkBuddy/main/data/hot/latest.json",
  "how_to_use": "这是需求侧：今天各平台在聊什么。供给侧用你自己的 wxrank key 查公众号上这些题读了多少、爆没爆，两边对上才是题。platforms 是按标题相似度合并出来的候选数，不是已确认的同一事件，members 里有各源原标题，自己核。",
  "rules": {
@@ -21,400 +21,428 @@
  },
  "hot_now": [
   {
-   "title": "黄仁勋考虑重返英伟达",
-   "url": "https://s.weibo.com/weibo?q=%23%E9%BB%84%E4%BB%81%E5%8B%8B%E8%80%83%E8%99%91%E9%87%8D%E8%BF%94%E8%8B%B1%E4%BC%9F%E8%BE%BE%23&t=31&band_rank=11&Refer=top",
-   "source": "NewsNow 微博",
-   "lang": "zh",
-   "published": "11-16 09:04",
-   "time": "11-16 09:04",
-   "fetched": "2026-11-16",
-   "group": "科技",
-   "platforms": 4,
-   "sources": [
-    "HN 中文",
-    "NewsNow 微博",
-    "极客公园",
-    "爱范儿"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "爱范儿",
-     "title": "反转！黄仁勋考虑重返英伟达，科技大佬连夜组建「作战室」",
-     "url": "https://www.ifanr.com/1689549?utm_source=rss&utm_medium=rss&utm_campaign="
-    },
-    {
-     "source": "爱范儿",
-     "title": "早报｜黄仁勋考虑重返英伟达担任CEO/曝苹果智能眼镜明年6月发布/微软全球大宕机结束，持续超30小时",
-     "url": "https://www.ifanr.com/1689521?utm_source=rss&utm_medium=rss&utm_campaign="
-    },
-    {
-     "source": "极客公园",
-     "title": "曝黄仁勋考虑重返英伟达担任 CEO；苹果计划明年发布首款智能眼镜；OpenAI 撤销独立机器人研究团队",
-     "url": "http://www.geekpark.net/news/373994"
-    },
-    {
-     "source": "HN 中文",
-     "title": "黄仁勋可能会重返英伟达担任首席执行官",
-     "url": "https://www.reuters.com/world/china/jensen-huang-discusses-comeback-nvidia-ceo-with-allies-ft-reports-2026-11-15/"
-    },
-    {
-     "source": "HN 中文",
-     "title": "黄仁勋与盟友们讨论重返英伟达首席执行官之位一事",
-     "url": "https://www.ft.com/content/45383d86-33c4-4d99-86e5-5e058d3567c1"
-    }
-   ]
-  },
-  {
-   "title": "中国 10 月规模以上工业增加值同比 4.8%，前值 5.5%",
-   "url": "",
-   "source": "Readhub",
-   "lang": "zh",
-   "published": "11-16 10:15",
-   "time": "11-16 10:15",
-   "fetched": "2026-11-16",
-   "group": "财经",
-   "platforms": 3,
-   "sources": [
-    "NewsNow 法布财经 快讯",
-    "Readhub",
-    "华尔街见闻快讯"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "Readhub",
-     "title": "中国 10 月规模以上工业增加值同比 4.8%，前值 5.5%。",
-     "url": "https://wallstreetcn.com/livenews/3200326"
-    },
-    {
-     "source": "华尔街见闻快讯",
-     "title": "中国10月规上工业增加值同比放缓至4.8%，3D打印设备、锂电池、工业机器人产量增长较快",
-     "url": ""
-    },
-    {
-     "source": "NewsNow 法布财经 快讯",
-     "title": "中国国家统计局：10月份，规模以上工业增加值同比实际增长4.8%。从环比看，10月份，规模以上工业增加值比上月增长0.21%。1—10月份，规模以上工业增加值同比增长5.3%。",
-     "url": "https://www.fastbull.com/cn/fastshort/4355597_1_1"
-    }
-   ]
-  },
-  {
-   "title": "国家统计局：1—10月份全国房地产开发投资57215亿元，同比下降21.6%",
-   "url": "https://www.36kr.com/newsflashes/4071795003577479",
-   "source": "36氪快讯",
-   "lang": "zh",
-   "published": "11-16 10:01",
-   "time": "11-16 10:01",
-   "fetched": "2026-11-16",
-   "group": "财经",
-   "platforms": 3,
-   "sources": [
-    "36氪快讯",
-    "NewsNow 法布财经 快讯",
-    "华尔街见闻快讯"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "36氪快讯",
-     "title": "国家统计局：1—10月份全国固定资产投资（不含农户）364824亿元，同比下降8.1%",
-     "url": "https://www.36kr.com/newsflashes/4071794386703496"
-    },
-    {
-     "source": "华尔街见闻快讯",
-     "title": "国家统计局：1—10月份，全国房地产开发投资57215亿元，同比下降21.6%",
-     "url": ""
-    },
-    {
-     "source": "NewsNow 法布财经 快讯",
-     "title": "中国国家统计局：1—10月份，全国房地产开发投资57215亿元，同比下降21.6%；其中，住宅投资44102亿元，下降21.4%。",
-     "url": "https://www.fastbull.com/cn/fastshort/4355600_1_1"
-    },
-    {
-     "source": "NewsNow 法布财经 快讯",
-     "title": "中国国家统计局：1—10月份，全国固定资产投资（不含农户）364824亿元，同比下降8.1%。其中，知识产权产品投资同比增长9.2%。",
-     "url": "https://www.fastbull.com/cn/fastshort/4355596_1_1"
-    }
-   ]
-  },
-  {
-   "title": "习近平将同普京特朗普在深圳会晤",
-   "url": "https://m.baidu.com/s?word=%E4%B9%A0%E8%BF%91%E5%B9%B3%E5%B0%86%E5%90%8C%E6%99%AE%E4%BA%AC%E7%89%B9%E6%9C%97%E6%99%AE%E5%9C%A8%E6%B7%B1%E5%9C%B3%E4%BC%9A%E6%99%A4&sa=fyb_news",
-   "source": "百度热搜",
-   "lang": "zh",
-   "published": "",
-   "time": "",
-   "fetched": "2026-11-16",
-   "group": "热榜",
-   "platforms": 3,
-   "sources": [
-    "NewsNow 抖音",
-    "头条热榜",
-    "百度热搜"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "头条热榜",
-     "title": "习近平将同普京特朗普会晤",
-     "url": "https://www.toutiao.com/trending/7708568403857899574/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708568403857899574%22%2C%22hot_board_impr_id%22%3A%22202611161018254FB72F4BB01756425254%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%B9%A0%E8%BF%91%E5%B9%B3%E5%B0%86%E5%90%8C%E6%99%AE%E4%BA%AC%E7%89%B9%E6%9C%97%E6%99%AE%E4%BC%9A%E6%99%A4%22%7D&rank=&style_id=40132&topic_id=7708568403857899574"
-    },
-    {
-     "source": "NewsNow 抖音",
-     "title": "习近平将同普京特朗普会晤",
-     "url": "https://www.douyin.com/hot/2748056"
-    }
-   ]
-  },
-  {
-   "title": "A股中际旭创盘中创年内新低，现跌超8%；港股中际旭创(03308.HK)跌5.78%。",
-   "url": "https://flash.jin10.com/detail/20261116101056697800",
+   "title": "马来西亚与法国签署关键矿产和技术合作谅解备忘录。",
+   "url": "https://flash.jin10.com/detail/20261117123654180800",
    "source": "金十快讯",
    "lang": "zh",
-   "published": "11-16 10:10",
-   "time": "11-16 10:10",
-   "fetched": "2026-11-16",
+   "published": "11-17 12:36",
+   "time": "11-17 12:36",
+   "fetched": "2026-11-17",
    "group": "财经",
-   "platforms": 2,
+   "platforms": 3,
    "sources": [
-    "36氪快讯",
+    "NewsNow 法布财经 快讯",
+    "华尔街见闻快讯",
     "金十快讯"
    ],
    "merge": "candidate",
    "members": [
     {
-     "source": "36氪快讯",
-     "title": "A股中际旭创盘中创年内新低",
-     "url": "https://www.36kr.com/newsflashes/4071802637423744"
-    }
-   ]
-  },
-  {
-   "title": "中际旭创",
-   "url": "https://flash.jin10.com/detail/40264809",
-   "source": "金十快讯",
-   "lang": "zh",
-   "published": "11-16 10:10",
-   "time": "11-16 10:10",
-   "fetched": "2026-11-16",
-   "group": "财经",
-   "platforms": 2,
-   "sources": [
-    "NewsNow 雪球 热门股票",
-    "金十快讯"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "NewsNow 雪球 热门股票",
-     "title": "中际旭创",
-     "url": "https://xueqiu.com/s/SZ300308"
-    }
-   ]
-  },
-  {
-   "title": "NTTドコモ 全国で通信障害発生",
-   "url": "https://news.yahoo.co.jp/pickup/6602764?source=rss",
-   "source": "Yahoo Japan 热门（日文）",
-   "lang": "ja",
-   "published": "11-16 10:06",
-   "time": "11-16 10:06",
-   "fetched": "2026-11-16",
-   "group": "热搜词",
-   "platforms": 2,
-   "sources": [
-    "Google Trends 日本",
-    "Yahoo Japan 热门（日文）"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "Google Trends 日本",
-     "title": "ドコモ通信障害今日",
-     "url": "https://trends.google.com/trending/rss?geo=JP"
-    }
-   ]
-  },
-  {
-   "title": "10月份我国工业机器人产量同比增长26%",
-   "url": "https://www.36kr.com/newsflashes/4071802343478148",
-   "source": "36氪快讯",
-   "lang": "zh",
-   "published": "11-16 10:04",
-   "time": "11-16 10:04",
-   "fetched": "2026-11-16",
-   "group": "财经",
-   "platforms": 2,
-   "sources": [
-    "36氪快讯",
-    "华尔街见闻快讯"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
      "source": "华尔街见闻快讯",
-     "title": "国家统计局：10月份3D打印设备、锂离子电池、工业机器人产品产量同比分别增长85.9%、30.0%、26.0%。",
-     "url": ""
-    }
-   ]
-  },
-  {
-   "title": "国家统计局：1—10月份社会消费品零售总额增长1.0%",
-   "url": "https://www.36kr.com/newsflashes/4071792162280329",
-   "source": "36氪快讯",
-   "lang": "zh",
-   "published": "11-16 10:03",
-   "time": "11-16 10:03",
-   "fetched": "2026-11-16",
-   "group": "财经",
-   "platforms": 2,
-   "sources": [
-    "36氪快讯",
-    "华尔街见闻快讯"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "华尔街见闻快讯",
-     "title": "国家统计局：1-10月社会消费商品和服务零售总额同比增长2.5%",
+     "title": "马来西亚与法国签署关键矿产和技术合作谅解备忘录。",
      "url": ""
     },
     {
-     "source": "华尔街见闻快讯",
-     "title": "中国10月社会消费品零售总额同比 0.4%，前值 1.1%。",
-     "url": ""
+     "source": "NewsNow 法布财经 快讯",
+     "title": "马来西亚与法国签署关键矿产和技术合作谅解备忘录。",
+     "url": "https://www.fastbull.com/cn/fastshort/4356745_212_1"
     }
    ]
   },
   {
-   "title": "腾讯总办号召 AI 时代再创业，官方公布原文",
-   "url": "https://www.ithome.com/1/027/509.htm",
-   "source": "IT之家",
+   "title": "华为星芒OSTA O1 Pro上手体验",
+   "url": "https://www.toutiao.com/trending/7708960461298926130/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708960461298926130%22%2C%22hot_board_impr_id%22%3A%22202611171240443EDE26E3DD5FC61023ED%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%8D%8E%E4%B8%BA%E6%98%9F%E8%8A%92OSTA+O1+Pro%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C%22%7D&rank=&style_id=40132&topic_id=7708960461298926130",
+   "source": "头条热榜",
    "lang": "zh",
-   "published": "11-16 10:03",
-   "time": "11-16 10:03",
-   "fetched": "2026-11-16",
+   "published": "11-17 12:13",
+   "time": "11-17 12:13",
+   "fetched": "2026-11-17",
    "group": "科技",
-   "platforms": 2,
+   "platforms": 3,
    "sources": [
     "IT之家",
-    "新浪科技"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "新浪科技",
-     "title": "重磅干货|腾讯总办号召AI时代再创业：这是一个生死存亡的问题",
-     "url": "https://finance.sina.com.cn/hy/hyjz/2026-11-16/doc-iniywwza8918431.shtml"
-    }
-   ]
-  },
-  {
-   "title": "腾讯总办点赞WorkBuddy",
-   "url": "https://finance.sina.com.cn/hy/hyjz/2026-11-16/doc-iniywwzi2469038.shtml",
-   "source": "新浪科技",
-   "lang": "zh",
-   "published": "11-16 09:55",
-   "time": "11-16 09:55",
-   "fetched": "2026-11-16",
-   "group": "科技",
-   "platforms": 2,
-   "sources": [
-    "人人都是产品经理",
-    "新浪科技"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "新浪科技",
-     "title": "腾讯总：AI金字塔初见雏形，小微、元宝、WorkBuddy可以覆盖用户需求",
-     "url": "https://finance.sina.com.cn/hy/hyjz/2026-11-16/doc-iniywwzi2468495.shtml"
-    },
-    {
-     "source": "人人都是产品经理",
-     "title": "WorkBuddy发积分，腾讯新上线的「智囊团」发现金",
-     "url": "https://www.woshipm.com/ai/6494059.html"
-    }
-   ]
-  },
-  {
-   "title": "Anthropic CEO Amodei 在 IPO 前承认明年存在巨大不确定性，算力是公司最深的商业两难",
-   "url": "https://aihot.news/items/vl3jnosrbdn6i5j2we400046i",
-   "source": "AIHOT 精选流",
-   "lang": "zh",
-   "published": "11-16 09:52",
-   "time": "11-15 03:05",
-   "fetched": "2026-11-16",
-   "group": "科技",
-   "platforms": 2,
-   "sources": [
-    "AIHOT 精选流",
-    "IT之家"
+    "NewsNow 酷安",
+    "头条热榜"
    ],
    "merge": "candidate",
    "members": [
     {
      "source": "IT之家",
-     "title": "Anthropic CEO 阿莫迪：算力是最深层的商业难题",
-     "url": "https://www.ithome.com/1/027/505.htm"
+     "title": "【IT之家开箱】华为全新子品牌星芒 OSTA O1 Pro 手机实拍：渐变星芒紫，阔直板设计别具一格",
+     "url": "https://www.ithome.com/1/028/209.htm"
+    },
+    {
+     "source": "NewsNow 酷安",
+     "title": "星芒OSTA O1 Pro 上架官方商城，至高16GB+1TB",
+     "url": "https://www.coolapk.com/feed/75110768"
     }
    ]
   },
   {
-   "title": "Apple’s new study looks to improve the effectiveness of AI health tools",
-   "url": "https://www.theverge.com/tech/1033355/apples-new-study-looks-to-improve-the-effectiveness-of-ai-health-tools",
-   "source": "The Verge",
-   "lang": "en",
-   "published": "11-16 09:47",
-   "time": "11-16 09:47",
-   "fetched": "2026-11-16",
-   "group": "海外",
-   "platforms": 2,
+   "title": "360回应市场部负责人被带走",
+   "url": "https://www.36kr.com/newsflashes/4073328210219907",
+   "source": "36氪快讯",
+   "lang": "zh",
+   "published": "11-17 11:51",
+   "time": "11-17 11:51",
+   "fetched": "2026-11-17",
+   "group": "科技",
+   "platforms": 3,
    "sources": [
-    "Google News AI（英文）",
+    "36氪快讯",
+    "cnBeta",
+    "新浪科技"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "新浪科技",
+     "title": "360回应市场部负责人被带走：涉嫌经济问题，该员工正接受有关部门调查",
+     "url": "https://finance.sina.com.cn/tob/2026-11-17/doc-iniyzhhf1825917.shtml"
+    },
+    {
+     "source": "新浪科技",
+     "title": "网传360市场部负责人卜思被警方带走，涉嫌职务侵占等案件",
+     "url": "https://finance.sina.com.cn/jjxw/2026-11-16/doc-iniyxynz2669241.shtml"
+    },
+    {
+     "source": "cnBeta",
+     "title": "网传360市场部负责人卜思被警方带走 涉嫌职务侵占等案件",
+     "url": "https://www.cnbeta.com.tw/articles/tech/1586656.htm"
+    }
+   ]
+  },
+  {
+   "title": "California state AG sues OpenAI over rogue agent incidents",
+   "url": "https://techcrunch.com/2026/11/16/california-state-ag-sues-openai-over-rogue-agent-incidents/",
+   "source": "TechCrunch",
+   "lang": "en",
+   "published": "11-17 07:04",
+   "time": "11-17 04:07",
+   "fetched": "2026-11-17",
+   "group": "海外",
+   "platforms": 3,
+   "sources": [
+    "TechCrunch",
+    "The Information",
     "The Verge"
    ],
    "merge": "candidate",
    "members": [
     {
-     "source": "Google News AI（英文）",
-     "title": "Apple’s new study looks to improve the effectiveness of AI health tools - The Verge",
-     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNVnkxVDhKR1dTaFpDNllSTVV3M1huNjE2VktOUXNYNUNBMkhUWFBjZWd6aUE0Y1RWWlJhTW83WGh6TjFrNWI5dVpDU2R5TE9FclBORjZ6cnZYSXZ3U2ZwQzdjZjZ4cjI2T21nNzdzeGN2X0o5VGlNTmxPc1g2YklRbzNDZUI5THVEVmUwQWNrcmJvbHl5M2ZnV0F2bnZIWWp1M0hiVXZVQXpGa2VH?oc=5"
+     "source": "The Verge",
+     "title": "California sues OpenAI over rogue AI hacking incidents",
+     "url": "https://www.theverge.com/ai-artificial-intelligence/1034815/california-openai-hugging-face-lawsuit"
+    },
+    {
+     "source": "The Information",
+     "title": "California Sues OpenAI Over Hugging Face Attack, Other Cybersecurity Incidents",
+     "url": "https://www.theinformation.com/briefings/california-sues-openai-hugging-face-attack-cybersecurity-incidents"
     }
    ]
   },
   {
-   "title": "Suspected China spy linked to Nvidia's ex-boss left in 2025, Megaspeed says",
-   "url": "https://www.bbc.co.uk/news/articles/cmdx1vpprk9vo?at_medium=RSS&at_campaign=rss",
-   "source": "BBC Technology",
-   "lang": "en",
-   "published": "11-16 09:47",
-   "time": "11-16 09:47",
-   "fetched": "2026-11-16",
-   "group": "海外",
-   "platforms": 2,
+   "title": "特朗普：不介意黄仁勋重返英伟达",
+   "url": "https://www.cnbeta.com.tw/articles/tech/1586674.htm",
+   "source": "cnBeta",
+   "lang": "zh",
+   "published": "11-17 06:37",
+   "time": "11-17 06:37",
+   "fetched": "2026-11-17",
+   "group": "热榜",
+   "platforms": 3,
    "sources": [
-    "BBC Technology",
-    "Google News AI（英文）"
+    "NewsNow 凤凰网",
+    "NewsNow 腾讯新闻 综合早报",
+    "cnBeta"
    ],
    "merge": "candidate",
    "members": [
     {
-     "source": "Google News AI（英文）",
-     "title": "Suspected China spy linked to Nvidia's ex-boss left in 2025, Megaspeed says - BBC",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBJV1pWdW9NZ0tRcjE1U21pVTVyUnpvSGVqZ2RqZ2VpSlNER3Q0WGcta0piOEp3NmZURS1DT3BEd0ZPM3p1Q2pBM3B0ZkttNVRLc0hCaGlqSXlwRUU?oc=5"
+     "source": "NewsNow 凤凰网",
+     "title": "特朗普称不介意黄仁勋重返英伟达",
+     "url": "https://original.ifeng.com/c/8y7cczZKHgK"
+    },
+    {
+     "source": "NewsNow 腾讯新闻 综合早报",
+     "title": "特朗普：不介意黄仁勋重掌英伟达",
+     "url": "https://view.inews.qq.com/a/20261116A0EHEK00"
     }
    ]
   },
   {
-   "title": "英伟达据报曾就员工涉向中国大陆走私晶片案向台湾官员求助",
-   "url": "https://www.zaochenbao.com/news/taiwan/202611/1685614.html",
+   "title": "APEC“中国年”经贸成果丰硕",
+   "url": "https://www.toutiao.com/article/7708732717420085794",
+   "source": "头条热榜",
+   "lang": "zh",
+   "published": "",
+   "time": "",
+   "fetched": "2026-11-17",
+   "group": "热榜",
+   "platforms": 3,
+   "sources": [
+    "NewsNow 微博",
+    "NewsNow 抖音",
+    "头条热榜"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "NewsNow 微博",
+     "title": "数说APEC中国年经贸成果",
+     "url": "https://s.weibo.com/weibo?q=%23%E6%95%B0%E8%AF%B4APEC%E4%B8%AD%E5%9B%BD%E5%B9%B4%E7%BB%8F%E8%B4%B8%E6%88%90%E6%9E%9C%23&t=31&band_rank=3&Refer=top"
+    },
+    {
+     "source": "NewsNow 抖音",
+     "title": "APEC“中国年”经贸成果丰硕",
+     "url": "https://www.douyin.com/hot/2749899"
+    }
+   ]
+  },
+  {
+   "title": "越共中央总书记苏林抵达深圳",
+   "url": "https://www.toutiao.com/trending/7708923411052888585/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%228%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708923411052888585%22%2C%22hot_board_impr_id%22%3A%22202611171240443EDE26E3DD5FC61023ED%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%B6%8A%E5%85%B1%E4%B8%AD%E5%A4%AE%E6%80%BB%E4%B9%A6%E8%AE%B0%E8%8B%8F%E6%9E%97%E6%8A%B5%E8%BE%BE%E6%B7%B1%E5%9C%B3%22%7D&rank=&style_id=40132&topic_id=7708923411052888585",
+   "source": "头条热榜",
+   "lang": "zh",
+   "published": "",
+   "time": "",
+   "fetched": "2026-11-17",
+   "group": "热榜",
+   "platforms": 3,
+   "sources": [
+    "NewsNow 卫星通讯社",
+    "NewsNow 抖音",
+    "头条热榜"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "NewsNow 抖音",
+     "title": "苏林抵达深圳",
+     "url": "https://www.douyin.com/hot/2749925"
+    },
+    {
+     "source": "NewsNow 卫星通讯社",
+     "title": "越共中央总书记苏林抵达深圳，将出席APEC领导人会议",
+     "url": "https://sputniknews.cn/20261117/1074145636.html"
+    }
+   ]
+  },
+  {
+   "title": "习近平对人民法院工作作出重要指示",
+   "url": "https://www.36kr.com/newsflashes/4073335140815752",
+   "source": "36氪快讯",
+   "lang": "zh",
+   "published": "11-17 12:08",
+   "time": "11-17 12:08",
+   "fetched": "2026-11-17",
+   "group": "财经",
+   "platforms": 2,
+   "sources": [
+    "36氪快讯",
+    "华尔街见闻快讯"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "华尔街见闻快讯",
+     "title": "习近平对人民法院工作作出重要指示",
+     "url": ""
+    }
+   ]
+  },
+  {
+   "title": "商务部等9部门深入推进再生资源回收体系建设",
+   "url": "https://www.36kr.com/newsflashes/4073324953851017",
+   "source": "36氪快讯",
+   "lang": "zh",
+   "published": "11-17 12:02",
+   "time": "11-17 12:02",
+   "fetched": "2026-11-17",
+   "group": "财经",
+   "platforms": 2,
+   "sources": [
+    "36氪快讯",
+    "华尔街见闻快讯"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "华尔街见闻快讯",
+     "title": "商务部等9部门深入推进再生资源回收体系建设",
+     "url": ""
+    }
+   ]
+  },
+  {
+   "title": "pak vs sl",
+   "url": "https://trends.google.com/trending/rss?geo=US",
+   "source": "Google Trends 美国",
+   "lang": "en",
+   "published": "11-17 12:00",
+   "time": "11-17 12:00",
+   "fetched": "2026-11-17",
+   "group": "热搜词",
+   "platforms": 2,
+   "sources": [
+    "Google Trends 美国",
+    "Google Trends 英国"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "Google Trends 英国",
+     "title": "pak vs sl",
+     "url": "https://trends.google.com/trending/rss?geo=GB"
+    }
+   ]
+  },
+  {
+   "title": "Mercuria：全球铜市场处于“极度失衡”状态。\n\n预计铜精矿产量增长受限将持续至2028年。",
+   "url": "",
+   "source": "华尔街见闻快讯",
+   "lang": "zh",
+   "published": "11-17 11:51",
+   "time": "11-17 11:51",
+   "fetched": "2026-11-17",
+   "group": "财经",
+   "platforms": 2,
+   "sources": [
+    "NewsNow 法布财经 快讯",
+    "华尔街见闻快讯"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "NewsNow 法布财经 快讯",
+     "title": "Mercuria：全球铜市场处于“极度失衡”状态。",
+     "url": "https://www.fastbull.com/cn/fastshort/4356730_212_1"
+    }
+   ]
+  },
+  {
+   "title": "段永平三季度减持英伟达",
+   "url": "https://www.36kr.com/newsflashes/4073334662648967",
+   "source": "36氪快讯",
+   "lang": "zh",
+   "published": "11-17 11:43",
+   "time": "11-17 11:43",
+   "fetched": "2026-11-17",
+   "group": "财经",
+   "platforms": 2,
+   "sources": [
+    "36氪快讯",
+    "华尔街见闻快讯"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "华尔街见闻快讯",
+     "title": "段永平三季度减持英伟达",
+     "url": ""
+    }
+   ]
+  },
+  {
+   "title": "习近平会见越共中央总书记、国家主席苏林",
+   "url": "https://www.36kr.com/newsflashes/4073311405970307",
+   "source": "36氪快讯",
+   "lang": "zh",
+   "published": "11-17 11:41",
+   "time": "11-17 11:41",
+   "fetched": "2026-11-17",
+   "group": "财经",
+   "platforms": 2,
+   "sources": [
+    "36氪快讯",
+    "华尔街见闻快讯"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "华尔街见闻快讯",
+     "title": "习近平会见越共中央总书记、国家主席苏林",
+     "url": ""
+    }
+   ]
+  },
+  {
+   "title": "实测 Hy4 flash：WorkBuddy 限免，比旗舰便宜 20 倍的办公利器",
+   "url": "https://www.woshipm.com/ai/6494845.html",
+   "source": "人人都是产品经理",
+   "lang": "zh",
+   "published": "11-17 11:33",
+   "time": "11-17 11:33",
+   "fetched": "2026-11-17",
+   "group": "产品",
+   "platforms": 2,
+   "sources": [
+    "NewsNow 腾讯新闻 综合早报",
+    "人人都是产品经理"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "NewsNow 腾讯新闻 综合早报",
+     "title": "实测Hy4 flash：WorkBuddy限免，比旗舰便宜20倍的办公利器",
+     "url": "https://view.inews.qq.com/a/20261116A0CWEX00"
+    }
+   ]
+  },
+  {
+   "title": "timberwolves vs trail blazers",
+   "url": "https://trends.google.com/trending/rss?geo=GB",
+   "source": "Google Trends 英国",
+   "lang": "en",
+   "published": "11-17 11:30",
+   "time": "11-17 10:10",
+   "fetched": "2026-11-17",
+   "group": "热搜词",
+   "platforms": 2,
+   "sources": [
+    "Google Trends 新加坡",
+    "Google Trends 英国"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "Google Trends 新加坡",
+     "title": "timberwolves vs trail blazers",
+     "url": "https://trends.google.com/trending/rss?geo=SG"
+    }
+   ]
+  },
+  {
+   "title": "SuperLink2026开启创投行业超级链接时刻，12月北京见",
+   "url": "https://www.qbitai.com/2026/11/510493.html",
+   "source": "量子位",
+   "lang": "zh",
+   "published": "11-17 11:20",
+   "time": "11-16 15:58",
+   "fetched": "2026-11-17",
+   "group": "财经",
+   "platforms": 2,
+   "sources": [
+    "量子位",
+    "钛媒体"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "钛媒体",
+     "title": "SuperLink2026开启创投行业超级链接时刻，12月北京见",
+     "url": "https://www.tmtpost.com/8206989.html"
+    }
+   ]
+  },
+  {
+   "title": "中国主要AI企业削弱新模型网络攻击能力",
+   "url": "https://www.zaochenbao.com/news/china/202611/1785674.html",
    "source": "NewsNow 联合早报",
    "lang": "zh",
-   "published": "11-16 09:45",
-   "time": "11-16 08:52",
-   "fetched": "2026-11-16",
+   "published": "11-17 10:43",
+   "time": "11-17 10:20",
+   "fetched": "2026-11-17",
    "group": "热榜",
    "platforms": 2,
    "sources": [
@@ -425,123 +453,77 @@
    "members": [
     {
      "source": "NewsNow 靠谱新闻",
-     "title": "英伟达据报就员工涉走私案向台湾官员求助",
-     "url": "https://kaopu.news/story/2026-11-16/nvidia-seeks-taiwan-help-smuggling-case-acb765?utm_source=rss&utm_medium=feed"
+     "title": "彭博社称中国AI企业限制新模型网络攻击能力",
+     "url": "https://kaopu.news/story/2026-11-17/bloomberg-china-ai-firms-curb-cyber-capabilities-9b0062?utm_source=rss&utm_medium=feed"
     }
    ]
   },
   {
-   "title": "官方通报湘超球迷拉侮辱性横幅",
-   "url": "https://www.toutiao.com/trending/7708407472666574890/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708407472666574890%22%2C%22hot_board_impr_id%22%3A%22202611161018254FB72F4BB01756425254%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%AE%98%E6%96%B9%E9%80%9A%E6%8A%A5%E6%B9%98%E8%B6%85%E7%90%83%E8%BF%B7%E6%8B%89%E4%BE%AE%E8%BE%B1%E6%80%A7%E6%A8%AA%E5%B9%85%22%7D&rank=&style_id=40132&topic_id=7708407472666574890",
-   "source": "头条热榜",
-   "lang": "zh",
-   "published": "11-16 09:36",
-   "time": "11-16 09:36",
-   "fetched": "2026-11-16",
-   "group": "热榜",
-   "platforms": 2,
-   "sources": [
-    "NewsNow 懂球帝",
-    "头条热榜"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "NewsNow 懂球帝",
-     "title": "官方：湘超娄底赛区部分球迷拉侮辱性横幅，2人被行政拘留5日",
-     "url": "https://www.dongqiudi.com/article/6658740"
-    }
-   ]
-  },
-  {
-   "title": "中俄美元首会晤将于星期四在深圳举行",
-   "url": "https://www.zaochenbao.com/news/china/202611/1685616.html",
-   "source": "NewsNow 联合早报",
-   "lang": "zh",
-   "published": "11-16 09:30",
-   "time": "11-16 09:30",
-   "fetched": "2026-11-16",
-   "group": "热榜",
-   "platforms": 2,
-   "sources": [
-    "NewsNow 卫星通讯社",
-    "NewsNow 联合早报"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "NewsNow 卫星通讯社",
-     "title": "中方官宣：中俄美元首会晤将于11月19日在深圳举行",
-     "url": "https://sputniknews.cn/20261116/1074124295.html"
-    }
-   ]
-  },
-  {
-   "title": "突发！DeepSeek开放全家桶API",
-   "url": "https://www.qbitai.com/2026/11/510003.html",
-   "source": "量子位",
-   "lang": "zh",
-   "published": "11-16 09:18",
-   "time": "11-14 10:39",
-   "fetched": "2026-11-16",
-   "group": "产品",
-   "platforms": 2,
-   "sources": [
-    "人人都是产品经理",
-    "量子位"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "人人都是产品经理",
-     "title": "DeepSeek开放全家桶应用API：可1:1完整复刻DeepSeek App",
-     "url": "https://www.woshipm.com/ai/6494219.html"
-    }
-   ]
-  },
-  {
-   "title": "旧的Bitly链接正遭到劫持",
-   "url": "https://ransomnews.com/burger-king-tweet-bitly-link-hijack-2026/",
-   "source": "HN 中文",
-   "lang": "zh",
-   "published": "11-16 08:02",
-   "time": "11-16 08:02",
-   "fetched": "2026-11-16",
-   "group": "海外",
-   "platforms": 2,
-   "sources": [
-    "BestBlogs",
-    "HN 中文"
-   ],
-   "merge": "candidate",
-   "members": [
-    {
-     "source": "BestBlogs",
-     "title": "汉堡王、麦当劳和特朗普推文中的旧 Bitly 链接遭劫持",
-     "url": "https://www.bestblogs.dev/en/article/42deaf745e?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item"
-    }
-   ]
-  },
-  {
-   "title": "OpenAI Launches ChatGPT Wallet",
-   "url": "https://www.theinformation.com/briefings/openai-launches-chatgpt-wallet",
-   "source": "The Information",
+   "title": "heat vs rockets",
+   "url": "https://trends.google.com/trending/rss?geo=GB",
+   "source": "Google Trends 英国",
    "lang": "en",
-   "published": "11-16 07:45",
-   "time": "11-16 07:45",
-   "fetched": "2026-11-16",
-   "group": "海外",
+   "published": "11-17 10:40",
+   "time": "11-17 09:20",
+   "fetched": "2026-11-17",
+   "group": "热搜词",
    "platforms": 2,
    "sources": [
-    "OpenAI News",
-    "The Information"
+    "Google Trends 新加坡",
+    "Google Trends 英国"
    ],
    "merge": "candidate",
    "members": [
     {
-     "source": "OpenAI News",
-     "title": "Introducing ChatGPT Wallet",
-     "url": "https://openai.com/index/introducing-chatgpt-wallet"
+     "source": "Google Trends 新加坡",
+     "title": "heat vs rockets",
+     "url": "https://trends.google.com/trending/rss?geo=SG"
+    }
+   ]
+  },
+  {
+   "title": "pelicans vs warriors",
+   "url": "https://trends.google.com/trending/rss?geo=GB",
+   "source": "Google Trends 英国",
+   "lang": "en",
+   "published": "11-17 10:10",
+   "time": "11-17 09:10",
+   "fetched": "2026-11-17",
+   "group": "热搜词",
+   "platforms": 2,
+   "sources": [
+    "Google Trends 英国",
+    "Google Trends 香港"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "Google Trends 香港",
+     "title": "pelicans vs warriors",
+     "url": "https://trends.google.com/trending/rss?geo=HK"
+    }
+   ]
+  },
+  {
+   "title": "Best Early Black Friday Espresso Machine Deals (2026)",
+   "url": "https://www.wired.com/story/early-black-friday-coffee-espresso-deals-11-16-2026/",
+   "source": "Wired",
+   "lang": "en",
+   "published": "11-17 09:10",
+   "time": "11-17 04:00",
+   "fetched": "2026-11-17",
+   "group": "热搜词",
+   "platforms": 2,
+   "sources": [
+    "Google Trends 英国",
+    "Wired"
+   ],
+   "merge": "candidate",
+   "members": [
+    {
+     "source": "Google Trends 英国",
+     "title": "black friday deals",
+     "url": "https://trends.google.com/trending/rss?geo=GB"
     }
    ]
   }
@@ -549,46 +531,42 @@
  "groups": {
   "AI": [
    {
-    "title": "South Korea's top scorer in tax accountancy exam admits cheating",
-    "url": "https://www.bbc.co.uk/news/articles/ckvg2ezvpe08o?at_medium=RSS&at_campaign=rss",
-    "source": "BBC Technology",
-    "lang": "en",
-    "published": "11-16 03:48",
-    "time": "11-15 21:37",
-    "fetched": "2026-11-16",
+    "title": "加州总检察长起诉OpenAI智能体失控",
+    "url": "https://aihot.news/items/t1ol5cc73f6teh8f32wvri1cn",
+    "source": "AIHOT 热点Top10",
+    "lang": "zh",
+    "published": "11-17 06:41",
+    "time": "11-17 06:41",
+    "fetched": "2026-11-17",
     "group": "AI",
     "platforms": 2,
     "sources": [
-     "BBC Technology",
-     "Google News AI（英文）"
+     "AIHOT 热点Top10",
+     "AIHOT 精选流",
+     "cnBeta"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "Google News AI（英文）",
-      "title": "Top scorer on South Korean tax exam confesses to cheating with AI - Reuters",
-      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPVjJtaVF1ZGdVTmRVNlB2Mk5GeEVtaTk2UHIxbW16RHU2M0hNQ1hTZW1XTkVPTzlYQnNYV2FDMlZGQjZpMXdySHZhMDFUMDkxOWJybnE4ekV6LVRuV3p5bHZiU3dTVWsyNkpOTkdaV3gxR3plNTF1TTdyVDlIUklCekFkNG5yaFdQZ3lQVjhyQXNxX09UQnVuYlhLMjNoMVVDZFk4R2xhQVd4T2xjaWNfdVZFZW4?oc=5"
+      "source": "AIHOT 精选流",
+      "title": "加州总检察长起诉 OpenAI，指控其 AI 智能体失控并攻击 Hugging Face",
+      "url": "https://aihot.news/items/t1ol5cc73f6teh8f32wvri1cn"
      },
      {
-      "source": "Google News AI（英文）",
-      "title": "South Korea's top scorer in tax accountancy exam admits cheating - BBC",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1lOUVQZFp1akk1cEpBcHBndHRjTEhzbGx1TzlHZGx0Wkt4LTk1dlNPVGZ1RjNqWkJ5by1FSG1HdnJGTjZBU0JGeGp3ZF91R2trSUFpeU1kUmdQc1E?oc=5"
-     },
-     {
-      "source": "Google News AI（英文）",
-      "title": "160 questions, only one wrong: top scorer in South Korea tax exam admits AI cheating - The Guardian",
-      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNOTJZbzJTbkZObVJJNzkyOExaejBHV2s4X2VON2x1Y0tvb3F2UFJJYU1URnRHdENVSEstSi1ScEw0OVEwTlRfTUFONEdTYl9YYlpNa2RUQXU2VTl2R1RWM0F4MXJ4aUFlNWk0TTJtOTh0ZWNyNGZfNVNuRF9fcnpiYmlkNDhLcUJSNF9wcUF3Y2RQdWZ4YUdnc1RMMHo?oc=5"
+      "source": "cnBeta",
+      "title": "加州起诉OpenAI：指控AI智能体多次失控攻击网络平台 构成公共妨害",
+      "url": "https://www.cnbeta.com.tw/articles/tech/1586680.htm"
      }
     ]
    },
    {
-    "title": "Super Agent 进群：今年11.11，多了个会主动干活的“数字人队长”",
-    "url": "https://www.infoq.cn/article/myl5Mcw3iyCYv3ZJ3hwQ?utm_source=rss&utm_medium=article",
+    "title": "Vitest 5 通过共享 Vite 服务器、跟踪视图和更严格的测试默认设置来优先保障性能",
+    "url": "https://www.infoq.cn/article/wy7Osc1cHY1U9gQR3pwH?utm_source=rss&utm_medium=article",
     "source": "InfoQ 中文",
     "lang": "zh",
-    "published": "11-16 16:00",
-    "time": "11-16 16:00",
-    "fetched": "2026-11-16",
+    "published": "11-17 20:00",
+    "time": "11-17 20:00",
+    "fetched": "2026-11-17",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -598,13 +576,125 @@
     "members": []
    },
    {
-    "title": "Qwen 发布 Qwen4-Max：2.4T 参数骨干、百万 token 上下文与长程智能体能力",
-    "url": "https://aihot.news/items/nqcfrkilrh7nhnpd03t9q1zfh",
+    "title": "File Mover Express：亚马逊云科技发布用于 S3 文件传输的开源工具",
+    "url": "https://www.infoq.cn/article/i0a4s8Cf7WMxcZha74kF?utm_source=rss&utm_medium=article",
+    "source": "InfoQ 中文",
+    "lang": "zh",
+    "published": "11-17 19:00",
+    "time": "11-17 19:00",
+    "fetched": "2026-11-17",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "InfoQ 中文"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "openEuler 进军 Agentic Infra！主席熊伟：不讲大故事，先解决真问题",
+    "url": "https://www.infoq.cn/article/JhBUwv1pHR3S986Ih0iJ?utm_source=rss&utm_medium=article",
+    "source": "InfoQ 中文",
+    "lang": "zh",
+    "published": "11-17 18:41",
+    "time": "11-17 18:41",
+    "fetched": "2026-11-17",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "InfoQ 中文"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "Cloudflare open-sourced its browser for AI agents - it runs without Chromium",
+    "url": "https://www.reddit.com/r/artificial/comments/1xya7o1/cloudflare_opensourced_its_browser_for_ai_agents/",
+    "source": "Reddit r/artificial",
+    "lang": "en",
+    "published": "11-17 11:43",
+    "time": "11-17 11:43",
+    "fetched": "2026-11-17",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "Reddit r/artificial"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "AIに打ち明けた相談は“広告トラッカー”に筒抜け？　ChatGPT、Claude、Gemini含む42サービスを米大が調査",
+    "url": "https://www.itmedia.co.jp/news/article/2611/17/2000003241/",
+    "source": "ITmedia AI+（日文）",
+    "lang": "ja",
+    "published": "11-17 11:00",
+    "time": "11-17 11:00",
+    "fetched": "2026-11-17",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "ITmedia AI+（日文）"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "規制の厳しい業界でAIエージェントをどう導入する？　MicrosoftとIBMが発表した基盤「3つの特徴」",
+    "url": "https://www.itmedia.co.jp/enterprise/articles/2611/17/news015.html",
+    "source": "ITmedia AI+（日文）",
+    "lang": "ja",
+    "published": "11-17 10:30",
+    "time": "11-17 10:30",
+    "fetched": "2026-11-17",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "ITmedia AI+（日文）"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "Microsoft tested a coding-agent memory plugin. It cost more at first, then paid for itself.",
+    "url": "https://www.reddit.com/r/artificial/comments/1xy8mj7/microsoft_tested_a_codingagent_memory_plugin_it/",
+    "source": "Reddit r/artificial",
+    "lang": "en",
+    "published": "11-17 10:25",
+    "time": "11-17 10:25",
+    "fetched": "2026-11-17",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "Reddit r/artificial"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "OpenAI、児童性的虐待コンテンツ（CSAM）検出ツールを公開　ChatGPTで探すと24時間アカウント停止の警告も",
+    "url": "https://www.itmedia.co.jp/news/article/2611/17/2000003254/",
+    "source": "ITmedia AI+（日文）",
+    "lang": "ja",
+    "published": "11-17 09:45",
+    "time": "11-17 09:45",
+    "fetched": "2026-11-17",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "ITmedia AI+（日文）"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "奥尔特曼谈黄仁勋离职：同情其处境，相信 AI 行业能平稳度过",
+    "url": "https://aihot.news/items/eboxbyc4j2oekoiuhw5yf2gms",
     "source": "AIHOT 精选流",
     "lang": "zh",
-    "published": "11-16 10:00",
-    "time": "11-16 10:00",
-    "fetched": "2026-11-16",
+    "published": "11-17 09:03",
+    "time": "11-17 09:03",
+    "fetched": "2026-11-17",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -614,141 +704,13 @@
     "members": []
    },
    {
-    "title": "Morgan Stanley ‘Max Overweight’ Global Stocks on Intact AI Cycle - Bloomberg",
-    "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPeHdTZG14X3RFSFFCSzJ6VGlqaVdNekZxd0t5eXMzLWdjVHlhWjZkSndXSDV2RlZnWVBGdEtZaWxPakR6SjJWSUxSV0l6TGctTWowU25uQjdwWllDallCUnhENV9xeXJvM2RrYTdPSGxiNUtJbzlMZ0JvMUlwVzRQeUxmazFNZlM4alRDdHVhY01ZNnJqOHBtY0RIa2swSjBVV1BoWm5sQ0VubjF6NEVPeFhBNA?oc=5",
-    "source": "Google News AI（英文）",
-    "lang": "en",
-    "published": "11-16 09:48",
-    "time": "11-16 09:48",
-    "fetched": "2026-11-16",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "Google News AI（英文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "OpenAI Foundation Board Member: \"AI Accidents Will Soon Become the Leading Cause of Death for Humanity\" — BigGo Finance",
-    "url": "https://www.reddit.com/r/artificial/comments/1xxc7ah/openai_foundation_board_member_ai_accidents_will/",
-    "source": "Reddit r/artificial",
-    "lang": "en",
-    "published": "11-16 09:08",
-    "time": "11-16 09:08",
-    "fetched": "2026-11-16",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "Reddit r/artificial"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "Even With AI, Thinking Decides Who Wins - Forbes",
-    "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPODdTSWtjcGJUNnJDbEhBUlBGbVA2SkpZSXN6VFMtYkJEeEREU2t3T1hDbzBkbVVad09pWjIzQVB2dVpWa0duMDN6eXd6Qk1NMmhZS05qM3hidGVNS2J4YmhfTXhaOUVhNk00RURVSFM1RnJla2dYT2VnVVFkU2tla0M0VTd2Y0dLeDBNdTFtR1JObzdu?oc=5",
-    "source": "Google News AI（英文）",
-    "lang": "en",
-    "published": "11-16 08:58",
-    "time": "11-16 08:58",
-    "fetched": "2026-11-16",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "Google News AI（英文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "The jagged edge of the AI boom — Stanford HAI on why AI's gains are so uneven",
-    "url": "https://www.reddit.com/r/artificial/comments/1xxbzrh/the_jagged_edge_of_the_ai_boom_stanford_hai_on/",
-    "source": "Reddit r/artificial",
-    "lang": "en",
-    "published": "11-16 08:58",
-    "time": "11-16 08:58",
-    "fetched": "2026-11-16",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "Reddit r/artificial"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "OpenAI、AIエージェントが代わりに支払う「ChatGPT Wallet」　カード番号は渡さず、購入ごとに生体認証",
-    "url": "https://www.itmedia.co.jp/news/article/2611/16/2000003208/",
-    "source": "ITmedia AI+（日文）",
-    "lang": "ja",
-    "published": "11-16 08:49",
-    "time": "11-16 08:49",
-    "fetched": "2026-11-16",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "ITmedia AI+（日文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "エージェントが「安全に支払いを代行」する「ChatGPT Wallet」登場　OpenAIが決済大手と提携し開発　提供は米国から",
-    "url": "https://www.itmedia.co.jp/aiplus/article/2611/16/2000003211/",
-    "source": "ITmedia AI+（日文）",
-    "lang": "ja",
-    "published": "11-16 08:44",
-    "time": "11-16 08:44",
-    "fetched": "2026-11-16",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "ITmedia AI+（日文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "Reports of AI-related child sexual abuse material rise 8,400% in two years, data shows - The Guardian",
-    "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOdjB4X1BOTnFyWEdidVZIbzZnUjJqSFJvUjFUZkJ3TDFoZm9KNnViV3BKR0tvbTRwTFZWUUVsSHFfdjVzZVVCdEFuUkd5N3A1ZENveEMxYnlkTVNDRGdFakswTmhLX2h4MTdvcU5iaEVxSUFfZEE2Qi1UX1JfX1g1VWpUTWw5dTB4UTdud3BTUlFLblFaenlUb1QwN2F1cUhYaHFrT2JFUXRSUy1iSUZucGJxZ0FSSTI2?oc=5",
-    "source": "Google News AI（英文）",
-    "lang": "en",
-    "published": "11-16 08:01",
-    "time": "11-16 08:01",
-    "fetched": "2026-11-16",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "Google News AI（英文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "CAD図面内の品名や注記をAIで検索、DWG／DXF形式に対応",
-    "url": "https://monoist.itmedia.co.jp/mn/articles/2611/16/news016.html",
-    "source": "ITmedia AI+（日文）",
-    "lang": "ja",
-    "published": "11-16 08:00",
-    "time": "11-16 08:00",
-    "fetched": "2026-11-16",
-    "group": "AI",
-    "platforms": 1,
-    "sources": [
-     "ITmedia AI+（日文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "AI 手搓的 1.4M 纯 HTML 3D 游戏走红，卡兹克拆解 Three.js 程序化生成原理并给出提示词模板",
-    "url": "https://aihot.news/items/izdx1kuppob6c65ghvmyeal38",
+    "title": "科技界人士质疑黄仁勋辞职背后存在针对其的谋划",
+    "url": "https://aihot.news/items/ahjzxmo93fzc4psaftffvb3rx",
     "source": "AIHOT 精选流",
     "lang": "zh",
-    "published": "11-16 07:56",
-    "time": "11-16 07:56",
-    "fetched": "2026-11-16",
+    "published": "11-17 07:17",
+    "time": "11-17 07:17",
+    "fetched": "2026-11-17",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -758,13 +720,13 @@
     "members": []
    },
    {
-    "title": "Question about governments bailouts",
-    "url": "https://www.reddit.com/r/artificial/comments/1xxaco3/question_about_governments_bailouts/",
+    "title": "Sharing an AI workflow should mean more than sharing the prompt",
+    "url": "https://www.reddit.com/r/artificial/comments/1xy3mkd/sharing_an_ai_workflow_should_mean_more_than/",
     "source": "Reddit r/artificial",
     "lang": "en",
-    "published": "11-16 07:42",
-    "time": "11-16 07:42",
-    "fetched": "2026-11-16",
+    "published": "11-17 06:40",
+    "time": "11-17 06:40",
+    "fetched": "2026-11-17",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -774,13 +736,29 @@
     "members": []
    },
    {
-    "title": "A step toward defining the Standard Model on a lattice",
-    "url": "https://openai.com/index/step-toward-defining-the-standard-model",
+    "title": "Nvidia 财报前夕：临时 CEO Colette Kress 将面临哪些关键问题",
+    "url": "https://aihot.news/items/zjmebgetyj7859jhfcbl4x08r",
+    "source": "AIHOT 精选流",
+    "lang": "zh",
+    "published": "11-17 06:03",
+    "time": "11-17 06:03",
+    "fetched": "2026-11-17",
+    "group": "AI",
+    "platforms": 1,
+    "sources": [
+     "AIHOT 精选流"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "Broadening access to AI for scientists",
+    "url": "https://openai.com/index/expanding-chatgpt-for-academic-researchers",
     "source": "OpenAI News",
     "lang": "en",
-    "published": "11-16 06:00",
-    "time": "11-16 06:00",
-    "fetched": "2026-11-16",
+    "published": "11-17 01:00",
+    "time": "11-17 01:00",
+    "fetched": "2026-11-17",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -790,13 +768,13 @@
     "members": []
    },
    {
-    "title": "Our new blog for science",
-    "url": "https://openai.com/index/our-new-blog-for-science",
+    "title": "Strengthening the fight against online child sexual abuse with new tools and support",
+    "url": "https://openai.com/index/strengthening-online-child-safety",
     "source": "OpenAI News",
     "lang": "en",
-    "published": "11-16 06:00",
-    "time": "11-16 06:00",
-    "fetched": "2026-11-16",
+    "published": "11-17 01:00",
+    "time": "11-17 01:00",
+    "fetched": "2026-11-17",
     "group": "AI",
     "platforms": 1,
     "sources": [
@@ -808,250 +786,183 @@
   ],
   "科技": [
    {
-    "title": "黄仁勋考虑重返英伟达",
-    "url": "https://s.weibo.com/weibo?q=%23%E9%BB%84%E4%BB%81%E5%8B%8B%E8%80%83%E8%99%91%E9%87%8D%E8%BF%94%E8%8B%B1%E4%BC%9F%E8%BE%BE%23&t=31&band_rank=11&Refer=top",
-    "source": "NewsNow 微博",
+    "title": "华为星芒OSTA O1 Pro上手体验",
+    "url": "https://www.toutiao.com/trending/7708960461298926130/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%2215%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708960461298926130%22%2C%22hot_board_impr_id%22%3A%22202611171240443EDE26E3DD5FC61023ED%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%8D%8E%E4%B8%BA%E6%98%9F%E8%8A%92OSTA+O1+Pro%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C%22%7D&rank=&style_id=40132&topic_id=7708960461298926130",
+    "source": "头条热榜",
     "lang": "zh",
-    "published": "11-16 09:04",
-    "time": "11-16 09:04",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:13",
+    "time": "11-17 12:13",
+    "fetched": "2026-11-17",
     "group": "科技",
-    "platforms": 4,
-    "sources": [
-     "HN 中文",
-     "NewsNow 微博",
-     "极客公园",
-     "爱范儿"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "爱范儿",
-      "title": "反转！黄仁勋考虑重返英伟达，科技大佬连夜组建「作战室」",
-      "url": "https://www.ifanr.com/1689549?utm_source=rss&utm_medium=rss&utm_campaign="
-     },
-     {
-      "source": "爱范儿",
-      "title": "早报｜黄仁勋考虑重返英伟达担任CEO/曝苹果智能眼镜明年6月发布/微软全球大宕机结束，持续超30小时",
-      "url": "https://www.ifanr.com/1689521?utm_source=rss&utm_medium=rss&utm_campaign="
-     },
-     {
-      "source": "极客公园",
-      "title": "曝黄仁勋考虑重返英伟达担任 CEO；苹果计划明年发布首款智能眼镜；OpenAI 撤销独立机器人研究团队",
-      "url": "http://www.geekpark.net/news/373994"
-     },
-     {
-      "source": "HN 中文",
-      "title": "黄仁勋可能会重返英伟达担任首席执行官",
-      "url": "https://www.reuters.com/world/china/jensen-huang-discusses-comeback-nvidia-ceo-with-allies-ft-reports-2026-11-15/"
-     },
-     {
-      "source": "HN 中文",
-      "title": "黄仁勋与盟友们讨论重返英伟达首席执行官之位一事",
-      "url": "https://www.ft.com/content/45383d86-33c4-4d99-86e5-5e058d3567c1"
-     }
-    ]
-   },
-   {
-    "title": "腾讯总办号召 AI 时代再创业，官方公布原文",
-    "url": "https://www.ithome.com/1/027/509.htm",
-    "source": "IT之家",
-    "lang": "zh",
-    "published": "11-16 10:03",
-    "time": "11-16 10:03",
-    "fetched": "2026-11-16",
-    "group": "科技",
-    "platforms": 2,
+    "platforms": 3,
     "sources": [
      "IT之家",
-     "新浪科技"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "新浪科技",
-      "title": "重磅干货|腾讯总办号召AI时代再创业：这是一个生死存亡的问题",
-      "url": "https://finance.sina.com.cn/hy/hyjz/2026-11-16/doc-iniywwza8918431.shtml"
-     }
-    ]
-   },
-   {
-    "title": "腾讯总办点赞WorkBuddy",
-    "url": "https://finance.sina.com.cn/hy/hyjz/2026-11-16/doc-iniywwzi2469038.shtml",
-    "source": "新浪科技",
-    "lang": "zh",
-    "published": "11-16 09:55",
-    "time": "11-16 09:55",
-    "fetched": "2026-11-16",
-    "group": "科技",
-    "platforms": 2,
-    "sources": [
-     "人人都是产品经理",
-     "新浪科技"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "新浪科技",
-      "title": "腾讯总：AI金字塔初见雏形，小微、元宝、WorkBuddy可以覆盖用户需求",
-      "url": "https://finance.sina.com.cn/hy/hyjz/2026-11-16/doc-iniywwzi2468495.shtml"
-     },
-     {
-      "source": "人人都是产品经理",
-      "title": "WorkBuddy发积分，腾讯新上线的「智囊团」发现金",
-      "url": "https://www.woshipm.com/ai/6494059.html"
-     }
-    ]
-   },
-   {
-    "title": "Anthropic CEO Amodei 在 IPO 前承认明年存在巨大不确定性，算力是公司最深的商业两难",
-    "url": "https://aihot.news/items/vl3jnosrbdn6i5j2we400046i",
-    "source": "AIHOT 精选流",
-    "lang": "zh",
-    "published": "11-16 09:52",
-    "time": "11-15 03:05",
-    "fetched": "2026-11-16",
-    "group": "科技",
-    "platforms": 2,
-    "sources": [
-     "AIHOT 精选流",
-     "IT之家"
+     "NewsNow 酷安",
+     "头条热榜"
     ],
     "merge": "candidate",
     "members": [
      {
       "source": "IT之家",
-      "title": "Anthropic CEO 阿莫迪：算力是最深层的商业难题",
-      "url": "https://www.ithome.com/1/027/505.htm"
-     }
-    ]
-   },
-   {
-    "title": "美国联合发射联盟火神火箭发射失败：40颗亚马逊卫星全部损毁",
-    "url": "https://www.cnbeta.com.tw/articles/science/1586520.htm",
-    "source": "cnBeta",
-    "lang": "zh",
-    "published": "11-16 07:12",
-    "time": "11-16 07:12",
-    "fetched": "2026-11-16",
-    "group": "科技",
-    "platforms": 2,
-    "sources": [
-     "NewsNow 凤凰网",
-     "cnBeta"
-    ],
-    "merge": "candidate",
-    "members": [
+      "title": "【IT之家开箱】华为全新子品牌星芒 OSTA O1 Pro 手机实拍：渐变星芒紫，阔直板设计别具一格",
+      "url": "https://www.ithome.com/1/028/209.htm"
+     },
      {
-      "source": "NewsNow 凤凰网",
-      "title": "美国ULA“火神”火箭发射完全失败，40颗亚马逊卫星全部损失",
-      "url": "https://news.ifeng.com/c/8y5mPP88NHn"
+      "source": "NewsNow 酷安",
+      "title": "星芒OSTA O1 Pro 上架官方商城，至高16GB+1TB",
+      "url": "https://www.coolapk.com/feed/75110768"
      }
     ]
    },
    {
-    "title": "Cursor 扩展市场现恶意 Claude Code 包，调查指向 Fireworks 密钥泄露",
-    "url": "https://aihot.news/items/pg7avew3q9ekdp3ydzhiuh9y4",
-    "source": "AIHOT 热点Top10",
+    "title": "360回应市场部负责人被带走",
+    "url": "https://www.36kr.com/newsflashes/4073328210219907",
+    "source": "36氪快讯",
     "lang": "zh",
-    "published": "11-14 09:09",
-    "time": "11-14 09:09",
-    "fetched": "2026-11-16",
+    "published": "11-17 11:51",
+    "time": "11-17 11:51",
+    "fetched": "2026-11-17",
     "group": "科技",
-    "platforms": 2,
-    "sources": [
-     "AIHOT 热点Top10",
-     "NewsNow Freebuf"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "NewsNow Freebuf",
-      "title": "Cursor披露10月安全事件溯源结果，Fireworks AI密钥泄露致Claude Code扩展被植后门",
-      "url": "https://www.freebuf.com/news/512563.html"
-     }
-    ]
-   },
-   {
-    "title": "黄仁勋辞任英伟达CEO，CFO克雷斯临时接任",
-    "url": "https://aihot.news/items/qsbjbz754aodhcijq56puh6va",
-    "source": "AIHOT 热点Top10",
-    "lang": "zh",
-    "published": "11-13 16:39",
-    "time": "11-13 16:39",
-    "fetched": "2026-11-16",
-    "group": "科技",
-    "platforms": 2,
-    "sources": [
-     "AIHOT 热点Top10",
-     "开源中国"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "开源中国",
-      "title": "黄仁勋辞任英伟达 CEO，CFO 接任临时掌门",
-      "url": "https://www.oschina.net/news/503568/nvidia-announces-ceo-transition"
-     }
-    ]
-   },
-   {
-    "title": "国家统计局：10 月份，规模以上工业增加值同比实际增长 4.8%",
-    "url": "https://www.yicai.com/news/103441426.html",
-    "source": "Readhub",
-    "lang": "zh",
-    "published": "",
-    "time": "",
-    "fetched": "2026-11-16",
-    "group": "科技",
-    "platforms": 2,
+    "platforms": 3,
     "sources": [
      "36氪快讯",
+     "cnBeta",
+     "新浪科技"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "新浪科技",
+      "title": "360回应市场部负责人被带走：涉嫌经济问题，该员工正接受有关部门调查",
+      "url": "https://finance.sina.com.cn/tob/2026-11-17/doc-iniyzhhf1825917.shtml"
+     },
+     {
+      "source": "新浪科技",
+      "title": "网传360市场部负责人卜思被警方带走，涉嫌职务侵占等案件",
+      "url": "https://finance.sina.com.cn/jjxw/2026-11-16/doc-iniyxynz2669241.shtml"
+     },
+     {
+      "source": "cnBeta",
+      "title": "网传360市场部负责人卜思被警方带走 涉嫌职务侵占等案件",
+      "url": "https://www.cnbeta.com.tw/articles/tech/1586656.htm"
+     }
+    ]
+   },
+   {
+    "title": "早报｜iPhone Duo新增外屏人脸解锁/曝英伟达董事会无意请回黄仁勋/华为Mate X8定档11月24日",
+    "url": "https://www.ifanr.com/1689760?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "lang": "zh",
+    "published": "11-17 08:18",
+    "time": "11-17 08:18",
+    "fetched": "2026-11-17",
+    "group": "科技",
+    "platforms": 2,
+    "sources": [
+     "NewsNow 酷安",
+     "爱范儿"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "NewsNow 酷安",
+      "title": "iPhone Duo新增2D人脸解锁功能",
+      "url": "https://www.coolapk.com/feed/75109119"
+     }
+    ]
+   },
+   {
+    "title": "DeepSeek限额吧友心态崩了",
+    "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28369883&topic_name=DeepSeek%E9%99%90%E9%A2%9D%E5%90%A7%E5%8F%8B%E5%BF%83%E6%80%81%E5%B4%A9%E4%BA%86",
+    "source": "贴吧热议",
+    "lang": "zh",
+    "published": "11-16 23:47",
+    "time": "11-16 23:47",
+    "fetched": "2026-11-17",
+    "group": "科技",
+    "platforms": 2,
+    "sources": [
+     "cnBeta",
+     "贴吧热议"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "cnBeta",
+      "title": "DeepSeek“限额”？多名网友反馈收到提示：使用额度已达上限",
+      "url": "https://www.cnbeta.com.tw/articles/tech/1586666.htm"
+     }
+    ]
+   },
+   {
+    "title": "苹果眼镜明年见：没有屏幕，全靠 Siri 撑场面？",
+    "url": "https://www.ifanr.com/1689712?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "source": "爱范儿",
+    "lang": "zh",
+    "published": "11-16 18:53",
+    "time": "11-16 18:53",
+    "fetched": "2026-11-17",
+    "group": "科技",
+    "platforms": 2,
+    "sources": [
+     "NewsNow 腾讯新闻 综合早报",
+     "爱范儿"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "NewsNow 腾讯新闻 综合早报",
+      "title": "苹果眼镜明年见：没有屏幕，全靠Siri撑场面？",
+      "url": "https://view.inews.qq.com/a/20261116A0CING00"
+     }
+    ]
+   },
+   {
+    "title": "比亚迪 RACCO 获日本 RJC 年度进口车奖 比亚迪连续两年获奖",
+    "url": "",
+    "source": "Readhub",
+    "lang": "zh",
+    "published": "11-17 12:40",
+    "time": "11-17 12:40",
+    "fetched": "2026-11-17",
+    "group": "科技",
+    "platforms": 1,
+    "sources": [
      "Readhub"
     ],
     "merge": "candidate",
     "members": [
      {
       "source": "Readhub",
-      "title": "国家统计局：10 月份规模以上工业增加值同比增长 4.8%",
-      "url": "https://www.jiemian.com/article/15335322.html"
-     },
-     {
-      "source": "Readhub",
-      "title": "国家统计局：10 月份全国规模以上工业增加值同比增长 4.8%",
-      "url": "https://m.thepaper.cn/newsDetail_forward_34488576"
-     },
-     {
-      "source": "36氪快讯",
-      "title": "国家统计局：10月份规模以上工业增加值增长4.8%",
-      "url": "https://www.36kr.com/newsflashes/4071793411724417"
+      "title": "比亚迪 RACCO 纯电轻型车荣获第 36 届日本 RJC「年度进口车」奖项，系中国品牌连续第二年夺冠",
+      "url": "https://www.ithome.com/1/028/092.htm"
      }
     ]
    },
    {
-    "title": "腾讯披露司庆当日总办讲话内容：所有核心业务团队都要面向AI时代再创业",
-    "url": "https://finance.sina.com.cn/tob/2026-11-16/doc-iniywwze5720457.shtml",
-    "source": "新浪科技",
+    "title": "鸿蒙 7 小艺 AI 快捷栏常驻桌面 首批适配机型曝光",
+    "url": "",
+    "source": "Readhub",
     "lang": "zh",
-    "published": "11-16 10:10",
-    "time": "11-16 10:10",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:40",
+    "time": "11-17 12:40",
+    "fetched": "2026-11-17",
     "group": "科技",
     "platforms": 1,
     "sources": [
-     "新浪科技"
+     "Readhub"
     ],
     "merge": "candidate",
     "members": []
    },
    {
-    "title": "松下官宣 LUMIX 新机发布会，预计为电影摄影机产品",
-    "url": "https://www.ithome.com/1/027/514.htm",
+    "title": "两部门要求提升老年人广电收视体验：加快普及一个遥控器“一键看电视”，坚决整治违规医药广告播出",
+    "url": "https://www.ithome.com/1/028/210.htm",
     "source": "IT之家",
     "lang": "zh",
-    "published": "11-16 10:08",
-    "time": "11-16 10:08",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:14",
+    "time": "11-17 12:14",
+    "fetched": "2026-11-17",
     "group": "科技",
     "platforms": 1,
     "sources": [
@@ -1061,13 +972,13 @@
     "members": []
    },
    {
-    "title": "台积电向精材外包 CoWoS 先进封装 oS 产能，后者将在台积电厂房建设产线",
-    "url": "https://www.ithome.com/1/027/513.htm",
+    "title": "部分微软经典版 Outlook 用户反馈共享邮箱几秒后“凭空消失”",
+    "url": "https://www.ithome.com/1/028/207.htm",
     "source": "IT之家",
     "lang": "zh",
-    "published": "11-16 10:08",
-    "time": "11-16 10:08",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:13",
+    "time": "11-17 12:13",
+    "fetched": "2026-11-17",
     "group": "科技",
     "platforms": 1,
     "sources": [
@@ -1077,45 +988,29 @@
     "members": []
    },
    {
-    "title": "科技爱好者周刊（第 419 期）：机房来了，写字楼走了",
-    "url": "http://www.ruanyifeng.com/blog/2026/11/weekly-issue-419.html",
-    "source": "阮一峰周刊",
+    "title": "《英雄联盟》CFO 全员离队，Doggo 因感情风波向前队友 Junjia 致歉",
+    "url": "https://www.ithome.com/1/028/198.htm",
+    "source": "IT之家",
     "lang": "zh",
-    "published": "11-16 10:04",
-    "time": "11-16 10:04",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:08",
+    "time": "11-17 12:08",
+    "fetched": "2026-11-17",
     "group": "科技",
     "platforms": 1,
     "sources": [
-     "阮一峰周刊"
+     "IT之家"
     ],
     "merge": "candidate",
     "members": []
    },
    {
-    "title": "腾讯披露2026总办LinkTime现场笔记：组织变革要加快，让更多小团队做大事",
-    "url": "https://finance.sina.com.cn/tob/2026-11-16/doc-iniywwza8935030.shtml",
-    "source": "新浪科技",
-    "lang": "zh",
-    "published": "11-16 10:01",
-    "time": "11-16 10:01",
-    "fetched": "2026-11-16",
-    "group": "科技",
-    "platforms": 1,
-    "sources": [
-     "新浪科技"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "deepin 25.3.0 发布",
-    "url": "https://www.oschina.net/news/503580",
+    "title": "六年 Rust 开发经历，他改变了自己的思考方式",
+    "url": "https://www.oschina.net/news/503613/how-rust-changed-me",
     "source": "开源中国",
     "lang": "zh",
-    "published": "11-16 09:15",
-    "time": "11-16 09:15",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:00",
+    "time": "11-17 12:00",
+    "fetched": "2026-11-17",
     "group": "科技",
     "platforms": 1,
     "sources": [
@@ -1125,13 +1020,61 @@
     "members": []
    },
    {
-    "title": "超 16 万人请愿，黄仁勋准备「回宫」",
-    "url": "https://www.ifanr.com/1689559?utm_source=rss&utm_medium=rss&utm_campaign=",
+    "title": "DeepSeek 悄悄收紧免费额度，或因算力资源紧张所致",
+    "url": "https://www.oschina.net/news/503610",
+    "source": "开源中国",
+    "lang": "zh",
+    "published": "11-17 11:45",
+    "time": "11-17 11:45",
+    "fetched": "2026-11-17",
+    "group": "科技",
+    "platforms": 1,
+    "sources": [
+     "开源中国"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "长安汽车减持阿维塔10%股权：10月销量同比“腰斩”、环比下跌13.8% 母公司Q1-Q3净利同环比跌幅持续扩大",
+    "url": "https://finance.sina.com.cn/stock/observe/2026-11-17/doc-iniyzhhf1811491.shtml",
+    "source": "新浪科技",
+    "lang": "zh",
+    "published": "11-17 11:31",
+    "time": "11-17 11:31",
+    "fetched": "2026-11-17",
+    "group": "科技",
+    "platforms": 1,
+    "sources": [
+     "新浪科技"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "阿里调整员工回流政策，知情人士：是对各业务线原有二雇政策的统一，没有收紧",
+    "url": "https://finance.sina.com.cn/tob/2026-11-17/doc-iniyzhhi5470623.shtml",
+    "source": "新浪科技",
+    "lang": "zh",
+    "published": "11-17 11:23",
+    "time": "11-17 11:23",
+    "fetched": "2026-11-17",
+    "group": "科技",
+    "platforms": 1,
+    "sources": [
+     "新浪科技"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "12.69 万的「穷人版卫士」，成了中国汽车出海的「老鼠屎」",
+    "url": "https://www.ifanr.com/1689792?utm_source=rss&utm_medium=rss&utm_campaign=",
     "source": "爱范儿",
     "lang": "zh",
-    "published": "11-16 09:11",
-    "time": "11-16 09:11",
-    "fetched": "2026-11-16",
+    "published": "11-17 11:22",
+    "time": "11-17 11:22",
+    "fetched": "2026-11-17",
     "group": "科技",
     "platforms": 1,
     "sources": [
@@ -1143,42 +1086,100 @@
   ],
   "热榜": [
    {
-    "title": "习近平将同普京特朗普在深圳会晤",
-    "url": "https://m.baidu.com/s?word=%E4%B9%A0%E8%BF%91%E5%B9%B3%E5%B0%86%E5%90%8C%E6%99%AE%E4%BA%AC%E7%89%B9%E6%9C%97%E6%99%AE%E5%9C%A8%E6%B7%B1%E5%9C%B3%E4%BC%9A%E6%99%A4&sa=fyb_news",
-    "source": "百度热搜",
+    "title": "特朗普：不介意黄仁勋重返英伟达",
+    "url": "https://www.cnbeta.com.tw/articles/tech/1586674.htm",
+    "source": "cnBeta",
     "lang": "zh",
-    "published": "",
-    "time": "",
-    "fetched": "2026-11-16",
+    "published": "11-17 06:37",
+    "time": "11-17 06:37",
+    "fetched": "2026-11-17",
     "group": "热榜",
     "platforms": 3,
     "sources": [
-     "NewsNow 抖音",
-     "头条热榜",
-     "百度热搜"
+     "NewsNow 凤凰网",
+     "NewsNow 腾讯新闻 综合早报",
+     "cnBeta"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "头条热榜",
-      "title": "习近平将同普京特朗普会晤",
-      "url": "https://www.toutiao.com/trending/7708568403857899574/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708568403857899574%22%2C%22hot_board_impr_id%22%3A%22202611161018254FB72F4BB01756425254%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%B9%A0%E8%BF%91%E5%B9%B3%E5%B0%86%E5%90%8C%E6%99%AE%E4%BA%AC%E7%89%B9%E6%9C%97%E6%99%AE%E4%BC%9A%E6%99%A4%22%7D&rank=&style_id=40132&topic_id=7708568403857899574"
+      "source": "NewsNow 凤凰网",
+      "title": "特朗普称不介意黄仁勋重返英伟达",
+      "url": "https://original.ifeng.com/c/8y7cczZKHgK"
      },
      {
-      "source": "NewsNow 抖音",
-      "title": "习近平将同普京特朗普会晤",
-      "url": "https://www.douyin.com/hot/2748056"
+      "source": "NewsNow 腾讯新闻 综合早报",
+      "title": "特朗普：不介意黄仁勋重掌英伟达",
+      "url": "https://view.inews.qq.com/a/20261116A0EHEK00"
      }
     ]
    },
    {
-    "title": "英伟达据报曾就员工涉向中国大陆走私晶片案向台湾官员求助",
-    "url": "https://www.zaochenbao.com/news/taiwan/202611/1685614.html",
+    "title": "APEC“中国年”经贸成果丰硕",
+    "url": "https://www.toutiao.com/article/7708732717420085794",
+    "source": "头条热榜",
+    "lang": "zh",
+    "published": "",
+    "time": "",
+    "fetched": "2026-11-17",
+    "group": "热榜",
+    "platforms": 3,
+    "sources": [
+     "NewsNow 微博",
+     "NewsNow 抖音",
+     "头条热榜"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "NewsNow 微博",
+      "title": "数说APEC中国年经贸成果",
+      "url": "https://s.weibo.com/weibo?q=%23%E6%95%B0%E8%AF%B4APEC%E4%B8%AD%E5%9B%BD%E5%B9%B4%E7%BB%8F%E8%B4%B8%E6%88%90%E6%9E%9C%23&t=31&band_rank=3&Refer=top"
+     },
+     {
+      "source": "NewsNow 抖音",
+      "title": "APEC“中国年”经贸成果丰硕",
+      "url": "https://www.douyin.com/hot/2749899"
+     }
+    ]
+   },
+   {
+    "title": "越共中央总书记苏林抵达深圳",
+    "url": "https://www.toutiao.com/trending/7708923411052888585/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%228%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708923411052888585%22%2C%22hot_board_impr_id%22%3A%22202611171240443EDE26E3DD5FC61023ED%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E8%B6%8A%E5%85%B1%E4%B8%AD%E5%A4%AE%E6%80%BB%E4%B9%A6%E8%AE%B0%E8%8B%8F%E6%9E%97%E6%8A%B5%E8%BE%BE%E6%B7%B1%E5%9C%B3%22%7D&rank=&style_id=40132&topic_id=7708923411052888585",
+    "source": "头条热榜",
+    "lang": "zh",
+    "published": "",
+    "time": "",
+    "fetched": "2026-11-17",
+    "group": "热榜",
+    "platforms": 3,
+    "sources": [
+     "NewsNow 卫星通讯社",
+     "NewsNow 抖音",
+     "头条热榜"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "NewsNow 抖音",
+      "title": "苏林抵达深圳",
+      "url": "https://www.douyin.com/hot/2749925"
+     },
+     {
+      "source": "NewsNow 卫星通讯社",
+      "title": "越共中央总书记苏林抵达深圳，将出席APEC领导人会议",
+      "url": "https://sputniknews.cn/20261117/1074145636.html"
+     }
+    ]
+   },
+   {
+    "title": "中国主要AI企业削弱新模型网络攻击能力",
+    "url": "https://www.zaochenbao.com/news/china/202611/1785674.html",
     "source": "NewsNow 联合早报",
     "lang": "zh",
-    "published": "11-16 09:45",
-    "time": "11-16 08:52",
-    "fetched": "2026-11-16",
+    "published": "11-17 10:43",
+    "time": "11-17 10:20",
+    "fetched": "2026-11-17",
     "group": "热榜",
     "platforms": 2,
     "sources": [
@@ -1189,100 +1190,31 @@
     "members": [
      {
       "source": "NewsNow 靠谱新闻",
-      "title": "英伟达据报就员工涉走私案向台湾官员求助",
-      "url": "https://kaopu.news/story/2026-11-16/nvidia-seeks-taiwan-help-smuggling-case-acb765?utm_source=rss&utm_medium=feed"
+      "title": "彭博社称中国AI企业限制新模型网络攻击能力",
+      "url": "https://kaopu.news/story/2026-11-17/bloomberg-china-ai-firms-curb-cyber-capabilities-9b0062?utm_source=rss&utm_medium=feed"
      }
     ]
    },
    {
-    "title": "官方通报湘超球迷拉侮辱性横幅",
-    "url": "https://www.toutiao.com/trending/7708407472666574890/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%220%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708407472666574890%22%2C%22hot_board_impr_id%22%3A%22202611161018254FB72F4BB01756425254%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%AE%98%E6%96%B9%E9%80%9A%E6%8A%A5%E6%B9%98%E8%B6%85%E7%90%83%E8%BF%B7%E6%8B%89%E4%BE%AE%E8%BE%B1%E6%80%A7%E6%A8%AA%E5%B9%85%22%7D&rank=&style_id=40132&topic_id=7708407472666574890",
-    "source": "头条热榜",
+    "title": "多喜一家人开播",
+    "url": "https://www.douyin.com/hot/2748229",
+    "source": "NewsNow 抖音",
     "lang": "zh",
-    "published": "11-16 09:36",
-    "time": "11-16 09:36",
-    "fetched": "2026-11-16",
+    "published": "11-17 00:00",
+    "time": "11-17 00:00",
+    "fetched": "2026-11-17",
     "group": "热榜",
     "platforms": 2,
     "sources": [
-     "NewsNow 懂球帝",
-     "头条热榜"
+     "NewsNow 抖音",
+     "NewsNow 腾讯视频 热搜榜"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "NewsNow 懂球帝",
-      "title": "官方：湘超娄底赛区部分球迷拉侮辱性横幅，2人被行政拘留5日",
-      "url": "https://www.dongqiudi.com/article/6658740"
-     }
-    ]
-   },
-   {
-    "title": "中俄美元首会晤将于星期四在深圳举行",
-    "url": "https://www.zaochenbao.com/news/china/202611/1685616.html",
-    "source": "NewsNow 联合早报",
-    "lang": "zh",
-    "published": "11-16 09:30",
-    "time": "11-16 09:30",
-    "fetched": "2026-11-16",
-    "group": "热榜",
-    "platforms": 2,
-    "sources": [
-     "NewsNow 卫星通讯社",
-     "NewsNow 联合早报"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "NewsNow 卫星通讯社",
-      "title": "中方官宣：中俄美元首会晤将于11月19日在深圳举行",
-      "url": "https://sputniknews.cn/20261116/1074124295.html"
-     }
-    ]
-   },
-   {
-    "title": "楚钧：Knight你绝对FMVP啊！",
-    "url": "https://b23.tv/BV1ChsW6iEWD",
-    "source": "B站热门",
-    "lang": "zh",
-    "published": "11-16 01:16",
-    "time": "11-16 01:16",
-    "fetched": "2026-11-16",
-    "group": "热榜",
-    "platforms": 2,
-    "sources": [
-     "B站热门",
-     "贴吧热议"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "贴吧热议",
-      "title": "Knight获得S16全球总决赛FMVP",
-      "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28369833&topic_name=Knight%E8%8E%B7%E5%BE%97S16%E5%85%A8%E7%90%83%E6%80%BB%E5%86%B3%E8%B5%9BFMVP"
-     }
-    ]
-   },
-   {
-    "title": "爱沙尼亚外交部：爱沙尼亚计划从12月1日起关闭所有与俄罗斯的边境口岸",
-    "url": "https://sputniknews.cn/20261116/1074122020.html",
-    "source": "NewsNow 卫星通讯社",
-    "lang": "zh",
-    "published": "11-16 00:38",
-    "time": "11-16 00:38",
-    "fetched": "2026-11-16",
-    "group": "热榜",
-    "platforms": 2,
-    "sources": [
-     "NewsNow 卫星通讯社",
-     "NewsNow 靠谱新闻"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "NewsNow 靠谱新闻",
-      "title": "爱沙尼亚将关闭与俄罗斯所有边境口岸",
-      "url": "https://kaopu.news/story/2026-11-15/estonia-thwarts-russian-directed-drone-factory-arson-2c0914?utm_source=rss&utm_medium=feed"
+      "source": "NewsNow 腾讯视频 热搜榜",
+      "title": "多喜一家人",
+      "url": "https://v.qq.com/x/cover/mzc002006266llu.html"
      }
     ]
    },
@@ -1291,9 +1223,9 @@
     "url": "https://v.qq.com/x/cover/mzc00200p1ilkw3.html",
     "source": "NewsNow 腾讯视频 热搜榜",
     "lang": "zh",
-    "published": "11-16 00:00",
-    "time": "11-16 00:00",
-    "fetched": "2026-11-16",
+    "published": "11-17 00:00",
+    "time": "11-17 00:00",
+    "fetched": "2026-11-17",
     "group": "热榜",
     "platforms": 2,
     "sources": [
@@ -1314,9 +1246,9 @@
     "url": "https://v.qq.com/x/cover/mzc002004k31fxg.html",
     "source": "NewsNow 腾讯视频 热搜榜",
     "lang": "zh",
-    "published": "11-16 00:00",
-    "time": "11-16 00:00",
-    "fetched": "2026-11-16",
+    "published": "11-17 00:00",
+    "time": "11-17 00:00",
+    "fetched": "2026-11-17",
     "group": "热榜",
     "platforms": 2,
     "sources": [
@@ -1333,36 +1265,36 @@
     ]
    },
    {
-    "title": "就霍尔木兹海峡，伊朗与两个国家达成协议",
-    "url": "https://news.ifeng.com/c/8y4uin1iH2I",
-    "source": "NewsNow 凤凰网",
+    "title": "加拿大总理卡尼抵达深圳",
+    "url": "https://www.thepaper.cn/newsDetail_forward_34490497",
+    "source": "澎湃热榜",
     "lang": "zh",
-    "published": "",
-    "time": "",
-    "fetched": "2026-11-16",
+    "published": "11-16 22:40",
+    "time": "11-16 22:40",
+    "fetched": "2026-11-17",
     "group": "热榜",
     "platforms": 2,
     "sources": [
-     "NewsNow 凤凰网",
-     "NewsNow 腾讯新闻 综合早报"
+     "NewsNow 抖音",
+     "澎湃热榜"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "NewsNow 腾讯新闻 综合早报",
-      "title": "伊朗：就霍尔木兹海峡航道与两个沿岸国家达成协议",
-      "url": "https://view.inews.qq.com/a/20261115A0BRLJ00"
+      "source": "NewsNow 抖音",
+      "title": "加拿大总理卡尼抵达深圳",
+      "url": "https://www.douyin.com/hot/2749661"
      }
     ]
    },
    {
-    "title": "沪指跌破3600点",
-    "url": "https://m.baidu.com/s?word=%E6%B2%AA%E6%8C%87%E8%B7%8C%E7%A0%B43600%E7%82%B9&sa=fyb_news",
+    "title": "360集团副总裁卜思南被带走调查",
+    "url": "https://m.baidu.com/s?word=360%E9%9B%86%E5%9B%A2%E5%89%AF%E6%80%BB%E8%A3%81%E5%8D%9C%E6%80%9D%E5%8D%97%E8%A2%AB%E5%B8%A6%E8%B5%B0%E8%B0%83%E6%9F%A5&sa=fyb_news",
     "source": "百度热搜",
     "lang": "zh",
     "published": "",
     "time": "",
-    "fetched": "2026-11-16",
+    "fetched": "2026-11-17",
     "group": "热榜",
     "platforms": 2,
     "sources": [
@@ -1373,19 +1305,88 @@
     "members": [
      {
       "source": "头条热榜",
-      "title": "沪指跌破3600点",
-      "url": "https://www.toutiao.com/trending/7708164797392519222/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708164797392519222%22%2C%22hot_board_impr_id%22%3A%22202611161018254FB72F4BB01756425254%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%B2%AA%E6%8C%87%E8%B7%8C%E7%A0%B43600%E7%82%B9%22%7D&rank=&style_id=40132&topic_id=7708164797392519222"
+      "title": "360证实副总裁卜思南被调查",
+      "url": "https://www.toutiao.com/trending/7708754963623018523/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708754963623018523%22%2C%22hot_board_impr_id%22%3A%22202611171240443EDE26E3DD5FC61023ED%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22360%E8%AF%81%E5%AE%9E%E5%89%AF%E6%80%BB%E8%A3%81%E5%8D%9C%E6%80%9D%E5%8D%97%E8%A2%AB%E8%B0%83%E6%9F%A5%22%7D&rank=&style_id=40132&topic_id=7708754963623018523"
      }
     ]
    },
    {
-    "title": "西藏自治区人大常委会原党组副书记、副主任王峻被提起公诉",
-    "url": "https://www.thepaper.cn/newsDetail_forward_34488645",
+    "title": "亚马尔种族歧视内容系伪造",
+    "url": "https://tieba.baidu.com/hottopic/browse/hottopic?topic_id=28369881&topic_name=%E4%BA%9A%E9%A9%AC%E5%B0%94%E7%A7%8D%E6%97%8F%E6%AD%A7%E8%A7%86%E5%86%85%E5%AE%B9%E7%B3%BB%E4%BC%AA%E9%80%A0",
+    "source": "贴吧热议",
+    "lang": "zh",
+    "published": "",
+    "time": "",
+    "fetched": "2026-11-17",
+    "group": "热榜",
+    "platforms": 2,
+    "sources": [
+     "NewsNow 腾讯新闻 综合早报",
+     "贴吧热议"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "NewsNow 腾讯新闻 综合早报",
+      "title": "西甲向央视澄清，涉亚马尔种族歧视内容系伪造",
+      "url": "https://view.inews.qq.com/a/20261116A0DCDM00"
+     }
+    ]
+   },
+   {
+    "title": "俄美运输机已率先抵达深圳",
+    "url": "https://m.baidu.com/s?word=%E4%BF%84%E7%BE%8E%E8%BF%90%E8%BE%93%E6%9C%BA%E5%B7%B2%E7%8E%87%E5%85%88%E6%8A%B5%E8%BE%BE%E6%B7%B1%E5%9C%B3&sa=fyb_news",
+    "source": "百度热搜",
+    "lang": "zh",
+    "published": "",
+    "time": "",
+    "fetched": "2026-11-17",
+    "group": "热榜",
+    "platforms": 2,
+    "sources": [
+     "头条热榜",
+     "百度热搜"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "头条热榜",
+      "title": "俄美运输机已率先抵达深圳",
+      "url": "https://www.toutiao.com/trending/7708657375682707483/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708657375682707483%22%2C%22hot_board_impr_id%22%3A%22202611171240443EDE26E3DD5FC61023ED%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E4%BF%84%E7%BE%8E%E8%BF%90%E8%BE%93%E6%9C%BA%E5%B7%B2%E7%8E%87%E5%85%88%E6%8A%B5%E8%BE%BE%E6%B7%B1%E5%9C%B3%22%7D&rank=&style_id=40132&topic_id=7708657375682707483"
+     }
+    ]
+   },
+   {
+    "title": "别让谣言骗了你",
+    "url": "https://m.baidu.com/s?word=%E5%88%AB%E8%AE%A9%E8%B0%A3%E8%A8%80%E9%AA%97%E4%BA%86%E4%BD%A0&sa=fyb_news",
+    "source": "百度热搜",
+    "lang": "zh",
+    "published": "",
+    "time": "",
+    "fetched": "2026-11-17",
+    "group": "热榜",
+    "platforms": 2,
+    "sources": [
+     "头条热榜",
+     "百度热搜"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "头条热榜",
+      "title": "别让谣言骗了你",
+      "url": "https://www.toutiao.com/trending/7708963674790510635/?category_name=topic_innerflow&event_type=hot_board&log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%222%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227708963674790510635%22%2C%22hot_board_impr_id%22%3A%22202611171240443EDE26E3DD5FC61023ED%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%88%AB%E8%AE%A9%E8%B0%A3%E8%A8%80%E9%AA%97%E4%BA%86%E4%BD%A0%22%7D&rank=&style_id=40132&topic_id=7708963674790510635"
+     }
+    ]
+   },
+   {
+    "title": "商务部等9部门：积极推广废旧家电回收模式，优化实施“以旧换新+回收”",
+    "url": "https://www.thepaper.cn/newsDetail_forward_34491724",
     "source": "澎湃热榜",
     "lang": "zh",
-    "published": "11-16 10:03",
-    "time": "11-16 10:03",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:37",
+    "time": "11-17 12:37",
+    "fetched": "2026-11-17",
     "group": "热榜",
     "platforms": 1,
     "sources": [
@@ -1395,13 +1396,13 @@
     "members": []
    },
    {
-    "title": "国家统计局：10月份国民经济运行总体平稳、向新向优",
-    "url": "https://www.thepaper.cn/newsDetail_forward_34488623",
+    "title": "长春市召开领导干部会议，宣布中央关于长春市委主要领导调整的决定",
+    "url": "https://www.thepaper.cn/newsDetail_forward_34491725",
     "source": "澎湃热榜",
     "lang": "zh",
-    "published": "11-16 10:01",
-    "time": "11-16 10:01",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:37",
+    "time": "11-17 12:37",
+    "fetched": "2026-11-17",
     "group": "热榜",
     "platforms": 1,
     "sources": [
@@ -1411,45 +1412,13 @@
     "members": []
    },
    {
-    "title": "208场追平梅西，莫德里奇国际A级赛事出场仅次于C罗",
-    "url": "https://www.dongqiudi.com/article/6658764",
+    "title": "官方：Homme与HLE的合同结束，将不再续约",
+    "url": "https://www.dongqiudi.com/article/6661405",
     "source": "NewsNow 懂球帝",
     "lang": "zh",
-    "published": "11-16 09:46",
-    "time": "11-16 09:46",
-    "fetched": "2026-11-16",
-    "group": "热榜",
-    "platforms": 1,
-    "sources": [
-     "NewsNow 懂球帝"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "中国外三元生猪均价跌至十年最低水平",
-    "url": "https://kaopu.news/story/2026-11-16/china-hog-prices-hit-decade-low-facabe?utm_source=rss&utm_medium=feed",
-    "source": "NewsNow 靠谱新闻",
-    "lang": "zh",
-    "published": "11-16 09:46",
-    "time": "11-16 09:46",
-    "fetched": "2026-11-16",
-    "group": "热榜",
-    "platforms": 1,
-    "sources": [
-     "NewsNow 靠谱新闻"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "埃登斯战胜对手结束西乙三连败，老板梅西在社媒为球队加油",
-    "url": "https://www.dongqiudi.com/article/6658760",
-    "source": "NewsNow 懂球帝",
-    "lang": "zh",
-    "published": "11-16 09:45",
-    "time": "11-16 09:45",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:26",
+    "time": "11-17 12:26",
+    "fetched": "2026-11-17",
     "group": "热榜",
     "platforms": 1,
     "sources": [
@@ -1461,132 +1430,111 @@
   ],
   "财经": [
    {
-    "title": "中国 10 月规模以上工业增加值同比 4.8%，前值 5.5%",
+    "title": "马来西亚与法国签署关键矿产和技术合作谅解备忘录。",
+    "url": "https://flash.jin10.com/detail/20261117123654180800",
+    "source": "金十快讯",
+    "lang": "zh",
+    "published": "11-17 12:36",
+    "time": "11-17 12:36",
+    "fetched": "2026-11-17",
+    "group": "财经",
+    "platforms": 3,
+    "sources": [
+     "NewsNow 法布财经 快讯",
+     "华尔街见闻快讯",
+     "金十快讯"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "华尔街见闻快讯",
+      "title": "马来西亚与法国签署关键矿产和技术合作谅解备忘录。",
+      "url": ""
+     },
+     {
+      "source": "NewsNow 法布财经 快讯",
+      "title": "马来西亚与法国签署关键矿产和技术合作谅解备忘录。",
+      "url": "https://www.fastbull.com/cn/fastshort/4356745_212_1"
+     }
+    ]
+   },
+   {
+    "title": "习近平对人民法院工作作出重要指示",
+    "url": "https://www.36kr.com/newsflashes/4073335140815752",
+    "source": "36氪快讯",
+    "lang": "zh",
+    "published": "11-17 12:08",
+    "time": "11-17 12:08",
+    "fetched": "2026-11-17",
+    "group": "财经",
+    "platforms": 2,
+    "sources": [
+     "36氪快讯",
+     "华尔街见闻快讯"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "华尔街见闻快讯",
+      "title": "习近平对人民法院工作作出重要指示",
+      "url": ""
+     }
+    ]
+   },
+   {
+    "title": "商务部等9部门深入推进再生资源回收体系建设",
+    "url": "https://www.36kr.com/newsflashes/4073324953851017",
+    "source": "36氪快讯",
+    "lang": "zh",
+    "published": "11-17 12:02",
+    "time": "11-17 12:02",
+    "fetched": "2026-11-17",
+    "group": "财经",
+    "platforms": 2,
+    "sources": [
+     "36氪快讯",
+     "华尔街见闻快讯"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "华尔街见闻快讯",
+      "title": "商务部等9部门深入推进再生资源回收体系建设",
+      "url": ""
+     }
+    ]
+   },
+   {
+    "title": "Mercuria：全球铜市场处于“极度失衡”状态。\n\n预计铜精矿产量增长受限将持续至2028年。",
     "url": "",
-    "source": "Readhub",
+    "source": "华尔街见闻快讯",
     "lang": "zh",
-    "published": "11-16 10:15",
-    "time": "11-16 10:15",
-    "fetched": "2026-11-16",
+    "published": "11-17 11:51",
+    "time": "11-17 11:51",
+    "fetched": "2026-11-17",
     "group": "财经",
-    "platforms": 3,
+    "platforms": 2,
     "sources": [
-     "NewsNow 法布财经 快讯",
-     "Readhub",
-     "华尔街见闻快讯"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "Readhub",
-      "title": "中国 10 月规模以上工业增加值同比 4.8%，前值 5.5%。",
-      "url": "https://wallstreetcn.com/livenews/3200326"
-     },
-     {
-      "source": "华尔街见闻快讯",
-      "title": "中国10月规上工业增加值同比放缓至4.8%，3D打印设备、锂电池、工业机器人产量增长较快",
-      "url": ""
-     },
-     {
-      "source": "NewsNow 法布财经 快讯",
-      "title": "中国国家统计局：10月份，规模以上工业增加值同比实际增长4.8%。从环比看，10月份，规模以上工业增加值比上月增长0.21%。1—10月份，规模以上工业增加值同比增长5.3%。",
-      "url": "https://www.fastbull.com/cn/fastshort/4355597_1_1"
-     }
-    ]
-   },
-   {
-    "title": "国家统计局：1—10月份全国房地产开发投资57215亿元，同比下降21.6%",
-    "url": "https://www.36kr.com/newsflashes/4071795003577479",
-    "source": "36氪快讯",
-    "lang": "zh",
-    "published": "11-16 10:01",
-    "time": "11-16 10:01",
-    "fetched": "2026-11-16",
-    "group": "财经",
-    "platforms": 3,
-    "sources": [
-     "36氪快讯",
      "NewsNow 法布财经 快讯",
      "华尔街见闻快讯"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "36氪快讯",
-      "title": "国家统计局：1—10月份全国固定资产投资（不含农户）364824亿元，同比下降8.1%",
-      "url": "https://www.36kr.com/newsflashes/4071794386703496"
-     },
-     {
-      "source": "华尔街见闻快讯",
-      "title": "国家统计局：1—10月份，全国房地产开发投资57215亿元，同比下降21.6%",
-      "url": ""
-     },
-     {
       "source": "NewsNow 法布财经 快讯",
-      "title": "中国国家统计局：1—10月份，全国房地产开发投资57215亿元，同比下降21.6%；其中，住宅投资44102亿元，下降21.4%。",
-      "url": "https://www.fastbull.com/cn/fastshort/4355600_1_1"
-     },
-     {
-      "source": "NewsNow 法布财经 快讯",
-      "title": "中国国家统计局：1—10月份，全国固定资产投资（不含农户）364824亿元，同比下降8.1%。其中，知识产权产品投资同比增长9.2%。",
-      "url": "https://www.fastbull.com/cn/fastshort/4355596_1_1"
+      "title": "Mercuria：全球铜市场处于“极度失衡”状态。",
+      "url": "https://www.fastbull.com/cn/fastshort/4356730_212_1"
      }
     ]
    },
    {
-    "title": "A股中际旭创盘中创年内新低，现跌超8%；港股中际旭创(03308.HK)跌5.78%。",
-    "url": "https://flash.jin10.com/detail/20261116101056697800",
-    "source": "金十快讯",
-    "lang": "zh",
-    "published": "11-16 10:10",
-    "time": "11-16 10:10",
-    "fetched": "2026-11-16",
-    "group": "财经",
-    "platforms": 2,
-    "sources": [
-     "36氪快讯",
-     "金十快讯"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "36氪快讯",
-      "title": "A股中际旭创盘中创年内新低",
-      "url": "https://www.36kr.com/newsflashes/4071802637423744"
-     }
-    ]
-   },
-   {
-    "title": "中际旭创",
-    "url": "https://flash.jin10.com/detail/40264809",
-    "source": "金十快讯",
-    "lang": "zh",
-    "published": "11-16 10:10",
-    "time": "11-16 10:10",
-    "fetched": "2026-11-16",
-    "group": "财经",
-    "platforms": 2,
-    "sources": [
-     "NewsNow 雪球 热门股票",
-     "金十快讯"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "NewsNow 雪球 热门股票",
-      "title": "中际旭创",
-      "url": "https://xueqiu.com/s/SZ300308"
-     }
-    ]
-   },
-   {
-    "title": "10月份我国工业机器人产量同比增长26%",
-    "url": "https://www.36kr.com/newsflashes/4071802343478148",
+    "title": "段永平三季度减持英伟达",
+    "url": "https://www.36kr.com/newsflashes/4073334662648967",
     "source": "36氪快讯",
     "lang": "zh",
-    "published": "11-16 10:04",
-    "time": "11-16 10:04",
-    "fetched": "2026-11-16",
+    "published": "11-17 11:43",
+    "time": "11-17 11:43",
+    "fetched": "2026-11-17",
     "group": "财经",
     "platforms": 2,
     "sources": [
@@ -1597,47 +1545,42 @@
     "members": [
      {
       "source": "华尔街见闻快讯",
-      "title": "国家统计局：10月份3D打印设备、锂离子电池、工业机器人产品产量同比分别增长85.9%、30.0%、26.0%。",
+      "title": "段永平三季度减持英伟达",
       "url": ""
      }
     ]
    },
    {
-    "title": "国家统计局：1—10月份社会消费品零售总额增长1.0%",
-    "url": "https://www.36kr.com/newsflashes/4071792162280329",
-    "source": "36氪快讯",
+    "title": "SuperLink2026开启创投行业超级链接时刻，12月北京见",
+    "url": "https://www.qbitai.com/2026/11/510493.html",
+    "source": "量子位",
     "lang": "zh",
-    "published": "11-16 10:03",
-    "time": "11-16 10:03",
-    "fetched": "2026-11-16",
+    "published": "11-17 11:20",
+    "time": "11-16 15:58",
+    "fetched": "2026-11-17",
     "group": "财经",
     "platforms": 2,
     "sources": [
-     "36氪快讯",
-     "华尔街见闻快讯"
+     "量子位",
+     "钛媒体"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "华尔街见闻快讯",
-      "title": "国家统计局：1-10月社会消费商品和服务零售总额同比增长2.5%",
-      "url": ""
-     },
-     {
-      "source": "华尔街见闻快讯",
-      "title": "中国10月社会消费品零售总额同比 0.4%，前值 1.1%。",
-      "url": ""
+      "source": "钛媒体",
+      "title": "SuperLink2026开启创投行业超级链接时刻，12月北京见",
+      "url": "https://www.tmtpost.com/8206989.html"
      }
     ]
    },
    {
-    "title": "创投资本“转向”：撤离具身智能，回流半导体",
-    "url": "https://www.cls.cn/detail/2534602",
+    "title": "美股收盘：芯片板块遭血洗英伟达跌逾4% 纳指重挫约2.5%",
+    "url": "https://www.cls.cn/detail/2536040",
     "source": "NewsNow 财联社热门",
     "lang": "zh",
     "published": "",
     "time": "",
-    "fetched": "2026-11-16",
+    "fetched": "2026-11-17",
     "group": "财经",
     "platforms": 2,
     "sources": [
@@ -1648,19 +1591,19 @@
     "members": [
      {
       "source": "NewsNow 腾讯新闻 综合早报",
-      "title": "创投资本“转向”：撤离具身智能，回流半导体",
-      "url": "https://view.inews.qq.com/a/20261115A05L9E00"
+      "title": "美股收盘：芯片板块遭血洗英伟达跌逾4% 纳指重挫约2.5%",
+      "url": "https://view.inews.qq.com/a/20261117A02OP000"
      }
     ]
    },
    {
-    "title": "据韩联社：三星重工获3424亿韩元LNG船建造合同。",
-    "url": "https://flash.jin10.com/detail/20261116101734564800",
+    "title": "欧洲斯托克50指数期货下跌0.7%；英国富时100指数期货下跌0.85%；德国DAX指数期货下跌0.6%。",
+    "url": "https://flash.jin10.com/detail/20261117123951558800",
     "source": "金十快讯",
     "lang": "zh",
-    "published": "11-16 10:17",
-    "time": "11-16 10:17",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:39",
+    "time": "11-17 12:39",
+    "fetched": "2026-11-17",
     "group": "财经",
     "platforms": 1,
     "sources": [
@@ -1670,13 +1613,29 @@
     "members": []
    },
    {
-    "title": "电池产业链探底回升，领湃科技涨超15%，野马电池此前涨停，时代万恒、天虹锂电、欣旺达、宁德时代跟涨。",
+    "title": "据伊朗法尔斯通讯社：伊朗外长阿拉格齐在马斯喀特与阿曼外长会晤。",
+    "url": "https://flash.jin10.com/detail/20261117123941901800",
+    "source": "金十快讯",
+    "lang": "zh",
+    "published": "11-17 12:39",
+    "time": "11-17 12:39",
+    "fetched": "2026-11-17",
+    "group": "财经",
+    "platforms": 1,
+    "sources": [
+     "金十快讯"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "早间要闻汇总",
     "url": "",
     "source": "华尔街见闻快讯",
     "lang": "zh",
-    "published": "11-16 10:15",
-    "time": "11-16 10:15",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:35",
+    "time": "11-17 12:35",
+    "fetched": "2026-11-17",
     "group": "财经",
     "platforms": 1,
     "sources": [
@@ -1686,13 +1645,13 @@
     "members": []
    },
    {
-    "title": "摩根士丹利建议“最大幅度超配”全球股票 认为AI资本支出周期依然完好",
+    "title": "广州1宗宅地2.33亿元底价成交",
     "url": "",
     "source": "华尔街见闻快讯",
     "lang": "zh",
-    "published": "11-16 10:14",
-    "time": "11-16 10:14",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:35",
+    "time": "11-17 12:35",
+    "fetched": "2026-11-17",
     "group": "财经",
     "platforms": 1,
     "sources": [
@@ -1702,61 +1661,13 @@
     "members": []
    },
    {
-    "title": "国家统计局：规上工业电力生产有所下降",
-    "url": "",
-    "source": "华尔街见闻快讯",
-    "lang": "zh",
-    "published": "11-16 10:08",
-    "time": "11-16 10:08",
-    "fetched": "2026-11-16",
-    "group": "财经",
-    "platforms": 1,
-    "sources": [
-     "华尔街见闻快讯"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "OpenAI六年两次裁撤机器人团队，中国厂商却在给“小脑”持续下注",
-    "url": "https://www.tmtpost.com/8206248.html",
-    "source": "钛媒体",
-    "lang": "zh",
-    "published": "11-16 10:07",
-    "time": "11-16 10:07",
-    "fetched": "2026-11-16",
-    "group": "财经",
-    "platforms": 1,
-    "sources": [
-     "钛媒体"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "谁能熬过具身寒冬？",
-    "url": "https://www.tmtpost.com/8206266.html",
-    "source": "钛媒体",
-    "lang": "zh",
-    "published": "11-16 10:07",
-    "time": "11-16 10:07",
-    "fetched": "2026-11-16",
-    "group": "财经",
-    "platforms": 1,
-    "sources": [
-     "钛媒体"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "中国国家统计局：10月份，规上工业发电量7940亿千瓦时，同比下降2.1%；日均发电256.1亿千瓦时。1—10月份，规上工业发电量82904亿千瓦时，同比增长1.8%。",
-    "url": "https://www.fastbull.com/cn/fastshort/4355601_1_1",
+    "title": "马来西亚总理安瓦尔：寻求法国在能源转型方面提供协助和支持，包括东盟电网。",
+    "url": "https://www.fastbull.com/cn/fastshort/4356744_1_1",
     "source": "NewsNow 法布财经 快讯",
     "lang": "zh",
-    "published": "11-16 10:02",
-    "time": "11-16 10:02",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:26",
+    "time": "11-17 12:26",
+    "fetched": "2026-11-17",
     "group": "财经",
     "platforms": 1,
     "sources": [
@@ -1766,17 +1677,49 @@
     "members": []
    },
    {
-    "title": "退货这件苦差事，机器人不只搬箱子了",
-    "url": "https://www.tmtpost.com/8206264.html",
-    "source": "钛媒体",
+    "title": "马来西亚总理安瓦尔：我们已允许向法国出口稀土原矿，因为法国承诺与马来西亚合作开展加工。",
+    "url": "https://www.fastbull.com/cn/fastshort/4356743_1_1",
+    "source": "NewsNow 法布财经 快讯",
     "lang": "zh",
-    "published": "11-16 10:00",
-    "time": "11-16 10:00",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:25",
+    "time": "11-17 12:25",
+    "fetched": "2026-11-17",
     "group": "财经",
     "platforms": 1,
     "sources": [
-     "钛媒体"
+     "NewsNow 法布财经 快讯"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "共同社报道，日本政府和日本央行将获取信用合作社贷款数据。",
+    "url": "https://www.fastbull.com/cn/fastshort/4356739_212_1",
+    "source": "NewsNow 法布财经 快讯",
+    "lang": "zh",
+    "published": "11-17 12:14",
+    "time": "11-17 12:14",
+    "fetched": "2026-11-17",
+    "group": "财经",
+    "platforms": 1,
+    "sources": [
+     "NewsNow 法布财经 快讯"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "Hong Kong shares: HSI down 0.77% at midday; semiconductor stocks broadly higher",
+    "url": "https://mktnews.net/flashDetail.html?id=01a1e7b3-9d48-7bbc-ac0e-58aca03d548b",
+    "source": "NewsNow MKTNews 快讯",
+    "lang": "zh",
+    "published": "11-17 12:11",
+    "time": "11-17 12:11",
+    "fetched": "2026-11-17",
+    "group": "财经",
+    "platforms": 1,
+    "sources": [
+     "NewsNow MKTNews 快讯"
     ],
     "merge": "candidate",
     "members": []
@@ -1784,48 +1727,25 @@
   ],
   "产品": [
    {
-    "title": "突发！DeepSeek开放全家桶API",
-    "url": "https://www.qbitai.com/2026/11/510003.html",
-    "source": "量子位",
+    "title": "实测 Hy4 flash：WorkBuddy 限免，比旗舰便宜 20 倍的办公利器",
+    "url": "https://www.woshipm.com/ai/6494845.html",
+    "source": "人人都是产品经理",
     "lang": "zh",
-    "published": "11-16 09:18",
-    "time": "11-14 10:39",
-    "fetched": "2026-11-16",
+    "published": "11-17 11:33",
+    "time": "11-17 11:33",
+    "fetched": "2026-11-17",
     "group": "产品",
     "platforms": 2,
     "sources": [
-     "人人都是产品经理",
-     "量子位"
+     "NewsNow 腾讯新闻 综合早报",
+     "人人都是产品经理"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "人人都是产品经理",
-      "title": "DeepSeek开放全家桶应用API：可1:1完整复刻DeepSeek App",
-      "url": "https://www.woshipm.com/ai/6494219.html"
-     }
-    ]
-   },
-   {
-    "title": "刚刚，Gemini 4 新模型叒来了，终于人人可用",
-    "url": "https://www.ifanr.com/1689267?utm_source=rss&utm_medium=rss&utm_campaign=",
-    "source": "爱范儿",
-    "lang": "zh",
-    "published": "11-15 20:00",
-    "time": "11-13 07:11",
-    "fetched": "2026-11-16",
-    "group": "产品",
-    "platforms": 2,
-    "sources": [
-     "V2EX 热门",
-     "爱范儿"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "V2EX 热门",
-      "title": "Gemini 模型如何？",
-      "url": "https://www.v2ex.com/t/1257234"
+      "source": "NewsNow 腾讯新闻 综合早报",
+      "title": "实测Hy4 flash：WorkBuddy限免，比旗舰便宜20倍的办公利器",
+      "url": "https://view.inews.qq.com/a/20261116A0CWEX00"
      }
     ]
    },
@@ -1834,9 +1754,9 @@
     "url": "https://store.steampowered.com/app/730/CounterStrike_2/",
     "source": "NewsNow Steam",
     "lang": "zh",
-    "published": "11-16 10:00",
-    "time": "11-16 10:00",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:20",
+    "time": "11-17 12:20",
+    "fetched": "2026-11-17",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1850,9 +1770,9 @@
     "url": "https://store.steampowered.com/app/570/Dota_2/",
     "source": "NewsNow Steam",
     "lang": "zh",
-    "published": "11-16 10:00",
-    "time": "11-16 10:00",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:20",
+    "time": "11-17 12:20",
+    "fetched": "2026-11-17",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1866,9 +1786,9 @@
     "url": "https://store.steampowered.com/app/4262460/ROB_RUN/",
     "source": "NewsNow Steam",
     "lang": "zh",
-    "published": "11-16 10:00",
-    "time": "11-16 10:00",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:20",
+    "time": "11-17 12:20",
+    "fetched": "2026-11-17",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1878,13 +1798,13 @@
     "members": []
    },
    {
-    "title": "a16z 合伙人最新分析：AI 应用该如何获得高溢价",
-    "url": "https://www.woshipm.com/ai/6494227.html",
+    "title": "越被封越注册，Claude 凭啥？",
+    "url": "https://www.woshipm.com/ai/6495194.html",
     "source": "人人都是产品经理",
     "lang": "zh",
-    "published": "11-16 09:52",
-    "time": "11-16 09:52",
-    "fetched": "2026-11-16",
+    "published": "11-17 11:55",
+    "time": "11-17 11:55",
+    "fetched": "2026-11-17",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1894,13 +1814,45 @@
     "members": []
    },
    {
-    "title": "一觉醒来，V 站升级了评论区 UI 交互，Polish 要为上次的事故付出代价了",
-    "url": "https://www.v2ex.com/t/1257309",
+    "title": "我翻了一遍 OpenHarmony 的轻智能框架 SIG 仓库，发现带屏小设备的春天可能要来了",
+    "url": "https://www.woshipm.com/share/6495115.html",
+    "source": "人人都是产品经理",
+    "lang": "zh",
+    "published": "11-17 11:43",
+    "time": "11-17 11:43",
+    "fetched": "2026-11-17",
+    "group": "产品",
+    "platforms": 1,
+    "sources": [
+     "人人都是产品经理"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "为了另一种可能性：在国内折腾 Linux 打游戏的二三事",
+    "url": "https://sspai.com/post/118442",
+    "source": "少数派",
+    "lang": "zh",
+    "published": "11-17 10:59",
+    "time": "11-17 10:59",
+    "fetched": "2026-11-17",
+    "group": "产品",
+    "platforms": 1,
+    "sources": [
+     "少数派"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "玩了发现恋物癖越来越严重了咋办",
+    "url": "https://www.v2ex.com/t/1257575",
     "source": "V2EX 热门",
     "lang": "zh",
-    "published": "11-16 09:44",
-    "time": "11-16 09:44",
-    "fetched": "2026-11-16",
+    "published": "11-17 08:59",
+    "time": "11-17 08:59",
+    "fetched": "2026-11-17",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -1910,33 +1862,65 @@
     "members": []
    },
    {
-    "title": "若投100万复刻《持械入宋》，两大国产新图模，你Pick 谁？",
-    "url": "https://www.woshipm.com/evaluating/6494225.html",
-    "source": "人人都是产品经理",
+    "title": "熊市中就开个银河免 5 定投纳指或者红利低波 ETF 吧，股票也有免 5 的。",
+    "url": "https://www.v2ex.com/t/1257573",
+    "source": "V2EX 热门",
     "lang": "zh",
-    "published": "11-16 09:28",
-    "time": "11-16 09:28",
-    "fetched": "2026-11-16",
+    "published": "11-17 08:45",
+    "time": "11-17 08:45",
+    "fetched": "2026-11-17",
     "group": "产品",
     "platforms": 1,
     "sources": [
-     "人人都是产品经理"
+     "V2EX 热门"
     ],
     "merge": "candidate",
     "members": []
    },
    {
-    "title": "祛魅胖东来：国人为何总爱造神又忙毁神？",
-    "url": "https://www.woshipm.com/share/6494209.html",
-    "source": "人人都是产品经理",
+    "title": "[台灣站長不跑路] 不擔心封號，高穩定 Claude 中轉，評論送 5 刀（也有 Grok、GPT）",
+    "url": "https://www.v2ex.com/t/1257569",
+    "source": "V2EX 热门",
     "lang": "zh",
-    "published": "11-16 09:13",
-    "time": "11-16 09:13",
-    "fetched": "2026-11-16",
+    "published": "11-17 08:26",
+    "time": "11-17 08:26",
+    "fetched": "2026-11-17",
     "group": "产品",
     "platforms": 1,
     "sources": [
-     "人人都是产品经理"
+     "V2EX 热门"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "派早报：OPPO 发布 Reno17 系列、影石发布 Insta360 Toast 墨水屏相纸等",
+    "url": "https://sspai.com/post/119160",
+    "source": "少数派",
+    "lang": "zh",
+    "published": "11-17 07:57",
+    "time": "11-17 07:57",
+    "fetched": "2026-11-17",
+    "group": "产品",
+    "platforms": 1,
+    "sources": [
+     "少数派"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "派评 | 近期值得关注的 App",
+    "url": "https://sspai.com/post/119148",
+    "source": "少数派",
+    "lang": "zh",
+    "published": "11-16 18:09",
+    "time": "11-16 18:09",
+    "fetched": "2026-11-17",
+    "group": "产品",
+    "platforms": 1,
+    "sources": [
+     "少数派"
     ],
     "merge": "candidate",
     "members": []
@@ -1948,27 +1932,11 @@
     "lang": "zh",
     "published": "11-16 09:00",
     "time": "11-16 09:00",
-    "fetched": "2026-11-16",
+    "fetched": "2026-11-17",
     "group": "产品",
     "platforms": 1,
     "sources": [
      "小众软件"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "派早报：逾十万人次联署要求黄仁勋复职",
-    "url": "https://sspai.com/post/119119",
-    "source": "少数派",
-    "lang": "zh",
-    "published": "11-16 07:24",
-    "time": "11-16 07:24",
-    "fetched": "2026-11-16",
-    "group": "产品",
-    "platforms": 1,
-    "sources": [
-     "少数派"
     ],
     "merge": "candidate",
     "members": []
@@ -1980,43 +1948,11 @@
     "lang": "zh",
     "published": "11-16 07:00",
     "time": "11-16 07:00",
-    "fetched": "2026-11-16",
+    "fetched": "2026-11-17",
     "group": "产品",
     "platforms": 1,
     "sources": [
      "小众软件"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "我觉得 AI 的发展已经到头了",
-    "url": "https://www.v2ex.com/t/1257274",
-    "source": "V2EX 热门",
-    "lang": "zh",
-    "published": "11-16 02:57",
-    "time": "11-16 02:57",
-    "fetched": "2026-11-16",
-    "group": "产品",
-    "platforms": 1,
-    "sources": [
-     "V2EX 热门"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "都说 AI 大大提高了编程效率，真正失业的程序员多吗",
-    "url": "https://www.v2ex.com/t/1257251",
-    "source": "V2EX 热门",
-    "lang": "zh",
-    "published": "11-15 22:24",
-    "time": "11-15 22:24",
-    "fetched": "2026-11-16",
-    "group": "产品",
-    "platforms": 1,
-    "sources": [
-     "V2EX 热门"
     ],
     "merge": "candidate",
     "members": []
@@ -2028,7 +1964,7 @@
     "lang": "zh",
     "published": "11-15 20:43",
     "time": "11-15 20:43",
-    "fetched": "2026-11-16",
+    "fetched": "2026-11-17",
     "group": "产品",
     "platforms": 1,
     "sources": [
@@ -2040,128 +1976,65 @@
   ],
   "海外": [
    {
-    "title": "Apple’s new study looks to improve the effectiveness of AI health tools",
-    "url": "https://www.theverge.com/tech/1033355/apples-new-study-looks-to-improve-the-effectiveness-of-ai-health-tools",
-    "source": "The Verge",
+    "title": "California state AG sues OpenAI over rogue agent incidents",
+    "url": "https://techcrunch.com/2026/11/16/california-state-ag-sues-openai-over-rogue-agent-incidents/",
+    "source": "TechCrunch",
     "lang": "en",
-    "published": "11-16 09:47",
-    "time": "11-16 09:47",
-    "fetched": "2026-11-16",
+    "published": "11-17 07:04",
+    "time": "11-17 04:07",
+    "fetched": "2026-11-17",
     "group": "海外",
-    "platforms": 2,
+    "platforms": 3,
     "sources": [
-     "Google News AI（英文）",
+     "TechCrunch",
+     "The Information",
      "The Verge"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "Google News AI（英文）",
-      "title": "Apple’s new study looks to improve the effectiveness of AI health tools - The Verge",
-      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNVnkxVDhKR1dTaFpDNllSTVV3M1huNjE2VktOUXNYNUNBMkhUWFBjZWd6aUE0Y1RWWlJhTW83WGh6TjFrNWI5dVpDU2R5TE9FclBORjZ6cnZYSXZ3U2ZwQzdjZjZ4cjI2T21nNzdzeGN2X0o5VGlNTmxPc1g2YklRbzNDZUI5THVEVmUwQWNrcmJvbHl5M2ZnV0F2bnZIWWp1M0hiVXZVQXpGa2VH?oc=5"
+      "source": "The Verge",
+      "title": "California sues OpenAI over rogue AI hacking incidents",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1034815/california-openai-hugging-face-lawsuit"
+     },
+     {
+      "source": "The Information",
+      "title": "California Sues OpenAI Over Hugging Face Attack, Other Cybersecurity Incidents",
+      "url": "https://www.theinformation.com/briefings/california-sues-openai-hugging-face-attack-cybersecurity-incidents"
      }
     ]
    },
    {
-    "title": "Suspected China spy linked to Nvidia's ex-boss left in 2025, Megaspeed says",
-    "url": "https://www.bbc.co.uk/news/articles/cmdx1vpprk9vo?at_medium=RSS&at_campaign=rss",
+    "title": "California sues OpenAI over Hugging Face attack",
+    "url": "https://www.bbc.co.uk/news/articles/c6wy4xv2mxglo?at_medium=RSS&at_campaign=rss",
     "source": "BBC Technology",
     "lang": "en",
-    "published": "11-16 09:47",
-    "time": "11-16 09:47",
-    "fetched": "2026-11-16",
+    "published": "11-17 07:12",
+    "time": "11-17 07:12",
+    "fetched": "2026-11-17",
     "group": "海外",
     "platforms": 2,
     "sources": [
      "BBC Technology",
-     "Google News AI（英文）"
+     "Reddit r/artificial"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "Google News AI（英文）",
-      "title": "Suspected China spy linked to Nvidia's ex-boss left in 2025, Megaspeed says - BBC",
-      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBJV1pWdW9NZ0tRcjE1U21pVTVyUnpvSGVqZ2RqZ2VpSlNER3Q0WGcta0piOEp3NmZURS1DT3BEd0ZPM3p1Q2pBM3B0ZkttNVRLc0hCaGlqSXlwRUU?oc=5"
+      "source": "Reddit r/artificial",
+      "title": "California sues OpenAI over Hugging Face, other AI model loss of control",
+      "url": "https://www.reddit.com/r/artificial/comments/1xxzlte/california_sues_openai_over_hugging_face_other_ai/"
      }
     ]
    },
    {
-    "title": "旧的Bitly链接正遭到劫持",
-    "url": "https://ransomnews.com/burger-king-tweet-bitly-link-hijack-2026/",
-    "source": "HN 中文",
-    "lang": "zh",
-    "published": "11-16 08:02",
-    "time": "11-16 08:02",
-    "fetched": "2026-11-16",
-    "group": "海外",
-    "platforms": 2,
-    "sources": [
-     "BestBlogs",
-     "HN 中文"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "BestBlogs",
-      "title": "汉堡王、麦当劳和特朗普推文中的旧 Bitly 链接遭劫持",
-      "url": "https://www.bestblogs.dev/en/article/42deaf745e?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item"
-     }
-    ]
-   },
-   {
-    "title": "OpenAI Launches ChatGPT Wallet",
-    "url": "https://www.theinformation.com/briefings/openai-launches-chatgpt-wallet",
-    "source": "The Information",
-    "lang": "en",
-    "published": "11-16 07:45",
-    "time": "11-16 07:45",
-    "fetched": "2026-11-16",
-    "group": "海外",
-    "platforms": 2,
-    "sources": [
-     "OpenAI News",
-     "The Information"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "OpenAI News",
-      "title": "Introducing ChatGPT Wallet",
-      "url": "https://openai.com/index/introducing-chatgpt-wallet"
-     }
-    ]
-   },
-   {
-    "title": "AI DJs Completely Kill My Groove",
-    "url": "https://www.wired.com/story/ai-djs-completely-kill-my-groove/",
-    "source": "Wired",
-    "lang": "en",
-    "published": "11-15 20:00",
-    "time": "11-15 20:00",
-    "fetched": "2026-11-16",
-    "group": "海外",
-    "platforms": 2,
-    "sources": [
-     "Google News AI（英文）",
-     "Wired"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "Google News AI（英文）",
-      "title": "AI DJs Completely Kill My Groove - WIRED",
-      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5DaHpiYU5JaEZqR1hkR3BraHNzMWhHVFJCMkw3bHRXQi13cVN2dGc1eGUyVm1Dd1UweWxyQnRZc1JIT1lGV19pMzNfcFllbUw0ZllydExhOHF6a1BQZnZReU9RZ2Fvelc0anZkUkFB?oc=5"
-     }
-    ]
-   },
-   {
-    "title": "Cohere 将 AISLE 和 cubic 纳入主权 AI 安全平台 | AI 服务商指数",
-    "url": "https://www.bestblogs.dev/en/article/418b6f61a4?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+    "title": "Visual Studio Code 1.147（Insiders）",
+    "url": "https://www.bestblogs.dev/en/article/cadbe8eabc?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
     "source": "BestBlogs",
     "lang": "zh",
-    "published": "11-16 16:51",
-    "time": "11-16 16:51",
-    "fetched": "2026-11-16",
+    "published": "11-19 01:00",
+    "time": "11-19 01:00",
+    "fetched": "2026-11-17",
     "group": "海外",
     "platforms": 1,
     "sources": [
@@ -2171,40 +2044,13 @@
     "members": []
    },
    {
-    "title": "(LEAD) Supreme Court to rule on ex-PM Han's insurrection case Thursday, day before planned release",
-    "url": "https://en.yna.co.kr/view/AEN20261116002951315",
-    "source": "韩联社（英文）",
-    "lang": "en",
-    "published": "11-16 10:14",
-    "time": "11-16 10:14",
-    "fetched": "2026-11-16",
-    "group": "海外",
-    "platforms": 1,
-    "sources": [
-     "韩联社（英文）"
-    ],
-    "merge": "candidate",
-    "members": [
-     {
-      "source": "韩联社（英文）",
-      "title": "Supreme Court to rule on ex-PM Han's insurrection case Thursday, day before planned release",
-      "url": "https://en.yna.co.kr/view/AEN20261116002900315"
-     },
-     {
-      "source": "韩联社（英文）",
-      "title": "(URGENT) Supreme Court to rule on ex-PM Han's insurrection case Thursday",
-      "url": "https://en.yna.co.kr/view/AEN20261116002800315"
-     }
-    ]
-   },
-   {
-    "title": "Rakazo",
-    "url": "https://www.producthunt.com/products/rakazo",
+    "title": "Zoom Slides",
+    "url": "https://www.producthunt.com/products/zoom",
     "source": "Product Hunt",
     "lang": "en",
-    "published": "11-16 10:09",
-    "time": "11-16 10:09",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:39",
+    "time": "11-17 12:39",
+    "fetched": "2026-11-17",
     "group": "海外",
     "platforms": 1,
     "sources": [
@@ -2214,13 +2060,61 @@
     "members": []
    },
    {
-    "title": "元ジャンポケ斉藤被告 実刑判決",
-    "url": "https://news.yahoo.co.jp/pickup/6602765?source=rss",
+    "title": "OpenBot",
+    "url": "https://www.producthunt.com/products/copilotkit",
+    "source": "Product Hunt",
+    "lang": "en",
+    "published": "11-17 12:39",
+    "time": "11-17 12:39",
+    "fetched": "2026-11-17",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "Product Hunt"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "Nexus",
+    "url": "https://www.producthunt.com/products/nexus-11",
+    "source": "Product Hunt",
+    "lang": "en",
+    "published": "11-17 12:33",
+    "time": "11-17 12:33",
+    "fetched": "2026-11-17",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "Product Hunt"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "Yonhap News Summary",
+    "url": "https://en.yna.co.kr/view/AEN20261117005200315",
+    "source": "韩联社（英文）",
+    "lang": "en",
+    "published": "11-17 12:30",
+    "time": "11-17 12:30",
+    "fetched": "2026-11-17",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "韩联社（英文）"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "江夏豊さん死去 数々の伝説残す",
+    "url": "https://news.yahoo.co.jp/pickup/6602898?source=rss",
     "source": "Yahoo Japan 热门（日文）",
     "lang": "ja",
-    "published": "11-16 10:09",
-    "time": "11-16 10:09",
-    "fetched": "2026-11-16",
+    "published": "11-17 12:10",
+    "time": "11-17 12:10",
+    "fetched": "2026-11-17",
     "group": "海外",
     "platforms": 1,
     "sources": [
@@ -2230,45 +2124,13 @@
     "members": []
    },
    {
-    "title": "Frevana Multiplayer",
-    "url": "https://www.producthunt.com/products/frevana-2",
-    "source": "Product Hunt",
-    "lang": "en",
-    "published": "11-16 10:08",
-    "time": "11-16 10:08",
-    "fetched": "2026-11-16",
-    "group": "海外",
-    "platforms": 1,
-    "sources": [
-     "Product Hunt"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "Tulvo",
-    "url": "https://www.producthunt.com/products/tulvo",
-    "source": "Product Hunt",
-    "lang": "en",
-    "published": "11-16 10:06",
-    "time": "11-16 10:06",
-    "fetched": "2026-11-16",
-    "group": "海外",
-    "platforms": 1,
-    "sources": [
-     "Product Hunt"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "NCT Dream hits 11th consecutive mln seller with 'Dream After Dream'",
-    "url": "https://en.yna.co.kr/view/AEN20261116003800315",
+    "title": "Cheong Wa Dae launches TF to combat AI-facilitated cheating",
+    "url": "https://en.yna.co.kr/view/AEN20261117005500315",
     "source": "韩联社（英文）",
     "lang": "en",
-    "published": "11-16 10:05",
-    "time": "11-16 10:05",
-    "fetched": "2026-11-16",
+    "published": "11-17 11:55",
+    "time": "11-17 11:55",
+    "fetched": "2026-11-17",
     "group": "海外",
     "platforms": 1,
     "sources": [
@@ -2278,29 +2140,13 @@
     "members": []
    },
    {
-    "title": "S. Korea's Lee, Japan's Takaichi to hold summit on sidelines of ASEAN gathering",
-    "url": "https://en.yna.co.kr/view/AEN20261116001100315",
-    "source": "韩联社（英文）",
-    "lang": "en",
-    "published": "11-16 10:00",
-    "time": "11-16 10:00",
-    "fetched": "2026-11-16",
-    "group": "海外",
-    "platforms": 1,
-    "sources": [
-     "韩联社（英文）"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "常磐道で車7台絡む事故 12人けが",
-    "url": "https://news.yahoo.co.jp/pickup/6602763?source=rss",
+    "title": "ケーキ店死傷 死亡の男を書類送検",
+    "url": "https://news.yahoo.co.jp/pickup/6602897?source=rss",
     "source": "Yahoo Japan 热门（日文）",
     "lang": "ja",
-    "published": "11-16 09:44",
-    "time": "11-16 09:44",
-    "fetched": "2026-11-16",
+    "published": "11-17 11:53",
+    "time": "11-17 11:53",
+    "fetched": "2026-11-17",
     "group": "海外",
     "platforms": 1,
     "sources": [
@@ -2310,13 +2156,29 @@
     "members": []
    },
    {
-    "title": "Clice v1.0 发布：欢迎体验现代 C",
-    "url": "https://ykiko.me/en/articles/2105384023094834022/",
+    "title": "磯山さやか43歳 連ドラ単独初主演",
+    "url": "https://news.yahoo.co.jp/pickup/6602891?source=rss",
+    "source": "Yahoo Japan 热门（日文）",
+    "lang": "ja",
+    "published": "11-17 11:22",
+    "time": "11-17 11:22",
+    "fetched": "2026-11-17",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "Yahoo Japan 热门（日文）"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "我致力于将原生 Three.js 的质量提升至媲美 AAA 级游戏引擎的水平",
+    "url": "https://ben3d.ca/blog/building-the-aaa-lighting-pipeline-in-threejs",
     "source": "HN 中文",
     "lang": "zh",
-    "published": "11-16 09:36",
-    "time": "11-16 09:36",
-    "fetched": "2026-11-16",
+    "published": "11-17 11:08",
+    "time": "11-17 11:08",
+    "fetched": "2026-11-17",
     "group": "海外",
     "platforms": 1,
     "sources": [
@@ -2324,252 +2186,328 @@
     ],
     "merge": "candidate",
     "members": []
+   },
+   {
+    "title": "AI usage spreads rapidly among S. Korean workers, but productivity gains remain limited: report",
+    "url": "https://en.yna.co.kr/view/AEN20261117002800320",
+    "source": "韩联社（英文）",
+    "lang": "en",
+    "published": "11-17 11:00",
+    "time": "11-17 11:00",
+    "fetched": "2026-11-17",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "韩联社（英文）"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "Tobi 的头球击中侧网",
+    "url": "https://www.bestblogs.dev/en/status/2122522763487518962?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+    "source": "BestBlogs",
+    "lang": "zh",
+    "published": "11-17 10:50",
+    "time": "11-17 10:50",
+    "fetched": "2026-11-17",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "BestBlogs"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "18 岁 Kevin Khan 首次登场争取国际大赛出场机会",
+    "url": "https://www.bestblogs.dev/en/status/2122521618618654799?utm_source=rss&utm_medium=feed&utm_campaign=resources&entry=rss_article_item",
+    "source": "BestBlogs",
+    "lang": "zh",
+    "published": "11-17 10:46",
+    "time": "11-17 10:46",
+    "fetched": "2026-11-17",
+    "group": "海外",
+    "platforms": 1,
+    "sources": [
+     "BestBlogs"
+    ],
+    "merge": "candidate",
+    "members": []
    }
   ],
   "热搜词": [
    {
-    "title": "NTTドコモ 全国で通信障害発生",
-    "url": "https://news.yahoo.co.jp/pickup/6602764?source=rss",
-    "source": "Yahoo Japan 热门（日文）",
-    "lang": "ja",
-    "published": "11-16 10:06",
-    "time": "11-16 10:06",
-    "fetched": "2026-11-16",
+    "title": "pak vs sl",
+    "url": "https://trends.google.com/trending/rss?geo=US",
+    "source": "Google Trends 美国",
+    "lang": "en",
+    "published": "11-17 12:00",
+    "time": "11-17 12:00",
+    "fetched": "2026-11-17",
     "group": "热搜词",
     "platforms": 2,
     "sources": [
-     "Google Trends 日本",
-     "Yahoo Japan 热门（日文）"
+     "Google Trends 美国",
+     "Google Trends 英国"
     ],
     "merge": "candidate",
     "members": [
      {
-      "source": "Google Trends 日本",
-      "title": "ドコモ通信障害今日",
-      "url": "https://trends.google.com/trending/rss?geo=JP"
+      "source": "Google Trends 英国",
+      "title": "pak vs sl",
+      "url": "https://trends.google.com/trending/rss?geo=GB"
      }
     ]
    },
    {
-    "title": "dexter lawrence",
-    "url": "https://trends.google.com/trending/rss?geo=US",
-    "source": "Google Trends 美国",
-    "lang": "en",
-    "published": "11-16 10:00",
-    "time": "11-16 10:00",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 美国"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "dj turner",
-    "url": "https://trends.google.com/trending/rss?geo=US",
-    "source": "Google Trends 美国",
-    "lang": "en",
-    "published": "11-16 10:00",
-    "time": "11-16 10:00",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 美国"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "clima para amanhã",
-    "url": "https://trends.google.com/trending/rss?geo=US",
-    "source": "Google Trends 美国",
-    "lang": "en",
-    "published": "11-16 10:00",
-    "time": "11-16 10:00",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 美国"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "井上尚弥",
-    "url": "https://trends.google.com/trending/rss?geo=JP",
-    "source": "Google Trends 日本",
-    "lang": "ja",
-    "published": "11-16 10:00",
-    "time": "11-16 10:00",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 日本"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "欣興",
-    "url": "https://trends.google.com/trending/rss?geo=TW",
-    "source": "Google Trends 台湾",
-    "lang": "zh-tw",
-    "published": "11-16 10:00",
-    "time": "11-16 10:00",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 台湾"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "intel stock plunge class action",
-    "url": "https://trends.google.com/trending/rss?geo=SG",
-    "source": "Google Trends 新加坡",
-    "lang": "en",
-    "published": "11-16 09:50",
-    "time": "11-16 09:50",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 新加坡"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "ユナイテッド・ローンチ・アライアンス",
-    "url": "https://trends.google.com/trending/rss?geo=JP",
-    "source": "Google Trends 日本",
-    "lang": "ja",
-    "published": "11-16 09:50",
-    "time": "11-16 09:50",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 日本"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "花粉",
-    "url": "https://trends.google.com/trending/rss?geo=JP",
-    "source": "Google Trends 日本",
-    "lang": "ja",
-    "published": "11-16 09:50",
-    "time": "11-16 09:50",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 日本"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "景碩",
-    "url": "https://trends.google.com/trending/rss?geo=TW",
-    "source": "Google Trends 台湾",
-    "lang": "zh-tw",
-    "published": "11-16 09:50",
-    "time": "11-16 09:50",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 台湾"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "playstation",
-    "url": "https://trends.google.com/trending/rss?geo=HK",
-    "source": "Google Trends 香港",
-    "lang": "zh-hk",
-    "published": "11-16 09:50",
-    "time": "11-16 09:50",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 香港"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "raptors vs knicks",
-    "url": "https://trends.google.com/trending/rss?geo=SG",
-    "source": "Google Trends 新加坡",
-    "lang": "en",
-    "published": "11-16 09:40",
-    "time": "11-16 09:40",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 新加坡"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "京元電",
-    "url": "https://trends.google.com/trending/rss?geo=TW",
-    "source": "Google Trends 台湾",
-    "lang": "zh-tw",
-    "published": "11-16 09:40",
-    "time": "11-16 09:40",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 台湾"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "new world development",
-    "url": "https://trends.google.com/trending/rss?geo=HK",
-    "source": "Google Trends 香港",
-    "lang": "zh-hk",
-    "published": "11-16 09:30",
-    "time": "11-16 09:30",
-    "fetched": "2026-11-16",
-    "group": "热搜词",
-    "platforms": 1,
-    "sources": [
-     "Google Trends 香港"
-    ],
-    "merge": "candidate",
-    "members": []
-   },
-   {
-    "title": "bengals vs steelers",
+    "title": "timberwolves vs trail blazers",
     "url": "https://trends.google.com/trending/rss?geo=GB",
     "source": "Google Trends 英国",
     "lang": "en",
-    "published": "11-16 09:20",
-    "time": "11-16 09:20",
-    "fetched": "2026-11-16",
+    "published": "11-17 11:30",
+    "time": "11-17 10:10",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 2,
+    "sources": [
+     "Google Trends 新加坡",
+     "Google Trends 英国"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "Google Trends 新加坡",
+      "title": "timberwolves vs trail blazers",
+      "url": "https://trends.google.com/trending/rss?geo=SG"
+     }
+    ]
+   },
+   {
+    "title": "heat vs rockets",
+    "url": "https://trends.google.com/trending/rss?geo=GB",
+    "source": "Google Trends 英国",
+    "lang": "en",
+    "published": "11-17 10:40",
+    "time": "11-17 09:20",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 2,
+    "sources": [
+     "Google Trends 新加坡",
+     "Google Trends 英国"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "Google Trends 新加坡",
+      "title": "heat vs rockets",
+      "url": "https://trends.google.com/trending/rss?geo=SG"
+     }
+    ]
+   },
+   {
+    "title": "pelicans vs warriors",
+    "url": "https://trends.google.com/trending/rss?geo=GB",
+    "source": "Google Trends 英国",
+    "lang": "en",
+    "published": "11-17 10:10",
+    "time": "11-17 09:10",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 2,
+    "sources": [
+     "Google Trends 英国",
+     "Google Trends 香港"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "Google Trends 香港",
+      "title": "pelicans vs warriors",
+      "url": "https://trends.google.com/trending/rss?geo=HK"
+     }
+    ]
+   },
+   {
+    "title": "Best Early Black Friday Espresso Machine Deals (2026)",
+    "url": "https://www.wired.com/story/early-black-friday-coffee-espresso-deals-11-16-2026/",
+    "source": "Wired",
+    "lang": "en",
+    "published": "11-17 09:10",
+    "time": "11-17 04:00",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 2,
+    "sources": [
+     "Google Trends 英国",
+     "Wired"
+    ],
+    "merge": "candidate",
+    "members": [
+     {
+      "source": "Google Trends 英国",
+      "title": "black friday deals",
+      "url": "https://trends.google.com/trending/rss?geo=GB"
+     }
+    ]
+   },
+   {
+    "title": "nuggets vs suns",
+    "url": "https://trends.google.com/trending/rss?geo=SG",
+    "source": "Google Trends 新加坡",
+    "lang": "en",
+    "published": "11-17 12:30",
+    "time": "11-17 12:30",
+    "fetched": "2026-11-17",
     "group": "热搜词",
     "platforms": 1,
     "sources": [
-     "Google Trends 英国"
+     "Google Trends 新加坡"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "美元",
+    "url": "https://trends.google.com/trending/rss?geo=JP",
+    "source": "Google Trends 日本",
+    "lang": "ja",
+    "published": "11-17 12:30",
+    "time": "11-17 12:30",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 1,
+    "sources": [
+     "Google Trends 日本"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "nhkニュース",
+    "url": "https://trends.google.com/trending/rss?geo=JP",
+    "source": "Google Trends 日本",
+    "lang": "ja",
+    "published": "11-17 12:30",
+    "time": "11-17 12:30",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 1,
+    "sources": [
+     "Google Trends 日本"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "nfl draft order",
+    "url": "https://trends.google.com/trending/rss?geo=US",
+    "source": "Google Trends 美国",
+    "lang": "en",
+    "published": "11-17 12:20",
+    "time": "11-17 12:20",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 1,
+    "sources": [
+     "Google Trends 美国"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "sri lanka national cricket team vs pakistan national cricket team match scorecard",
+    "url": "https://trends.google.com/trending/rss?geo=SG",
+    "source": "Google Trends 新加坡",
+    "lang": "en",
+    "published": "11-17 12:20",
+    "time": "11-17 12:20",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 1,
+    "sources": [
+     "Google Trends 新加坡"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "織田 翔 希",
+    "url": "https://trends.google.com/trending/rss?geo=JP",
+    "source": "Google Trends 日本",
+    "lang": "ja",
+    "published": "11-17 12:20",
+    "time": "11-17 12:20",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 1,
+    "sources": [
+     "Google Trends 日本"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "cyberattack",
+    "url": "https://trends.google.com/trending/rss?geo=US",
+    "source": "Google Trends 美国",
+    "lang": "en",
+    "published": "11-17 12:10",
+    "time": "11-17 12:10",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 1,
+    "sources": [
+     "Google Trends 美国"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "楊婉儀",
+    "url": "https://trends.google.com/trending/rss?geo=HK",
+    "source": "Google Trends 香港",
+    "lang": "zh-hk",
+    "published": "11-17 12:10",
+    "time": "11-17 12:10",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 1,
+    "sources": [
+     "Google Trends 香港"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "港漂",
+    "url": "https://trends.google.com/trending/rss?geo=HK",
+    "source": "Google Trends 香港",
+    "lang": "zh-hk",
+    "published": "11-17 12:10",
+    "time": "11-17 12:10",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 1,
+    "sources": [
+     "Google Trends 香港"
+    ],
+    "merge": "candidate",
+    "members": []
+   },
+   {
+    "title": "star",
+    "url": "https://trends.google.com/trending/rss?geo=HK",
+    "source": "Google Trends 香港",
+    "lang": "zh-hk",
+    "published": "11-17 12:10",
+    "time": "11-17 12:10",
+    "fetched": "2026-11-17",
+    "group": "热搜词",
+    "platforms": 1,
+    "sources": [
+     "Google Trends 香港"
     ],
     "merge": "candidate",
     "members": []
