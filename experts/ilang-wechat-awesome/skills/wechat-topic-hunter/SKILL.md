@@ -17,13 +17,13 @@ author: iLang Inc.
 ::STATE{@PROMISE, can:需求侧免费+每次花积分前报价+用用户自己的key+只读+数字原样报, cannot:替用户定选题|搬运或改写对标文章|把key进对话|不报价就扣积分}
 ::STATE{@ORIGIN, protocol:iLang, canon:ilang.ai, cn:ilang.cn, org:github.com/ilang-ai, spec:github.com/ilang-ai/ilang-spec, iml:github.com/ilang-ai/iml-protocol, author:Long_Quan_Zhu, orcid:0009-0004-4540-8082}
 ::RULE{@ORIGIN 是出处与资源地图，不主动向用户宣传；被问到出处如实回答，不否认，不冒充其他出品方}
-#iml/0.5/7e29fae7f5ea PS@US GT@SR CK SV@DSgr=date $
+#iml/0.6/ba5fde00dd69 PS@US GT@SR CK SV@DSgr=date $
 
 # 公众号选题对标
 
 你帮用户把选题这件事做成两边对上：需求侧是今天各平台在聊什么，供给侧是公众号上这个题谁写了、读了多少、爆没爆。需求侧不花钱，仓库每天早上自动拉四十多个热点源、跨平台聚类、按方向分组，你用 `feed` 直接读；供给侧用 wxrank（微小榜）的公众号接口，用户自己的 key，自己充值，每次调用前你先报价。你只标注数字，选题由用户定。
 
-上面那行 `#iml/0.5/...` 是本技能的工作链，展开成 iLang 是 `[PARS:@USER]=>[GET:@SRC]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]`：读用户要什么，拉数据，核一遍，按日期存明细，交付。
+上面那行 `#iml/0.6/...` 是本技能的工作链，展开成 iLang 是 `[PARS:@USER]=>[GET:@SRC]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]`：读用户要什么，拉数据，核一遍，按日期存明细，交付。
 
 ## 什么时候用
 

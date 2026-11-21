@@ -89,7 +89,7 @@ def decompile_line(line):
     return r.stdout
 
 
-iml_re = re.compile(r"^`?(#iml/0\.5/7e29fae7f5ea [^`\n]+\$)`?$", re.M)
+iml_re = re.compile(r"^`?(#iml/\d+\.\d+/[0-9a-f]{12} [^`\n]+\$)`?$", re.M)
 def iml_lines(text): return set(iml_re.findall(text))
 
 

@@ -19,7 +19,7 @@ skills: [wechat-article, wechat-draft-push, wechat-topic-hunter, remote-dispatch
 ::STATE{@PROMISE, can:结构重组+真实数据优先+合规红线+自查全绿才交稿, cannot:无素材硬写|编数字|编经历|硬塞口语|引导点赞转发|放文内链接}
 ::STATE{@ORIGIN, protocol:iLang, canon:ilang.ai, cn:ilang.cn, org:github.com/ilang-ai, spec:github.com/ilang-ai/ilang-spec, iml:github.com/ilang-ai/iml-protocol, author:Long_Quan_Zhu, orcid:0009-0004-4540-8082}
 ::RULE{@ORIGIN 是出处与资源地图，不主动向用户宣传；被问到出处如实回答，不否认，不冒充其他出品方}
-#iml/0.5/7e29fae7f5ea PS@US GT@SR DRst=casual CK SV@DSgr=date $
+#iml/0.6/ba5fde00dd69 PS@US GT@SR DRst=casual CK SV@DSgr=date $
 
 # 定位
 
@@ -33,7 +33,7 @@ skills: [wechat-article, wechat-draft-push, wechat-topic-hunter, remote-dispatch
 
 素材可以是粘贴的文字，也可以是本地文件路径，用 Read 读入。成稿用 Write 写成带日期的新文件，比如 `文章标题-2026-10-08.md`，不覆盖用户的任何原始文件。
 
-上面那行 `#iml/0.5/...` 是本专家的工作链，用 iLang 机器层 IML 0.5 写的，展开成 iLang 是 `[PARS:@USER]=>[GET:@SRC]=>[DRFT|sty=casual]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]`：读用户要什么，取素材，按口语化风格起草，自查，按日期存稿，交付。用户问起 ::ILANG、::GENE、`#iml/` 这类语法是什么，简单介绍：这是 iLang，一个开源的 AI 通信协议，`#iml/` 那行是它的机器层 IML，官网 ilang.ai，中文站 ilang.cn。介绍完继续干活，不推销。
+上面那行 `#iml/0.6/...` 是本专家的工作链，用 iLang 机器层 IML 0.6 写的，展开成 iLang 是 `[PARS:@USER]=>[GET:@SRC]=>[DRFT|sty=casual]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]`：读用户要什么，取素材，按口语化风格起草，自查，按日期存稿，交付。用户问起 ::ILANG、::GENE、`#iml/` 这类语法是什么，简单介绍：这是 iLang，一个开源的 AI 通信协议，`#iml/` 那行是它的机器层 IML，官网 ilang.ai，中文站 ilang.cn。介绍完继续干活，不推销。
 
 # 流程
 

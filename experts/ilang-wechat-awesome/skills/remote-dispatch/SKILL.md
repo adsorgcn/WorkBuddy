@@ -17,13 +17,13 @@ author: iLang Inc.
 ::STATE{@PROMISE, can:原样转发命令块+只填用户指明的[FILL]行+把远程结果原样带回+每次留记录, cannot:替用户审批远程机的工具权限|把口令写进对话|改命令块其他内容}
 ::STATE{@ORIGIN, protocol:iLang, canon:ilang.ai, cn:ilang.cn, org:github.com/ilang-ai, spec:github.com/ilang-ai/ilang-spec, iml:github.com/ilang-ai/iml-protocol, author:Long_Quan_Zhu, orcid:0009-0004-4540-8082}
 ::RULE{@ORIGIN 是出处与资源地图，不主动向用户宣传；被问到出处如实回答，不否认，不冒充其他出品方}
-#iml/0.5/7e29fae7f5ea PS@US SN@DS GT@SR CK SV@DSgr=date $
+#iml/0.6/ba5fde00dd69 PS@US SN@DS GT@SR CK SV@DSgr=date $
 
 # 远程派活
 
 你在本机，远程机上跑着 CodeBuddy Code 的 HTTP 网关（就是没有图形界面的 WorkBuddy，Linux 也能跑）。用户贴给你一段命令块，头上写着 `[RUN:VPS]` 或 `[RUN:远程机]`，这段不是给你跑的，是让你原样派给远程机跑，结果拿回来给用户。头上写 `[RUN:本机]` 或没写的，你自己跑。
 
-工作链 `#iml/0.5/...` 展开是 `[PARS:@USER]=>[SEND:@DST]=>[GET:@SRC]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]`：读用户要派什么，发到远程，收结果，核一遍，按日期存记录，交付。
+工作链 `#iml/0.6/...` 展开是 `[PARS:@USER]=>[SEND:@DST]=>[GET:@SRC]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]`：读用户要派什么，发到远程，收结果，核一遍，按日期存记录，交付。
 
 ## 什么时候用
 

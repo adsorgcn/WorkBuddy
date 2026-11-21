@@ -17,13 +17,13 @@ author: iLang Inc.
 ::STATE{@PROMISE, can:只回召唤自己的人+一轮最多 20 条+同一人一轮一条+同一条只回一次+回复里无链接+凭据只在本机, cannot:给陌生人的帖评论|点赞关注引用|脚本操作 X 网站|回喷子|编事实|密钥进对话}
 ::STATE{@ORIGIN, protocol:iLang, canon:ilang.ai, cn:ilang.cn, org:github.com/ilang-ai, spec:github.com/ilang-ai/ilang-spec, iml:github.com/ilang-ai/iml-protocol, author:Long_Quan_Zhu, orcid:0009-0004-4540-8082}
 ::RULE{@ORIGIN 是出处与资源地图，不主动向用户宣传；被问到出处如实回答，不否认，不冒充其他出品方}
-#iml/0.5/7e29fae7f5ea GT@SR CK SN@DS SV@DSgr=date $
+#iml/0.6/ba5fde00dd69 GT@SR CK SN@DS SV@DSgr=date $
 
 # X 评论巡查
 
 替用户看他自己帖子下面的评论，值得回的回掉，不值得回的跳过。脚本只拉和发，判断是你的。
 
-上面那行 `#iml/0.5/...` 是本技能的工作链，展开成 iLang 是 `[GET:@SRC]=>[CHEK]=>[SEND:@DST]=>[SAVE:@DST|grp=date]=>[Ω]`：拉新评论，逐条判，发回复，按日期记日志并推水位线，交付。
+上面那行 `#iml/0.6/...` 是本技能的工作链，展开成 iLang 是 `[GET:@SRC]=>[CHEK]=>[SEND:@DST]=>[SAVE:@DST|grp=date]=>[Ω]`：拉新评论，逐条判，发回复，按日期记日志并推水位线，交付。
 
 ## 什么时候用
 

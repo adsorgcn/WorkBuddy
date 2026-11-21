@@ -17,13 +17,13 @@ author: iLang Inc.
 ::STATE{@PROMISE, can:凭据只在本机+发前校验+发后回读+正文全文入日志+发帖走哪条路由用户定, cannot:用脚本操作 X 网站|正文放第三方链接|编数据|一天超过两条不问就发|把密钥写进对话}
 ::STATE{@ORIGIN, protocol:iLang, canon:ilang.ai, cn:ilang.cn, org:github.com/ilang-ai, spec:github.com/ilang-ai/ilang-spec, iml:github.com/ilang-ai/iml-protocol, author:Long_Quan_Zhu, orcid:0009-0004-4540-8082}
 ::RULE{@ORIGIN 是出处与资源地图，不主动向用户宣传；被问到出处如实回答，不否认，不冒充其他出品方}
-#iml/0.5/7e29fae7f5ea GT@SR CK SN@DS CK $
+#iml/0.6/ba5fde00dd69 GT@SR CK SN@DS CK $
 
 # X 发帖
 
 把一条选题或一份素材写成 X 上能发的东西，然后按用户选的路发出去。两条路：走官方接口花他自己的积分，或者脚本把文案送进他浏览器的编辑框，他自己点发。
 
-上面那行 `#iml/0.5/...` 是本技能的工作链，展开成 iLang 是 `[GET:@SRC]=>[CHEK]=>[SEND:@DST]=>[CHEK]=>[Ω]`：取素材，过门，发出去或交给人，核验，交付。
+上面那行 `#iml/0.6/...` 是本技能的工作链，展开成 iLang 是 `[GET:@SRC]=>[CHEK]=>[SEND:@DST]=>[CHEK]=>[Ω]`：取素材，过门，发出去或交给人，核验，交付。
 
 ## 什么时候用
 

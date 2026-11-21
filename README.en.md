@@ -79,7 +79,7 @@ One command. You need an agent that reads SKILL.md: the international WorkBuddy,
 ::STATE{@SELF, role:learner_and_installer, runtime:you whichever agent you are, can:fetch web or git clone read files run shell write files, knows:where your own skills directory is and which file is your persona; if not read your own docs then ask me}
 ::STATE{@TARGET, skills:copy the three skill folders as they are into your skills directory, expert:put the expert text into your persona file or system prompt so your settings contain [PROJECT:x_awesome], python:3.8 or newer stdlib only no packages}
 ::STATE{@OUT, kind:install report, items:which directory the skills went to which ones appear in your skill list where the expert text lives the first three items x_feed returns}
-#iml/0.5/7e29fae7f5ea GT@SR CK SN@DS CK $
+#iml/0.6/ba5fde00dd69 GT@SR CK SN@DS CK $
 
 ::OBJECTIVE{learn_and_install|pri:OVERRIDE_ALL}
   target: read the README and the three SKILL.md files of @REPO and learn how the chain works then install the skills and the expert into yourself then self-check and report
@@ -185,7 +185,7 @@ Claude Code, Codex, CodeBuddy CLI, Hermes, OpenClaw, Doubao, Muse, the internati
 ::STATE{@SELF, role:learner_and_installer, runtime:you whichever agent you are, can:fetch web or git clone read files run shell write files, knows:where your own skills directory is and which file is your persona; if not read your own docs then ask me}
 ::STATE{@TARGET, skills:copy the four skill folders as they are into your skills directory at least wechat-article wechat-draft-push wechat-topic-hunter, expert:put the expert text into your persona file or system prompt so your settings contain [PROJECT:wechat_awesome], python:3.8 or newer stdlib only no packages}
 ::STATE{@OUT, kind:install report, items:which directory the skills went to which ones appear in your skill list where the expert text lives the five self-check lines}
-#iml/0.5/7e29fae7f5ea GT@SR CK SN@DS CK $
+#iml/0.6/ba5fde00dd69 GT@SR CK SN@DS CK $
 
 ::OBJECTIVE{learn_and_install|pri:OVERRIDE_ALL}
   target: read the README and the four SKILL.md files of @REPO and learn how the chain works then install the skills and the expert into yourself then self-check and report
@@ -325,11 +325,11 @@ The gate: versions in sync, frontmatter complete, IML chains round-tripped throu
 
 ## Protocol
 
-The expert and skills are written in the iLang protocol; the `#iml/0.5/...` line is the IML 0.5 machine-layer chain, round-tripped through the official compiler:
+The expert and skills are written in the iLang protocol; the `#iml/0.6/...` line is the IML 0.6 machine-layer chain, round-tripped through the official compiler:
 
 ```
 [PARS:@USER]=>[GET:@SRC]=>[DRFT|sty=casual]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]
-#iml/0.5/7e29fae7f5ea PS@US GT@SR DRst=casual CK SV@DSgr=date $
+#iml/0.6/ba5fde00dd69 PS@US GT@SR DRst=casual CK SV@DSgr=date $
 ```
 
 | Resource | Address |

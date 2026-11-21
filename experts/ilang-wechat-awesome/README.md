@@ -1,7 +1,7 @@
 # 公众号爆文专家 · WeChat-Awesome v2.3.58
 
 `[PARS:@USER]=>[GET:@SRC]=>[DRFT|sty=casual]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]`
-`#iml/0.5/7e29fae7f5ea PS@US GT@SR DRst=casual CK SV@DSgr=date $`
+`#iml/0.6/ba5fde00dd69 PS@US GT@SR DRst=casual CK SV@DSgr=date $`
 
 你投喂素材，它按 200 多篇实战文章验证过的写作基因帮你重组成公众号文章。
 

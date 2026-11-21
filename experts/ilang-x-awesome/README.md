@@ -1,7 +1,7 @@
 # X运营专家 · X-Awesome v2.3.58
 
 `[GET:@SRC]=>[CHEK]=>[SEND:@DST]=>[CHEK]=>[Ω]`
-`#iml/0.5/7e29fae7f5ea GT@SR CK SN@DS CK $`
+`#iml/0.6/ba5fde00dd69 GT@SR CK SN@DS CK $`
 
 你说清定位，它替你跑 X 账号里所有能跑的执行：找题、写帖、发帖、巡查评论、回复。你只定方向和拍板。
 
