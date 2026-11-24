@@ -525,7 +525,9 @@
    "type": "rss",
    "group": "AI",
    "platform": "reddit",
-   "lang": "en"
+   "lang": "en",
+   "disabled": true,
+   "disabled_on": "2026-11-24"
   },
   {
    "name": "arXiv cs.AI",
