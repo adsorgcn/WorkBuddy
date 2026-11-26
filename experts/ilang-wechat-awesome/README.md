@@ -46,7 +46,7 @@
 | 协议 | I-Lang v4.0 头 | iLang v5.0 头加 IML 0.5 工作链 |
 | 推草稿箱（2.1 新增） | 无 | 技能 wechat-draft-push：官方接口推进草稿箱并回读，个人主体账号也能用；2.3.24 起也能把稿子出成卡片图推成贴图（图片消息） |
 | 人审后接口发布（2.2 新增） | 无 | publish 命令：只在人看过草稿说「发」后、且是微信认证企业号时才调发布接口；没有删草稿命令 |
-| 选题对标（2.3 新增） | 无 | 技能 wechat-topic-hunter：用你自己的 wxrank key 看榜、找对标号、算阅读中位和爆款倍率，出选题清单；花积分前先报价 |
+| 选题对标（2.3 新增） | 无 | 技能 wechat-topic-hunter：用你自己的 wxrank key 看榜、找对标号、算阅读中位和爆款倍率，出选题清单；花积分前先报价。有 Apify 令牌时再加低粉爆文日榜、微信指数、留言 |
 
 ## 包里有什么
 
@@ -64,6 +64,7 @@ ilang-wechat-awesome/
 ├── skills/wechat-topic-hunter/        选题对标技能，可单独上传
 │   ├── SKILL.md
 │   ├── scripts/wxrank_topics.py       标准库 Python：balance / hot / search / accounts / posts / benchmark / article
+│   ├── scripts/apify_wechat.py        标准库 Python：me / viral / search / metrics / history / detail / comments / index / run
 │   └── references/                    wxrank 接口、选题方法
 └── avatars/expert.png
 ```

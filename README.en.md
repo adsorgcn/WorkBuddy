@@ -22,10 +22,10 @@
 | | X expert <sub>new on 23 Oct</sub> | WeChat expert |
 |---|---|---|
 | For&nbsp;whom | People who want AI to run an X (Twitter) account | People who write a WeChat Official Account |
-| Topics&nbsp;from | The public X榜单 boards for what is hot today, then a benchmark piece on WeChat, Zhihu, Bilibili, Douyin or Xiaohongshu | 40+ hot sources pulled every day, plus real WeChat read and share numbers from wxrank |
+| Topics&nbsp;from | The public X榜单 boards for what is hot today, then a benchmark piece on WeChat, Zhihu, Bilibili, Douyin or Xiaohongshu | 40+ hot sources pulled every day, plus real WeChat read and share numbers from wxrank or Apify |
 | It&nbsp;does | Rewrites, posts, patrols the replies under your own posts and answers them | Writes, makes the cover prompt, pushes the draft, reads the numbers back |
 | You&nbsp;do | State your positioning once; pick a topic and nod each time | Pick the topic, review the draft, tap publish on your phone |
-| Cost | Manual posting is free; the API route starts at $5 plus $5 matched | wxrank credit only, one hot-list query = 1 credit |
+| Cost | Manual posting is free; the API route starts at $5 plus $5 matched | data credit only: wxrank at 1 credit per hot-list query, or Apify pay per result |
 | Install | GitHub, any agent that reads SKILL.md | One click in the domestic WorkBuddy marketplace, or any agent |
 
 <br>
@@ -115,7 +115,7 @@ Never touches politics or geopolitics, never likes, follows or quotes, never pos
 
 Most "AI writes your WeChat article" tools only write. This is a chain: a topic list that updates itself every day tells you what every platform is talking about, real read and share numbers from WeChat tell you which of those topics nobody has written well yet, then the AI writes, makes the cover prompt, pushes the draft into your WeChat draft box, you read it on your phone and publish, and the AI reads the numbers back and plans the next one. A human decides twice: which topic, and whether to publish.
 
-WorkBuddy is the primary host (add the expert from the domestic marketplace). Any agent that reads `SKILL.md` can install the same skills: Claude Code, Codex, CodeBuddy CLI, Hermes, OpenClaw, Doubao, Muse and others. The only thing you pay for is wxrank API credit, which you buy yourself: https://wxrank.com/api-services
+WorkBuddy is the primary host (add the expert from the domestic marketplace). Any agent that reads `SKILL.md` can install the same skills: Claude Code, Codex, CodeBuddy CLI, Hermes, OpenClaw, Doubao, Muse and others. The only thing you pay for is supply-side data, from either provider, bought by you: wxrank API credit at https://wxrank.com/api-services , or Apify credit at https://www.apify.com?fpr=tqio9f (our referral link).
 
 ### What is different
 
@@ -125,7 +125,7 @@ WorkBuddy is the primary host (add the expert from the domestic marketplace). An
 | Topics&nbsp;from | Your guess | Demand side: a daily list pulled from 40+ public hot sources; supply side: real WeChat read and share numbers. A topic counts when both sides agree |
 | You&nbsp;do | Watches everything | Two decisions: topic and publish. Publishing is always a human act |
 | Switching | Start over | Skills are standard SKILL.md plus stdlib Python; move them to another agent as they are |
-| Cost | Subscriptions, models, tools | wxrank credit only: 100 credits = 1 CNY, one hot-list query = 1 credit |
+| Cost | Subscriptions, models, tools | data credit only: wxrank at 100 credits = 1 CNY and 1 credit per hot-list query, or Apify pay per result |
 
 ### The chain
 
@@ -212,11 +212,13 @@ Claude Code, Codex, CodeBuddy CLI, Hermes, OpenClaw, Doubao, Muse, the internati
 
 If it asks where its skills directory is, the usual places: Claude Code `~/.claude/skills/`, Codex `~/.codex/skills/`, CodeBuddy CLI `~/.codebuddy/skills/`, Hermes `~/.hermes/skills/`, OpenClaw `~/.openclaw/skills/` or the workspace `skills/`; persona files are `CLAUDE.md`, `AGENTS.md`, `CODEBUDDY.md`, `SOUL.md` respectively. Doubao takes the `SKILL.md` content through "create a custom skill" in its Skills page; Muse Code reads standard `SKILL.md` folders. The international WorkBuddy's custom-model setting only accepts OpenAI-compatible endpoints. Labels in the UI win over this text; if it installs something wrong it will fix it.
 
-#### The only thing you pay for: wxrank
+#### The only thing you pay for is data: wxrank or Apify
 
 Supply-side numbers come from the wxrank WeChat API on your own key. Buy credit at https://wxrank.com/api-services , register and top up at https://data.wxrank.com , 100 credits = 1 CNY, one hot-list query = 1 credit, default daily cap 300. Put the key in `.wxrank.env` in your home directory as one line `KEY=yourkey`; the script reads it, never paste it into a chat.
 
 The API is reachable from anywhere; we tested from fourteen machines in different regions. If it fails, it is that machine's own network.
+
+The second provider is Apify. `apify_wechat.py` in the topic hunter calls a WeChat scraper on Apify and adds three things the wxrank path does not have: a daily ranking of breakout articles from small accounts (each row carries the account's usual reads and the boost ratio), WeChat Index, and article comments. Article search, per-article reads, account history and full text are there too. It is pay per result in USD: 0.012 per ranking row, 0.006 per search result, 0.03 per article for metrics, 0.30 per keyword for WeChat Index, plus 0.05 per run, and every command takes `--max-usd` as a cap. Sign up at https://www.apify.com?fpr=tqio9f (our referral link; the free plan has 5 USD of credit per month). Create a token on the API & Integrations page in Apify Console and put it in `.apify.env` in your home directory as one line `TOKEN=yourtoken`; the script reads it, never paste it into a chat.
 
 Optional second cost: an OpenAI-compatible image endpoint such as gpt-image-2 on apikey.fun if you want the AI to render covers. Without it the expert gives you the cover prompt and you render it yourself.
 
@@ -254,7 +256,7 @@ Switch into the expert's conversation and paste the whole block.
 
 </details>
 
-Read the source and permissions before installing any unofficial skill. The scripts here are pure Python stdlib and read credentials from local config files: the draft-push `wechat_draft.py` only calls the official WeChat API, its publish command is only available for verified accounts after a human says "publish", and there is no delete command; the topic hunter's `wxrank_topics.py` is read-only against wxrank and quotes before spending credits; `hot_sources.py` only reads public RSS and APIs.
+Read the source and permissions before installing any unofficial skill. The scripts here are pure Python stdlib and read credentials from local config files: the draft-push `wechat_draft.py` only calls the official WeChat API, its publish command is only available for verified accounts after a human says "publish", and there is no delete command; the topic hunter's `wxrank_topics.py` is read-only against wxrank and quotes before spending credits; its `apify_wechat.py` is read-only against a WeChat scraper on Apify, sends the token in a header and prints unit prices and the cap before each run; `hot_sources.py` only reads public RSS and APIs.
 
 ### What it will not do
 
@@ -316,7 +318,7 @@ The gate: versions in sync, frontmatter complete, IML chains round-tripped throu
 | [x-post](experts/ilang-x-awesome/skills/x-post/) | `x_api.py`, stdlib OAuth 1.0a: check, gate (weighted 280, no markers, no em dashes, no links in body, no near-duplicates, two posts a day), post, thread, `--media` for images or video, and intent which opens the x.com compose box for manual posting. API posts are read back and logged in full locally | 2.3.63 |
 | [x-comment-patrol](experts/ilang-x-awesome/skills/x-comment-patrol/) | `x_patrol.py`: fetch new replies under your own posts since a watermark for the expert to judge, send the approved replies and advance the watermark, status for costs. Summoned replies only, 20 per round, no links in replies | 2.3.63 |
 | [WeChat&nbsp;expert](experts/ilang-wechat-awesome/)<br><sub>ilang-wechat-awesome</sub> | The expert prompt. Feed it your own material, it restructures the piece with writing genes distilled from 200+ field-tested articles; no material, no article; no invented numbers or anecdotes. Ships with the four skills below | 2.3.63 |
-| [wechat-topic-hunter](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/) | `feed` reads the daily list for free, `direction` compares niches, `calendar` builds a dated content list, `hot` ranks WeChat articles, plus account lookup, benchmarking and per-article data; quotes before every paid call. Ships `hot_sources.py` for pulling sources yourself when GitHub is unreachable | 2.3.63 |
+| [wechat-topic-hunter](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/) | `feed` reads the daily list for free, `direction` compares niches, `calendar` builds a dated content list, `hot` ranks WeChat articles, plus account lookup, benchmarking and per-article data; quotes before every paid call. Ships `hot_sources.py` for pulling sources yourself when GitHub is unreachable. With an Apify token, `apify_wechat.py` adds the daily breakout ranking from small accounts, WeChat Index and comments | 2.3.63 |
 | [wechat-article](experts/ilang-wechat-awesome/skills/wechat-article/) | 23 writing genes, two skeletons, four title formulas, 12-point self-check, built-in de-AI editing, compliance rules, cover prompt template | 2.3.63 |
 | [wechat-draft-push](experts/ilang-wechat-awesome/skills/wechat-draft-push/) | check credentials and IP allowlist, render Markdown to WeChat HTML, push images and cover and the draft into the WeChat draft box with read-back, verify, and publish only after a human reviewed the draft and said so, and only for verified enterprise accounts. External links become a numbered reference list, comment switch and read-more URL are settable. Image messages: newspic_cards.py renders a 【第N页】-marked script into 1080×1440 cards with the local headless browser, push-newspic pushes them as a newspic draft. No delete command | 2.3.63 |
 | [remote-dispatch](experts/ilang-wechat-awesome/skills/remote-dispatch/) | Optional, for people with two machines: the local agent dispatches [RUN:VPS] blocks to a remote CodeBuddy gateway and collects the result; gateway setup scripts for Linux and Windows included | 2.3.63 |
@@ -346,6 +348,7 @@ The expert and skills are written in the iLang protocol; the `#iml/0.6/...` line
 
 Daily list changes are in [UPDATES.md](UPDATES.md); what each version changed is on the [Releases](https://github.com/adsorgcn/WorkBuddy/releases) page. Recent versions:
 
+- 2.3.64 (2026-11-26): Second data path for the topic hunter: `apify_wechat.py` calls a WeChat scraper on Apify with your own token. New: daily breakout ranking from small accounts (with baseline and boost ratio), WeChat Index, comments; also search, per-article reads, account history and full text. Pay per result, prices printed before each run, `--max-usd` cap. The wxrank path is unchanged.
 - 2.3.42 (2026-10-23): Phone banner: below 768px the README serves a 4:5 version of the banner so the card text stays readable; English in sync.
 - 2.3.41 (2026-10-23): README redesign: new banner, the X expert first, one comparison table for the two experts, the beginner's five steps as a table, install and self-check commands folded away, changelog shows recent versions only; English README in sync.
 - 2.3.40 (2026-10-23): "How a beginner uses it" added to the X section: three things before the first run, five steps, cost, what it never does.

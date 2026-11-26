@@ -18,6 +18,7 @@ except Exception:
     pass
 import hot_sources as hs          # noqa: E402
 import wxrank_topics as wx        # noqa: E402
+import apify_wechat as az         # noqa: E402
 import wechat_draft as wd         # noqa: E402
 import newspic_cards as nc        # noqa: E402
 import x_api as xa                # noqa: E402
@@ -278,6 +279,32 @@ xfeed = {"groups": {"AI": [{"title": "Iran drone AI", "published": "10-22 11:00"
                            {"title": "我发过的 OpenAI 新模型", "published": "10-22 09:00", "lang": "zh", "platforms": 1}]}}
 kept, dropped, total = xf.pick(xfeed, hours=48, n=10, posted=["我发过的 OpenAI 新模型 真不错"], now=xnow)
 check("清单过滤：禁区 时效 去重 都拦 剩一条", [r["title"] for r in kept] == ["OpenAI 发新模型"] and len(dropped) == 3 and total == 1, ([r["title"] for r in kept], [w for _, w in dropped], total))
+
+# ---- Apify 这条数据路（不碰网络、不花钱）----
+check("令牌三种写法都认 别的键不认", az.parse_env("# x\nTOKEN=abc_123\n") == "abc_123" and az.parse_env('APIFY_API_TOKEN="t-1"\n') == "t-1" and az.parse_env("KEY=zzz\n") == "")
+check("令牌文件带 BOM 或是 UTF-16 也读得出", az.parse_env(az.decode_env(b"\xef\xbb\xbfTOKEN=abc_123\r\n")) == "abc_123" and az.parse_env(az.decode_env("TOKEN=abc_123\r\n".encode("utf-16"))) == "abc_123")
+az_data, az_notes = az.split_rows([{"operation": "articleSearch", "title": "a"}, {"limitReached": True, "message": "used all", "freeRunsUsed": 25, "freeRunsLimit": 25}, "x"])
+check("数据行和通知行分开", len(az_data) == 1 and len(az_notes) == 1, (az_data, az_notes))
+check("免费次数用完的通知带次数和后台地址", "25/25" in az.notice_text(az_notes[0]) and az.BILLING_PAGE in az.notice_text(az_notes[0]), az.notice_text(az_notes[0]))
+check("临时不可用的通知说清是临时限制", "临时限制" in az.notice_text({"temporarilyUnavailable": True, "message": "m"}))
+az_long = "http://mp.weixin.qq.com/s?__biz=MzY4==&mid=2247490953&idx=1&sn=9b72&chksm=f201&scene=126&sessionid=0#rd"
+check("长链接只留四个参数并换 https", az.short_url(az_long) == "https://mp.weixin.qq.com/s?__biz=MzY4==&mid=2247490953&idx=1&sn=9b72", az.short_url(az_long))
+check("短链原样", az.short_url("https://mp.weixin.qq.com/s/TSNQ") == "https://mp.weixin.qq.com/s/TSNQ")
+check("时间按北京时间 机器在哪个时区都一样", az.fmt_ts(1795239753) == "2026-11-21 13:42", az.fmt_ts(1795239753))
+az_vr = [{"rank": 2, "accountCategory": "科技", "title": "AI 出海", "accountName": "甲", "boostRatio": 59.6},
+         {"rank": 1, "accountCategory": "军事", "title": "别的", "accountName": "乙", "boostRatio": 137.9},
+         {"rank": 3, "accountCategory": "", "title": "出海记", "accountName": "丙", "boostRatio": 10}]
+check("爆文榜按分类筛", [r["rank"] for r in az.filter_viral(az_vr, {"科技"}, [], 0)] == [2])
+check("爆文榜按词和倍率筛 按名次排", [r["rank"] for r in az.filter_viral(az_vr, set(), ["出海"], 0)] == [2, 3] and [r["rank"] for r in az.filter_viral(az_vr, set(), [], 50)] == [1, 2])
+check("分类计数 空的算未分类", dict(az.category_counts(az_vr)) == {"科技": 1, "军事": 1, "未分类": 1}, az.category_counts(az_vr))
+az_st = az.index_stats([{"index": 100 + i, "timestamp": 1793030400 + 86400 * i} for i in range(30)])
+check("指数统计：最新 最高 最低 周变化 近七天", az_st["n"] == 30 and az_st["latest"] == 129 and az_st["max"] == 129 and az_st["min"] == 100 and az_st["change7"] == 5.9 and len(az_st["tail"]) == 7, az_st)
+check("指数没数据给 None", az.index_stats([]) is None)
+check("估价＝启动费加行数乘单价 表里没有的不估", az.estimate_usd("viralArticles", 50) == 0.65 and az.estimate_usd("articleSearch", 36) == 0.266 and az.estimate_usd("accountTodayArticles", 3) is None)
+check("通用入口不带 feedback 也不让改 operation", az.run_input("accountBasicInfo", None, None, "gh_x", None, '{"feedback": "hi", "operation": "x", "sortBy": "hot"}') == {"operation": "accountBasicInfo", "accounts": ["gh_x"], "sortBy": "hot"})
+check("多个链接按逗号后的 http 切 并统一 https", az.split_urls("https://mp.weixin.qq.com/s/a,http://mp.weixin.qq.com/s/b") == ["https://mp.weixin.qq.com/s/a", "https://mp.weixin.qq.com/s/b"])
+check("地区对象：国内给省 国外给国家", az.region({"province_name": "河北", "country_name": "中国"}) == "河北" and az.region({"province_name": "", "country_name": "加拿大"}) == "加拿大")
+check("一次带多个词按 queryTarget 分组", [(k, len(v)) for k, v in az.group_by_target([{"queryTarget": "a"}, {"queryTarget": "b"}, {"queryTarget": "a"}])] == [("a", 2), ("b", 1)])
 
 # ---- 版本号同步 ----
 txt = "version: 2.3.12\n[VERSION:2.3.10]\n| 2.3.1 |\nv2.3.1 and v2.3.12 and \"version\": \"2.3.1\""

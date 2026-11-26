@@ -22,10 +22,10 @@
 | | X 运营专家 <sub>10 月 23 日新上</sub> | 公众号爆文专家 |
 |---|---|---|
 | 给⁠谁 | 想让 AI 跑 X（Twitter）账号的人 | 写公众号的人 |
-| 找⁠题 | X榜单 公开榜看今天什么热，回公众号、知乎、B 站、抖音、小红书找对标文 | 每天自动拉的四十多个热点源，加 wxrank 的公众号真实阅读分享 |
+| 找⁠题 | X榜单 公开榜看今天什么热，回公众号、知乎、B 站、抖音、小红书找对标文 | 每天自动拉的四十多个热点源，加 wxrank 或 Apify 的公众号真实阅读分享 |
 | 它⁠做 | 改写成帖、发帖、巡查你帖子下的评论并回复 | 写稿、出封面提示词、推进草稿箱、回查数据 |
 | 你⁠做 | 定位说一次；每条挑题、点头 | 定题、审稿、手机上点发 |
-| 花⁠钱 | 手动发零成本；走接口新号充 5 送 5 | 只有 wxrank 额度，看一次榜 1 积分 |
+| 花⁠钱 | 手动发零成本；走接口新号充 5 送 5 | 只有数据额度：wxrank 看一次榜 1 积分，或 Apify 按条计费 |
 | 装⁠法 | GitHub，任何能读 SKILL.md 的 Agent | WorkBuddy 国内市场一键，或任何 Agent |
 
 <br>
@@ -115,7 +115,7 @@
 
 市面上的「AI 写公众号」只管写。这里是一条链：每天自动更新的内容清单告诉你各平台在聊什么，公众号的真实阅读分享数据告诉你哪些题还没写爆，然后 AI 写稿、配图、推进草稿箱，你在手机上看一眼再发，发完它回查数据、给你排节奏。人只在两处拍板：定题，审稿。
 
-以 WorkBuddy 为主（国内版市场里直接加），同时任何能读 `SKILL.md` 的 Agent 都能装：Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse 等。唯一要花钱的地方是 wxrank 的 API 额度，你自己去买：https://wxrank.com/api-services 。
+以 WorkBuddy 为主（国内版市场里直接加），同时任何能读 `SKILL.md` 的 Agent 都能装：Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse 等。要花钱的只有供给侧数据，两家任选一家，你自己去买：wxrank 的 API 额度 https://wxrank.com/api-services ，或 Apify 的额度 https://www.apify.com?fpr=tqio9f （我们的推广链接）。
 
 ### 跟别人不一样在哪
 
@@ -125,7 +125,7 @@
 | 找⁠题 | 你自己想，或者凭感觉 | 需求侧是仓库每天自动拉的四十多个热点源，供给侧是公众号上这个题读了多少、爆没爆，两边对上才是题 |
 | 人⁠做 | 全程盯着 | 两次拍板：定题、审稿；发布永远人点 |
 | 换⁠工⁠具 | 重来 | 技能是标准 SKILL.md 加标准库脚本，换个 Agent 照用 |
-| 花⁠钱 | 平台会员、模型、工具各一份 | 只有 wxrank 的额度，100 积分 1 元，看一次榜 1 积分 |
+| 花⁠钱 | 平台会员、模型、工具各一份 | 只有数据额度：wxrank 100 积分 1 元、看一次榜 1 积分，或 Apify 按条计费 |
 
 ### 玩法：一条链
 
@@ -212,11 +212,13 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 它要是问技能目录在哪，常见位置：Claude Code `~/.claude/skills/`，Codex `~/.codex/skills/`，CodeBuddy 命令行 `~/.codebuddy/skills/`，Hermes `~/.hermes/skills/`，OpenClaw `~/.openclaw/skills/` 或工作区 `skills/`；人设文件对应 `CLAUDE.md`、`AGENTS.md`、`CODEBUDDY.md`、`SOUL.md`。豆包在技能页「自定义新建技能」把 `SKILL.md` 内容贴进去，Muse Code 认标准 `SKILL.md` 目录。海外版 WorkBuddy 的自定义模型只认 OpenAI 兼容接口。界面上的字以你看到的为准，装错了它自己会纠。
 
-#### 唯一要花钱的：wxrank
+#### 要花钱的只有数据：wxrank 或 Apify
 
 供给侧的数据来自 wxrank（微小榜）的公众号接口，用你自己的 key。买额度：https://wxrank.com/api-services ，注册和充值：https://data.wxrank.com ，100 积分等于 1 元，看一次榜 1 积分，日上限默认 300 积分。key 写进用户主目录的 `.wxrank.env`，一行 `KEY=你的key`，脚本自己读，不要贴进任何对话。
 
 接口哪台机器都能连，国内海外都一样，我们从十四台不同地区的机器上测过。连不上是你那台机器自己的网络问题。
+
+第二家是 Apify。选题技能里的 `apify_wechat.py` 调 Apify 上的公众号采集器，多三样 wxrank 这条没接的：低粉爆文日榜（小号里阅读远超平时的文章，每条带这个号平时的阅读和倍率）、微信指数、文章留言；搜文章、单篇阅读、历史发文、正文也都有。按条计费，单价是美元：爆文榜每条 0.012、搜文章每篇 0.006、单篇数据每篇 0.03、微信指数每词 0.30，每次运行另收 0.05 启动费，每个命令都能用 `--max-usd` 封顶。注册：https://www.apify.com?fpr=tqio9f （这是我们的推广链接，免费套餐每月有 5 美元额度）。令牌在 Apify 后台的 API & Integrations 页建，写进用户主目录的 `.apify.env`，一行 `TOKEN=你的令牌`，脚本自己读，不要贴进任何对话。
 
 可选的第二笔钱：封面和配图想让 AI 直接出，接一个 OpenAI 兼容的出图接口，比如 apikey.fun 的 gpt-image-2。不接也行，专家会给你封面提示词，你自己出图。
 
@@ -254,7 +256,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 </details>
 
-安装非官方技能前，先看一遍源码和权限。这里的脚本都是纯 Python 标准库、凭据从本机配置文件读：推草稿技能的 `wechat_draft.py` 只调微信官方接口，发布命令只在人说「发」之后对认证号可用，没有删草稿命令；选题技能的 `wxrank_topics.py` 只读调用 wxrank，花积分前报价；`hot_sources.py` 只读公开的 RSS 和接口。
+安装非官方技能前，先看一遍源码和权限。这里的脚本都是纯 Python 标准库、凭据从本机配置文件读：推草稿技能的 `wechat_draft.py` 只调微信官方接口，发布命令只在人说「发」之后对认证号可用，没有删草稿命令；选题技能的 `wxrank_topics.py` 只读调用 wxrank，花积分前报价；`apify_wechat.py` 只读调用 Apify 上的公众号采集器，令牌走请求头，跑之前报单价和封顶；`hot_sources.py` 只读公开的 RSS 和接口。
 
 ### 它不做的事
 
@@ -316,7 +318,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 | [X⁠ ⁠发⁠帖](experts/ilang-x-awesome/skills/x-post/)<br><sub>x-post</sub> | `x_api.py`：check 验密钥，gate 过门（加权 280、无标记、无长破折号、正文无链接、不重复、一天两条），post 单帖，thread 串帖，`--media` 带图或视频，intent 开浏览器编辑框你自己点。接口路发完回读，正文全文记本机日志 | 2.3.63 |
 | [X⁠ ⁠评⁠论⁠巡⁠查](experts/ilang-x-awesome/skills/x-comment-patrol/)<br><sub>x-comment-patrol</sub> | `x_patrol.py`：fetch 按水位线拉你帖子下的新评论交给专家判，send 发专家写好的回复并推进水位线，status 看花费。只回召唤你的人，一轮最多 20 条，回复里不放链接 | 2.3.63 |
 | [公⁠众⁠号⁠爆⁠文⁠专⁠家](experts/ilang-wechat-awesome/)<br><sub>ilang-wechat-awesome</sub> | 专家正文。投喂素材，按 200 多篇实战文章验证的写作基因重组，出 MD 正文、3 个标题、封面图提示词；没素材不写，不编数字不编经历。带下面四个技能 | 2.3.63 |
-| [选⁠题⁠对⁠标](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/)<br><sub>wechat-topic-hunter</sub> | `feed` 读每日清单（免费），`direction` 比方向，`calendar` 排内容清单，`hot` 看榜，找号、对标、单篇数据；每次花积分前先报价。附 `hot_sources.py`，上不了 GitHub 时自己拉热点源 | 2.3.63 |
+| [选⁠题⁠对⁠标](experts/ilang-wechat-awesome/skills/wechat-topic-hunter/)<br><sub>wechat-topic-hunter</sub> | `feed` 读每日清单（免费），`direction` 比方向，`calendar` 排内容清单，`hot` 看榜，找号、对标、单篇数据；每次花积分前先报价。附 `hot_sources.py`，上不了 GitHub 时自己拉热点源。有 Apify 令牌时 `apify_wechat.py` 再加低粉爆文日榜、微信指数、留言 | 2.3.63 |
 | [写⁠稿](experts/ilang-wechat-awesome/skills/wechat-article/)<br><sub>wechat-article</sub> | 23 条写作基因，六段式和八区块两种骨架，标题四个公式，12 项自查，去 AI 味三件套和五个信号，脱敏表和敏感词红线，封面提示词模板 | 2.3.63 |
 | [推⁠草⁠稿⁠箱](experts/ilang-wechat-awesome/skills/wechat-draft-push/)<br><sub>wechat-draft-push</sub> | check 验凭据和白名单，render 转微信 HTML，push 传图传封面推进草稿箱并回读，verify 回读，publish 只在人看完草稿说「发」后对微信认证号可用。外链自动收进文末「参考链接」，留言开关和「阅读原文」可设。贴图：newspic_cards.py 把带【第N页】的稿子出成 1080×1440 卡片图，push-newspic 推成图片消息草稿。没有删草稿命令 | 2.3.63 |
 | [远⁠程⁠派⁠活](experts/ilang-wechat-awesome/skills/remote-dispatch/)<br><sub>remote-dispatch</sub> | 可选件。两台机器的人用：本机当总控，把 [RUN:VPS] 的命令块派给远程机上的 CodeBuddy 网关跑，收回结果。远程机起网关的脚本在 scripts 里，Linux 和 Windows 各一个 | 2.3.63 |
@@ -346,6 +348,7 @@ Claude Code、Codex、CodeBuddy 命令行、Hermes、OpenClaw、豆包、Muse、
 
 每日清单的增减在 [UPDATES.md](UPDATES.md)，每个版本改了什么在 [发布页](https://github.com/adsorgcn/WorkBuddy/releases)。最近几版：
 
+- 2.3.64（2026-11-26）：选题技能加第二条数据路 Apify：`apify_wechat.py` 用你自己的 Apify 令牌调公众号采集器，新增低粉爆文日榜（带基线和倍率）、微信指数、留言，另有搜文章、单篇阅读、历史发文、正文。按条计费，跑之前报单价，`--max-usd` 封顶。wxrank 那条不变。
 - 2.3.42（2026-10-23）：横幅加手机版：窄于 768 像素时换 4:5 的竖版图，卡片文字在手机上看得清；英文同步。
 - 2.3.41（2026-10-23）：README 改版：新横幅，X 运营专家放最前，两个专家一张对照表，小白五步改成表格，安装命令和自检命令收进折叠块，更新记录只展开最近几版；英文 README 同步。
 - 2.3.40（2026-10-23）：README 的 X 一节加「小白怎么用」：第一次用的三件事、五步、花多少钱、不做的事；英文 README 同步。
