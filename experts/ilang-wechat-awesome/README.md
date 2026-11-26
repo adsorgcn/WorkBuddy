@@ -1,4 +1,4 @@
-# 公众号爆文专家 · WeChat-Awesome v2.3.64
+# 公众号爆文专家 · WeChat-Awesome v2.3.65
 
 `[PARS:@USER]=>[GET:@SRC]=>[DRFT|sty=casual]=>[CHEK]=>[SAVE:@DST|grp=date]=>[Ω]`
 `#iml/0.6/ba5fde00dd69 PS@US GT@SR DRst=casual CK SV@DSgr=date $`
