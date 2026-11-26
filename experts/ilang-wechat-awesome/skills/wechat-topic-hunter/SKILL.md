@@ -39,7 +39,7 @@ author: iLang Inc.
 3. 机器上要有 Python 3.8 以上。脚本只用标准库。接口哪台机器都能连，国内海外都行；连不上是这台机器自己的网络问题，不换方案。
 4. 每天默认上限 300 积分（3 元），到了就停，用户想调用环境变量 `WXRANK_DAILY_CAP`。
 5. `feed` 读的是 https://raw.githubusercontent.com/adsorgcn/WorkBuddy/main/data/hot/latest.json ，这台机器上不去 GitHub 就跑同目录的 `hot_sources.py` 自己拉热点源（`python hot_sources.py --cluster`），结果一样。
-6. Apify 这条路是可选的。要用：没账号先注册 https://www.apify.com?fpr=tqio9f （我们的推广链接，免费套餐每月有 5 美元额度），在 https://console.apify.com/settings/integrations 的 Personal API tokens 里建一个令牌，写进用户主目录的 `.apify.env`，一行 `TOKEN=你的令牌`。同样是用户自己写，你不接收令牌的值。跑 `apify_wechat.py me` 能看到账号和本期用量就通了。Apify 的接口国内网络能直连。额度和套餐是用户自己在 Apify 后台管的，用完了他自己去升级。
+6. Apify 这条路是可选的。要用：没账号先注册 https://www.apify.com?fpr=tqio9f （我们的推广链接，免费套餐每月有 5 美元额度），在 https://console.apify.com/settings/integrations 的 Personal API tokens 里建一个令牌，写进用户主目录的 `.apify.env`，一行 `TOKEN=你的令牌`。同样是用户自己写，你不接收令牌的值。跑 `apify_wechat.py me` 能看到账号和本期用量就通了。Apify 的接口国内网络能直连。这个采集器对免费套餐另有限制，照它自己页面的原话：一共 25 次试跑，不按月；每次只回第一个词或链接的第一页，`--pages` 加了也只有一页；微信指数、联想词、小程序搜索要付费套餐。额度和套餐是用户自己在 Apify 后台管的，用完了他自己去升级。
 
 ## 怎么跑
 
