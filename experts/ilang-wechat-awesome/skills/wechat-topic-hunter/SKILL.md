@@ -99,7 +99,7 @@ python <路径>/apify_wechat.py run --op <操作名> [--keyword ..] [--url ..] [
 4. 找对标号：`accounts --keyword 品类词` 列出公众号和它们的原始ID，挑 3 到 5 个，各跑一次 `history --account 原始ID`。它会算这个号头条的阅读中位和每篇的倍率，倍率 2 以上的题是这个号的读者格外买账的，看标题公式和角度，不抄。
 5. 对标文章用 `comments` 看精选留言。读者在留言里问的、吵的，就是下一篇能补的角度。
 
-跑之前先跟用户说这次大约花多少：`viral` 一页约 0.65 美元，`suggest` 和 `index` 一个词约 0.35，`search` 一个词约 0.27，`accounts` 一个词约 0.16，`metrics`、`detail`、`history`、`comments` 一次几分钱到一毛。
+跑之前先跟用户说这次大约花多少：`viral` 一页约 0.60 到 0.65 美元，`suggest` 和 `index` 一个词约 0.35，`search` 一个词约 0.27，`accounts` 一个词约 0.16，`metrics`、`detail`、`history`、`comments` 一次几分钱到一毛。
 
 ## 铁律
 

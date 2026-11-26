@@ -16,7 +16,7 @@
 | `viral` | viralArticles | 低粉爆文日榜：小号里阅读远超平时的文章，一页 50 条，带这个号近 90 天的阅读基线和倍率 | 每条 0.012 |
 | `search` | articleSearch | 按词搜公众号文章：标题、发文号、时间、链接 | 每篇 0.006 |
 | `metrics` | articleMetrics | 单篇的阅读、点赞、在看、分享、收藏、评论数 | 每篇 0.03 |
-| `accounts` | accountSearch | 按词找号：名称、微信号、原始ID、主体、是否认证、原创篇数、简介。结果里混着视频号和小程序，默认只列公众号，`--all` 全列 | 每个 0.008 |
+| `accounts` | accountSearch | 按词找号：名称、微信号、原始ID、主体、是否认证、原创篇数、简介。结果里混着视频号和小程序，默认只列公众号（订阅号、服务号），`--all` 全列 | 每个 0.008 |
 | `history` | accountHistoryArticles | 一个号的历史发文：标题、时间、链接、微信列表里给的阅读，外加头条阅读中位和每篇的倍率 | 每篇 0.006 |
 | `detail` | articleDetail | 正文、作者、是否原创、发文地区 | 每篇 0.03 |
 | `comments` | articleComments | 精选留言：昵称、地区、内容、点赞数 | 每条 0.003 |
@@ -26,7 +26,7 @@
 
 每次运行另收一次启动费 0.05 美元。其余七个操作：miniProgramSearch 搜小程序（每个 0.015）、articleCommentReplies 留言的回复（每条 0.025）、convertArticleLink 短链和长链互转（每条 0.025，链接用 `--link` 给）、accountBasicInfo 公众号资料、accountPrincipalInfo 认证主体、accountOriginalCount 原创篇数（这三个每个号 0.03）、accountTodayArticles 今日发文（每篇 0.006）。
 
-套餐档位高的单价更低，这张表是免费档和最低付费档的数。
+套餐档位高的单价更低，这张表是免费档的数；付费 Starter 档低粉爆文每条 0.011、找号 0.007、联想词与指数 0.28，其余一样。下面「实测」那一栏是 Starter 档的实付。
 
 ## 实测一次拿回多少（2026-11-25）
 

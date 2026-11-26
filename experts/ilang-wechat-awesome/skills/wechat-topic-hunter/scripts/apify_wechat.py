@@ -42,7 +42,7 @@ ENV = os.path.join(os.path.expanduser("~"), ".apify.env")
 OPS = ["articleSearch", "accountSearch", "miniProgramSearch", "searchSuggestions", "wechatIndexSearch", "articleDetail", "articleMetrics",
        "articleComments", "articleCommentReplies", "convertArticleLink", "accountBasicInfo", "accountPrincipalInfo", "accountOriginalCount",
        "accountTodayArticles", "accountHistoryArticles", "viralArticles"]
-# 采集器页面 2026-11-25 的按条单价（美元，免费和最低付费档；档位高的更便宜）。只用来在跑之前报个数，实际以 Apify 账单为准。
+# 采集器页面 2026-11-25 的按条单价（美元，免费档；付费档略低，Starter 档低粉爆文 0.011、找号 0.007、联想词与指数 0.28，档位越高越低）。只用来在跑之前报个数，实际以 Apify 账单为准。
 START_FEE = 0.05
 UNIT_PRICE = {"viralArticles": 0.012, "articleSearch": 0.006, "accountHistoryArticles": 0.006, "articleMetrics": 0.03, "articleDetail": 0.03,
               "articleComments": 0.003, "articleCommentReplies": 0.025, "wechatIndexSearch": 0.30, "searchSuggestions": 0.30,
@@ -150,7 +150,7 @@ def short_url(u):
 def clean(s, n=0):
     s = re.sub(r"<[^>]*>", "", str(s if s is not None else ""))
     s = re.sub(r"\s+", " ", s).strip()
-    return s[:n] if n else s
+    return (s[:n - 1] + "…") if n and len(s) > n else s
 
 
 def num(v):
@@ -338,8 +338,8 @@ def cmd_metrics(a, tok):
 
 # ---------- 找号 ----------
 def account_rows(rows, include_all=False):
-    """按词搜号的结果里混着视频号、小程序，默认只留公众号。"""
-    return [r for r in rows if include_all or str(r.get("accTypeName") or "") == "公众号"]
+    """按词搜号的结果里混着视频号、小程序，默认只留公众号（订阅号和服务号都是公众号）。"""
+    return [r for r in rows if include_all or str(r.get("accTypeName") or "") in ("公众号", "服务号")]
 
 
 def cmd_accounts(a, tok):
@@ -349,6 +349,7 @@ def cmd_accounts(a, tok):
     inp = {"operation": "accountSearch", "keywords": kws, "maxPages": a.pages}
     run, items, rows = fetch(tok, a, inp)
     for kw, mine in group_by_target(rows):
+        mine = [r for r in mine if r.get("userName")]   # 微信搜索夹带的提示行（如开启位置）没有原始ID，不是账号
         print("「%s」搜到 %d 个账号，其中公众号 %d 个：" % (kw, len(mine), len(account_rows(mine))))
         for r in account_rows(mine, a.all):
             print("  [%s] %s｜微信号 %s｜原始ID %s｜主体 %s｜%s｜%s" % (r.get("accTypeName") or "未知", clean(r.get("nickName") or r.get("title"), 24), r.get("aliasName") or "无", r.get("userName") or "无",
@@ -376,8 +377,8 @@ def parse_reads(desc):
 
 
 def head_median(rows):
-    """这批发文里头条（每次推送的第 1 条）的阅读中位。次条不代表这个号的水平，不算。少于 3 篇头条不算，给 None。"""
-    reads = [parse_reads(r.get("showDesc"))[0] for r in rows if num(r.get("itemIndex")) in (0, 1)]
+    """这批发文里头条（每次推送的第 1 条，itemIndex 从 1 起，2026-11-26 实测）的阅读中位。次条不代表这个号的水平，不算。少于 3 篇头条不算，给 None。"""
+    reads = [parse_reads(r.get("showDesc"))[0] for r in rows if num(r.get("itemIndex")) == 1]
     reads = [x for x in reads if x is not None]
     return int(statistics.median(reads)) if len(reads) >= 3 else None
 

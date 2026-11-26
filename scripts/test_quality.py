@@ -310,8 +310,9 @@ check("列表里的阅读：准数 带 k 带加号 中文万 认不出", [az.par
       == [(763, False), (92000, False), (100000, True), (92000, False), (None, False), (None, False)])
 az_hist = [{"itemIndex": 1, "showDesc": "Reads: 1000"}, {"itemIndex": 1, "showDesc": "Reads: 3000"}, {"itemIndex": 1, "showDesc": "Reads: 2000"}, {"itemIndex": 2, "showDesc": "Reads: 90k"}]
 check("头条阅读中位不算次条 少于三篇头条不算", az.head_median(az_hist) == 2000 and az.head_median(az_hist[:2]) is None, (az.head_median(az_hist), az.head_median(az_hist[:2])))
-az_accs = [{"accTypeName": "视频号", "title": "a"}, {"accTypeName": "公众号", "nickName": "b"}, {"accTypeName": "小程序", "title": "c"}]
-check("找号默认只留公众号 要全列才全列", [r.get("nickName") for r in az.account_rows(az_accs)] == ["b"] and len(az.account_rows(az_accs, True)) == 3)
+az_accs = [{"accTypeName": "视频号", "title": "a"}, {"accTypeName": "公众号", "nickName": "b"}, {"accTypeName": "小程序", "title": "c"}, {"accTypeName": "服务号", "nickName": "d"}]
+check("找号默认只留公众号 服务号也是公众号 要全列才全列", [r.get("nickName") for r in az.account_rows(az_accs)] == ["b", "d"] and len(az.account_rows(az_accs, True)) == 4)
+check("标题超长截断带省略号 不超长原样", az.clean("一二三四五六", 4) == "一二三…" and az.clean("一二三四", 4) == "一二三四")
 check("联想词：字符串和对象都认 空的不要", az.suggestion_words({"suggestions": ["副业", {"word": "副业推荐"}, "", {"x": 1}]}) == ["副业", "副业推荐"])
 check("通用入口的 --link 进 links 字段", az.run_input("convertArticleLink", None, None, None, None, None, "http://mp.weixin.qq.com/s/abc") == {"operation": "convertArticleLink", "links": ["https://mp.weixin.qq.com/s/abc"]})
 
