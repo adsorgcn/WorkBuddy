@@ -9,21 +9,24 @@
   python apify_wechat.py search --keyword 出海,副业 [--pages 1] [--sort relevance|latest|hot] [--time all|day|week|halfYear]
                                                                         按词搜公众号文章
   python apify_wechat.py metrics --url "<文章链接>[,<文章链接>]"         阅读 点赞 在看 分享 收藏 评论数
+  python apify_wechat.py accounts --keyword AI出海 [--pages 1] [--all]   按词找公众号：名称、微信号、原始ID、主体、原创篇数（--all 连视频号小程序一起列）
   python apify_wechat.py history --account <gh_ 原始ID|微信号|号名|这个号任意一篇文章链接> [--pages 1]
-                                                                        一个号的历史发文
+                                                                        一个号的历史发文，带头条阅读中位和每篇的倍率
   python apify_wechat.py detail --url "<文章链接>"                       正文、作者、是否原创、发文地区
   python apify_wechat.py comments --url "<文章链接>" [--pages 1]         精选留言
   python apify_wechat.py index --keyword 出海,AI                        微信指数，近 30 天每天的热度
-  python apify_wechat.py run --op <操作名> [--keyword a,b] [--url u1,u2] [--account x,y] [--pages N] [--json '{"字段":"值"}']
+  python apify_wechat.py suggest --keyword 副业,出海                    联想词：微信搜一搜里别人接着这个词在搜什么
+  python apify_wechat.py run --op <操作名> [--keyword a,b] [--url u1,u2] [--account x,y] [--link 短链或长链] [--pages N] [--json '{"字段":"值"}']
                                                                         采集器其余操作原样跑，结果存文件。16 个操作名见 references/apify-wechat.md
 付费命令都可以加：--max-usd 1.0（这次运行最多花多少美元，到了采集器自己停，默认 1）、--save 结果.json（原始结果落盘）。
 
 凭据：~/.apify.env 一行 TOKEN=你的令牌（或环境变量 APIFY_TOKEN）。没有 Apify 账号先注册：https://www.apify.com?fpr=tqio9f
       （这是我们的推广链接；免费套餐每月有 5 美元额度）。令牌在 https://console.apify.com/settings/integrations 的 Personal API tokens 里建。
 纪律：只读；令牌走请求头、不进输出；按条计费的单价和这次的封顶先打印再跑；只用标准库；不填采集器输入里的 feedback 字段。
-口径：数字是采集器当场从微信拿的公开数，跟公众号后台会差。倍率 = 这篇阅读 ÷ 这个号近 90 天的阅读基线，是采集器算好的。只标注数字，选题是你定。
+口径：数字是采集器当场从微信拿的公开数，跟公众号后台会差。爆文榜的倍率 = 这篇阅读 ÷ 这个号近 90 天的阅读基线，是采集器算好的；
+      history 的倍率 = 这篇阅读 ÷ 这个号这批头条的阅读中位，是本脚本按微信列表里给的阅读算的。只标注数字，选题是你定。
 """
-import argparse, datetime, io, json, os, re, sys, time, urllib.error, urllib.parse, urllib.request
+import argparse, datetime, io, json, os, re, statistics, sys, time, urllib.error, urllib.parse, urllib.request
 
 try:
     sys.stdout.reconfigure(encoding="utf-8"); sys.stderr.reconfigure(encoding="utf-8")
@@ -44,7 +47,7 @@ START_FEE = 0.05
 UNIT_PRICE = {"viralArticles": 0.012, "articleSearch": 0.006, "accountHistoryArticles": 0.006, "articleMetrics": 0.03, "articleDetail": 0.03,
               "articleComments": 0.003, "articleCommentReplies": 0.025, "wechatIndexSearch": 0.30, "searchSuggestions": 0.30,
               "accountSearch": 0.008, "miniProgramSearch": 0.015, "convertArticleLink": 0.025, "accountBasicInfo": 0.03,
-              "accountPrincipalInfo": 0.03, "accountOriginalCount": 0.03}
+              "accountPrincipalInfo": 0.03, "accountOriginalCount": 0.03, "accountTodayArticles": 0.006}
 DONE = ("SUCCEEDED", "FAILED", "TIMED-OUT", "ABORTED")
 
 
@@ -250,6 +253,8 @@ def fetch(tok, a, inp):
     rows, notices = split_rows(items)
     for n in notices:
         print(notice_text(n))
+    if not rows and not notices and run.get("status") == "SUCCEEDED" and run.get("statusMessage"):
+        print("采集器说：" + clean(run.get("statusMessage"), 200))   # 跑成功但一行都没有时，它会在这里说原因
     return run, items, rows
 
 
@@ -331,7 +336,52 @@ def cmd_metrics(a, tok):
     finish(run, inp, items, a.save, len(rows))
 
 
+# ---------- 找号 ----------
+def account_rows(rows, include_all=False):
+    """按词搜号的结果里混着视频号、小程序，默认只留公众号。"""
+    return [r for r in rows if include_all or str(r.get("accTypeName") or "") == "公众号"]
+
+
+def cmd_accounts(a, tok):
+    kws = split_csv(a.keyword)
+    if not kws:
+        die("--keyword 不能为空")
+    inp = {"operation": "accountSearch", "keywords": kws, "maxPages": a.pages}
+    run, items, rows = fetch(tok, a, inp)
+    for kw, mine in group_by_target(rows):
+        print("「%s」搜到 %d 个账号，其中公众号 %d 个：" % (kw, len(mine), len(account_rows(mine))))
+        for r in account_rows(mine, a.all):
+            print("  [%s] %s｜微信号 %s｜原始ID %s｜主体 %s｜%s｜%s" % (r.get("accTypeName") or "未知", clean(r.get("nickName") or r.get("title"), 24), r.get("aliasName") or "无", r.get("userName") or "无",
+                                                              clean(r.get("principalName"), 24) or "未知", "已认证" if r.get("verified") else "未认证", clean(r.get("originalContentStr"), 16) or "原创数未知"))
+            if r.get("signature"):
+                print("    " + clean(r.get("signature"), 90))
+    if rows:
+        print("把原始ID 交给 history，看这个号最近发了什么、哪篇读得多。")
+    finish(run, inp, items, a.save, len(rows))
+
+
 # ---------- 一个号的历史发文 ----------
+def parse_reads(desc):
+    """历史发文列表里微信给的阅读写在 showDesc 里：Reads: 763、Reads: 92k、Reads: 100k+（中文界面是 阅读 763、阅读 9.2万、阅读 10万+）。
+    取成 (整数, 是不是带加号的下限)；认不出给 (None, False)。过万的微信只给到千位，所以是约数。"""
+    m = re.search(r"(?:Reads?|阅读)\s*[:：]?\s*([\d.]+)\s*([kKwW万]?)\s*(\+?)", re.sub(r"\s+", " ", str(desc or "")))
+    if not m:
+        return None, False
+    try:
+        v = float(m.group(1))
+    except ValueError:
+        return None, False
+    v *= 1000 if m.group(2) in ("k", "K") else (10000 if m.group(2) in ("w", "W", "万") else 1)
+    return int(v), bool(m.group(3))
+
+
+def head_median(rows):
+    """这批发文里头条（每次推送的第 1 条）的阅读中位。次条不代表这个号的水平，不算。少于 3 篇头条不算，给 None。"""
+    reads = [parse_reads(r.get("showDesc"))[0] for r in rows if num(r.get("itemIndex")) in (0, 1)]
+    reads = [x for x in reads if x is not None]
+    return int(statistics.median(reads)) if len(reads) >= 3 else None
+
+
 def cmd_history(a, tok):
     accounts = [clean_url(x) if x.startswith("http") else x for x in split_csv(a.account)]
     if not accounts:
@@ -339,12 +389,19 @@ def cmd_history(a, tok):
     inp = {"operation": "accountHistoryArticles", "accounts": accounts, "maxPages": a.pages}
     run, items, rows = fetch(tok, a, inp)
     for acc, mine in group_by_target(rows):
-        print("%s 的历史发文 %d 篇：" % (acc[:40], len(mine)))
+        med = head_median(mine)
+        print("%s 的历史发文 %d 篇%s：" % (acc[:40], len(mine), ("｜头条阅读中位 %d" % med) if med else ""))
         for r in mine:
-            print("  %s｜第 %s 条｜%s｜%s" % (fmt_ts(r.get("publishTimestamp") or r.get("sendTime")), r.get("itemIndex") or "?", clean(r.get("title"), 44), clean(r.get("showDesc"), 30)))
+            reads, plus = parse_reads(r.get("showDesc"))
+            if reads is None:
+                tag = clean(r.get("showDesc"), 30)
+            else:
+                tag = "阅读 %d%s" % (reads, "+" if plus else "") + ("｜倍率 %.1f" % (reads / float(med)) if med else "")
+            print("  %s｜第 %s 条｜%s｜%s" % (fmt_ts(r.get("publishTimestamp") or r.get("sendTime")), r.get("itemIndex") or "?", clean(r.get("title"), 44), tag))
             print("    " + short_url(r.get("url") or r.get("contentUrl")))
     if rows:
-        print("第 1 条是那次推送的头条。列表里的阅读是微信给的约数，要准数把链接交给 metrics。")
+        print("第 1 条是那次推送的头条。倍率 = 这篇阅读 ÷ 这批头条的阅读中位，2 以上是这个号的读者格外买账的题。")
+        print("阅读是微信列表里给的数：过万只到千位，10 万以上只显示 100000+。要准数把链接交给 metrics。")
     finish(run, inp, items, a.save, len(rows))
 
 
@@ -410,8 +467,33 @@ def cmd_index(a, tok):
     finish(run, inp, items, a.save, len(rows))
 
 
+# ---------- 联想词 ----------
+def suggestion_words(row):
+    """联想词在 suggestions 里，一般是一串字符串；万一是对象就取里面像词的那个字段。"""
+    out = []
+    for x in row.get("suggestions") or []:
+        w = x if isinstance(x, str) else (x.get("word") or x.get("title") or x.get("query") or "") if isinstance(x, dict) else ""
+        if clean(w):
+            out.append(clean(w))
+    return out
+
+
+def cmd_suggest(a, tok):
+    kws = split_csv(a.keyword)
+    if not kws:
+        die("--keyword 不能为空")
+    inp = {"operation": "searchSuggestions", "keywords": kws}
+    run, items, rows = fetch(tok, a, inp)
+    for r in rows:
+        words = suggestion_words(r)
+        print("「%s」的联想词 %d 个：%s" % (r.get("queryTarget"), len(words), "、".join(words)))
+    if rows:
+        print("联想词是微信搜一搜里别人接着这个词在搜的。挑跟品类对得上的当候选题的核心词，再用 index 看热度、用 search 看有没有人写。")
+    finish(run, inp, items, a.save, len(rows))
+
+
 # ---------- 其余操作原样跑 ----------
-def run_input(op, keyword, url, account, pages, extra_json):
+def run_input(op, keyword, url, account, pages, extra_json, link=None):
     """通用入口的输入：操作名只认那 16 个；--json 里的额外字段原样带上，但不让它改 operation，也不带 feedback（那是给采集器作者留言用的）。"""
     if op not in OPS:
         die("--op 只认这 16 个：" + " ".join(OPS))
@@ -419,6 +501,7 @@ def run_input(op, keyword, url, account, pages, extra_json):
     if keyword: inp["keywords"] = split_csv(keyword)
     if url: inp["articleUrls"] = split_urls(url)
     if account: inp["accounts"] = split_csv(account)
+    if link: inp["links"] = split_urls(link)
     if pages: inp["maxPages"] = pages
     if extra_json:
         try:
@@ -434,7 +517,7 @@ def run_input(op, keyword, url, account, pages, extra_json):
 
 
 def cmd_run(a, tok):
-    inp = run_input(a.op, a.keyword, a.url, a.account, a.pages, a.json)
+    inp = run_input(a.op, a.keyword, a.url, a.account, a.pages, a.json, a.link)
     run, items, rows = fetch(tok, a, inp)
     save = a.save or ("apify-%s-%s.json" % (a.op, time.strftime("%Y%m%d-%H%M%S")))
     print("%s 返回 %d 行。" % (a.op, len(rows)))
@@ -470,11 +553,13 @@ def main():
     p = paid("search"); p.add_argument("--keyword", required=True); p.add_argument("--pages", type=int, default=1)
     p.add_argument("--sort", choices=["relevance", "latest", "hot"], default="relevance"); p.add_argument("--time", choices=["all", "day", "week", "halfYear"], default="all")
     p = paid("metrics"); p.add_argument("--url", required=True)
+    p = paid("accounts"); p.add_argument("--keyword", required=True); p.add_argument("--pages", type=int, default=1); p.add_argument("--all", action="store_true", help="连视频号、小程序一起列")
     p = paid("history"); p.add_argument("--account", required=True); p.add_argument("--pages", type=int, default=1)
     p = paid("detail"); p.add_argument("--url", required=True)
     p = paid("comments"); p.add_argument("--url", required=True); p.add_argument("--pages", type=int, default=1)
     p = paid("index"); p.add_argument("--keyword", required=True)
-    p = paid("run"); p.add_argument("--op", required=True); p.add_argument("--keyword"); p.add_argument("--url"); p.add_argument("--account"); p.add_argument("--pages", type=int); p.add_argument("--json")
+    p = paid("suggest"); p.add_argument("--keyword", required=True)
+    p = paid("run"); p.add_argument("--op", required=True); p.add_argument("--keyword"); p.add_argument("--url"); p.add_argument("--account"); p.add_argument("--link"); p.add_argument("--pages", type=int); p.add_argument("--json")
     a = ap.parse_args()
     if not a.cmd:
         print(__doc__); return
@@ -484,8 +569,8 @@ def main():
         if getattr(a, "pages", None) is not None and not 1 <= a.pages <= 50:
             die("--pages 在 1 到 50 之间")
     tok = load_token()
-    {"me": cmd_me, "viral": cmd_viral, "search": cmd_search, "metrics": cmd_metrics, "history": cmd_history, "detail": cmd_detail,
-     "comments": cmd_comments, "index": cmd_index, "run": cmd_run}[a.cmd](a, tok)
+    {"me": cmd_me, "viral": cmd_viral, "search": cmd_search, "metrics": cmd_metrics, "accounts": cmd_accounts, "history": cmd_history,
+     "detail": cmd_detail, "comments": cmd_comments, "index": cmd_index, "suggest": cmd_suggest, "run": cmd_run}[a.cmd](a, tok)
 
 
 if __name__ == "__main__":

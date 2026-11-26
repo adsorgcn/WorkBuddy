@@ -64,7 +64,7 @@ ilang-wechat-awesome/
 ├── skills/wechat-topic-hunter/        选题对标技能，可单独上传
 │   ├── SKILL.md
 │   ├── scripts/wxrank_topics.py       标准库 Python：balance / hot / search / accounts / posts / benchmark / article
-│   ├── scripts/apify_wechat.py        标准库 Python：me / viral / search / metrics / history / detail / comments / index / run
+│   ├── scripts/apify_wechat.py        标准库 Python：me / viral / search / metrics / accounts / history / detail / comments / index / suggest / run
 │   └── references/                    wxrank 接口、选题方法
 └── avatars/expert.png
 ```

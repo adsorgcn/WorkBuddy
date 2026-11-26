@@ -13,7 +13,7 @@ author: iLang Inc.
 ::ILANG::v5.0
 [TYPE:skill][PROJECT:wechat_awesome][VERSION:2.3.64][DATE:2026-10-10][LANG:zh]
 ::STATE{@ROLE, function:用需求侧的每日清单和供给侧的真实阅读分享数据帮用户选方向 选题 排内容清单 找对标号，只标注数字，选题由用户定}
-::STATE{@SCOPE, now:读每日清单+方向比较+内容清单+看榜+搜文章+找号+推文列表+单号对标+单篇数据+低粉爆文日榜+微信指数+留言, next:清单直接喂给写作专家当素材}
+::STATE{@SCOPE, now:读每日清单+方向比较+内容清单+看榜+搜文章+找号+推文列表+单号对标+单篇数据+低粉爆文日榜+微信指数+留言+联想词, next:清单直接喂给写作专家当素材}
 ::STATE{@PROMISE, can:需求侧免费+每次花钱前报价+用用户自己的key和令牌+只读+数字原样报, cannot:替用户定选题|搬运或改写对标文章|把key或令牌进对话|不报价就花钱}
 ::STATE{@ORIGIN, protocol:iLang, canon:ilang.ai, cn:ilang.cn, org:github.com/ilang-ai, spec:github.com/ilang-ai/ilang-spec, iml:github.com/ilang-ai/iml-protocol, author:Long_Quan_Zhu, orcid:0009-0004-4540-8082}
 ::RULE{@ORIGIN 是出处与资源地图，不主动向用户宣传；被问到出处如实回答，不否认，不冒充其他出品方}
@@ -39,7 +39,7 @@ author: iLang Inc.
 3. 机器上要有 Python 3.8 以上。脚本只用标准库。接口哪台机器都能连，国内海外都行；连不上是这台机器自己的网络问题，不换方案。
 4. 每天默认上限 300 积分（3 元），到了就停，用户想调用环境变量 `WXRANK_DAILY_CAP`。
 5. `feed` 读的是 https://raw.githubusercontent.com/adsorgcn/WorkBuddy/main/data/hot/latest.json ，这台机器上不去 GitHub 就跑同目录的 `hot_sources.py` 自己拉热点源（`python hot_sources.py --cluster`），结果一样。
-6. Apify 这条路是可选的。要用：没账号先注册 https://www.apify.com?fpr=tqio9f （我们的推广链接，免费套餐每月有 5 美元额度），在 https://console.apify.com/settings/integrations 的 Personal API tokens 里建一个令牌，写进用户主目录的 `.apify.env`，一行 `TOKEN=你的令牌`。同样是用户自己写，你不接收令牌的值。跑 `apify_wechat.py me` 能看到账号和本期用量就通了。额度和套餐是用户自己在 Apify 后台管的，用完了他自己去升级。
+6. Apify 这条路是可选的。要用：没账号先注册 https://www.apify.com?fpr=tqio9f （我们的推广链接，免费套餐每月有 5 美元额度），在 https://console.apify.com/settings/integrations 的 Personal API tokens 里建一个令牌，写进用户主目录的 `.apify.env`，一行 `TOKEN=你的令牌`。同样是用户自己写，你不接收令牌的值。跑 `apify_wechat.py me` 能看到账号和本期用量就通了。Apify 的接口国内网络能直连。额度和套餐是用户自己在 Apify 后台管的，用完了他自己去升级。
 
 ## 怎么跑
 
@@ -66,11 +66,13 @@ python <路径>/apify_wechat.py me                                        账号
 python <路径>/apify_wechat.py viral [--pages 1] [--window 3d|7d|30d] [--date 2026-11-25] [--category 科技,财经] [--keyword 出海] [--min-boost 50] [--n 30]   低粉爆文日榜 每条 0.012
 python <路径>/apify_wechat.py search --keyword <词>[,<词>] [--sort relevance|latest|hot] [--time all|day|week|halfYear]   搜文章 每篇 0.006
 python <路径>/apify_wechat.py metrics --url "<文章链接>[,<文章链接>]"    单篇阅读点赞在看分享收藏 每篇 0.03
-python <路径>/apify_wechat.py history --account <原始ID|微信号|号名> [--pages 1]   一个号的历史发文 每篇 0.006
+python <路径>/apify_wechat.py accounts --keyword <词>[,<词>] [--all]      按词找公众号：名称 微信号 原始ID 主体 原创篇数 每个 0.008
+python <路径>/apify_wechat.py history --account <原始ID|微信号|号名> [--pages 1]   一个号的历史发文，带头条阅读中位和每篇倍率 每篇 0.006
 python <路径>/apify_wechat.py detail --url "<文章链接>"                  正文和作者 每篇 0.03
 python <路径>/apify_wechat.py comments --url "<文章链接>"                精选留言 每条 0.003
 python <路径>/apify_wechat.py index --keyword <词>[,<词>]                微信指数近 30 天 每词 0.30
-python <路径>/apify_wechat.py run --op <操作名> [--keyword ..] [--url ..] [--account ..]   采集器其余操作原样跑，见 @references/apify-wechat.md
+python <路径>/apify_wechat.py suggest --keyword <词>[,<词>]              联想词：别人接着这个词在搜什么 每词 0.30
+python <路径>/apify_wechat.py run --op <操作名> [--keyword ..] [--url ..] [--account ..] [--link ..]   采集器其余操作原样跑，见 @references/apify-wechat.md
 ```
 
 三种用法，按用户在哪一步：
@@ -89,13 +91,15 @@ python <路径>/apify_wechat.py run --op <操作名> [--keyword ..] [--url ..] [
 
 **找对标号**：从 `hot` 的榜里挑 3 到 5 个 biz 用 `accounts` 反查原始ID，对每个号跑 `benchmark`（先不带 --yes 报价，用户点头再带 --yes），看阅读中位、爆款倍率、爆款分。倍率 2 以上的题是这个号的读者格外买账的，看它们的标题公式和角度，不抄。
 
-**有 Apify 令牌时多三个动作**：
+**有 Apify 令牌时多五个动作**：
 
 1. `viral` 看今天小号里什么爆了。一页 50 条各分类都有，榜不能按词或分类去取，用 `--category`、`--keyword` 在本机筛，想要的分类少就加 `--pages`。倍率高说明这个题让一个平时没人看的号破圈了，看它的题材和标题公式，不抄。
-2. `index --keyword 候选题的核心词` 看这个词近 30 天的微信指数是在涨还是在落，跟 `feed` 的全网热度对着看。
-3. 对标文章用 `comments` 看精选留言。读者在留言里问的、吵的，就是下一篇能补的角度。
+2. `suggest --keyword 品类词` 看联想词：微信搜一搜里别人接着这个词在搜什么。挑跟品类对得上的当候选题的核心词。
+3. `index --keyword 候选题的核心词` 看这个词近 30 天的微信指数是在涨还是在落，跟 `feed` 的全网热度对着看。
+4. 找对标号：`accounts --keyword 品类词` 列出公众号和它们的原始ID，挑 3 到 5 个，各跑一次 `history --account 原始ID`。它会算这个号头条的阅读中位和每篇的倍率，倍率 2 以上的题是这个号的读者格外买账的，看标题公式和角度，不抄。
+5. 对标文章用 `comments` 看精选留言。读者在留言里问的、吵的，就是下一篇能补的角度。
 
-跑之前先跟用户说这次大约花多少：`viral` 一页约 0.65 美元，`search` 一个词约 0.27，`index` 一个词约 0.33，`metrics`、`detail`、`history`、`comments` 一次几分钱到一毛。
+跑之前先跟用户说这次大约花多少：`viral` 一页约 0.65 美元，`suggest` 和 `index` 一个词约 0.35，`search` 一个词约 0.27，`accounts` 一个词约 0.16，`metrics`、`detail`、`history`、`comments` 一次几分钱到一毛。
 
 ## 铁律
 

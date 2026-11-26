@@ -300,11 +300,20 @@ check("分类计数 空的算未分类", dict(az.category_counts(az_vr)) == {"�
 az_st = az.index_stats([{"index": 100 + i, "timestamp": 1793030400 + 86400 * i} for i in range(30)])
 check("指数统计：最新 最高 最低 周变化 近七天", az_st["n"] == 30 and az_st["latest"] == 129 and az_st["max"] == 129 and az_st["min"] == 100 and az_st["change7"] == 5.9 and len(az_st["tail"]) == 7, az_st)
 check("指数没数据给 None", az.index_stats([]) is None)
-check("估价＝启动费加行数乘单价 表里没有的不估", az.estimate_usd("viralArticles", 50) == 0.65 and az.estimate_usd("articleSearch", 36) == 0.266 and az.estimate_usd("accountTodayArticles", 3) is None)
+check("估价＝启动费加行数乘单价 表里没有的不估", az.estimate_usd("viralArticles", 50) == 0.65 and az.estimate_usd("articleSearch", 36) == 0.266 and az.estimate_usd("没有这个操作", 3) is None)
+check("十六个操作都有单价", sorted(az.UNIT_PRICE) == sorted(az.OPS), sorted(set(az.OPS) ^ set(az.UNIT_PRICE)))
 check("通用入口不带 feedback 也不让改 operation", az.run_input("accountBasicInfo", None, None, "gh_x", None, '{"feedback": "hi", "operation": "x", "sortBy": "hot"}') == {"operation": "accountBasicInfo", "accounts": ["gh_x"], "sortBy": "hot"})
 check("多个链接按逗号后的 http 切 并统一 https", az.split_urls("https://mp.weixin.qq.com/s/a,http://mp.weixin.qq.com/s/b") == ["https://mp.weixin.qq.com/s/a", "https://mp.weixin.qq.com/s/b"])
 check("地区对象：国内给省 国外给国家", az.region({"province_name": "河北", "country_name": "中国"}) == "河北" and az.region({"province_name": "", "country_name": "加拿大"}) == "加拿大")
 check("一次带多个词按 queryTarget 分组", [(k, len(v)) for k, v in az.group_by_target([{"queryTarget": "a"}, {"queryTarget": "b"}, {"queryTarget": "a"}])] == [("a", 2), ("b", 1)])
+check("列表里的阅读：准数 带 k 带加号 中文万 认不出", [az.parse_reads(x) for x in ("Reads:  763  Likes:  8", "Reads: 92k Likes: 749", "Reads: 100k+ Likes: 5017", "阅读 9.2万 赞 3", "Likes: 3", None)]
+      == [(763, False), (92000, False), (100000, True), (92000, False), (None, False), (None, False)])
+az_hist = [{"itemIndex": 1, "showDesc": "Reads: 1000"}, {"itemIndex": 1, "showDesc": "Reads: 3000"}, {"itemIndex": 1, "showDesc": "Reads: 2000"}, {"itemIndex": 2, "showDesc": "Reads: 90k"}]
+check("头条阅读中位不算次条 少于三篇头条不算", az.head_median(az_hist) == 2000 and az.head_median(az_hist[:2]) is None, (az.head_median(az_hist), az.head_median(az_hist[:2])))
+az_accs = [{"accTypeName": "视频号", "title": "a"}, {"accTypeName": "公众号", "nickName": "b"}, {"accTypeName": "小程序", "title": "c"}]
+check("找号默认只留公众号 要全列才全列", [r.get("nickName") for r in az.account_rows(az_accs)] == ["b"] and len(az.account_rows(az_accs, True)) == 3)
+check("联想词：字符串和对象都认 空的不要", az.suggestion_words({"suggestions": ["副业", {"word": "副业推荐"}, "", {"x": 1}]}) == ["副业", "副业推荐"])
+check("通用入口的 --link 进 links 字段", az.run_input("convertArticleLink", None, None, None, None, None, "http://mp.weixin.qq.com/s/abc") == {"operation": "convertArticleLink", "links": ["https://mp.weixin.qq.com/s/abc"]})
 
 # ---- 版本号同步 ----
 txt = "version: 2.3.12\n[VERSION:2.3.10]\n| 2.3.1 |\nv2.3.1 and v2.3.12 and \"version\": \"2.3.1\""
